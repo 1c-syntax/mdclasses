@@ -1,27 +1,667 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПередЗакрытием",
-    "event": "BeforeClose"
+    "name": "УстановитьПаролиЗашифровать",
+    "comment": "",
+    "eventHandlers": [
+     {
+      "handler": "УстановитьПаролиЗашифроватьПриИзменении",
+      "event": "OnChange"
+     }
+    ],
+    "id": 141,
+    "type": "CHECK_BOX_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]\/title"
+    },
+    "dataPath": "УстановитьПаролиЗашифровать"
    },
    {
-    "name": "ПриЗакрытии",
-    "event": "OnClose"
+    "elements": [
+     {
+      "elements": [
+       {
+        "elements": [
+         {
+          "elements": [
+           {
+            "name": "ИспользоватьОтборПарольИзменен",
+            "comment": "",
+            "eventHandlers": [
+             {
+              "handler": "ИспользоватьОтборПарольИзмененПриИзменении",
+              "event": "OnChange"
+             }
+            ],
+            "id": 90,
+            "type": "CHECK_BOX_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/title"
+            },
+            "dataPath": "ИспользоватьОтборПарольИзменен"
+           },
+           {
+            "name": "ОтборПарольИзменен",
+            "comment": "",
+            "eventHandlers": [
+             {
+              "handler": "ОтборПарольИзмененПриИзменении",
+              "event": "OnChange"
+             }
+            ],
+            "id": 87,
+            "type": "INPUT_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+            },
+            "dataPath": "ОтборПарольИзменен"
+           }
+          ],
+          "name": "ГруппаОтборПарольИзменен",
+          "comment": "",
+          "id": 83,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Отбор пароль изменен"
+            }
+           ]
+          }
+         },
+         {
+          "elements": [
+           {
+            "name": "ИспользоватьОтборПарольУстановлен",
+            "comment": "",
+            "eventHandlers": [
+             {
+              "handler": "ИспользоватьОтборПарольУстановленПриИзменении",
+              "event": "OnChange"
+             }
+            ],
+            "id": 74,
+            "type": "CHECK_BOX_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/title"
+            },
+            "dataPath": "ИспользоватьОтборПарольУстановлен"
+           },
+           {
+            "name": "ОтборПарольУстановлен",
+            "comment": "",
+            "eventHandlers": [
+             {
+              "handler": "ОтборПарольУстановленПриИзменении",
+              "event": "OnChange"
+             }
+            ],
+            "id": 80,
+            "type": "INPUT_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/title"
+            },
+            "dataPath": "ОтборПарольУстановлен"
+           }
+          ],
+          "name": "ГруппаОтборПарольУстановлен",
+          "comment": "",
+          "id": 64,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Отбор пароль установлен"
+            }
+           ]
+          }
+         }
+        ],
+        "name": "ГруппаОтборыПароль",
+        "comment": "",
+        "id": 99,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Отборы пароль"
+          }
+         ]
+        }
+       },
+       {
+        "elements": [
+         {
+          "elements": [
+           {
+            "name": "ИспользоватьОтборСертификатИзменен",
+            "comment": "",
+            "eventHandlers": [
+             {
+              "handler": "ИспользоватьОтборСертификатИзмененПриИзменении",
+              "event": "OnChange"
+             }
+            ],
+            "id": 93,
+            "type": "CHECK_BOX_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
+            },
+            "dataPath": "ИспользоватьОтборСертификатИзменен"
+           },
+           {
+            "name": "ОтборСертификатИзменен",
+            "comment": "",
+            "eventHandlers": [
+             {
+              "handler": "ОтборСертификатИзмененПриИзменении",
+              "event": "OnChange"
+             }
+            ],
+            "id": 96,
+            "type": "INPUT_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+            },
+            "dataPath": "ОтборСертификатИзменен"
+           }
+          ],
+          "name": "ГруппаОтборСертификатИзменен",
+          "comment": "",
+          "id": 85,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Отбор сертификат изменен"
+            }
+           ]
+          }
+         },
+         {
+          "elements": [
+           {
+            "name": "ИспользоватьОтборСертификатУказан",
+            "comment": "",
+            "eventHandlers": [
+             {
+              "handler": "ИспользоватьОтборСертификатУказанПриИзменении",
+              "event": "OnChange"
+             }
+            ],
+            "id": 71,
+            "type": "CHECK_BOX_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/title"
+            },
+            "dataPath": "ИспользоватьОтборСертификатУказан"
+           },
+           {
+            "name": "ОтборСертификатУказан",
+            "comment": "",
+            "eventHandlers": [
+             {
+              "handler": "ОтборСертификатУказанПриИзменении",
+              "event": "OnChange"
+             }
+            ],
+            "id": 77,
+            "type": "INPUT_FIELD",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+            },
+            "dataPath": "ОтборСертификатУказан"
+           }
+          ],
+          "name": "ГруппаОтборСертификатУказан",
+          "comment": "",
+          "id": 66,
+          "type": "USUAL_GROUP",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Отбор сертификат указан"
+            }
+           ]
+          }
+         }
+        ],
+        "name": "ГруппаОтборыСертификат",
+        "comment": "",
+        "id": 101,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Отборы сертификат"
+          }
+         ]
+        }
+       }
+      ],
+      "name": "ГруппаОтборы",
+      "comment": "",
+      "id": 62,
+      "type": "USUAL_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Отборы"
+        }
+       ]
+      }
+     },
+     {
+      "elements": [
+       {
+        "name": "ПолучателиСостояниеПросмотра",
+        "comment": "",
+        "id": 11,
+        "type": "VIEW_STATUS_ADDITION",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "ПолучателиСтрокаПоиска",
+        "comment": "",
+        "id": 5,
+        "type": "SEARCH_STRING_ADDITION",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "ПолучателиУправлениеПоиском",
+        "comment": "",
+        "id": 8,
+        "type": "SEARCH_CONTROL_ADDITION",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "ПолучателиАдресЭлектроннойПочты",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 17,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+        },
+        "dataPath": "Получатели.АдресЭлектроннойПочты"
+       },
+       {
+        "name": "ПолучателиПарольАрхива",
+        "comment": "",
+        "eventHandlers": [
+         {
+          "handler": "ПолучателиПарольАрхиваПриИзменении",
+          "event": "OnChange"
+         }
+        ],
+        "id": 23,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+        },
+        "dataPath": "Получатели.ПарольАрхива"
+       },
+       {
+        "name": "ПолучателиПарольАрхива2",
+        "comment": "",
+        "eventHandlers": [
+         {
+          "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormTable\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormField[2]\/eventHandlers\/com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler"
+         }
+        ],
+        "id": 103,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+        },
+        "dataPath": "Получатели.ПарольАрхива"
+       },
+       {
+        "name": "ПолучателиПолучатель",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 14,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+        },
+        "dataPath": "Получатели.Получатель"
+       },
+       {
+        "elements": [
+         {
+          "name": "СтрокаПоиска",
+          "comment": "",
+          "id": 118,
+          "type": "SEARCH_STRING_ADDITION",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Поиск"
+            }
+           ]
+          }
+         },
+         {
+          "commandName": "Form.Item.Получатели.StandardCommand.OutputList",
+          "name": "ВывестиСписок",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 36,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         },
+         {
+          "commandName": "Form.Command.ЗаполнитьСертификаты",
+          "name": "ЗаполнитьСертификаты",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 52,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[2]\/title"
+          }
+         },
+         {
+          "commandName": "Form.Item.Получатели.StandardCommand.Find",
+          "name": "Найти",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 46,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         },
+         {
+          "commandName": "Form.Item.Получатели.StandardCommand.CancelSearch",
+          "name": "ОтменитьПоиск",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 48,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         },
+         {
+          "commandName": "Form.Command.ОтправитьПаролиПоSMS",
+          "name": "ОтправитьПаролиПоSMS",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 60,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[3]\/title"
+          }
+         },
+         {
+          "commandName": "Form.Command.ПечатьСпискаПаролей",
+          "name": "ПечатьСпискаПаролей",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 58,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[4]\/title"
+          }
+         },
+         {
+          "commandName": "Form.Command.СкрытьПоказатьПароли",
+          "name": "СкрытьПоказатьПароли",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 56,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[5]\/title"
+          }
+         },
+         {
+          "commandName": "Form.Command.УстановитьПароли",
+          "name": "УстановитьПароли",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 54,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[6]\/title"
+          }
+         }
+        ],
+        "name": "ПолучателиКоманднаяПанель",
+        "comment": "",
+        "id": 2,
+        "type": "COMMAND_BAR",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
+      "name": "Получатели",
+      "comment": "",
+      "eventHandlers": [
+       {
+        "handler": "ПолучателиПередНачаломДобавления",
+        "event": "BeforeAddRow"
+       },
+       {
+        "handler": "ПолучателиПередУдалением",
+        "event": "BeforeDeleteRow"
+       },
+       {
+        "handler": "ПолучателиВыбор",
+        "event": "Selection"
+       }
+      ],
+      "id": 1,
+      "type": "TABLE",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Получатели"
+     }
+    ],
+    "name": "ГруппаНастройкиШифрования",
+    "comment": "",
+    "id": 145,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Настройки шифрования"
+      }
+     ]
+    }
    },
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
-   },
-   {
-    "name": "ПриОткрытии",
-    "event": "OnOpen"
+    "elements": [
+     {
+      "commandName": "Form.Command.ЗаписатьИЗакрыть",
+      "name": "ЗаписатьИЗакрыть",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 114,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/title"
+      }
+     }
+    ],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    }
    }
   ],
   "attributes": [
    {
+    "columns": [
+     {
+      "columns": [],
+      "name": "Исключен",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 22,
+      "savedData": false,
+      "title": {
+       "content": []
+      },
+      "type": {
+       "types": [
+        "BOOLEAN"
+       ],
+       "composite": false,
+       "qualifiers": []
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "Получатель",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 3,
+      "savedData": false,
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Получатель"
+        }
+       ]
+      },
+      "type": {
+       "types": [
+        {
+         "kind": "DEFINED_TYPE",
+         "variant": "METADATA",
+         "fullName": {
+          "nameRu": "ОпределяемыйТип.ПолучательРассылки",
+          "nameEn": "DefinedType.ПолучательРассылки"
+         }
+        }
+       ],
+       "composite": false,
+       "qualifiers": []
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "АдресЭлектроннойПочты",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 4,
+      "savedData": false,
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Адрес электронной почты"
+        }
+       ]
+      },
+      "type": {
+       "types": [
+        "STRING"
+       ],
+       "composite": false,
+       "qualifiers": [
+        {
+         "length": 0,
+         "allowedLength": 0
+        }
+       ]
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "ПарольАрхива",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 6,
+      "savedData": false,
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Пароль архива"
+        }
+       ]
+      },
+      "type": {
+       "types": [
+        "STRING"
+       ],
+       "composite": false,
+       "qualifiers": [
+        {
+         "length": 50,
+         "allowedLength": 0
+        }
+       ]
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "ПарольИзменен",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 8,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "СертификатИзменен",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 9,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+      },
+      "mainAttribute": false
+     }
+    ],
     "name": "Получатели",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 1,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -36,11 +676,16 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ОтборПарольИзменен",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 11,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -50,16 +695,17 @@
      ]
     },
     "type": {
-     "types": [
-      "BOOLEAN"
-     ],
-     "composite": false,
-     "qualifiers": []
-    }
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ОтборСертификатУказан",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 12,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -69,12 +715,17 @@
      ]
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
-    }
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ОтборСертификатИзменен",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 13,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -84,12 +735,17 @@
      ]
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
-    }
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ИспользоватьОтборСертификатУказан",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 14,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -99,12 +755,17 @@
      ]
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
-    }
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ИспользоватьОтборПарольИзменен",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 15,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -114,12 +775,17 @@
      ]
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
-    }
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ИспользоватьОтборСертификатИзменен",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 16,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -129,12 +795,17 @@
      ]
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
-    }
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ИспользоватьОтборПарольУстановлен",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 17,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -144,12 +815,17 @@
      ]
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
-    }
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ОтборПарольУстановлен",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 18,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -159,24 +835,34 @@
      ]
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
-    }
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ИдентификаторОбъектаМетаданных",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 19,
+    "savedData": false,
     "title": {
-     "content": []
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
     "type": {
      "types": [],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "УстановитьПаролиЗашифровать",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 2,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -186,14 +872,19 @@
      ]
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
-    }
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ВидПочтовогоАдресаПолучателей",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 20,
+    "savedData": false,
     "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
     "type": {
      "types": [
@@ -208,13 +899,18 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ТипПолучателейРассылки",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 21,
+    "savedData": false,
     "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
     "type": {
      "types": [
@@ -222,23 +918,124 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [
+     {
+      "columns": [],
+      "name": "Исключен",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 22,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "Получатель",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 3,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "АдресЭлектроннойПочты",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 4,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "ПарольАрхива",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 6,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "ПарольИзменен",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 8,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "СертификатИзменен",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 9,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+      },
+      "mainAttribute": false
+     }
+    ],
     "name": "ПолучателиБезОтборов",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 24,
+    "savedData": false,
     "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "Ссылка",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 25,
+    "savedData": false,
     "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
     "type": {
      "types": [
@@ -253,13 +1050,18 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "НаименованиеРассылки",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 26,
+    "savedData": false,
     "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
     "type": {
      "types": [
@@ -272,316 +1074,232 @@
        "allowedLength": 0
       }
      ]
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ДоступноШифрованиеВложений",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 3,
+    "savedData": false,
     "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "Архивировать",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 4,
+    "savedData": false,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ПередЗакрытием",
+    "event": "BeforeClose"
+   },
+   {
+    "handler": "ПриЗакрытии",
+    "event": "OnClose"
+   },
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   },
+   {
+    "handler": "ПриОткрытии",
+    "event": "OnOpen"
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+  },
+  "parameters": [
+   {
+    "name": "АдресПолучателей",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
     }
    },
    {
     "name": "Архивировать",
-    "id": 4,
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
-    },
+    "keyParameter": false,
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "ВидПочтовогоАдресаПолучателей",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[12]\/type"
+    }
+   },
+   {
+    "name": "НаименованиеРассылки",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[16]\/type"
+    }
+   },
+   {
+    "name": "Ссылка",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[15]\/type"
+    }
+   },
+   {
+    "name": "ТипПолучателейРассылки",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[13]\/type"
+    }
+   },
+   {
+    "name": "УстановитьПаролиЗашифровать",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
     }
    }
   ],
-  "title": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
-  },
-  "items": [
+  "commands": [
    {
-    "name": "УстановитьПаролиЗашифровать",
-    "id": 141,
-    "type": "CHECK_BOX_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]\/title"
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "ЗаписатьИЗакрыть",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
-    "items": [],
-    "dataPath": "УстановитьПаролиЗашифровать"
-   },
-   {
-    "name": "ГруппаНастройкиШифрования",
-    "id": 145,
-    "type": "USUAL_GROUP",
+    "action": "ЗаписатьИЗакрыть",
+    "id": 7,
     "title": {
      "content": [
       {
        "langKey": "ru",
-       "value": "Настройки шифрования"
+       "value": "Записать и закрыть"
       }
      ]
     },
-    "items": [
-     {
-      "name": "Получатели",
-      "id": 1,
-      "type": "TABLE",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [
-       {
-        "name": "ПолучателиПарольАрхива2",
-        "id": 103,
-        "type": "INPUT_FIELD",
-        "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Пароль архива"
-          }
-         ]
-        },
-        "items": [],
-        "dataPath": "Получатели.ПарольАрхива"
-       },
-       {
-        "name": "ПолучателиПолучатель",
-        "id": 14,
-        "type": "INPUT_FIELD",
-        "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Получатель"
-          }
-         ]
-        },
-        "items": [],
-        "dataPath": "Получатели.Получатель"
-       },
-       {
-        "name": "ПолучателиАдресЭлектроннойПочты",
-        "id": 17,
-        "type": "INPUT_FIELD",
-        "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Адрес электронной почты"
-          }
-         ]
-        },
-        "items": [],
-        "dataPath": "Получатели.АдресЭлектроннойПочты"
-       },
-       {
-        "name": "ПолучателиПарольАрхива",
-        "id": 23,
-        "type": "INPUT_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
-        },
-        "items": [],
-        "dataPath": "Получатели.ПарольАрхива"
-       }
-      ],
-      "dataPath": "Получатели"
-     },
-     {
-      "name": "ГруппаОтборы",
-      "id": 62,
-      "type": "USUAL_GROUP",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Отборы"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "ГруппаОтборыСертификат",
-        "id": 101,
-        "type": "USUAL_GROUP",
-        "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Отборы сертификат"
-          }
-         ]
-        },
-        "items": [
-         {
-          "name": "ГруппаОтборСертификатУказан",
-          "id": 66,
-          "type": "USUAL_GROUP",
-          "title": {
-           "content": [
-            {
-             "langKey": "ru",
-             "value": "Отбор сертификат указан"
-            }
-           ]
-          },
-          "items": [
-           {
-            "name": "ИспользоватьОтборСертификатУказан",
-            "id": 71,
-            "type": "CHECK_BOX_FIELD",
-            "title": {
-             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/title"
-            },
-            "items": [],
-            "dataPath": "ИспользоватьОтборСертификатУказан"
-           },
-           {
-            "name": "ОтборСертификатУказан",
-            "id": 77,
-            "type": "INPUT_FIELD",
-            "title": {
-             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
-            },
-            "items": [],
-            "dataPath": "ОтборСертификатУказан"
-           }
-          ],
-          "dataPath": ""
-         },
-         {
-          "name": "ГруппаОтборСертификатИзменен",
-          "id": 85,
-          "type": "USUAL_GROUP",
-          "title": {
-           "content": [
-            {
-             "langKey": "ru",
-             "value": "Отбор сертификат изменен"
-            }
-           ]
-          },
-          "items": [
-           {
-            "name": "ИспользоватьОтборСертификатИзменен",
-            "id": 93,
-            "type": "CHECK_BOX_FIELD",
-            "title": {
-             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
-            },
-            "items": [],
-            "dataPath": "ИспользоватьОтборСертификатИзменен"
-           },
-           {
-            "name": "ОтборСертификатИзменен",
-            "id": 96,
-            "type": "INPUT_FIELD",
-            "title": {
-             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
-            },
-            "items": [],
-            "dataPath": "ОтборСертификатИзменен"
-           }
-          ],
-          "dataPath": ""
-         }
-        ],
-        "dataPath": ""
-       },
-       {
-        "name": "ГруппаОтборыПароль",
-        "id": 99,
-        "type": "USUAL_GROUP",
-        "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Отборы пароль"
-          }
-         ]
-        },
-        "items": [
-         {
-          "name": "ГруппаОтборПарольУстановлен",
-          "id": 64,
-          "type": "USUAL_GROUP",
-          "title": {
-           "content": [
-            {
-             "langKey": "ru",
-             "value": "Отбор пароль установлен"
-            }
-           ]
-          },
-          "items": [
-           {
-            "name": "ИспользоватьОтборПарольУстановлен",
-            "id": 74,
-            "type": "CHECK_BOX_FIELD",
-            "title": {
-             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/title"
-            },
-            "items": [],
-            "dataPath": "ИспользоватьОтборПарольУстановлен"
-           },
-           {
-            "name": "ОтборПарольУстановлен",
-            "id": 80,
-            "type": "INPUT_FIELD",
-            "title": {
-             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/title"
-            },
-            "items": [],
-            "dataPath": "ОтборПарольУстановлен"
-           }
-          ],
-          "dataPath": ""
-         },
-         {
-          "name": "ГруппаОтборПарольИзменен",
-          "id": 83,
-          "type": "USUAL_GROUP",
-          "title": {
-           "content": [
-            {
-             "langKey": "ru",
-             "value": "Отбор пароль изменен"
-            }
-           ]
-          },
-          "items": [
-           {
-            "name": "ИспользоватьОтборПарольИзменен",
-            "id": 90,
-            "type": "CHECK_BOX_FIELD",
-            "title": {
-             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/title"
-            },
-            "items": [],
-            "dataPath": "ИспользоватьОтборПарольИзменен"
-           },
-           {
-            "name": "ОтборПарольИзменен",
-            "id": 87,
-            "type": "INPUT_FIELD",
-            "title": {
-             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
-            },
-            "items": [],
-            "dataPath": "ОтборПарольИзменен"
-           }
-          ],
-          "dataPath": ""
-         }
-        ],
-        "dataPath": ""
-       }
-      ],
-      "dataPath": ""
-     }
-    ],
-    "dataPath": ""
+    "representation": "AUTO",
+    "picture": "StdPicture.WriteAndClose"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "ЗаполнитьСертификаты",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "action": "ЗаполнитьСертификаты",
+    "id": 1,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Заполнить сертификаты"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": ""
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "ОтправитьПаролиПоSMS",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "action": "ОтправитьПаролиПоSMS",
+    "id": 6,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Отправить пароли"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.ОтправитьSMS"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "ПечатьСпискаПаролей",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "action": "ПечатьСпискаПаролей",
+    "id": 4,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Список паролей"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "StdPicture.Print"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "СкрытьПоказатьПароли",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[5]\/title"
+    },
+    "action": "СкрытьПоказатьПароли",
+    "id": 3,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Скрыть\/показать пароли"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "StdPicture.ShowPassword"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "УстановитьПароли",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "action": "УстановитьПароли",
+    "id": 2,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Установить пароли"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": ""
    }
   ],
   "empty": false

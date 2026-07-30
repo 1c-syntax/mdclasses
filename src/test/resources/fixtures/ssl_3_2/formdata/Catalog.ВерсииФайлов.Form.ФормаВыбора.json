@@ -1,38 +1,226 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
-   }
-  ],
-  "attributes": [
-   {
-    "name": "Список",
-    "id": 1,
+    "elements": [],
+    "name": "ГруппаПользовательскихНастроек",
+    "comment": "",
+    "id": 35,
+    "type": "USUAL_GROUP",
     "title": {
-     "content": []
-    },
-    "type": {
-     "types": [
-      "DYNAMIC_LIST"
-     ],
-     "composite": false,
-     "qualifiers": []
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Группа пользовательских настроек"
+      }
+     ]
     }
-   }
-  ],
-  "title": {
-   "content": [
-    {
-     "langKey": "ru",
-     "value": "Выбор версии файла"
-    }
-   ]
-  },
-  "items": [
+   },
    {
+    "elements": [],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    }
+   },
+   {
+    "elements": [
+     {
+      "name": "СписокСостояниеПросмотра",
+      "comment": "",
+      "id": 45,
+      "type": "VIEW_STATUS_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "СписокСтрокаПоиска",
+      "comment": "",
+      "id": 42,
+      "type": "SEARCH_STRING_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "СписокУправлениеПоиском",
+      "comment": "",
+      "id": 48,
+      "type": "SEARCH_CONTROL_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "СписокАвтор",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 21,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Автор"
+     },
+     {
+      "name": "СписокДатаСоздания",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 23,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.ДатаСоздания"
+     },
+     {
+      "name": "СписокНомерВерсии",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 19,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.НомерВерсии"
+     },
+     {
+      "name": "СписокРазмер",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 25,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Размер"
+     },
+     {
+      "name": "СписокСсылка",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 32,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Ссылка"
+     },
+     {
+      "elements": [
+       {
+        "elements": [],
+        "name": "ГруппаОсновное",
+        "comment": "",
+        "id": 53,
+        "type": "COLUMN_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Основное"
+          }
+         ]
+        }
+       }
+      ],
+      "name": "ГруппаВертикально",
+      "comment": "",
+      "id": 51,
+      "type": "COLUMN_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Вертикально"
+        }
+       ]
+      }
+     },
+     {
+      "elements": [
+       {
+        "name": "Комментарий",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 55,
+        "type": "LABEL_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "dataPath": "Список.Комментарий"
+       },
+       {
+        "name": "СписокВладелец",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 39,
+        "type": "LABEL_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "dataPath": "Список.Владелец"
+       }
+      ],
+      "name": "ГруппаФайлКомментарий",
+      "comment": "",
+      "id": 110,
+      "type": "COLUMN_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Файл, комментарий"
+        }
+       ]
+      }
+     },
+     {
+      "elements": [
+       {
+        "commandName": "Form.Command.ПоказыватьПомеченныеФайлы",
+        "name": "СписокПоказыватьПомеченныеФайлы",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 106,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/title"
+        }
+       },
+       {
+        "commandName": "Form.Command.Удалить",
+        "name": "СписокУдалить",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 108,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[2]\/title"
+        }
+       }
+      ],
+      "name": "СписокКоманднаяПанель",
+      "comment": "",
+      "id": 18,
+      "type": "COMMAND_BAR",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     }
+    ],
     "name": "Список",
+    "comment": "",
+    "eventHandlers": [
+     {
+      "handler": "СписокПриАктивизацииСтроки",
+      "event": "OnActivateRow"
+     }
+    ],
     "id": 2,
     "type": "TABLE",
     "title": {
@@ -43,141 +231,90 @@
       }
      ]
     },
-    "items": [
-     {
-      "name": "ГруппаФайлКомментарий",
-      "id": 110,
-      "type": "COLUMN_GROUP",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Файл, комментарий"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "СписокВладелец",
-        "id": 39,
-        "type": "LABEL_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-        },
-        "items": [],
-        "dataPath": "Список.Владелец"
-       },
-       {
-        "name": "Комментарий",
-        "id": 55,
-        "type": "LABEL_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-        },
-        "items": [],
-        "dataPath": "Список.Комментарий"
-       }
-      ],
-      "dataPath": ""
-     },
-     {
-      "name": "ГруппаВертикально",
-      "id": 51,
-      "type": "COLUMN_GROUP",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Вертикально"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "ГруппаОсновное",
-        "id": 53,
-        "type": "COLUMN_GROUP",
-        "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Основное"
-          }
-         ]
-        },
-        "items": [],
-        "dataPath": ""
-       }
-      ],
-      "dataPath": ""
-     },
-     {
-      "name": "СписокНомерВерсии",
-      "id": 19,
-      "type": "INPUT_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.НомерВерсии"
-     },
-     {
-      "name": "СписокАвтор",
-      "id": 21,
-      "type": "INPUT_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Автор"
-     },
-     {
-      "name": "СписокДатаСоздания",
-      "id": 23,
-      "type": "INPUT_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.ДатаСоздания"
-     },
-     {
-      "name": "СписокРазмер",
-      "id": 25,
-      "type": "INPUT_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Размер"
-     },
-     {
-      "name": "СписокСсылка",
-      "id": 32,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Ссылка"
-     }
-    ],
     "dataPath": "Список"
-   },
+   }
+  ],
+  "attributes": [
    {
-    "name": "ГруппаПользовательскихНастроек",
-    "id": 35,
-    "type": "USUAL_GROUP",
+    "columns": [],
+    "name": "Список",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 1,
+    "savedData": false,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      "DYNAMIC_LIST"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "mainAttribute": true
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "title": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Выбор версии файла"
+    }
+   ]
+  },
+  "parameters": [],
+  "commands": [
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "ПоказыватьПомеченныеФайлы",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/title"
+    },
+    "action": "ПоказыватьПомеченныеФайлы",
+    "id": 1,
     "title": {
      "content": [
       {
        "langKey": "ru",
-       "value": "Группа пользовательских настроек"
+       "value": "Показывать помеченные файлы"
       }
      ]
     },
-    "items": [],
-    "dataPath": ""
+    "representation": "AUTO",
+    "picture": ""
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "Список",
+    "name": "Удалить",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Удалить данные версии файла"
+      }
+     ]
+    },
+    "action": "Удалить",
+    "id": 2,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Удалить"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "StdPicture.DeleteDirectly"
    }
   ],
   "empty": false

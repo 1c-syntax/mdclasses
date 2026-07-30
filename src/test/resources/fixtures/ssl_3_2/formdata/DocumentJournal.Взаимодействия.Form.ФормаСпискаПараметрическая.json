@@ -1,31 +1,1023 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПриЗагрузкеДанныхИзНастроекНаСервере",
-    "event": "BeforeLoadDataFromSettingsAtServer"
+    "elements": [],
+    "name": "ГруппаПользовательскихНастроек",
+    "comment": "",
+    "id": 234,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Группа пользовательских настроек"
+      }
+     ]
+    }
    },
    {
-    "name": "ОбработкаВыбора",
-    "event": "ChoiceProcessing"
+    "elements": [
+     {
+      "commandName": "Form.Command.ПереключитьРежимПросмотра",
+      "name": "ПереключитьРежимПросмотра",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 102,
+      "type": "USUAL_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[8]\/title"
+      }
+     },
+     {
+      "name": "Ответственный",
+      "comment": "",
+      "eventHandlers": [
+       {
+        "handler": "ОтветственныйПриИзменении",
+        "event": "OnChange"
+       }
+      ],
+      "id": 46,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
+      },
+      "dataPath": "Ответственный"
+     },
+     {
+      "name": "Статус",
+      "comment": "",
+      "eventHandlers": [
+       {
+        "handler": "ТипВзаимодействияСтатусОчистка",
+        "event": "Clearing"
+       },
+       {
+        "handler": "СтатусПриИзменении",
+        "event": "OnChange"
+       }
+      ],
+      "id": 50,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
+      },
+      "dataPath": "Статус"
+     },
+     {
+      "name": "ТипВзаимодействия",
+      "comment": "",
+      "eventHandlers": [
+       {
+        "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup[2]\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormField[2]\/eventHandlers\/com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler"
+       },
+       {
+        "handler": "ТипВзаимодействияПриИзменении",
+        "event": "OnChange"
+       }
+      ],
+      "id": 136,
+      "type": "INPUT_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Тип"
+        }
+       ]
+      },
+      "dataPath": "ТипВзаимодействия"
+     }
+    ],
+    "name": "ГруппаФильтры",
+    "comment": "",
+    "id": 34,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Фильтры"
+      }
+     ]
+    }
    },
    {
-    "name": "ОбработкаОповещения",
-    "event": "NotificationProcessing"
+    "elements": [
+     {
+      "elements": [
+       {
+        "elements": [
+         {
+          "name": "ДеревоВзаимодействийСостояниеПросмотра",
+          "comment": "",
+          "id": 248,
+          "type": "VIEW_STATUS_ADDITION",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         },
+         {
+          "name": "ДеревоВзаимодействийСтрокаПоиска",
+          "comment": "",
+          "id": 245,
+          "type": "SEARCH_STRING_ADDITION",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         },
+         {
+          "name": "ДеревоВзаимодействийУправлениеПоиском",
+          "comment": "",
+          "id": 251,
+          "type": "SEARCH_CONTROL_ADDITION",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         },
+         {
+          "name": "ДеревоВзаимодействийДата",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 111,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+          },
+          "dataPath": "ДеревоВзаимодействий.Дата"
+         },
+         {
+          "name": "ДеревоВзаимодействийНомерКартинки",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 113,
+          "type": "PICTURE_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+          },
+          "dataPath": "ДеревоВзаимодействий.НомерКартинки"
+         },
+         {
+          "name": "ДеревоВзаимодействийТема",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 116,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+          },
+          "dataPath": "ДеревоВзаимодействий.Тема"
+         },
+         {
+          "name": "ДеревоВзаимодействийУчастники",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 118,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/title"
+          },
+          "dataPath": "ДеревоВзаимодействий.Участники"
+         },
+         {
+          "elements": [
+           {
+            "commandName": "Form.Command.ПереключитьРежимПросмотра",
+            "name": "ДеревоВзаимодействийПереключитьРежимПросмотра",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 145,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[8]\/title"
+            }
+           },
+           {
+            "commandName": "Form.Command.УстановитьИнтервал",
+            "name": "ДеревоВзаимодействийУстановитьИнтервал",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 132,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[18]\/title"
+            }
+           },
+           {
+            "commandName": "Form.Command.ОбновитьДерево",
+            "name": "ОбновитьДерево",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 131,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[3]\/title"
+            }
+           },
+           {
+            "commandName": "Form.Command.СоздатьЭлектронноеПисьмо",
+            "name": "СписокСоздатьЭлектронноеПисьмоОтдельнаяКнопкаДерево",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 140,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Написать письмо"
+              }
+             ]
+            }
+           },
+           {
+            "elements": [
+             {
+              "commandName": "Form.Command.НеРассмотреноДерево",
+              "name": "ДеревоВзаимодействийНеРассмотрено",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 139,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.ОтветственныйДерево",
+              "name": "КомандаОтветственныйДерево",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 129,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[4]\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.ПредметДерево",
+              "name": "КомандаПредметДерево",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 130,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[9]\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.РассмотреноДерево",
+              "name": "КомандаРассмотреноДерево",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 127,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[11]\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.ОтложитьРассмотрениеДерево",
+              "name": "ОтложитьРассмотрениеДерево",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 128,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[6]\/title"
+              }
+             }
+            ],
+            "name": "ГруппаКомандыВзаимодействийДерево",
+            "comment": "",
+            "id": 126,
+            "type": "BUTTON_GROUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Группа команды взаимодействий"
+              }
+             ]
+            }
+           },
+           {
+            "elements": [
+             {
+              "commandName": "Form.Command.СоздатьСообщениеSMS",
+              "name": "ДеревоВзаимодействийСоздатьСообщениеSMS",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 219,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[15]\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.СоздатьВстречу",
+              "name": "СписокСоздатьВстречуДерево",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 121,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[13]\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.СоздатьЗапланированноеВзаимодействие",
+              "name": "СписокСоздатьЗапланированноеВзаимодействиеДерево",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 122,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[14]\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.СоздатьТелефонныйЗвонок",
+              "name": "СписокСоздатьТелефонныйЗвонокДерево",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 123,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[16]\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.СоздатьЭлектронноеПисьмо",
+              "name": "СписокСоздатьЭлектронноеПисьмоДерево",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 124,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[17]\/title"
+              }
+             }
+            ],
+            "name": "ГруппаСоздатьДерево",
+            "comment": "",
+            "id": 120,
+            "type": "POPUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Создать"
+              }
+             ]
+            }
+           },
+           {
+            "elements": [
+             {
+              "commandName": "Form.Item.ДеревоВзаимодействий.StandardCommand.Change",
+              "name": "ДеревоВзаимодействийИзменить",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 141,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             },
+             {
+              "commandName": "Form.Item.ДеревоВзаимодействий.StandardCommand.Copy",
+              "name": "ДеревоВзаимодействийСкопировать",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 142,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             },
+             {
+              "commandName": "Form.Item.ДеревоВзаимодействий.StandardCommand.Delete",
+              "name": "ДеревоВзаимодействийУдалить",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 143,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Пометить на удаление \/  Снять пометку"
+                }
+               ]
+              }
+             }
+            ],
+            "name": "ГруппаСтандартныеКомандыДерево",
+            "comment": "",
+            "id": 125,
+            "type": "BUTTON_GROUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Стандартные команды дерево"
+              }
+             ]
+            }
+           },
+           {
+            "elements": [],
+            "name": "ДеревоТипВзаимодействия",
+            "comment": "",
+            "id": 230,
+            "type": "POPUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Дерево тип взаимодействия"
+              }
+             ]
+            }
+           }
+          ],
+          "name": "ДеревоВзаимодействийКоманднаяПанель",
+          "comment": "",
+          "id": 108,
+          "type": "COMMAND_BAR",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         }
+        ],
+        "name": "ДеревоВзаимодействий",
+        "comment": "",
+        "eventHandlers": [
+         {
+          "handler": "ДеревоВзаимодействийПередНачаломДобавления",
+          "event": "BeforeAddRow"
+         },
+         {
+          "handler": "ДеревоВзаимодействийПередУдалением",
+          "event": "BeforeDeleteRow"
+         },
+         {
+          "handler": "ДеревоВзаимодействийПередНачаломИзменения",
+          "event": "BeforeRowChange"
+         },
+         {
+          "handler": "ДеревоВзаимодействийВыбор",
+          "event": "Selection"
+         }
+        ],
+        "id": 106,
+        "type": "TABLE",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/title"
+        },
+        "dataPath": "ДеревоВзаимодействий"
+       }
+      ],
+      "name": "СтраницаДерево",
+      "comment": "",
+      "id": 105,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Страница дерево"
+        }
+       ]
+      }
+     },
+     {
+      "elements": [
+       {
+        "elements": [
+         {
+          "name": "СписокСостояниеПросмотра",
+          "comment": "",
+          "id": 239,
+          "type": "VIEW_STATUS_ADDITION",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         },
+         {
+          "name": "СписокСтрокаПоиска",
+          "comment": "",
+          "id": 236,
+          "type": "SEARCH_STRING_ADDITION",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         },
+         {
+          "name": "СписокУправлениеПоиском",
+          "comment": "",
+          "id": 242,
+          "type": "SEARCH_CONTROL_ADDITION",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         },
+         {
+          "name": "Дата",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 68,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "dataPath": "Список.Date"
+         },
+         {
+          "name": "ЕстьВложения",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 254,
+          "type": "PICTURE_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "dataPath": "Список.ЕстьВложения"
+         },
+         {
+          "name": "НомерКартинки",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 225,
+          "type": "PICTURE_FIELD",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Иконка взаимодействия"
+            }
+           ]
+          },
+          "dataPath": "Список.НомерКартинки"
+         },
+         {
+          "name": "Ссылка",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 216,
+          "type": "LABEL_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "dataPath": "Список.Ref"
+         },
+         {
+          "name": "Тема",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 20,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+          },
+          "dataPath": "Список.Тема"
+         },
+         {
+          "name": "Участники",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 66,
+          "type": "INPUT_FIELD",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          },
+          "dataPath": "Список.Участники"
+         },
+         {
+          "elements": [
+           {
+            "commandName": "Form.Item.Список.StandardCommand.OutputList",
+            "name": "СписокВывестиСписок",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 98,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           },
+           {
+            "commandName": "Form.StandardCommand.CustomizeForm",
+            "name": "СписокИзменитьФорму",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 99,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           },
+           {
+            "commandName": "Form.Item.Список.StandardCommand.ListSettings",
+            "name": "СписокНастройкаСписка",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 97,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           },
+           {
+            "commandName": "Form.Item.Список.StandardCommand.Refresh",
+            "name": "СписокОбновить",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 96,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           },
+           {
+            "commandName": "Form.Command.ПереключитьРежимПросмотра",
+            "name": "СписокПереключитьРежимПросмотра",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 144,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[8]\/title"
+            }
+           },
+           {
+            "commandName": "Form.Command.СоздатьЭлектронноеПисьмо",
+            "name": "СписокСоздатьЭлектронноеПисьмоОтдельнаяКнопка",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 135,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup[3]\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormTable\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormButton[4]\/title"
+            }
+           },
+           {
+            "commandName": "Form.StandardCommand.Help",
+            "name": "СписокСправка",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 78,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           },
+           {
+            "elements": [
+             {
+              "commandName": "Form.Command.Ответственный",
+              "name": "КомандаОтветственный",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 70,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[4]\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.Предмет",
+              "name": "КомандаПредмет",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 74,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[9]\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.Рассмотрено",
+              "name": "КомандаРассмотрено",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 45,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[11]\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.ОтложитьРассмотрение",
+              "name": "ОтложитьРассмотрение",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 75,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[6]\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.НеРассмотрено",
+              "name": "СписокНеРассмотрено",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 138,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/title"
+              }
+             }
+            ],
+            "name": "ГруппаКомандыВзаимодействий",
+            "comment": "",
+            "id": 77,
+            "type": "BUTTON_GROUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Команды взаимодействий"
+              }
+             ]
+            }
+           },
+           {
+            "elements": [
+             {
+              "commandName": "Form.Item.Список.StandardCommand.Change",
+              "name": "Изменить",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 83,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             },
+             {
+              "commandName": "Form.Item.Список.StandardCommand.Copy",
+              "name": "Скопировать",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 84,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             },
+             {
+              "elements": [
+               {
+                "commandName": "Form.Item.Список.StandardCommand.Find",
+                "name": "Найти",
+                "comment": "",
+                "eventHandlers": [],
+                "id": 90,
+                "type": "COMMAND_BAR_BUTTON",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                }
+               },
+               {
+                "commandName": "Form.Item.Список.StandardCommand.CancelSearch",
+                "name": "ОтменитьПоиск",
+                "comment": "",
+                "eventHandlers": [],
+                "id": 92,
+                "type": "COMMAND_BAR_BUTTON",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                }
+               },
+               {
+                "commandName": "Form.Item.Список.StandardCommand.SetDateInterval",
+                "name": "УстановитьИнтервалДат",
+                "comment": "",
+                "eventHandlers": [],
+                "id": 88,
+                "type": "COMMAND_BAR_BUTTON",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                }
+               }
+              ],
+              "name": "ГруппаНайти",
+              "comment": "",
+              "id": 89,
+              "type": "BUTTON_GROUP",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Найти"
+                }
+               ]
+              }
+             },
+             {
+              "elements": [
+               {
+                "commandName": "Form.Item.Список.StandardCommand.SetDeletionMark",
+                "name": "УстановитьПометкуУдаления",
+                "comment": "",
+                "eventHandlers": [],
+                "id": 85,
+                "type": "COMMAND_BAR_BUTTON",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                }
+               }
+              ],
+              "name": "ГруппаСписокУстановитьПометкуУдаления",
+              "comment": "",
+              "id": 86,
+              "type": "BUTTON_GROUP",
+              "title": {
+               "content": [
+                {
+                 "langKey": "ru",
+                 "value": "Список установить пометку удаления"
+                }
+               ]
+              }
+             }
+            ],
+            "name": "ГруппаКомандыСписка",
+            "comment": "",
+            "id": 82,
+            "type": "BUTTON_GROUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Команды списка"
+              }
+             ]
+            }
+           },
+           {
+            "elements": [],
+            "name": "СписокТипВзаимодействия",
+            "comment": "",
+            "id": 232,
+            "type": "POPUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Показывать"
+              }
+             ]
+            }
+           }
+          ],
+          "name": "СписокКоманднаяПанель",
+          "comment": "",
+          "id": 3,
+          "type": "COMMAND_BAR",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         }
+        ],
+        "name": "Список",
+        "comment": "",
+        "eventHandlers": [
+         {
+          "handler": "СписокПередНачаломДобавления",
+          "event": "BeforeAddRow"
+         }
+        ],
+        "id": 1,
+        "type": "TABLE",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Список"
+          }
+         ]
+        },
+        "dataPath": "Список"
+       }
+      ],
+      "name": "СтраницаСписок",
+      "comment": "",
+      "id": 104,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Страница список"
+        }
+       ]
+      }
+     }
+    ],
+    "name": "СтраницыСписокДерево",
+    "comment": "",
+    "id": 103,
+    "type": "PAGES",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Страницы список дерево"
+      }
+     ]
+    }
    },
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
-   },
-   {
-    "name": "ПриЗагрузкеДанныхИзНастроекНаСервере",
-    "event": "OnLoadDataFromSettingsAtServer"
+    "elements": [
+     {
+      "elements": [
+       {
+        "commandName": "Form.Command.СоздатьВстречу",
+        "name": "СписокСоздатьВстречу",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 81,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[13]\/title"
+        }
+       },
+       {
+        "commandName": "Form.Command.СоздатьЗапланированноеВзаимодействие",
+        "name": "СписокСоздатьЗапланированноеВзаимодействие",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 93,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[14]\/title"
+        }
+       },
+       {
+        "commandName": "Form.Command.СоздатьСообщениеSMS",
+        "name": "СписокСоздатьСообщениеSMS",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 146,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[15]\/title"
+        }
+       },
+       {
+        "commandName": "Form.Command.СоздатьТелефонныйЗвонок",
+        "name": "СписокСоздатьТелефонныйЗвонок",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 94,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[16]\/title"
+        }
+       },
+       {
+        "commandName": "Form.Command.СоздатьЭлектронноеПисьмо",
+        "name": "СписокСоздатьЭлектронноеПисьмо",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 95,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[17]\/title"
+        }
+       }
+      ],
+      "name": "ГруппаСоздать",
+      "comment": "",
+      "id": 80,
+      "type": "POPUP",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup[3]\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormTable\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup[2]\/title"
+      }
+     }
+    ],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    }
    }
   ],
   "attributes": [
    {
+    "columns": [],
     "name": "Список",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 1,
+    "savedData": false,
     "title": {
      "content": []
     },
@@ -35,11 +1027,16 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": true
    },
    {
+    "columns": [],
     "name": "Интервал",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 10,
+    "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
@@ -49,11 +1046,16 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ТипВзаимодействия",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 11,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -73,11 +1075,16 @@
        "allowedLength": 0
       }
      ]
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ТолькоПочта",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 12,
+    "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
@@ -87,11 +1094,16 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ДокументыДоступныеДляСоздания",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 13,
+    "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
@@ -101,21 +1113,31 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ИспользоватьПризнакРассмотрено",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 14,
+    "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "Ответственный",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 2,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -137,21 +1159,269 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ВВидеДерева",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 3,
+    "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [
+     {
+      "columns": [],
+      "name": "Ссылка",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 1,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "types": [
+        {
+         "kind": "DOCUMENT",
+         "variant": "METADATA",
+         "fullName": {
+          "nameRu": "ДокументСсылка.Встреча",
+          "nameEn": "DocumentRef.Встреча"
+         }
+        },
+        {
+         "kind": "DOCUMENT",
+         "variant": "METADATA",
+         "fullName": {
+          "nameRu": "ДокументСсылка.ЗапланированноеВзаимодействие",
+          "nameEn": "DocumentRef.ЗапланированноеВзаимодействие"
+         }
+        },
+        {
+         "kind": "DOCUMENT",
+         "variant": "METADATA",
+         "fullName": {
+          "nameRu": "ДокументСсылка.СообщениеSMS",
+          "nameEn": "DocumentRef.СообщениеSMS"
+         }
+        },
+        {
+         "kind": "DOCUMENT",
+         "variant": "METADATA",
+         "fullName": {
+          "nameRu": "ДокументСсылка.ТелефонныйЗвонок",
+          "nameEn": "DocumentRef.ТелефонныйЗвонок"
+         }
+        },
+        {
+         "kind": "DOCUMENT",
+         "variant": "METADATA",
+         "fullName": {
+          "nameRu": "ДокументСсылка.ЭлектронноеПисьмоВходящее",
+          "nameEn": "DocumentRef.ЭлектронноеПисьмоВходящее"
+         }
+        },
+        {
+         "kind": "DOCUMENT",
+         "variant": "METADATA",
+         "fullName": {
+          "nameRu": "ДокументСсылка.ЭлектронноеПисьмоИсходящее",
+          "nameEn": "DocumentRef.ЭлектронноеПисьмоИсходящее"
+         }
+        }
+       ],
+       "composite": true,
+       "qualifiers": []
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "Дата",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 2,
+      "savedData": false,
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Дата"
+        }
+       ]
+      },
+      "type": {
+       "types": [
+        "DATE"
+       ],
+       "composite": false,
+       "qualifiers": [
+        {
+         "dateFractions": 2
+        }
+       ]
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "НомерКартинки",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 3,
+      "savedData": false,
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Номер картинки"
+        }
+       ]
+      },
+      "type": {
+       "types": [
+        "NUMBER"
+       ],
+       "composite": false,
+       "qualifiers": [
+        {
+         "precision": 10,
+         "nonNegative": false,
+         "scale": 0
+        }
+       ]
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "Тема",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 4,
+      "savedData": false,
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Тема"
+        }
+       ]
+      },
+      "type": {
+       "types": [
+        "STRING"
+       ],
+       "composite": false,
+       "qualifiers": [
+        {
+         "length": 0,
+         "allowedLength": 0
+        }
+       ]
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "Участники",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 5,
+      "savedData": false,
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Участники"
+        }
+       ]
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "Рассмотрено",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 6,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "ПометкаУдаления",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 7,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "Ответственный",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 8,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/type"
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "Предмет",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 9,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "type": {
+       "types": [
+        "ANY_REF"
+       ],
+       "composite": true,
+       "qualifiers": []
+      },
+      "mainAttribute": false
+     }
+    ],
     "name": "ДеревоВзаимодействий",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 4,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -166,11 +1436,16 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "Статус",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 5,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -190,21 +1465,31 @@
        "allowedLength": 0
       }
      ]
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ОтборПоПредмету",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 6,
+    "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "Контакт",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 8,
+    "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
@@ -221,11 +1506,16 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ПредметДляОтбора",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 9,
+    "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
@@ -242,7 +1532,30 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ПриЗагрузкеДанныхИзНастроекНаСервере",
+    "event": "BeforeLoadDataFromSettingsAtServer"
+   },
+   {
+    "handler": "ОбработкаВыбора",
+    "event": "ChoiceProcessing"
+   },
+   {
+    "handler": "ОбработкаОповещения",
+    "event": "NotificationProcessing"
+   },
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   },
+   {
+    "handler": "ПриЗагрузкеДанныхИзНастроекНаСервере",
+    "event": "OnLoadDataFromSettingsAtServer"
    }
   ],
   "title": {
@@ -253,287 +1566,426 @@
     }
    ]
   },
-  "items": [
+  "parameters": [
    {
-    "name": "СтраницыСписокДерево",
-    "id": 103,
-    "type": "PAGES",
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Страницы список дерево"
-      }
-     ]
-    },
-    "items": [
-     {
-      "name": "СтраницаСписок",
-      "id": 104,
-      "type": "PAGE",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Страница список"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "Список",
-        "id": 1,
-        "type": "TABLE",
-        "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Список"
-          }
-         ]
-        },
-        "items": [
-         {
-          "name": "Тема",
-          "id": 20,
-          "type": "INPUT_FIELD",
-          "title": {
-           "content": [
-            {
-             "langKey": "ru",
-             "value": "Тема"
-            }
-           ]
-          },
-          "items": [],
-          "dataPath": "Список.Тема"
-         },
-         {
-          "name": "Участники",
-          "id": 66,
-          "type": "INPUT_FIELD",
-          "title": {
-           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-          },
-          "items": [],
-          "dataPath": "Список.Участники"
-         },
-         {
-          "name": "Дата",
-          "id": 68,
-          "type": "INPUT_FIELD",
-          "title": {
-           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-          },
-          "items": [],
-          "dataPath": "Список.Date"
-         },
-         {
-          "name": "Ссылка",
-          "id": 216,
-          "type": "LABEL_FIELD",
-          "title": {
-           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-          },
-          "items": [],
-          "dataPath": "Список.Ref"
-         },
-         {
-          "name": "НомерКартинки",
-          "id": 225,
-          "type": "PICTURE_FIELD",
-          "title": {
-           "content": [
-            {
-             "langKey": "ru",
-             "value": "Иконка взаимодействия"
-            }
-           ]
-          },
-          "items": [],
-          "dataPath": "Список.НомерКартинки"
-         },
-         {
-          "name": "ЕстьВложения",
-          "id": 254,
-          "type": "PICTURE_FIELD",
-          "title": {
-           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-          },
-          "items": [],
-          "dataPath": "Список.ЕстьВложения"
-         }
-        ],
-        "dataPath": "Список"
-       }
-      ],
-      "dataPath": ""
-     },
-     {
-      "name": "СтраницаДерево",
-      "id": 105,
-      "type": "PAGE",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Страница дерево"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "ДеревоВзаимодействий",
-        "id": 106,
-        "type": "TABLE",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/title"
-        },
-        "items": [
-         {
-          "name": "ДеревоВзаимодействийДата",
-          "id": 111,
-          "type": "INPUT_FIELD",
-          "title": {
-           "content": [
-            {
-             "langKey": "ru",
-             "value": "Дата"
-            }
-           ]
-          },
-          "items": [],
-          "dataPath": "ДеревоВзаимодействий.Дата"
-         },
-         {
-          "name": "ДеревоВзаимодействийТема",
-          "id": 116,
-          "type": "INPUT_FIELD",
-          "title": {
-           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/items\/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem\/title"
-          },
-          "items": [],
-          "dataPath": "ДеревоВзаимодействий.Тема"
-         },
-         {
-          "name": "ДеревоВзаимодействийУчастники",
-          "id": 118,
-          "type": "INPUT_FIELD",
-          "title": {
-           "content": [
-            {
-             "langKey": "ru",
-             "value": "Участники"
-            }
-           ]
-          },
-          "items": [],
-          "dataPath": "ДеревоВзаимодействий.Участники"
-         },
-         {
-          "name": "ДеревоВзаимодействийНомерКартинки",
-          "id": 113,
-          "type": "PICTURE_FIELD",
-          "title": {
-           "content": [
-            {
-             "langKey": "ru",
-             "value": "Номер картинки"
-            }
-           ]
-          },
-          "items": [],
-          "dataPath": "ДеревоВзаимодействий.НомерКартинки"
-         }
-        ],
-        "dataPath": "ДеревоВзаимодействий"
-       }
-      ],
-      "dataPath": ""
-     }
-    ],
-    "dataPath": ""
+    "name": "Отбор",
+    "keyParameter": false,
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    }
    },
    {
-    "name": "ГруппаПользовательскихНастроек",
-    "id": 234,
-    "type": "USUAL_GROUP",
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Группа пользовательских настроек"
-      }
-     ]
-    },
-    "items": [],
-    "dataPath": ""
+    "name": "ТипВзаимодействия",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[9]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+    }
    },
    {
-    "name": "ГруппаФильтры",
-    "id": 34,
-    "type": "USUAL_GROUP",
+    "name": "ТолькоПочта",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+    }
+   }
+  ],
+  "commands": [
+   {
+    "shortcut": "",
+    "associatedTableElementId": "Список",
+    "name": "НеРассмотрено",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Не рассмотрено"
+      }
+     ]
+    },
+    "action": "РассмотреноВыполнить",
+    "id": 12,
     "title": {
      "content": [
       {
        "langKey": "ru",
-       "value": "Фильтры"
+       "value": "Снять признак \"Рассмотрено\""
       }
      ]
     },
-    "items": [
-     {
-      "name": "ТипВзаимодействия",
-      "id": 136,
-      "type": "INPUT_FIELD",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Тип"
-        }
-       ]
-      },
-      "items": [],
-      "dataPath": "ТипВзаимодействия"
-     },
-     {
-      "name": "Ответственный",
-      "id": 46,
-      "type": "INPUT_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
-      },
-      "items": [],
-      "dataPath": "Ответственный"
-     },
-     {
-      "name": "Статус",
-      "id": 50,
-      "type": "INPUT_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
-      },
-      "items": [],
-      "dataPath": "Статус"
-     },
-     {
-      "name": "ПереключитьРежимПросмотра",
-      "id": 102,
-      "type": "USUAL_BUTTON",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "В виде дерева \/ списка"
-        }
-       ]
-      },
-      "items": [],
-      "dataPath": ""
-     }
-    ],
-    "dataPath": ""
+    "representation": "AUTO",
+    "picture": "CommonPicture.СнятьПризнакРассмотреноУВзаимодействия"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "ДеревоВзаимодействий",
+    "name": "НеРассмотреноДерево",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/toolTip"
+    },
+    "action": "РассмотреноВыполнить",
+    "id": 15,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/title"
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.СнятьПризнакРассмотреноУВзаимодействия"
+   },
+   {
+    "shortcut": "F5",
+    "associatedTableElementId": "",
+    "name": "ОбновитьДерево",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Обновить данные"
+      }
+     ]
+    },
+    "action": "ОбновитьДерево",
+    "id": 10,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Обновить"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": ""
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "Список",
+    "name": "Ответственный",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Установить ответственного"
+      }
+     ]
+    },
+    "action": "ОтветственныйВыполнить",
+    "id": 2,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Ответственный..."
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.УстановитьОтветственногоЗаВзаимодействие"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "ДеревоВзаимодействий",
+    "name": "ОтветственныйДерево",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[4]\/toolTip"
+    },
+    "action": "ОтветственныйВыполнить",
+    "id": 17,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[4]\/title"
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.УстановитьОтветственногоЗаВзаимодействие"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "Список",
+    "name": "ОтложитьРассмотрение",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Отложить рассмотрение"
+      }
+     ]
+    },
+    "action": "ОтложитьРассмотрениеВыполнить",
+    "id": 4,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Отложить рассмотрение..."
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.ОтложитьРассмотрениеВзаимодействия"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "ДеревоВзаимодействий",
+    "name": "ОтложитьРассмотрениеДерево",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[6]\/toolTip"
+    },
+    "action": "ОтложитьРассмотрениеВыполнить",
+    "id": 16,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[6]\/title"
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.ОтложитьРассмотрениеВзаимодействия"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "ПереключитьРежимПросмотра",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Переключить режим просмотра"
+      }
+     ]
+    },
+    "action": "ПереключитьРежимПросмотра",
+    "id": 9,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "В виде дерева \/ списка"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.ИерархическийСписок"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "Список",
+    "name": "Предмет",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Установить предмет взаимодействия"
+      }
+     ]
+    },
+    "action": "ПредметВыполнить",
+    "id": 3,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Предмет..."
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.УстановитьПредметВзаимодействия"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "ДеревоВзаимодействий",
+    "name": "ПредметДерево",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[9]\/toolTip"
+    },
+    "action": "ПредметВыполнить",
+    "id": 18,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[9]\/title"
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.УстановитьПредметВзаимодействия"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "Список",
+    "name": "Рассмотрено",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Установить признак \"Рассмотрено\""
+      }
+     ]
+    },
+    "action": "РассмотреноВыполнить",
+    "id": 1,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Рассмотрено"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.УстановитьПризнакРассмотреноДляВзаимодействия"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "ДеревоВзаимодействий",
+    "name": "РассмотреноДерево",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[11]\/toolTip"
+    },
+    "action": "РассмотреноВыполнить",
+    "id": 14,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[11]\/title"
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.УстановитьПризнакРассмотреноДляВзаимодействия"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "СоздатьВстречу",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Создать встречу"
+      }
+     ]
+    },
+    "action": "СоздатьВстречу",
+    "id": 5,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Встречу"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": ""
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "СоздатьЗапланированноеВзаимодействие",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Создать запланированное взаимодействие"
+      }
+     ]
+    },
+    "action": "СоздатьЗапланированноеВзаимодействие",
+    "id": 6,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Запланированное взаимодействие"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": ""
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "СоздатьСообщениеSMS",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Создать сообщение SMS"
+      }
+     ]
+    },
+    "action": "СоздатьСообщениеSMS",
+    "id": 13,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Сообщение SMS"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": ""
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "СоздатьТелефонныйЗвонок",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Создать телефонный звонок"
+      }
+     ]
+    },
+    "action": "СоздатьТелефонныйЗвонок",
+    "id": 7,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Телефонный звонок"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": ""
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "СоздатьЭлектронноеПисьмо",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Создать электронное письмо"
+      }
+     ]
+    },
+    "action": "СоздатьЭлектронноеПисьмо",
+    "id": 8,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Электронное письмо"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": ""
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "УстановитьИнтервал",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "action": "УстановитьИнтервал",
+    "id": 11,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Установить интервал..."
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "StdPicture.SetDateInterval"
    }
   ],
   "empty": false

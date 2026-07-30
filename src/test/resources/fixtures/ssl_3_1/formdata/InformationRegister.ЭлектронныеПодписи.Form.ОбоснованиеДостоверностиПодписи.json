@@ -1,10 +1,92 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [],
+  "elements": [
+   {
+    "elements": [
+     {
+      "name": "ДекорацияПояснение",
+      "comment": "",
+      "id": 4,
+      "type": "LABEL_DECORATION",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Введите обоснование, по которому подпись можно считать верной, если подпись не проходит автоматическую проверку. Например, допустимые причины:\n- недоступен список отзыва, но известно, что сертификат не отозван; \n- не удается проверить цепочку сертификатов, но это не важно для данной подписи;\n- подпись является неквалифицированной (не важна юридическая значимость подписи);\n- другие ситуации, не связанные с несоответствием подписи документу (когда документ изменен).\n\n"
+        }
+       ]
+      }
+     },
+     {
+      "name": "ДекорацияПояснение2",
+      "comment": "",
+      "id": 11,
+      "type": "LABEL_DECORATION",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Статус подписи может измениться (например, будет отозван или просрочен сертификат), но отметка о проверке с обоснованием останется. При необходимости перепроверьте подпись позднее. "
+        }
+       ]
+      }
+     },
+     {
+      "name": "ОбоснованиеРучнойПроверкиДополнительныхАтрибутов",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 1,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "ОбоснованиеРучнойПроверкиДополнительныхАтрибутов"
+     }
+    ],
+    "name": "ГруппаОбоснование",
+    "comment": "",
+    "id": 9,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Обоснование"
+      }
+     ]
+    }
+   },
+   {
+    "elements": [
+     {
+      "commandName": "Form.Command.ОК",
+      "name": "ФормаОК",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 14,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/title"
+      }
+     }
+    ],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/toolTip"
+    }
+   }
+  ],
   "attributes": [
    {
+    "columns": [],
     "name": "ОбоснованиеРучнойПроверкиДополнительныхАтрибутов",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 1,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -24,68 +106,35 @@
        "allowedLength": 0
       }
      ]
-    }
+    },
+    "mainAttribute": false
    }
   ],
+  "eventHandlers": [],
   "title": {
-   "content": []
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/toolTip"
   },
-  "items": [
+  "parameters": [],
+  "commands": [
    {
-    "name": "ГруппаОбоснование",
-    "id": 9,
-    "type": "USUAL_GROUP",
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "ОК",
+    "toolTip": {
+     "content": []
+    },
+    "action": "ОК",
+    "id": 1,
     "title": {
      "content": [
       {
        "langKey": "ru",
-       "value": "Обоснование"
+       "value": "Подпись проверена"
       }
      ]
     },
-    "items": [
-     {
-      "name": "ОбоснованиеРучнойПроверкиДополнительныхАтрибутов",
-      "id": 1,
-      "type": "INPUT_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "ОбоснованиеРучнойПроверкиДополнительныхАтрибутов"
-     },
-     {
-      "name": "ДекорацияПояснение2",
-      "id": 11,
-      "type": "LABEL_DECORATION",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Статус подписи может измениться (например, будет отозван или просрочен сертификат), но отметка о проверке с обоснованием останется. При необходимости перепроверьте подпись позднее. "
-        }
-       ]
-      },
-      "items": [],
-      "dataPath": ""
-     },
-     {
-      "name": "ДекорацияПояснение",
-      "id": 4,
-      "type": "LABEL_DECORATION",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Введите обоснование, по которому подпись можно считать верной, если подпись не проходит автоматическую проверку. Например, допустимые причины:\n- недоступен список отзыва, но известно, что сертификат не отозван; \n- не удается проверить цепочку сертификатов, но это не важно для данной подписи;\n- подпись является неквалифицированной (не важна юридическая значимость подписи);\n- другие ситуации, не связанные с несоответствием подписи документу (когда документ изменен).\n\n"
-        }
-       ]
-      },
-      "items": [],
-      "dataPath": ""
-     }
-    ],
-    "dataPath": ""
+    "representation": "AUTO",
+    "picture": ""
    }
   ],
   "empty": false

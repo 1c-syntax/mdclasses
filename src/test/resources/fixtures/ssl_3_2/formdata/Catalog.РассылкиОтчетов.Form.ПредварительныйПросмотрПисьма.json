@@ -1,15 +1,95 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
+    "elements": [
+     {
+      "elements": [
+       {
+        "name": "HTMLТекст",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 1,
+        "type": "HTML_DOCUMENT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "dataPath": "Текст"
+       }
+      ],
+      "name": "СтраницаТекстПисьмаHTML",
+      "comment": "",
+      "id": 9,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Страница текст письма HTML"
+        }
+       ]
+      }
+     },
+     {
+      "elements": [
+       {
+        "name": "ОбычныйТекст",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 4,
+        "type": "TEXT_DOCUMENT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "dataPath": "Текст"
+       }
+      ],
+      "name": "СтраницаТекстПисьмаОбычныйТекст",
+      "comment": "",
+      "id": 11,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Страница текст письма обычный текст"
+        }
+       ]
+      }
+     }
+    ],
+    "name": "СтраницыТекстПисьма",
+    "comment": "",
+    "id": 7,
+    "type": "PAGES",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Страницы текст письма"
+      }
+     ]
+    }
+   },
+   {
+    "elements": [],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "content": []
+    }
    }
   ],
   "attributes": [
    {
+    "columns": [],
     "name": "Текст",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 1,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -29,82 +109,61 @@
        "allowedLength": 0
       }
      ]
-    }
+    },
+    "mainAttribute": false
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
    }
   ],
   "title": {
-   "content": []
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup[2]\/title"
   },
-  "items": [
+  "parameters": [
    {
-    "name": "СтраницыТекстПисьма",
-    "id": 7,
-    "type": "PAGES",
-    "title": {
-     "content": [
+    "name": "АдресКартинокДляHTML",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "НаименованиеРассылки",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "Текст",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "ТипТекста",
+    "keyParameter": false,
+    "type": {
+     "types": [
       {
-       "langKey": "ru",
-       "value": "Страницы текст письма"
+       "kind": "ENUM",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ПеречислениеСсылка.ТипыТекстовЭлектронныхПисем",
+        "nameEn": "EnumRef.ТипыТекстовЭлектронныхПисем"
+       }
       }
-     ]
-    },
-    "items": [
-     {
-      "name": "СтраницаТекстПисьмаОбычныйТекст",
-      "id": 11,
-      "type": "PAGE",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Страница текст письма обычный текст"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "ОбычныйТекст",
-        "id": 4,
-        "type": "TEXT_DOCUMENT_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-        },
-        "items": [],
-        "dataPath": "Текст"
-       }
-      ],
-      "dataPath": ""
-     },
-     {
-      "name": "СтраницаТекстПисьмаHTML",
-      "id": 9,
-      "type": "PAGE",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Страница текст письма HTML"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "HTMLТекст",
-        "id": 1,
-        "type": "HTML_DOCUMENT_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-        },
-        "items": [],
-        "dataPath": "Текст"
-       }
-      ],
-      "dataPath": ""
-     }
-    ],
-    "dataPath": ""
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
    }
   ],
+  "commands": [],
   "empty": false
  }
 }

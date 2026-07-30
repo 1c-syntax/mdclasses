@@ -1,23 +1,254 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
+    "elements": [],
+    "name": "ГруппаПользовательскихНастроек",
+    "comment": "",
+    "id": 43,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Группа пользовательских настроек"
+      }
+     ]
+    }
    },
    {
-    "name": "ПриЗагрузкеДанныхИзНастроекНаСервере",
-    "event": "OnLoadDataFromSettingsAtServer"
+    "elements": [
+     {
+      "elements": [],
+      "name": "ПодменюОрганайзер",
+      "comment": "",
+      "id": 57,
+      "type": "POPUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Органайзер"
+        }
+       ]
+      }
+     }
+    ],
+    "name": "КоманднаяПанель",
+    "comment": "",
+    "id": 33,
+    "type": "COMMAND_BAR",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Командная панель"
+      }
+     ]
+    }
    },
    {
-    "name": "ПриОткрытии",
-    "event": "OnOpen"
+    "elements": [
+     {
+      "name": "ПоказыватьУдаленные",
+      "comment": "",
+      "eventHandlers": [
+       {
+        "handler": "ПоказыватьУдаленныеПриИзменении",
+        "event": "OnChange"
+       }
+      ],
+      "id": 31,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+      },
+      "dataPath": "ПоказыватьУдаленные"
+     },
+     {
+      "name": "ФильтрПоПредмету",
+      "comment": "",
+      "eventHandlers": [
+       {
+        "handler": "ФильтрПоПредметуПриИзменении",
+        "event": "OnChange"
+       }
+      ],
+      "id": 26,
+      "type": "INPUT_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Предмет"
+        }
+       ]
+      },
+      "dataPath": "ВыбранныйПредмет"
+     },
+     {
+      "name": "ФильтрПоЦвету",
+      "comment": "",
+      "eventHandlers": [
+       {
+        "handler": "ФильтрПоЦветуПриИзменении",
+        "event": "OnChange"
+       }
+      ],
+      "id": 28,
+      "type": "INPUT_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Цвет"
+        }
+       ]
+      },
+      "dataPath": "ВыбранныйЦвет"
+     }
+    ],
+    "name": "Фильтры",
+    "comment": "",
+    "id": 30,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Фильтры"
+      }
+     ]
+    }
+   },
+   {
+    "elements": [],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    }
+   },
+   {
+    "elements": [
+     {
+      "name": "СписокСостояниеПросмотра",
+      "comment": "",
+      "id": 48,
+      "type": "VIEW_STATUS_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "СписокСтрокаПоиска",
+      "comment": "",
+      "id": 45,
+      "type": "SEARCH_STRING_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "СписокУправлениеПоиском",
+      "comment": "",
+      "id": 51,
+      "type": "SEARCH_CONTROL_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "ДатаИзменения",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 24,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.ДатаИзменения"
+     },
+     {
+      "name": "Предмет",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 22,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.ПредставлениеПредмета"
+     },
+     {
+      "name": "Ссылка",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 54,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Ref"
+     },
+     {
+      "name": "Тема",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 20,
+      "type": "LABEL_FIELD",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Тема"
+        }
+       ]
+      },
+      "dataPath": "Список.Description"
+     },
+     {
+      "elements": [],
+      "name": "СписокКоманднаяПанель",
+      "comment": "",
+      "id": 3,
+      "type": "COMMAND_BAR",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     }
+    ],
+    "name": "Список",
+    "comment": "",
+    "eventHandlers": [
+     {
+      "handler": "СписокПриАктивизацииСтроки",
+      "event": "OnActivateRow"
+     }
+    ],
+    "id": 1,
+    "type": "TABLE",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Список"
+      }
+     ]
+    },
+    "dataPath": "Список"
    }
   ],
   "attributes": [
    {
+    "columns": [],
     "name": "Список",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 1,
+    "savedData": false,
     "title": {
      "content": []
     },
@@ -27,11 +258,16 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": true
    },
    {
+    "columns": [],
     "name": "ВыбранныйПредмет",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 2,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -51,11 +287,16 @@
        "allowedLength": 0
       }
      ]
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ВыбранныйЦвет",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 3,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -77,11 +318,16 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ПоказыватьУдаленные",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 4,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -96,7 +342,22 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   },
+   {
+    "handler": "ПриЗагрузкеДанныхИзНастроекНаСервере",
+    "event": "OnLoadDataFromSettingsAtServer"
+   },
+   {
+    "handler": "ПриОткрытии",
+    "event": "OnOpen"
    }
   ],
   "title": {
@@ -107,171 +368,8 @@
     }
    ]
   },
-  "items": [
-   {
-    "name": "КоманднаяПанель",
-    "id": 33,
-    "type": "COMMAND_BAR",
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Командная панель"
-      }
-     ]
-    },
-    "items": [
-     {
-      "name": "ПодменюОрганайзер",
-      "id": 57,
-      "type": "POPUP",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Органайзер"
-        }
-       ]
-      },
-      "items": [],
-      "dataPath": ""
-     }
-    ],
-    "dataPath": ""
-   },
-   {
-    "name": "Список",
-    "id": 1,
-    "type": "TABLE",
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Список"
-      }
-     ]
-    },
-    "items": [
-     {
-      "name": "Тема",
-      "id": 20,
-      "type": "LABEL_FIELD",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Тема"
-        }
-       ]
-      },
-      "items": [],
-      "dataPath": "Список.Description"
-     },
-     {
-      "name": "Предмет",
-      "id": 22,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.ПредставлениеПредмета"
-     },
-     {
-      "name": "ДатаИзменения",
-      "id": 24,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.ДатаИзменения"
-     },
-     {
-      "name": "Ссылка",
-      "id": 54,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Ref"
-     }
-    ],
-    "dataPath": "Список"
-   },
-   {
-    "name": "Фильтры",
-    "id": 30,
-    "type": "USUAL_GROUP",
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Фильтры"
-      }
-     ]
-    },
-    "items": [
-     {
-      "name": "ПоказыватьУдаленные",
-      "id": 31,
-      "type": "CHECK_BOX_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
-      },
-      "items": [],
-      "dataPath": "ПоказыватьУдаленные"
-     },
-     {
-      "name": "ФильтрПоПредмету",
-      "id": 26,
-      "type": "INPUT_FIELD",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Предмет"
-        }
-       ]
-      },
-      "items": [],
-      "dataPath": "ВыбранныйПредмет"
-     },
-     {
-      "name": "ФильтрПоЦвету",
-      "id": 28,
-      "type": "INPUT_FIELD",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Цвет"
-        }
-       ]
-      },
-      "items": [],
-      "dataPath": "ВыбранныйЦвет"
-     }
-    ],
-    "dataPath": ""
-   },
-   {
-    "name": "ГруппаПользовательскихНастроек",
-    "id": 43,
-    "type": "USUAL_GROUP",
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Группа пользовательских настроек"
-      }
-     ]
-    },
-    "items": [],
-    "dataPath": ""
-   }
-  ],
+  "parameters": [],
+  "commands": [],
   "empty": false
  }
 }

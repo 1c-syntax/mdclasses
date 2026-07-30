@@ -1,19 +1,216 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
+    "elements": [],
+    "name": "ГруппаПользовательскихНастроек",
+    "comment": "",
+    "id": 43,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Группа пользовательских настроек"
+      }
+     ]
+    }
    },
    {
-    "name": "ПриЗагрузкеДанныхИзНастроекНаСервере",
-    "event": "OnLoadDataFromSettingsAtServer"
+    "elements": [
+     {
+      "elements": [],
+      "name": "ПодменюОрганайзер",
+      "comment": "",
+      "id": 60,
+      "type": "POPUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Органайзер"
+        }
+       ]
+      }
+     }
+    ],
+    "name": "КоманднаяПанель",
+    "comment": "",
+    "id": 41,
+    "type": "COMMAND_BAR",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Командная панель"
+      }
+     ]
+    }
+   },
+   {
+    "elements": [
+     {
+      "name": "ПоказыватьЗаметкиДругихПользователей",
+      "comment": "",
+      "eventHandlers": [
+       {
+        "handler": "ПоказыватьЗаметкиДругихПользователейПриИзменении",
+        "event": "OnChange"
+       }
+      ],
+      "id": 23,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+      },
+      "dataPath": "ПоказыватьЗаметкиДругихПользователей"
+     },
+     {
+      "name": "ПоказыватьУдаленные",
+      "comment": "",
+      "eventHandlers": [
+       {
+        "handler": "ПоказыватьУдаленныеПриИзменении",
+        "event": "OnChange"
+       }
+      ],
+      "id": 28,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+      },
+      "dataPath": "ПоказыватьУдаленные"
+     }
+    ],
+    "name": "Фильтры",
+    "comment": "",
+    "id": 30,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Фильтры"
+      }
+     ]
+    }
+   },
+   {
+    "elements": [],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    }
+   },
+   {
+    "elements": [
+     {
+      "name": "СписокSearchControl",
+      "comment": "",
+      "id": 54,
+      "type": "SEARCH_CONTROL_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "СписокSearchString",
+      "comment": "",
+      "id": 48,
+      "type": "SEARCH_STRING_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "СписокViewStatus",
+      "comment": "",
+      "id": 51,
+      "type": "VIEW_STATUS_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "Автор",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 25,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Автор"
+     },
+     {
+      "name": "Наименование",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 45,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Description"
+     },
+     {
+      "name": "Ссылка",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 57,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Ref"
+     },
+     {
+      "elements": [],
+      "name": "СписокКоманднаяПанель",
+      "comment": "",
+      "id": 3,
+      "type": "COMMAND_BAR",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     }
+    ],
+    "name": "Список",
+    "comment": "",
+    "eventHandlers": [
+     {
+      "handler": "СписокПередНачаломДобавления",
+      "event": "BeforeAddRow"
+     },
+     {
+      "handler": "СписокПриАктивизацииСтроки",
+      "event": "OnActivateRow"
+     }
+    ],
+    "id": 1,
+    "type": "TABLE",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Список"
+      }
+     ]
+    },
+    "dataPath": "Список"
    }
   ],
   "attributes": [
    {
+    "columns": [],
     "name": "Список",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 1,
+    "savedData": false,
     "title": {
      "content": []
     },
@@ -23,11 +220,16 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": true
    },
    {
+    "columns": [],
     "name": "Предмет",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 2,
+    "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
@@ -35,11 +237,16 @@
      "types": [],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ПоказыватьЗаметкиДругихПользователей",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 3,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -54,11 +261,16 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ПоказыватьУдаленные",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 4,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -69,7 +281,18 @@
     },
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
-    }
+    },
+    "mainAttribute": false
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   },
+   {
+    "handler": "ПриЗагрузкеДанныхИзНастроекНаСервере",
+    "event": "OnLoadDataFromSettingsAtServer"
    }
   ],
   "title": {
@@ -80,136 +303,16 @@
     }
    ]
   },
-  "items": [
+  "parameters": [
    {
-    "name": "КоманднаяПанель",
-    "id": 41,
-    "type": "COMMAND_BAR",
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Командная панель"
-      }
-     ]
-    },
-    "items": [
-     {
-      "name": "ПодменюОрганайзер",
-      "id": 60,
-      "type": "POPUP",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Органайзер"
-        }
-       ]
-      },
-      "items": [],
-      "dataPath": ""
-     }
-    ],
-    "dataPath": ""
-   },
-   {
-    "name": "Список",
-    "id": 1,
-    "type": "TABLE",
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Список"
-      }
-     ]
-    },
-    "items": [
-     {
-      "name": "Автор",
-      "id": 25,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Автор"
-     },
-     {
-      "name": "Наименование",
-      "id": 45,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Description"
-     },
-     {
-      "name": "Ссылка",
-      "id": 57,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Ref"
-     }
-    ],
-    "dataPath": "Список"
-   },
-   {
-    "name": "Фильтры",
-    "id": 30,
-    "type": "USUAL_GROUP",
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Фильтры"
-      }
-     ]
-    },
-    "items": [
-     {
-      "name": "ПоказыватьЗаметкиДругихПользователей",
-      "id": 23,
-      "type": "CHECK_BOX_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
-      },
-      "items": [],
-      "dataPath": "ПоказыватьЗаметкиДругихПользователей"
-     },
-     {
-      "name": "ПоказыватьУдаленные",
-      "id": 28,
-      "type": "CHECK_BOX_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
-      },
-      "items": [],
-      "dataPath": "ПоказыватьУдаленные"
-     }
-    ],
-    "dataPath": ""
-   },
-   {
-    "name": "ГруппаПользовательскихНастроек",
-    "id": 43,
-    "type": "USUAL_GROUP",
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Группа пользовательских настроек"
-      }
-     ]
-    },
-    "items": [],
-    "dataPath": ""
+    "name": "Предмет",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
    }
   ],
+  "commands": [],
   "empty": false
  }
 }
