@@ -21,8 +21,8 @@
  */
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
@@ -30,6 +30,8 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.Nullable;
+
+import java.util.List;
 
 /**
  * Конвертор элемента формы в формате конфигуратора
@@ -44,21 +46,38 @@ public class FormElementConverter implements ReadConverter {
       return null;
     }
 
-    var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);
-    try {
-      readerContext.setValue("id", Integer.parseInt(reader.getAttribute("id")));
-    } catch (NumberFormatException e) {
-      LOGGER.debug("Unknown type {} in file {}", reader.getNodeName(), ExtendXStream.getCurrentPath(reader));
-      return null;
+    var nodeName = reader.getNodeName();
+    var elementType = FormElementType.valueByName(nodeName);
+
+    if (elementType == FormElementType.UNKNOWN) {
+      LOGGER.warn("Unknown form element type: {}. Please create issue: " +
+          "https://github.com/1c-syntax/mdclasses/issues/new?labels=enhancement" +
+          "&title=%5BFEAT%5D%20Add%20form%20element%20type%20%5B{}%5D",
+        nodeName, nodeName);
     }
-    readerContext.setValue("type", FormElementType.valueByName(reader.getNodeName()));
+
+    var readerContext = new FormElementReaderContext(elementType, nodeName, reader);
+
+    readerContext.setValue("id", Integer.parseInt(reader.getAttribute("id")));
     readerContext.setValue("name", reader.getAttribute("name"));
     Unmarshaller.unmarshal(reader, context, readerContext);
+
+    // поправим тип, иногда он определяется по тегу, иногда по параметру...
+    var type = readerContext.getFromCache("type");
+    if (type instanceof List<?> list) {
+      list.remove(elementType);
+      if (!list.isEmpty()) {
+        var otherElementType = list.getFirst();
+        if (otherElementType != elementType) {
+          readerContext.setValue("elementType", otherElementType);
+        }
+      }
+    }
     return readerContext.build();
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return FormItem.class.isAssignableFrom(type);
+    return FormElement.class.isAssignableFrom(type);
   }
 }

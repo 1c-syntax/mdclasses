@@ -1,18 +1,10 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПриЗакрытии",
-    "event": "OnClose"
-   }
-  ],
-  "attributes": [],
-  "title": {
-   "content": []
-  },
-  "items": [
-   {
+    "elements": [],
     "name": "СписокКомпоновщикНастроекПользовательскиеНастройки",
+    "comment": "",
     "id": 1,
     "type": "USUAL_GROUP",
     "title": {
@@ -22,11 +14,31 @@
        "value": "User settings group"
       }
      ]
-    },
-    "items": [],
-    "dataPath": ""
+    }
+   },
+   {
+    "elements": [],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "content": []
+    }
    }
   ],
+  "attributes": [],
+  "eventHandlers": [
+   {
+    "handler": "ПриЗакрытии",
+    "event": "OnClose"
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup[2]\/title"
+  },
+  "parameters": [],
+  "commands": [],
   "empty": false
  }
 }

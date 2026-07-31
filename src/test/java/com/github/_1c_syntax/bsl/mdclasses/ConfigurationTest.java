@@ -231,7 +231,7 @@ class ConfigurationTest {
 
     assertThat(forms)
       .hasSize(769)
-      .allMatch(form -> form.getData().getPlainItems().isEmpty());
+      .allMatch(form -> form.getData().getPlainElements().isEmpty());
 
     var templates = cf.getPlainChildren().stream()
       .filter(TemplateOwner.class::isInstance)

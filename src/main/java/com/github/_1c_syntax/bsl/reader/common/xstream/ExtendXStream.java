@@ -25,6 +25,8 @@ import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
 import com.github._1c_syntax.bsl.mdclasses.ExternalDataProcessor;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdo.MD;
+import com.github._1c_syntax.bsl.mdo.support.FillChecking;
+import com.github._1c_syntax.bsl.mdo.support.CommandRepresentation;
 import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
@@ -293,6 +295,8 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(ChoiceDataGetMode.class));
     registerConverter(new EnumConverter<>(ChoiceHistoryOnInputMode.class));
     registerConverter(new EnumConverter<>(SearchStringMode.class));
+    registerConverter(new EnumConverter<>(CommandRepresentation.class));
+    registerConverter(new EnumConverter<>(FillChecking.class));
   }
 
   private void init() {

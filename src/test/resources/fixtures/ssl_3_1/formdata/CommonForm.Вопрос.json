@@ -1,50 +1,118 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
-   },
-   {
-    "name": "ПриОткрытии",
-    "event": "OnOpen"
-   }
-  ],
-  "attributes": [
-   {
-    "name": "СоответствиеКнопокИВозвращаемыхЗначений",
-    "id": 1,
+    "elements": [
+     {
+      "name": "Предупреждение",
+      "comment": "",
+      "id": 5,
+      "type": "PICTURE_DECORATION",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Предупреждение"
+        }
+       ]
+      }
+     },
+     {
+      "elements": [
+       {
+        "name": "БольшеНеЗадаватьЭтотВопрос",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 3,
+        "type": "CHECK_BOX_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "dataPath": "БольшеНеЗадаватьЭтотВопрос"
+       },
+       {
+        "name": "МногострочныйТекстСообщения",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 10,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+        },
+        "dataPath": "ТекстСообщения"
+       },
+       {
+        "elements": [
+         {
+          "name": "ТекстСообщенияФорматированнаяСтрока",
+          "comment": "",
+          "id": 23,
+          "type": "LABEL_DECORATION",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+          }
+         }
+        ],
+        "name": "ТекстСообщенияФорматированнаяСтрокаГруппа",
+        "comment": "",
+        "id": 26,
+        "type": "USUAL_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Текст сообщения форматированная строка (группа)"
+          }
+         ]
+        }
+       }
+      ],
+      "name": "Строки",
+      "comment": "",
+      "id": 16,
+      "type": "USUAL_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Строки"
+        }
+       ]
+      }
+     }
+    ],
+    "name": "Колонки",
+    "comment": "",
+    "id": 15,
+    "type": "USUAL_GROUP",
     "title": {
-     "content": []
-    },
-    "type": {
-     "types": [],
-     "composite": false,
-     "qualifiers": []
-    }
-   },
-   {
-    "name": "ТекстСообщения",
-    "id": 2,
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "type": {
-     "types": [
-      "STRING"
-     ],
-     "composite": false,
-     "qualifiers": [
+     "content": [
       {
-       "length": 0,
-       "allowedLength": 0
+       "langKey": "ru",
+       "value": "Колонки"
       }
      ]
     }
    },
    {
+    "elements": [],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    }
+   }
+  ],
+  "attributes": [
+   {
+    "columns": [],
     "name": "БольшеНеЗадаватьЭтотВопрос",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 3,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -59,13 +127,57 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
-    "name": "ОжиданиеСчетчик",
-    "id": 4,
+    "columns": [],
+    "name": "ОжиданиеЗаголовокКнопки",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 6,
+    "savedData": false,
     "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+     "content": []
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "ОжиданиеИмяКнопки",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 5,
+    "savedData": false,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "ОжиданиеСчетчик",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 4,
+    "savedData": false,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
     },
     "type": {
      "types": [
@@ -79,127 +191,150 @@
        "scale": 0
       }
      ]
-    }
+    },
+    "mainAttribute": false
    },
    {
-    "name": "ОжиданиеИмяКнопки",
-    "id": 5,
+    "columns": [],
+    "name": "СоответствиеКнопокИВозвращаемыхЗначений",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 1,
+    "savedData": false,
     "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "ТекстСообщения",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 2,
+    "savedData": false,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
     },
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
-    }
+    },
+    "mainAttribute": false
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
    },
    {
-    "name": "ОжиданиеЗаголовокКнопки",
-    "id": 6,
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
-    }
+    "handler": "ПриОткрытии",
+    "event": "OnOpen"
    }
   ],
   "title": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
   },
-  "items": [
+  "parameters": [
    {
-    "name": "Колонки",
-    "id": 15,
-    "type": "USUAL_GROUP",
-    "title": {
-     "content": [
+    "name": "БлокироватьВесьИнтерфейс",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "Заголовок",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
+   },
+   {
+    "name": "Картинка",
+    "keyParameter": false,
+    "type": {
+     "types": [
+      "PICTURE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
+   },
+   {
+    "name": "КнопкаПоУмолчанию",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "КнопкаТаймаута",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    }
+   },
+   {
+    "name": "Кнопки",
+    "keyParameter": true,
+    "type": {
+     "types": [
+      "STRING",
+      "VALUE_LIST"
+     ],
+     "composite": true,
+     "qualifiers": [
       {
-       "langKey": "ru",
-       "value": "Колонки"
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type\/qualifiers\/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers"
       }
      ]
-    },
-    "items": [
-     {
-      "name": "Предупреждение",
-      "id": 5,
-      "type": "PICTURE_DECORATION",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Предупреждение"
-        }
-       ]
-      },
-      "items": [],
-      "dataPath": ""
-     },
-     {
-      "name": "Строки",
-      "id": 16,
-      "type": "USUAL_GROUP",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Строки"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "БольшеНеЗадаватьЭтотВопрос",
-        "id": 3,
-        "type": "CHECK_BOX_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
-        },
-        "items": [],
-        "dataPath": "БольшеНеЗадаватьЭтотВопрос"
-       },
-       {
-        "name": "МногострочныйТекстСообщения",
-        "id": 10,
-        "type": "INPUT_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-        },
-        "items": [],
-        "dataPath": "ТекстСообщения"
-       },
-       {
-        "name": "ТекстСообщенияФорматированнаяСтрокаГруппа",
-        "id": 26,
-        "type": "USUAL_GROUP",
-        "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Текст сообщения форматированная строка (группа)"
-          }
-         ]
-        },
-        "items": [
-         {
-          "name": "ТекстСообщенияФорматированнаяСтрока",
-          "id": 23,
-          "type": "LABEL_DECORATION",
-          "title": {
-           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-          },
-          "items": [],
-          "dataPath": ""
-         }
-        ],
-        "dataPath": ""
-       }
-      ],
-      "dataPath": ""
-     }
-    ],
-    "dataPath": ""
+    }
+   },
+   {
+    "name": "ПредлагатьБольшеНеЗадаватьЭтотВопрос",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "Таймаут",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
+    }
+   },
+   {
+    "name": "ТекстСообщения",
+    "keyParameter": false,
+    "type": {
+     "types": [
+      "STRING",
+      "FORMATTED_STRING"
+     ],
+     "composite": true,
+     "qualifiers": [
+      {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type\/qualifiers\/com.github._1c_syntax.bsl.types.qualifiers.StringQualifiers"
+      }
+     ]
+    }
+   },
+   {
+    "name": "ТекстФлажка",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
+    }
    }
   ],
+  "commands": [],
   "empty": false
  }
 }

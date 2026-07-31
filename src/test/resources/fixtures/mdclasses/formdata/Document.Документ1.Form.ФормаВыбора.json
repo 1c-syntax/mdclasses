@@ -1,119 +1,20 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [],
-  "attributes": [
+  "elements": [
    {
-    "name": "Список",
-    "id": 1,
-    "title": {
-     "content": []
-    },
-    "type": {
-     "types": [
-      "DYNAMIC_LIST"
-     ],
-     "composite": false,
-     "qualifiers": []
-    }
-   }
-  ],
-  "title": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-  },
-  "items": [
-   {
-    "name": "Список",
-    "id": 3,
-    "type": "TABLE",
+    "elements": [],
+    "name": "",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "items": [
-     {
-      "name": "Проведен",
-      "id": 25,
-      "type": "CHECK_BOX_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Posted"
-     },
-     {
-      "name": "ПометкаУдаления",
-      "id": 28,
-      "type": "CHECK_BOX_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.DeletionMark"
-     },
-     {
-      "name": "Ссылка",
-      "id": 16,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Ref"
-     },
-     {
-      "name": "Дата",
-      "id": 19,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Date"
-     },
-     {
-      "name": "Номер",
-      "id": 22,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Number"
-     },
-     {
-      "name": "Реквизит1",
-      "id": 31,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Реквизит1"
-     },
-     {
-      "name": "Реквизит2",
-      "id": 34,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Реквизит2"
-     },
-     {
-      "name": "Реквизит3",
-      "id": 37,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Реквизит3"
-     }
-    ],
-    "dataPath": "Список"
+    }
    },
    {
+    "elements": [],
     "name": "СписокКомпоновщикНастроекПользовательскиеНастройки",
+    "comment": "",
     "id": 1,
     "type": "USUAL_GROUP",
     "title": {
@@ -123,11 +24,174 @@
        "value": "Группа пользовательских настроек"
       }
      ]
+    }
+   },
+   {
+    "elements": [
+     {
+      "name": "СписокСостояниеПросмотра",
+      "comment": "",
+      "id": 10,
+      "type": "VIEW_STATUS_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "СписокСтрокаПоиска",
+      "comment": "",
+      "id": 7,
+      "type": "SEARCH_STRING_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "СписокУправлениеПоиском",
+      "comment": "",
+      "id": 13,
+      "type": "SEARCH_CONTROL_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "Дата",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 19,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Date"
+     },
+     {
+      "name": "Номер",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 22,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Number"
+     },
+     {
+      "name": "ПометкаУдаления",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 28,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.DeletionMark"
+     },
+     {
+      "name": "Проведен",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 25,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Posted"
+     },
+     {
+      "name": "Реквизит1",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 31,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Реквизит1"
+     },
+     {
+      "name": "Реквизит2",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 34,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Реквизит2"
+     },
+     {
+      "name": "Реквизит3",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 37,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Реквизит3"
+     },
+     {
+      "name": "Ссылка",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 16,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Список.Ref"
+     },
+     {
+      "elements": [],
+      "name": "СписокКоманднаяПанель",
+      "comment": "",
+      "id": 5,
+      "type": "COMMAND_BAR",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     }
+    ],
+    "name": "Список",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 3,
+    "type": "TABLE",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
-    "items": [],
-    "dataPath": ""
+    "dataPath": "Список"
    }
   ],
+  "attributes": [
+   {
+    "columns": [],
+    "name": "Список",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 1,
+    "savedData": false,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      "DYNAMIC_LIST"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "mainAttribute": true
+   }
+  ],
+  "eventHandlers": [],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+  },
+  "parameters": [],
+  "commands": [],
   "empty": false
  }
 }

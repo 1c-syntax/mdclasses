@@ -36,6 +36,7 @@ import lombok.experimental.UtilityClass;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -46,13 +47,7 @@ public class Unmarshaller {
 
   private static final String PROPERTIES_NODE = "Properties";
   private static final String CHILD_OBJECTS_NODE = "ChildObjects";
-  private static final String CHILD_ITEMS_NODE = "ChildItems";
-  private static final String ITEMS_NODE = "items";
   private static final String USE_PURPOSES_NODE = "UsePurposes";
-
-  private static final String EVENTS_NODE = "Events";
-  private static final String HANDLES_NODE = "Handlers";
-  private static final String ATTRIBUTES_NODE = "Attributes";
 
   private static final String NAME_NODE = "Name";
   private static final String TEMPLATE_TYPE_NODE = "TemplateType";
@@ -61,6 +56,25 @@ public class Unmarshaller {
   private static final String STANDARD_ATTRIBUTES_NODE = "StandardAttributes";
   private static final String STANDARD_ATTRIBUTE_NODE = "StandardAttribute";
   private static final String ATTRIBUTE_FIELD_NAME = "Attribute";
+
+  private static final Map<String, String> ITEM_NODE_REMAPPING
+    = Map.of(
+    "Commands", "commands",
+    "Parameters", "parameters",
+    "Attributes", "attributes",
+    "Columns", "columns",
+    "ChildItems", "elements",
+    "Events", "eventHandlers"
+  );
+
+  private static final Map<String, String> NODE_REMAPPING
+    = Map.of(
+    "AutoCommandBar", "elements",
+    "SearchControlAddition", "elements",
+    "ViewStatusAddition", "elements",
+    "SearchStringAddition", "elements",
+    "Column", "columns"
+  );
 
   /**
    * Читает информацию из файлов MD и MDC
@@ -84,11 +98,16 @@ public class Unmarshaller {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      switch (name) {
-        case CHILD_ITEMS_NODE -> readItemNode(reader, context, readerContext, ITEMS_NODE);
-        case ATTRIBUTES_NODE -> readItemNode(reader, context, readerContext, ATTRIBUTES_NODE);
-        case EVENTS_NODE -> readItemNode(reader, context, readerContext, HANDLES_NODE);
-        case null, default -> readNode(reader.getNodeName(), context, readerContext);
+      var itemNode = ITEM_NODE_REMAPPING.get(name);
+      if (itemNode != null) {
+        readItemNode(reader, context, readerContext, itemNode);
+      } else {
+        var node = NODE_REMAPPING.get(name);
+        if (node != null) {
+          readNode(node, context, readerContext);
+        } else {
+          readNode(reader.getNodeName(), context, readerContext);
+        }
       }
       reader.moveUp();
     }
@@ -133,7 +152,7 @@ public class Unmarshaller {
                             AbstractReaderContext readerContext,
                             String nodeName) {
     var fieldClass = readerContext.fieldType(nodeName);
-    if(fieldClass == null) {
+    if (fieldClass == null) {
       return;
     }
     while (reader.hasMoreChildren()) {

@@ -1,15 +1,163 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ОбработкаЗаписиНового",
-    "event": "NewWriteProcessing"
+    "name": "Дата",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 4,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "dataPath": "~Объект.Date"
+   },
+   {
+    "name": "Номер",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 1,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "dataPath": "Объект.Number"
+   },
+   {
+    "name": "Реквизит1",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 7,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "dataPath": "Объект.Реквизит1"
+   },
+   {
+    "name": "Реквизит2",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 10,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "dataPath": "Объект.Реквизит2"
+   },
+   {
+    "name": "Реквизит3",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 13,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "dataPath": "Объект.Реквизит3"
+   },
+   {
+    "elements": [],
+    "name": "",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    }
+   },
+   {
+    "elements": [
+     {
+      "name": "ТабличнаяЧасть1СостояниеПросмотра",
+      "comment": "",
+      "id": 23,
+      "type": "VIEW_STATUS_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "ТабличнаяЧасть1СтрокаПоиска",
+      "comment": "",
+      "id": 20,
+      "type": "SEARCH_STRING_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "ТабличнаяЧасть1УправлениеПоиском",
+      "comment": "",
+      "id": 26,
+      "type": "SEARCH_CONTROL_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "ТабличнаяЧасть1НомерСтроки",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 29,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Объект.ТабличнаяЧасть1.LineNumber"
+     },
+     {
+      "name": "ТабличнаяЧасть1Реквизит1",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 32,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Объект.ТабличнаяЧасть1.Реквизит1"
+     },
+     {
+      "name": "ТабличнаяЧасть1Реквизит2",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 35,
+      "type": "INPUT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Объект.ТабличнаяЧасть1.Реквизит2"
+     },
+     {
+      "elements": [],
+      "name": "ТабличнаяЧасть1КоманднаяПанель",
+      "comment": "",
+      "id": 18,
+      "type": "COMMAND_BAR",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     }
+    ],
+    "name": "ТабличнаяЧасть1",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 16,
+    "type": "TABLE",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "dataPath": "Объект.ТабличнаяЧасть1"
    }
   ],
   "attributes": [
    {
+    "columns": [],
     "name": "Объект",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 1,
+    "savedData": true,
     "title": {
      "content": []
     },
@@ -26,105 +174,21 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": true
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ОбработкаЗаписиНового",
+    "event": "NewWriteProcessing"
    }
   ],
   "title": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
   },
-  "items": [
-   {
-    "name": "Номер",
-    "id": 1,
-    "type": "INPUT_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "items": [],
-    "dataPath": "Объект.Number"
-   },
-   {
-    "name": "Реквизит2",
-    "id": 10,
-    "type": "INPUT_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "items": [],
-    "dataPath": "Объект.Реквизит2"
-   },
-   {
-    "name": "Реквизит3",
-    "id": 13,
-    "type": "INPUT_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "items": [],
-    "dataPath": "Объект.Реквизит3"
-   },
-   {
-    "name": "Дата",
-    "id": 4,
-    "type": "INPUT_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "items": [],
-    "dataPath": "~Объект.Date"
-   },
-   {
-    "name": "Реквизит1",
-    "id": 7,
-    "type": "INPUT_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "items": [],
-    "dataPath": "Объект.Реквизит1"
-   },
-   {
-    "name": "ТабличнаяЧасть1",
-    "id": 16,
-    "type": "TABLE",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "items": [
-     {
-      "name": "ТабличнаяЧасть1Реквизит1",
-      "id": 32,
-      "type": "INPUT_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Объект.ТабличнаяЧасть1.Реквизит1"
-     },
-     {
-      "name": "ТабличнаяЧасть1Реквизит2",
-      "id": 35,
-      "type": "INPUT_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Объект.ТабличнаяЧасть1.Реквизит2"
-     },
-     {
-      "name": "ТабличнаяЧасть1НомерСтроки",
-      "id": 29,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Объект.ТабличнаяЧасть1.LineNumber"
-     }
-    ],
-    "dataPath": "Объект.ТабличнаяЧасть1"
-   }
-  ],
+  "parameters": [],
+  "commands": [],
   "empty": false
  }
 }

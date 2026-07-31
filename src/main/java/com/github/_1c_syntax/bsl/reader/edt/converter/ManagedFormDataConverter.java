@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -43,7 +42,6 @@ public class ManagedFormDataConverter implements ReadConverter {
 
   @Override
   public boolean canConvert(Class type) {
-    return type == ManagedFormData.class
-      || FormAttribute.class.isAssignableFrom(type);
+    return type == ManagedFormData.class;
   }
 }

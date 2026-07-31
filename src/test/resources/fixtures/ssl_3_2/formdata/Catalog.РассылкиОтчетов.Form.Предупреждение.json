@@ -1,15 +1,78 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
+    "elements": [
+     {
+      "name": "Индикатор",
+      "comment": "",
+      "id": 21,
+      "type": "PICTURE_DECORATION",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Индикатор"
+        }
+       ]
+      }
+     },
+     {
+      "name": "Текст",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 26,
+      "type": "FORMATTED_DOCUMENT_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      },
+      "dataPath": "Текст"
+     }
+    ],
+    "name": "Основное",
+    "comment": "",
+    "id": 24,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Основное"
+      }
+     ]
+    }
+   },
+   {
+    "elements": [
+     {
+      "commandName": "Form.Command.ПерейтиКДокументации",
+      "name": "ПерейтиКДокументации",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 16,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/title"
+      }
+     }
+    ],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "content": []
+    }
    }
   ],
   "attributes": [
    {
+    "columns": [],
     "name": "Текст",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 1,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -24,53 +87,83 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
    }
   ],
   "title": {
-   "content": []
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup[2]\/title"
   },
-  "items": [
+  "parameters": [
    {
-    "name": "Основное",
-    "id": 24,
-    "type": "USUAL_GROUP",
+    "name": "Заголовок",
+    "keyParameter": false,
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    }
+   },
+   {
+    "name": "Подробно",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/parameters\/com.github._1c_syntax.bsl.mdo.storage.form.FormParameter\/type"
+    }
+   },
+   {
+    "name": "Ссылка",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/parameters\/com.github._1c_syntax.bsl.mdo.storage.form.FormParameter\/type"
+    }
+   },
+   {
+    "name": "Текст",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/parameters\/com.github._1c_syntax.bsl.mdo.storage.form.FormParameter\/type"
+    }
+   }
+  ],
+  "commands": [
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "ПерейтиКДокументации",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Перейти к документации..."
+      }
+     ]
+    },
+    "action": "ПерейтиКДокументации",
+    "id": 1,
     "title": {
      "content": [
       {
        "langKey": "ru",
-       "value": "Основное"
+       "value": "Нужна помощь?"
       }
      ]
     },
-    "items": [
-     {
-      "name": "Текст",
-      "id": 26,
-      "type": "FORMATTED_DOCUMENT_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Текст"
-     },
-     {
-      "name": "Индикатор",
-      "id": 21,
-      "type": "PICTURE_DECORATION",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Индикатор"
-        }
-       ]
-      },
-      "items": [],
-      "dataPath": ""
-     }
-    ],
-    "dataPath": ""
+    "representation": "AUTO",
+    "picture": ""
    }
   ],
   "empty": false

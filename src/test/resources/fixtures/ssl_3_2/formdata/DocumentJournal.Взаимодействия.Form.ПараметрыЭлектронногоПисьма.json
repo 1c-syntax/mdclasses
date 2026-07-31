@@ -1,24 +1,199 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПередЗакрытием",
-    "event": "BeforeClose"
+    "name": "ВключатьТелоИсходногоПисьма",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 23,
+    "type": "CHECK_BOX_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "dataPath": "ВключатьТелоИсходногоПисьма"
    },
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
-   }
-  ],
-  "attributes": [
+    "name": "Заголовки",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 17,
+    "type": "TEXT_DOCUMENT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+    },
+    "dataPath": "ЗаголовкиИнтернета"
+   },
    {
-    "name": "УведомитьОДоставке",
-    "id": 1,
+    "name": "Папка",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 26,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/title"
+    },
+    "dataPath": "Папка"
+   },
+   {
+    "elements": [
+     {
+      "name": "УведомитьОДоставке",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 1,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]\/title"
+      },
+      "dataPath": "УведомитьОДоставке"
+     },
+     {
+      "name": "УведомитьОПрочтении",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 3,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[12]\/title"
+      },
+      "dataPath": "УведомитьОПрочтении"
+     }
+    ],
+    "name": "Группа1",
+    "comment": "",
+    "id": 49,
+    "type": "USUAL_GROUP",
     "title": {
      "content": [
       {
        "langKey": "ru",
-       "value": "Уведомить о доставке"
+       "value": "Группа"
+      }
+     ]
+    }
+   },
+   {
+    "elements": [
+     {
+      "elements": [
+       {
+        "name": "ВнутреннийНомер",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 6,
+        "type": "LABEL_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+        },
+        "dataPath": "ВнутреннийНомер"
+       }
+      ],
+      "name": "ГруппаВключатьВнутреннийНомер",
+      "comment": "",
+      "id": 25,
+      "type": "USUAL_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Включать внутренний номер"
+        }
+       ]
+      }
+     },
+     {
+      "elements": [
+       {
+        "name": "ОтправленоПолучено",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 11,
+        "type": "LABEL_FIELD",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Отправлено"
+          }
+         ]
+        },
+        "dataPath": "ОтправленоПолучено"
+       },
+       {
+        "name": "Создано",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 9,
+        "type": "LABEL_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/title"
+        },
+        "dataPath": "Создано"
+       }
+      ],
+      "name": "ГруппаДаты",
+      "comment": "",
+      "id": 8,
+      "type": "USUAL_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Даты"
+        }
+       ]
+      }
+     }
+    ],
+    "name": "ГруппаДатыНомер",
+    "comment": "",
+    "id": 22,
+    "type": "USUAL_GROUP",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Даты номер"
+      }
+     ]
+    }
+   },
+   {
+    "elements": [
+     {
+      "commandName": "Form.Command.Применить",
+      "name": "ФормаОк",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 20,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/title"
+      }
+     }
+    ],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+    }
+   }
+  ],
+  "attributes": [
+   {
+    "columns": [],
+    "name": "ВключатьТелоИсходногоПисьма",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 6,
+    "savedData": true,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Включать тело исходного письма"
       }
      ]
     },
@@ -28,11 +203,112 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
+    "name": "ВнутреннийНомер",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 3,
+    "savedData": false,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Внутренний номер"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 11,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "ВыполненаКомандаЗакрыть",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 13,
+    "savedData": false,
+    "title": {
+     "content": []
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "ЗаголовкиИнтернета",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 7,
+    "savedData": false,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Заголовки Интернета"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "TEXT_DOCUMENT"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "ОтправленоПолучено",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 5,
+    "savedData": false,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Отправлено получено"
+      }
+     ]
+    },
+    "type": {
+     "types": [
+      "DATE"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "dateFractions": 2
+      }
+     ]
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
     "name": "Папка",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 10,
+    "savedData": true,
     "title": {
      "content": [
       {
@@ -54,163 +330,16 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
-   },
-   {
-    "name": "УчетнаяЗапись",
-    "id": 11,
-    "title": {
-     "content": []
     },
-    "type": {
-     "types": [
-      {
-       "kind": "CATALOG",
-       "variant": "METADATA",
-       "fullName": {
-        "nameRu": "СправочникСсылка.УчетныеЗаписиЭлектроннойПочты",
-        "nameEn": "CatalogRef.УчетныеЗаписиЭлектроннойПочты"
-       }
-      }
-     ],
-     "composite": false,
-     "qualifiers": []
-    }
+    "mainAttribute": false
    },
    {
-    "name": "ТекущаяПапка",
-    "id": 12,
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/type"
-    }
-   },
-   {
-    "name": "ВыполненаКомандаЗакрыть",
-    "id": 13,
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
-    }
-   },
-   {
-    "name": "УведомитьОПрочтении",
-    "id": 2,
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Уведомить о прочтении"
-      }
-     ]
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
-    }
-   },
-   {
-    "name": "ВнутреннийНомер",
-    "id": 3,
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Внутренний номер"
-      }
-     ]
-    },
-    "type": {
-     "types": [
-      "STRING"
-     ],
-     "composite": false,
-     "qualifiers": [
-      {
-       "length": 11,
-       "allowedLength": 0
-      }
-     ]
-    }
-   },
-   {
-    "name": "Создано",
-    "id": 4,
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Создано"
-      }
-     ]
-    },
-    "type": {
-     "types": [
-      "DATE"
-     ],
-     "composite": false,
-     "qualifiers": [
-      {
-       "dateFractions": 2
-      }
-     ]
-    }
-   },
-   {
-    "name": "ОтправленоПолучено",
-    "id": 5,
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Отправлено получено"
-      }
-     ]
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/type"
-    }
-   },
-   {
-    "name": "ВключатьТелоИсходногоПисьма",
-    "id": 6,
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Включать тело исходного письма"
-      }
-     ]
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
-    }
-   },
-   {
-    "name": "ЗаголовкиИнтернета",
-    "id": 7,
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Заголовки Интернета"
-      }
-     ]
-    },
-    "type": {
-     "types": [
-      "TEXT_DOCUMENT"
-     ],
-     "composite": false,
-     "qualifiers": []
-    }
-   },
-   {
+    "columns": [],
     "name": "Письмо",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 8,
+    "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
     },
@@ -235,11 +364,51 @@
      ],
      "composite": true,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
+    "name": "Создано",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 4,
+    "savedData": false,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Создано"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/type"
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "ТекущаяПапка",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 12,
+    "savedData": false,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/type"
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
     "name": "ТипПисьма",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 9,
+    "savedData": false,
     "title": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
     },
@@ -254,7 +423,84 @@
        "allowedLength": 0
       }
      ]
-    }
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "УведомитьОДоставке",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 1,
+    "savedData": true,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Уведомить о доставке"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "УведомитьОПрочтении",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 2,
+    "savedData": true,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Уведомить о прочтении"
+      }
+     ]
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "УчетнаяЗапись",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 11,
+    "savedData": false,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.УчетныеЗаписиЭлектроннойПочты",
+        "nameEn": "CatalogRef.УчетныеЗаписиЭлектроннойПочты"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "mainAttribute": false
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ПередЗакрытием",
+    "event": "BeforeClose"
+   },
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
    }
   ],
   "title": {
@@ -265,155 +511,49 @@
     }
    ]
   },
-  "items": [
+  "parameters": [
    {
-    "name": "ВключатьТелоИсходногоПисьма",
-    "id": 23,
-    "type": "CHECK_BOX_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[10]\/title"
+    "name": "ЗаголовкиИнтернета",
+    "keyParameter": false,
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    }
+   }
+  ],
+  "commands": [
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "Применить",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Применить"
+      }
+     ]
     },
-    "items": [],
-    "dataPath": "ВключатьТелоИсходногоПисьма"
-   },
-   {
-    "name": "Папка",
-    "id": 26,
-    "type": "INPUT_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
-    },
-    "items": [],
-    "dataPath": "Папка"
-   },
-   {
-    "name": "Заголовки",
-    "id": 17,
-    "type": "TEXT_DOCUMENT_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[11]\/title"
-    },
-    "items": [],
-    "dataPath": "ЗаголовкиИнтернета"
-   },
-   {
-    "name": "ГруппаДатыНомер",
-    "id": 22,
-    "type": "USUAL_GROUP",
+    "action": "КомандаОК",
+    "id": 1,
     "title": {
      "content": [
       {
        "langKey": "ru",
-       "value": "Даты номер"
+       "value": "Применить и закрыть"
       }
      ]
     },
-    "items": [
-     {
-      "name": "ГруппаВключатьВнутреннийНомер",
-      "id": 25,
-      "type": "USUAL_GROUP",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Включать внутренний номер"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "ВнутреннийНомер",
-        "id": 6,
-        "type": "LABEL_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
-        },
-        "items": [],
-        "dataPath": "ВнутреннийНомер"
-       }
-      ],
-      "dataPath": ""
-     },
-     {
-      "name": "ГруппаДаты",
-      "id": 8,
-      "type": "USUAL_GROUP",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Даты"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "ОтправленоПолучено",
-        "id": 11,
-        "type": "LABEL_FIELD",
-        "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Отправлено"
-          }
-         ]
-        },
-        "items": [],
-        "dataPath": "ОтправленоПолучено"
-       },
-       {
-        "name": "Создано",
-        "id": 9,
-        "type": "LABEL_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/title"
-        },
-        "items": [],
-        "dataPath": "Создано"
-       }
-      ],
-      "dataPath": ""
-     }
-    ],
-    "dataPath": ""
-   },
-   {
-    "name": "Группа1",
-    "id": 49,
-    "type": "USUAL_GROUP",
-    "title": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Группа"
-      }
-     ]
-    },
-    "items": [
-     {
-      "name": "УведомитьОДоставке",
-      "id": 1,
-      "type": "CHECK_BOX_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "УведомитьОДоставке"
-     },
-     {
-      "name": "УведомитьОПрочтении",
-      "id": 3,
-      "type": "CHECK_BOX_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/title"
-      },
-      "items": [],
-      "dataPath": "УведомитьОПрочтении"
-     }
-    ],
-    "dataPath": ""
+    "representation": "AUTO",
+    "picture": ""
    }
   ],
   "empty": false

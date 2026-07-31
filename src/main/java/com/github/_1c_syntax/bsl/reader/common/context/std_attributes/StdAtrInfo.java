@@ -43,11 +43,12 @@ import java.util.function.Function;
 @Value
 @Slf4j
 public class StdAtrInfo {
+  private static final ValueTypeDescription STRING_BIG_TYPE = ValueTypeDescription.createString(0);
+  private static final ValueTypeDescription NUMBER_TYPE = ValueTypeDescription.createNumber(5);
+
   public static final ValueTypeDescription BOOLEAN_TYPE = ValueTypeDescription.create(PrimitiveValueType.BOOLEAN);
   public static final ValueTypeDescription DATETIME_TYPE =
     ValueTypeDescription.create(PrimitiveValueType.DATE, DateQualifiers.create());
-  private static final ValueTypeDescription STRING_BIG_TYPE = ValueTypeDescription.createString(0);
-  private static final ValueTypeDescription NUMBER_TYPE = ValueTypeDescription.createNumber(5);
 
   public static final StdAtrInfo PREDEFINED_DATA_NAME
     = new StdAtrInfo(StdAttributeNames.PREDEFINED_DATA_NAME, STRING_BIG_TYPE);
@@ -106,6 +107,29 @@ public class StdAtrInfo {
     = new StdAtrInfo(StdAttributeNames.CALCULATION_TYPE, StdAtrInfo::computeCalculationType);
   public static final StdAtrInfo EXCHANGE_DATE = new StdAtrInfo(StdAttributeNames.EXCHANGE_DATE, DATETIME_TYPE);
   public static final StdAtrInfo PERIOD_ADJUSTMENT = new StdAtrInfo(StdAttributeNames.PERIOD_ADJUSTMENT, NUMBER_TYPE);
+  public static final StdAtrInfo TURNOVERS_ONLY = new StdAtrInfo(StdAttributeNames.TURNOVERS_ONLY, BOOLEAN_TYPE);
+  public static final StdAtrInfo EXT_DIMENSION_TYPE
+    = new StdAtrInfo(StdAttributeNames.EXT_DIMENSION_TYPE, StdAtrInfo::computeValueType);
+  public static final StdAtrInfo EXT_DIMENSION_1
+    = new StdAtrInfo(StdAttributeNames.EXT_DIMENSION_1, StdAtrInfo::computeValueType);
+  public static final StdAtrInfo EXT_DIMENSION_TYPE_1
+    = new StdAtrInfo(StdAttributeNames.EXT_DIMENSION_TYPE_1, StdAtrInfo::computeValueType);
+  public static final StdAtrInfo EXT_DIMENSION_2
+    = new StdAtrInfo(StdAttributeNames.EXT_DIMENSION_2, StdAtrInfo::computeValueType);
+  public static final StdAtrInfo EXT_DIMENSION_TYPE_2
+    = new StdAtrInfo(StdAttributeNames.EXT_DIMENSION_TYPE_2, StdAtrInfo::computeValueType);
+  public static final StdAtrInfo EXT_DIMENSION_3
+    = new StdAtrInfo(StdAttributeNames.EXT_DIMENSION_3, StdAtrInfo::computeValueType);
+  public static final StdAtrInfo EXT_DIMENSION_TYPE_3
+    = new StdAtrInfo(StdAttributeNames.EXT_DIMENSION_TYPE_3, StdAtrInfo::computeValueType);
+  public static final StdAtrInfo EXT_DIMENSION_4
+    = new StdAtrInfo(StdAttributeNames.EXT_DIMENSION_4, StdAtrInfo::computeValueType);
+  public static final StdAtrInfo EXT_DIMENSION_TYPE_4
+    = new StdAtrInfo(StdAttributeNames.EXT_DIMENSION_TYPE_4, StdAtrInfo::computeValueType);
+  public static final StdAtrInfo EXT_DIMENSION_5
+    = new StdAtrInfo(StdAttributeNames.EXT_DIMENSION_5, StdAtrInfo::computeValueType);
+  public static final StdAtrInfo EXT_DIMENSION_TYPE_5
+    = new StdAtrInfo(StdAttributeNames.EXT_DIMENSION_TYPE_5, StdAtrInfo::computeValueType);
 
   private static final Map<String, StdAtrInfo> KEYS = computeKeys();
 
@@ -234,7 +258,8 @@ public class StdAtrInfo {
   }
 
   private static Map<String, StdAtrInfo> computeKeys() {
-    return Map.ofEntries(Map.entry(PREDEFINED_DATA_NAME.name.getEn().toLowerCase(Locale.ROOT), PREDEFINED_DATA_NAME),
+    return Map.<String, StdAtrInfo>ofEntries(
+      Map.entry(PREDEFINED_DATA_NAME.name.getEn().toLowerCase(Locale.ROOT), PREDEFINED_DATA_NAME),
       Map.entry(PREDEFINED.name.getEn().toLowerCase(Locale.ROOT), PREDEFINED),
       Map.entry(REF.name.getEn().toLowerCase(Locale.ROOT), REF),
       Map.entry(DELETION_MARK.name.getEn().toLowerCase(Locale.ROOT), DELETION_MARK),
@@ -275,6 +300,19 @@ public class StdAtrInfo {
       Map.entry(TYPE.name.getEn().toLowerCase(Locale.ROOT), TYPE),
       Map.entry(CALCULATION_TYPE.name.getEn().toLowerCase(Locale.ROOT), CALCULATION_TYPE),
       Map.entry(EXCHANGE_DATE.name.getEn().toLowerCase(Locale.ROOT), EXCHANGE_DATE),
-      Map.entry(PERIOD_ADJUSTMENT.name.getEn().toLowerCase(Locale.ROOT), PERIOD_ADJUSTMENT));
+      Map.entry(PERIOD_ADJUSTMENT.name.getEn().toLowerCase(Locale.ROOT), PERIOD_ADJUSTMENT),
+      Map.entry(TURNOVERS_ONLY.name.getEn().toLowerCase(Locale.ROOT), TURNOVERS_ONLY),
+      Map.entry(EXT_DIMENSION_TYPE.name.getEn().toLowerCase(Locale.ROOT), EXT_DIMENSION_TYPE),
+      Map.entry(EXT_DIMENSION_1.name.getEn().toLowerCase(Locale.ROOT), EXT_DIMENSION_1),
+      Map.entry(EXT_DIMENSION_TYPE_1.name.getEn().toLowerCase(Locale.ROOT), EXT_DIMENSION_TYPE_1),
+      Map.entry(EXT_DIMENSION_2.name.getEn().toLowerCase(Locale.ROOT), EXT_DIMENSION_2),
+      Map.entry(EXT_DIMENSION_TYPE_2.name.getEn().toLowerCase(Locale.ROOT), EXT_DIMENSION_TYPE_2),
+      Map.entry(EXT_DIMENSION_3.name.getEn().toLowerCase(Locale.ROOT), EXT_DIMENSION_3),
+      Map.entry(EXT_DIMENSION_TYPE_3.name.getEn().toLowerCase(Locale.ROOT), EXT_DIMENSION_TYPE_3),
+      Map.entry(EXT_DIMENSION_4.name.getEn().toLowerCase(Locale.ROOT), EXT_DIMENSION_4),
+      Map.entry(EXT_DIMENSION_TYPE_4.name.getEn().toLowerCase(Locale.ROOT), EXT_DIMENSION_TYPE_4),
+      Map.entry(EXT_DIMENSION_5.name.getEn().toLowerCase(Locale.ROOT), EXT_DIMENSION_5),
+      Map.entry(EXT_DIMENSION_TYPE_5.name.getEn().toLowerCase(Locale.ROOT), EXT_DIMENSION_TYPE_5)
+    );
   }
 }

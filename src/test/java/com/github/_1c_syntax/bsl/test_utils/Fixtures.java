@@ -33,7 +33,7 @@ import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
-import com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementOwner;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.Qualifier;
@@ -312,9 +312,13 @@ public class Fixtures {
             xstream.omitField(clazz, "plainDataSets");
           }
 
-          if (ManagedFormData.class.isAssignableFrom(clazz)
-            || SimpleFormItem.class.isAssignableFrom(clazz)) {
-            xstream.omitField(clazz, "plainItems");
+          if (FormElementOwner.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "plainElements");
+          }
+
+          if (ManagedFormData.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "plainAttributes");
+            xstream.omitField(clazz, "plainEventHandlers");
           }
 
           if (Module.class.isAssignableFrom(clazz)) {

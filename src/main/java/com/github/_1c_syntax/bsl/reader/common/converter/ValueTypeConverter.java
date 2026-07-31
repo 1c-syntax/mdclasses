@@ -112,6 +112,7 @@ public class ValueTypeConverter extends AbstractSingleValueConverter {
     types.put("ChartType".toLowerCase(Locale.ROOT), V8ValueType.CHART);
 
     types.put("settingscomposer", V8ValueType.DATA_COMPOSITION_SETTINGS_COMPOSER);
+    types.put("dcscor:field", V8ValueType.DATA_COMPOSITION_FIELD);
 
     return types;
   }

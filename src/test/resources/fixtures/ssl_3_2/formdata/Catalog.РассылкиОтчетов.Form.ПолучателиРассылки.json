@@ -1,53 +1,357 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
-   }
-  ],
-  "attributes": [
-   {
-    "name": "ПутьФормыВыбора",
-    "id": 1,
+    "name": "ВидПочтовогоАдресаПолучателей",
+    "comment": "",
+    "eventHandlers": [
+     {
+      "handler": "ВидПочтовогоАдресаПолучателейПриИзменении",
+      "event": "OnChange"
+     }
+    ],
+    "id": 41,
+    "type": "INPUT_FIELD",
     "title": {
-     "content": []
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
-    "type": {
-     "types": [
-      "STRING"
-     ],
-     "composite": false,
-     "qualifiers": [
-      {
-       "length": 0,
-       "allowedLength": 0
-      }
-     ]
-    }
+    "dataPath": "ВидПочтовогоАдресаПолучателей"
    },
    {
-    "name": "Получатели",
-    "id": 2,
+    "elements": [
+     {
+      "name": "ИтогВсего",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 119,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+      },
+      "dataPath": "ИтогВсего"
+     },
+     {
+      "name": "ИтогИсключены",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 122,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[5]\/title"
+      },
+      "dataPath": "ИтогИсключены"
+     }
+    ],
+    "name": "ГруппаИтоги",
+    "comment": "",
+    "id": 117,
+    "type": "USUAL_GROUP",
     "title": {
      "content": [
       {
        "langKey": "ru",
-       "value": "Получатели"
+       "value": "Итоги"
       }
      ]
-    },
-    "type": {
-     "types": [
-      "VALUE_TABLE"
-     ],
-     "composite": false,
-     "qualifiers": []
     }
    },
    {
+    "elements": [
+     {
+      "commandName": "Form.Command.Применить",
+      "name": "Применить",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 49,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[3]\/title"
+      }
+     }
+    ],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    }
+   },
+   {
+    "elements": [
+     {
+      "name": "ПолучателиСостояниеПросмотра",
+      "comment": "",
+      "id": 89,
+      "type": "VIEW_STATUS_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+      }
+     },
+     {
+      "name": "ПолучателиСтрокаПоиска",
+      "comment": "",
+      "id": 86,
+      "type": "SEARCH_STRING_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+      }
+     },
+     {
+      "name": "ПолучателиУправлениеПоиском",
+      "comment": "",
+      "id": 92,
+      "type": "SEARCH_CONTROL_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+      }
+     },
+     {
+      "name": "ПолучателиИсключен",
+      "comment": "",
+      "eventHandlers": [
+       {
+        "handler": "ПолучателиИсключенПриИзменении",
+        "event": "OnChange"
+       }
+      ],
+      "id": 71,
+      "type": "CHECK_BOX_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+      },
+      "dataPath": "Получатели.Исключен"
+     },
+     {
+      "elements": [
+       {
+        "name": "СтрокаПоиск",
+        "comment": "",
+        "id": 125,
+        "type": "SEARCH_STRING_ADDITION",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Поиск"
+          }
+         ]
+        }
+       },
+       {
+        "commandName": "Form.Command.ВставитьИзБуфераОбмена",
+        "name": "ВставитьИзБуфераОбмена",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 95,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/title"
+        }
+       },
+       {
+        "commandName": "Form.Command.ПолучателиПодобрать",
+        "name": "Подобрать",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 74,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[2]\/title"
+        }
+       },
+       {
+        "commandName": "Form.Item.Получатели.StandardCommand.Add",
+        "name": "ПолучателиДобавить",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 97,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+        }
+       },
+       {
+        "commandName": "Form.Item.Получатели.StandardCommand.Delete",
+        "name": "ПолучателиУдалить",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 141,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+        }
+       },
+       {
+        "elements": [
+         {
+          "commandName": "Form.Item.Получатели.StandardCommand.MoveUp",
+          "name": "ПолучателиПереместитьВверх",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 137,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+          }
+         },
+         {
+          "commandName": "Form.Item.Получатели.StandardCommand.MoveDown",
+          "name": "ПолучателиПереместитьВниз",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 139,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+          }
+         }
+        ],
+        "name": "ПолучателиГруппаПеремещение",
+        "comment": "",
+        "id": 150,
+        "type": "BUTTON_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Перемещение"
+          }
+         ]
+        }
+       },
+       {
+        "elements": [
+         {
+          "commandName": "Form.Command.СнятьПометки",
+          "name": "ПолучателиСнятьПометки",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 110,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Включить всех"
+            }
+           ]
+          }
+         },
+         {
+          "commandName": "Form.Command.УстановитьПометки",
+          "name": "ПолучателиУстановитьПометки",
+          "comment": "",
+          "eventHandlers": [],
+          "id": 108,
+          "type": "COMMAND_BAR_BUTTON",
+          "title": {
+           "content": [
+            {
+             "langKey": "ru",
+             "value": "Исключить всех"
+            }
+           ]
+          }
+         }
+        ],
+        "name": "ПолучателиГруппаПометки",
+        "comment": "",
+        "id": 106,
+        "type": "BUTTON_GROUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Получатели группа пометки"
+          }
+         ]
+        }
+       }
+      ],
+      "name": "ПолучателиКоманднаяПанель",
+      "comment": "",
+      "id": 66,
+      "type": "COMMAND_BAR",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+      }
+     },
+     {
+      "elements": [
+       {
+        "name": "ПолучателиПолучатель",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 68,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/title"
+        },
+        "dataPath": "Получатели.Получатель"
+       },
+       {
+        "name": "ПолучателиТЗАдрес",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 80,
+        "type": "INPUT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        },
+        "dataPath": "Получатели.Адрес"
+       }
+      ],
+      "name": "ПолучательНаименованиеИПочта",
+      "comment": "",
+      "id": 78,
+      "type": "COLUMN_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Получатель наименование и почта"
+        }
+       ]
+      }
+     }
+    ],
+    "name": "Получатели",
+    "comment": "",
+    "eventHandlers": [
+     {
+      "handler": "ПолучателиПослеУдаления",
+      "event": "AfterDeleteRow"
+     },
+     {
+      "handler": "ПолучателиПередНачаломДобавления",
+      "event": "BeforeAddRow"
+     },
+     {
+      "handler": "ПолучателиПередОкончаниемРедактирования",
+      "event": "BeforeEditEnd"
+     },
+     {
+      "handler": "ПолучателиОбработкаВыбора",
+      "event": "ChoiceProcessing"
+     }
+    ],
+    "id": 64,
+    "type": "TABLE",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/title"
+    },
+    "dataPath": "Получатели"
+   }
+  ],
+  "attributes": [
+   {
+    "columns": [],
     "name": "ВидПочтовогоАдресаПолучателей",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 3,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -69,47 +373,48 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": false
    },
    {
-    "name": "ИдентификаторОбъектаМетаданных",
-    "id": 4,
+    "columns": [],
+    "name": "ГруппаКонтактнойИнформацииТипаПолучателей",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 6,
+    "savedData": false,
     "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+     "content": []
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "ИдентификаторОбъектаМетаданных",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 4,
+    "savedData": false,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
     },
     "type": {
      "types": [],
      "composite": false,
      "qualifiers": []
-    }
-   },
-   {
-    "name": "ТипПолучателейРассылки",
-    "id": 5,
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
     },
-    "type": {
-     "types": [
-      "TYPE_DESCRIPTION"
-     ],
-     "composite": false,
-     "qualifiers": []
-    }
+    "mainAttribute": false
    },
    {
-    "name": "ГруппаКонтактнойИнформацииТипаПолучателей",
-    "id": 6,
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
-    }
-   },
-   {
+    "columns": [],
     "name": "ИтогВсего",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 7,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -130,11 +435,16 @@
        "scale": 0
       }
      ]
-    }
+    },
+    "mainAttribute": false
    },
    {
+    "columns": [],
     "name": "ИтогИсключены",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 8,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -144,36 +454,73 @@
      ]
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/type"
-    }
-   }
-  ],
-  "title": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-  },
-  "items": [
-   {
-    "name": "ВидПочтовогоАдресаПолучателей",
-    "id": 41,
-    "type": "INPUT_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/title"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]\/type"
     },
-    "items": [],
-    "dataPath": "ВидПочтовогоАдресаПолучателей"
+    "mainAttribute": false
    },
    {
-    "name": "Получатели",
-    "id": 64,
-    "type": "TABLE",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
-    },
-    "items": [
+    "columns": [
      {
-      "name": "ПолучателиИсключен",
-      "id": 71,
-      "type": "CHECK_BOX_FIELD",
+      "columns": [],
+      "name": "Адрес",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 3,
+      "savedData": false,
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Адрес"
+        }
+       ]
+      },
+      "type": {
+       "types": [
+        "STRING"
+       ],
+       "composite": false,
+       "qualifiers": [
+        {
+         "length": 0,
+         "allowedLength": 0
+        }
+       ]
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "ИндексКартинки",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 4,
+      "savedData": false,
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+      },
+      "type": {
+       "types": [
+        "NUMBER"
+       ],
+       "composite": false,
+       "qualifiers": [
+        {
+         "precision": 1,
+         "nonNegative": false,
+         "scale": 0
+        }
+       ]
+      },
+      "mainAttribute": false
+     },
+     {
+      "columns": [],
+      "name": "Исключен",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 2,
+      "savedData": false,
       "title": {
        "content": [
         {
@@ -182,93 +529,274 @@
         }
        ]
       },
-      "items": [],
-      "dataPath": "Получатели.Исключен"
+      "type": {
+       "types": [
+        "BOOLEAN"
+       ],
+       "composite": false,
+       "qualifiers": []
+      },
+      "mainAttribute": false
      },
      {
-      "name": "ПолучательНаименованиеИПочта",
-      "id": 78,
-      "type": "COLUMN_GROUP",
+      "columns": [],
+      "name": "Получатель",
+      "fillCheck": "DONT_CHECK",
+      "comment": "",
+      "id": 1,
+      "savedData": false,
       "title": {
        "content": [
         {
          "langKey": "ru",
-         "value": "Получатель наименование и почта"
+         "value": "Получатель"
         }
        ]
       },
-      "items": [
-       {
-        "name": "ПолучателиПолучатель",
-        "id": 68,
-        "type": "INPUT_FIELD",
-        "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Получатель"
-          }
-         ]
-        },
-        "items": [],
-        "dataPath": "Получатели.Получатель"
-       },
-       {
-        "name": "ПолучателиТЗАдрес",
-        "id": 80,
-        "type": "INPUT_FIELD",
-        "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Адрес"
-          }
-         ]
-        },
-        "items": [],
-        "dataPath": "Получатели.Адрес"
-       }
-      ],
-      "dataPath": ""
+      "type": {
+       "types": [
+        {
+         "kind": "DEFINED_TYPE",
+         "variant": "METADATA",
+         "fullName": {
+          "nameRu": "ОпределяемыйТип.ПолучательРассылки",
+          "nameEn": "DefinedType.ПолучательРассылки"
+         }
+        }
+       ],
+       "composite": false,
+       "qualifiers": []
+      },
+      "mainAttribute": false
      }
     ],
-    "dataPath": "Получатели"
-   },
-   {
-    "name": "ГруппаИтоги",
-    "id": 117,
-    "type": "USUAL_GROUP",
+    "name": "Получатели",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 2,
+    "savedData": false,
     "title": {
      "content": [
       {
        "langKey": "ru",
-       "value": "Итоги"
+       "value": "Получатели"
       }
      ]
     },
-    "items": [
-     {
-      "name": "ИтогВсего",
-      "id": 119,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[7]\/title"
-      },
-      "items": [],
-      "dataPath": "ИтогВсего"
-     },
-     {
-      "name": "ИтогИсключены",
-      "id": 122,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/title"
-      },
-      "items": [],
-      "dataPath": "ИтогИсключены"
-     }
-    ],
-    "dataPath": ""
+    "type": {
+     "types": [
+      "VALUE_TABLE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "ПутьФормыВыбора",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 1,
+    "savedData": false,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    },
+    "mainAttribute": false
+   },
+   {
+    "columns": [],
+    "name": "ТипПолучателейРассылки",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
+    "id": 5,
+    "savedData": false,
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+    },
+    "type": {
+     "types": [
+      "TYPE_DESCRIPTION"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "mainAttribute": false
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "title": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[2]\/title"
+  },
+  "parameters": [
+   {
+    "name": "ВидПочтовогоАдресаПолучателей",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "ГруппаКонтактнойИнформацииТипаПолучателей",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "НаименованиеРассылки",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "Получатели",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[3]\/type"
+    }
+   },
+   {
+    "name": "ПутьФормыВыбора",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "ТаблицаТиповПолучателей",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[6]\/columns\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/type"
+    }
+   },
+   {
+    "name": "ТипПолучателейРассылки",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[8]\/type"
+    }
+   }
+  ],
+  "commands": [
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "ВставитьИзБуфераОбмена",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand\/title"
+    },
+    "action": "ВставитьИзБуфераОбмена",
+    "id": 3,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Вставить из буфера обмена"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "CommonPicture.ВставитьИзБуфераОбмена"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "ПолучателиПодобрать",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[2]\/title"
+    },
+    "action": "ПолучателиПодобрать",
+    "id": 1,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Подобрать"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": ""
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "Применить",
+    "toolTip": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[3]\/title"
+    },
+    "action": "Применить",
+    "id": 2,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Применить"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": ""
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "СнятьПометки",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Снять отметки \"Исключен\""
+      }
+     ]
+    },
+    "action": "СнятьПометки",
+    "id": 5,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Снять пометки"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "StdPicture.UncheckAll"
+   },
+   {
+    "shortcut": "",
+    "associatedTableElementId": "",
+    "name": "УстановитьПометки",
+    "toolTip": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Установить отметки \"Исключен\""
+      }
+     ]
+    },
+    "action": "УстановитьПометки",
+    "id": 4,
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Установить пометки"
+      }
+     ]
+    },
+    "representation": "AUTO",
+    "picture": "StdPicture.CheckAll"
    }
   ],
   "empty": false

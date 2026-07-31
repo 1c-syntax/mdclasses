@@ -1,23 +1,169 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПослеЗаписиНаСервере",
-    "event": "AfterWriteAtServer"
+    "name": "Автор",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 9,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "dataPath": "Объект.Автор"
    },
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
+    "name": "Наименование",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 1,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "dataPath": "Объект.Description"
    },
    {
-    "name": "ПриЧтенииНаСервере",
-    "event": "OnReadAtServer"
+    "name": "Родитель",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 3,
+    "type": "INPUT_FIELD",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    },
+    "dataPath": "Объект.Parent"
+   },
+   {
+    "elements": [
+     {
+      "commandName": "Form.StandardCommand.Write",
+      "name": "ФормаЗаписать",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 7,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "commandName": "Form.StandardCommand.WriteAndClose",
+      "name": "ФормаЗаписатьИЗакрыть",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 15,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "commandName": "Form.StandardCommand.CustomizeForm",
+      "name": "ФормаИзменитьФорму",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 31,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "commandName": "Form.StandardCommand.ChangeHistory",
+      "name": "ФормаИсторияИзменений",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 29,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "commandName": "Form.StandardCommand.Reread",
+      "name": "ФормаПеречитать",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 19,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "commandName": "Form.StandardCommand.ShowInList",
+      "name": "ФормаПоказатьВСписке",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 27,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "commandName": "Form.StandardCommand.Copy",
+      "name": "ФормаСкопировать",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 21,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "commandName": "Form.StandardCommand.Help",
+      "name": "ФормаСправка",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 17,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "commandName": "Form.StandardCommand.Delete",
+      "name": "ФормаУдалить",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 25,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "commandName": "Form.StandardCommand.SetDeletionMark",
+      "name": "ФормаУстановитьПометкуУдаления",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 23,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     }
+    ],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+    }
    }
   ],
   "attributes": [
    {
+    "columns": [],
     "name": "Объект",
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 1,
+    "savedData": true,
     "title": {
      "content": []
     },
@@ -34,44 +180,29 @@
      ],
      "composite": false,
      "qualifiers": []
-    }
+    },
+    "mainAttribute": true
+   }
+  ],
+  "eventHandlers": [
+   {
+    "handler": "ПослеЗаписиНаСервере",
+    "event": "AfterWriteAtServer"
+   },
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   },
+   {
+    "handler": "ПриЧтенииНаСервере",
+    "event": "OnReadAtServer"
    }
   ],
   "title": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
   },
-  "items": [
-   {
-    "name": "Наименование",
-    "id": 1,
-    "type": "INPUT_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "items": [],
-    "dataPath": "Объект.Description"
-   },
-   {
-    "name": "Родитель",
-    "id": 3,
-    "type": "INPUT_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "items": [],
-    "dataPath": "Объект.Parent"
-   },
-   {
-    "name": "Автор",
-    "id": 9,
-    "type": "INPUT_FIELD",
-    "title": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-    },
-    "items": [],
-    "dataPath": "Объект.Автор"
-   }
-  ],
+  "parameters": [],
+  "commands": [],
   "empty": false
  }
 }

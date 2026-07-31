@@ -41,8 +41,8 @@ import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
-import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementOwner;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import lombok.experimental.UtilityClass;
@@ -281,28 +281,15 @@ public class LazyLoader {
   /**
    * Производит расчет списка дочерних элементов формы. Список включает все дочерних по иерархии вниз
    *
-   * @param formItem Элемент формы, у которого есть дочерние элементы
+   * @param element Элемент формы, у которого есть дочерние элементы
    * @return Немодифицируемый список дочерних объектов
    */
-  public List<FormItem> computePlainFormItems(FormItem formItem) {
-    List<FormItem> items = addAll(Collections.emptyList(), formItem.getItems());
+  public List<FormElement> computePlainFormElements(FormElementOwner element) {
+    List<FormElement> items = addAll(Collections.emptyList(), element.getElements());
     items = addAll(items, items.stream()
-      .map(FormItem::getPlainItems)
-      .flatMap(Collection::stream)
-      .toList());
-    return Collections.unmodifiableList(items);
-  }
-
-  /**
-   * Производит расчет списка дочерних элементов формы. Список включает все дочерних по иерархии вниз
-   *
-   * @param formData Форма, у которой есть дочерние элементы
-   * @return Немодифицируемый список дочерних объектов
-   */
-  public List<FormItem> computePlainFormItems(ManagedFormData formData) {
-    List<FormItem> items = addAll(Collections.emptyList(), formData.getItems());
-    items = addAll(items, items.stream()
-      .map(FormItem::getPlainItems)
+      .filter(FormElementOwner.class::isInstance)
+      .map(FormElementOwner.class::cast)
+      .map(FormElementOwner::getPlainElements)
       .flatMap(Collection::stream)
       .toList());
     return Collections.unmodifiableList(items);

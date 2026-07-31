@@ -97,6 +97,7 @@ class CommonFormTest {
       var mdo = Fixtures.get(pack, groupRef, formatEDT);
       assertThat(mdo).isInstanceOf(CommonForm.class);
       var commonForm = (CommonForm) mdo;
+      assertThat(commonForm).isNotNull();
       var data = commonForm.getData();
       var actualJson = Fixtures.asJson(data);
       Assertions.assertThat(actualJson, true).isEqual(fixtureContent);
