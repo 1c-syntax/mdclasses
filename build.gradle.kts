@@ -68,7 +68,7 @@ dependencies {
     // быстрый поиск классов
     implementation("io.github.classgraph:classgraph:4.8.186")
 
-    implementation("org.jspecify:jspecify:1.0.0")
+    implementation("org.jspecify:jspecify:1.0.1")
 
     // тестирование
     testImplementation(platform("org.junit:junit-bom:6.1.2"))
