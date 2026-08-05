@@ -77,7 +77,7 @@ dependencies {
     testImplementation("org.assertj:assertj-core:3.27.7")
     testImplementation("com.ginsberg:junit5-system-exit:2.0.3")
     testImplementation("org.skyscreamer:jsonassert:1.5.3")
-    testImplementation("org.objenesis:objenesis:3.5")
+    testImplementation("org.objenesis:objenesis:3.6")
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
