@@ -13,7 +13,7 @@ plugins {
     id("com.github.ben-manes.versions") version "0.58.0"
     id("ru.vyarus.pom") version "3.0.0"
     id("org.jreleaser") version "1.25.0"
-    id("org.sonarqube") version "7.3.1.8318"
+    id("org.sonarqube") version "7.4.0.8496"
     id("me.champeau.jmh") version "0.7.3"
 }
 
