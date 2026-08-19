@@ -671,7 +671,7 @@
 </code></pre></div>
 <h4 id="Gradle">Gradle<a class="headerlink" href="#Gradle" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="o">{</span>
-<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;io.github.1c-syntax:mdclasses:версия_библиотеки&#39;</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">'io.github.1c-syntax:mdclasses:версия_библиотеки'</span>
 <span class="o">}</span>
 </code></pre></div>
 <h3 id="Простой-пример-использования">Простой пример использования<a class="headerlink" href="#Простой-пример-использования" title="Permanent link">&para;</a></h3>
@@ -683,14 +683,14 @@
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Example</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="c1">// Путь к каталогу конфигурации</span>
-<span class="w">        </span><span class="n">Path</span><span class="w"> </span><span class="n">configurationPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;path/to/configuration&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Path</span><span class="w"> </span><span class="n">configurationPath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">"path/to/configuration"</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// Чтение конфигурации</span>
 <span class="w">        </span><span class="n">Configuration</span><span class="w"> </span><span class="n">configuration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Configuration</span><span class="p">)</span><span class="w"> </span><span class="n">MDClasses</span><span class="p">.</span><span class="na">createConfiguration</span><span class="p">(</span><span class="n">configurationPath</span><span class="p">);</span>
 
 <span class="w">        </span><span class="c1">// Вывод информации о конфигурации</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Имя конфигурации: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Количество справочников: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getCatalogs</span><span class="p">().</span><span class="na">size</span><span class="p">());</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Имя конфигурации: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getName</span><span class="p">());</span>
+<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Количество справочников: "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">configuration</span><span class="p">.</span><span class="na">getCatalogs</span><span class="p">().</span><span class="na">size</span><span class="p">());</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
