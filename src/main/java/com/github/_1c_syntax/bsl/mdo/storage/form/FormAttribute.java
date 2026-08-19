@@ -94,6 +94,27 @@ public class FormAttribute implements FormItem, ValueTypeOwner {
   @Singular("addColumns")
   List<FormAttribute> columns;
 
+  /**
+   * Основная таблица динамического списка (например Catalog.Номенклатура).
+   * Заполняется только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Default
+  String mainTable = "";
+
+  /**
+   * Признак произвольного запроса динамического списка.
+   * Заполняется только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Default
+  boolean customQuery = false;
+
+  /**
+   * Текст запроса динамического списка.
+   * Заполняется только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Default
+  String queryText = "";
+
   @Override
   public ValueTypeDescription getValueType() {
     return type;
