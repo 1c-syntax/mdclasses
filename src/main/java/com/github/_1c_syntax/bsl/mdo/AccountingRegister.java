@@ -51,7 +51,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class AccountingRegister implements Register, AccessRightsOwner {
+public class AccountingRegister implements Register {
 
   /*
    * Register

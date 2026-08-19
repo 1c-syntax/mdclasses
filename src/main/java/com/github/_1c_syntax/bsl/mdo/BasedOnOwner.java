@@ -21,21 +21,16 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.types.MdoReference;
+
 import java.util.List;
 
 /**
- * Базовый интерфейс для всех ссылочных типов (Справочники, Документы, ПВХ, Перечисления и т.д.)
+ * Объект метаданных, вводимый на основании других объектов
  */
-public interface ReferenceObject extends MDObject, ModuleOwner, CommandOwner, AttributeOwner, FormOwner,
-  TemplateOwner, CharacteristicOwner {
-
+public interface BasedOnOwner {
   /**
-   * Список реквизитов объекта
+   * Список объектов, на основании которых вводится текущий объект
    */
-  List<Attribute> getAttributes();
-
-  @Override
-  default List<Attribute> getAllAttributes() {
-    return getAttributes();
-  }
+  List<MdoReference> getBasedOn();
 }

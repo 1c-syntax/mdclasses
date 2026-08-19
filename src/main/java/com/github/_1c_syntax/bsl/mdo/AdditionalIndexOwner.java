@@ -21,21 +21,16 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+
 import java.util.List;
 
 /**
- * Базовый интерфейс для всех ссылочных типов (Справочники, Документы, ПВХ, Перечисления и т.д.)
+ * Объект метаданных, содержащий дополнительные индексы
  */
-public interface ReferenceObject extends MDObject, ModuleOwner, CommandOwner, AttributeOwner, FormOwner,
-  TemplateOwner, CharacteristicOwner {
-
+public interface AdditionalIndexOwner {
   /**
-   * Список реквизитов объекта
+   * Список дополнительных индексов объекта
    */
-  List<Attribute> getAttributes();
-
-  @Override
-  default List<Attribute> getAllAttributes() {
-    return getAttributes();
-  }
+  List<AdditionalIndex> getAdditionalIndexes();
 }

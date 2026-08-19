@@ -381,8 +381,6 @@ public class MDMerger {
     }
     if (srcMD instanceof Enum anEnum) {
       builder = copyChildrenList(anEnum, (Enum) modMD, builder,
-        Enum::getAttributes, "attributes", newChildren);
-      builder = copyChildrenList(anEnum, (Enum) modMD, builder,
         Enum::getEnumValues, "enumValues", newChildren);
     }
     if (srcMD instanceof Task task) {

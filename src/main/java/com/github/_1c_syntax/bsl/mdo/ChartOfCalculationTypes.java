@@ -55,7 +55,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ChartOfCalculationTypes implements ReferenceObject, AccessRightsOwner, PredefinedDataOwner, CharacteristicOwner {
+public class ChartOfCalculationTypes implements MutableReferenceObject, PredefinedDataOwner {
 
   /*
    * ReferenceObject

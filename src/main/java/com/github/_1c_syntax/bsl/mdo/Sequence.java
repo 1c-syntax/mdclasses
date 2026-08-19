@@ -42,7 +42,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Sequence implements MDObject, AttributeOwner, ModuleOwner, AccessRightsOwner {
+public class Sequence implements MDObject, AttributeOwner, ModuleOwner, AccessRightsOwner, AdditionalIndexOwner {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.EDIT);
 

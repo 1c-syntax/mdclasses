@@ -53,7 +53,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CalculationRegister implements Register, AccessRightsOwner {
+public class CalculationRegister implements Register {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 

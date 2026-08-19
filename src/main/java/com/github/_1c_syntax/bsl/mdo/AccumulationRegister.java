@@ -51,7 +51,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class AccumulationRegister implements Register, AccessRightsOwner {
+public class AccumulationRegister implements Register {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 

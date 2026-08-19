@@ -55,7 +55,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Task implements ReferenceObject, AccessRightsOwner, CharacteristicOwner {
+public class Task implements MutableReferenceObject {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 

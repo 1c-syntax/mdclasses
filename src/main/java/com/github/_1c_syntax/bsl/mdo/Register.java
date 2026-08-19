@@ -29,7 +29,8 @@ import java.util.List;
 /**
  * Базовый интерфейс для всех регистров (Сведений, Накопления...)
  */
-public interface Register extends MDObject, AttributeOwner, CommandOwner, ModuleOwner, FormOwner, TemplateOwner {
+public interface Register extends MDObject, AttributeOwner, CommandOwner, ModuleOwner, FormOwner, TemplateOwner,
+  AccessRightsOwner, AdditionalIndexOwner, FullTextSearchOwner {
   /**
    * Список реквизитов регистра
    */
