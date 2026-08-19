@@ -54,7 +54,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class BusinessProcess implements ReferenceObject, AccessRightsOwner, CharacteristicOwner {
+public class BusinessProcess implements MutableReferenceObject {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 

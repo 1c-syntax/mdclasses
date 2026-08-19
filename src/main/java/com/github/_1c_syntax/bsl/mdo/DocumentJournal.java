@@ -50,7 +50,7 @@ import java.util.Map;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, AttributeOwner, FormOwner, TemplateOwner,
-  AccessRightsOwner {
+  AccessRightsOwner, AdditionalIndexOwner {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.VIEW);
 

@@ -46,7 +46,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonAttribute implements MDObject, AccessRightsOwner, ValueTypeOwner {
+public class CommonAttribute implements MDObject, AccessRightsOwner, ValueTypeOwner, FullTextSearchOwner {
 
   // todo соединить с атрибутом
 

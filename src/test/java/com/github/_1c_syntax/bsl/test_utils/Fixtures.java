@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.test_utils;
 import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
 import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
+import com.github._1c_syntax.bsl.mdo.AdditionalIndexOwner;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Form;
@@ -296,6 +297,9 @@ public class Fixtures {
             xstream.omitField(clazz, "allAttributes");
             xstream.omitField(clazz, "storageFields");
             xstream.omitField(clazz, "plainStorageFields");
+          }
+
+          if (AdditionalIndexOwner.class.isAssignableFrom(clazz)) {
             xstream.omitField(clazz, "additionalIndexes");
           }
 

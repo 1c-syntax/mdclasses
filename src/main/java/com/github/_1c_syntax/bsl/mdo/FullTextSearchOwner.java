@@ -21,21 +21,14 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import java.util.List;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 
 /**
- * Базовый интерфейс для всех ссылочных типов (Справочники, Документы, ПВХ, Перечисления и т.д.)
+ * Объект метаданных, поддерживающий полнотекстовый поиск
  */
-public interface ReferenceObject extends MDObject, ModuleOwner, CommandOwner, AttributeOwner, FormOwner,
-  TemplateOwner, CharacteristicOwner {
-
+public interface FullTextSearchOwner {
   /**
-   * Список реквизитов объекта
+   * Режим полнотекстового поиска
    */
-  List<Attribute> getAttributes();
-
-  @Override
-  default List<Attribute> getAllAttributes() {
-    return getAttributes();
-  }
+  UseMode getFullTextSearch();
 }

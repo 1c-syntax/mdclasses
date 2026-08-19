@@ -21,21 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import java.util.List;
-
 /**
- * Базовый интерфейс для всех ссылочных типов (Справочники, Документы, ПВХ, Перечисления и т.д.)
+ * Базовый интерфейс для изменяемых ссылочных типов (Справочники, Документы, ПВХ и т.д.),
+ * данные которых могут изменяться
  */
-public interface ReferenceObject extends MDObject, ModuleOwner, CommandOwner, AttributeOwner, FormOwner,
-  TemplateOwner, CharacteristicOwner {
-
-  /**
-   * Список реквизитов объекта
-   */
-  List<Attribute> getAttributes();
-
-  @Override
-  default List<Attribute> getAllAttributes() {
-    return getAttributes();
-  }
+public interface MutableReferenceObject extends ReferenceObject, TabularSectionOwner, AccessRightsOwner,
+  BasedOnOwner, AdditionalIndexOwner, DataLockFieldsOwner, InputByStringOwner, FullTextSearchOwner {
 }

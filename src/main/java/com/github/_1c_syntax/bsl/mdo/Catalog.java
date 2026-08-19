@@ -57,7 +57,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Catalog implements ReferenceObject, AccessRightsOwner, PredefinedDataOwner, CharacteristicOwner {
+public class Catalog implements MutableReferenceObject, PredefinedDataOwner {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
