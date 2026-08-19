@@ -90,7 +90,25 @@ public class MDMerger {
         .scriptVariant(extension.getScriptVariant())
         .interfaceCompatibilityMode(extension.getInterfaceCompatibilityMode())
         .compatibilityMode(extension.getCompatibilityMode())
-        .defaultRunMode(extension.getDefaultRunMode());
+        .defaultRunMode(extension.getDefaultRunMode())
+        .defaultConstantsForm(extension.getDefaultConstantsForm())
+        .defaultReportForm(extension.getDefaultReportForm())
+        .defaultReportVariantForm(extension.getDefaultReportVariantForm())
+        .defaultReportSettingsForm(extension.getDefaultReportSettingsForm())
+        .defaultDynamicListSettingsForm(extension.getDefaultDynamicListSettingsForm())
+        .defaultSearchForm(extension.getDefaultSearchForm())
+        .defaultDataHistoryChangeHistoryForm(extension.getDefaultDataHistoryChangeHistoryForm())
+        .defaultDataHistoryVersionDataForm(extension.getDefaultDataHistoryVersionDataForm())
+        .defaultDataHistoryVersionDifferencesForm(extension.getDefaultDataHistoryVersionDifferencesForm())
+        .defaultCollaborationSystemUsersChoiceForm(extension.getDefaultCollaborationSystemUsersChoiceForm())
+        .auxiliaryDefaultReportForm(extension.getAuxiliaryDefaultReportForm())
+        .auxiliaryDefaultReportVariantForm(extension.getAuxiliaryDefaultReportVariantForm())
+        .auxiliaryDefaultReportSettingsForm(extension.getAuxiliaryDefaultReportSettingsForm())
+        .auxiliaryDefaultDynamicListSettingsForm(extension.getAuxiliaryDefaultDynamicListSettingsForm())
+        .auxiliaryDefaultDataHistoryChangeHistoryForm(extension.getAuxiliaryDefaultDataHistoryChangeHistoryForm())
+        .auxiliaryDefaultDataHistoryVersionDataForm(extension.getAuxiliaryDefaultDataHistoryVersionDataForm())
+        .auxiliaryDefaultDataHistoryVersionDifferencesForm(extension.getAuxiliaryDefaultDataHistoryVersionDifferencesForm())
+        .auxiliaryDefaultCollaborationSystemUsersChoiceForm(extension.getAuxiliaryDefaultCollaborationSystemUsersChoiceForm());
     }
 
     List<MD> newChildren = new ArrayList<>();

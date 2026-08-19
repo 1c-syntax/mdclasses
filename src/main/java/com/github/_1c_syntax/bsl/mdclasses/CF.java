@@ -21,12 +21,14 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.mdo.CommonForm;
 import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
@@ -86,6 +88,149 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
    * Назначения использования форм
    */
   List<UsePurposes> getUsePurposes();
+
+  /**
+   * Ссылка на основную форму констант
+   */
+  MdoReference getDefaultConstantsForm();
+
+  /**
+   * Ссылка на основную форму отчёта
+   */
+  MdoReference getDefaultReportForm();
+
+  /**
+   * Ссылка на основную форму варианта отчёта
+   */
+  MdoReference getDefaultReportVariantForm();
+
+  /**
+   * Ссылка на основную форму настроек отчёта
+   */
+  MdoReference getDefaultReportSettingsForm();
+
+  /**
+   * Ссылка на основную форму настроек динамического списка
+   */
+  MdoReference getDefaultDynamicListSettingsForm();
+
+  /**
+   * Ссылка на основную форму поиска
+   */
+  MdoReference getDefaultSearchForm();
+
+  /**
+   * Ссылка на основную форму истории изменений истории данных
+   */
+  MdoReference getDefaultDataHistoryChangeHistoryForm();
+
+  /**
+   * Ссылка на основную форму данных версии истории данных
+   */
+  MdoReference getDefaultDataHistoryVersionDataForm();
+
+  /**
+   * Ссылка на основную форму различий версий истории данных
+   */
+  MdoReference getDefaultDataHistoryVersionDifferencesForm();
+
+  /**
+   * Ссылка на основную форму выбора пользователей системы взаимодействия
+   */
+  MdoReference getDefaultCollaborationSystemUsersChoiceForm();
+
+  /**
+   * Ссылка на дополнительную форму отчёта
+   */
+  MdoReference getAuxiliaryDefaultReportForm();
+
+  /**
+   * Ссылка на дополнительную форму варианта отчёта
+   */
+  MdoReference getAuxiliaryDefaultReportVariantForm();
+
+  /**
+   * Ссылка на дополнительную форму настроек отчёта
+   */
+  MdoReference getAuxiliaryDefaultReportSettingsForm();
+
+  /**
+   * Ссылка на дополнительную форму настроек динамического списка
+   */
+  MdoReference getAuxiliaryDefaultDynamicListSettingsForm();
+
+  /**
+   * Ссылка на дополнительную форму истории изменений истории данных
+   */
+  MdoReference getAuxiliaryDefaultDataHistoryChangeHistoryForm();
+
+  /**
+   * Ссылка на дополнительную форму данных версии истории данных
+   */
+  MdoReference getAuxiliaryDefaultDataHistoryVersionDataForm();
+
+  /**
+   * Ссылка на дополнительную форму различий версий истории данных
+   */
+  MdoReference getAuxiliaryDefaultDataHistoryVersionDifferencesForm();
+
+  /**
+   * Ссылка на дополнительную форму выбора пользователей системы взаимодействия
+   */
+  MdoReference getAuxiliaryDefaultCollaborationSystemUsersChoiceForm();
+
+  /**
+   * Соответствие видов основных форм конфигурации и ссылок на соответствующие общие формы
+   *
+   * @return соответствие видов форм по умолчанию
+   */
+  default Map<DefaultFormKind, MdoReference> getDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.CONSTANTS_FORM, getDefaultConstantsForm()),
+      Map.entry(DefaultFormKind.REPORT_FORM, getDefaultReportForm()),
+      Map.entry(DefaultFormKind.REPORT_VARIANT_FORM, getDefaultReportVariantForm()),
+      Map.entry(DefaultFormKind.REPORT_SETTINGS_FORM, getDefaultReportSettingsForm()),
+      Map.entry(DefaultFormKind.DYNAMIC_LIST_SETTINGS_FORM, getDefaultDynamicListSettingsForm()),
+      Map.entry(DefaultFormKind.SEARCH_FORM, getDefaultSearchForm()),
+      Map.entry(DefaultFormKind.DATA_HISTORY_CHANGE_HISTORY_FORM, getDefaultDataHistoryChangeHistoryForm()),
+      Map.entry(DefaultFormKind.DATA_HISTORY_VERSION_DATA_FORM, getDefaultDataHistoryVersionDataForm()),
+      Map.entry(DefaultFormKind.DATA_HISTORY_VERSION_DIFFERENCES_FORM, getDefaultDataHistoryVersionDifferencesForm()),
+      Map.entry(DefaultFormKind.COLLABORATION_SYSTEM_USERS_CHOICE_FORM, getDefaultCollaborationSystemUsersChoiceForm()),
+      Map.entry(DefaultFormKind.AUX_REPORT_FORM, getAuxiliaryDefaultReportForm()),
+      Map.entry(DefaultFormKind.AUX_REPORT_VARIANT_FORM, getAuxiliaryDefaultReportVariantForm()),
+      Map.entry(DefaultFormKind.AUX_REPORT_SETTINGS_FORM, getAuxiliaryDefaultReportSettingsForm()),
+      Map.entry(DefaultFormKind.AUX_DYNAMIC_LIST_SETTINGS_FORM, getAuxiliaryDefaultDynamicListSettingsForm()),
+      Map.entry(DefaultFormKind.AUX_DATA_HISTORY_CHANGE_HISTORY_FORM, getAuxiliaryDefaultDataHistoryChangeHistoryForm()),
+      Map.entry(DefaultFormKind.AUX_DATA_HISTORY_VERSION_DATA_FORM, getAuxiliaryDefaultDataHistoryVersionDataForm()),
+      Map.entry(DefaultFormKind.AUX_DATA_HISTORY_VERSION_DIFFERENCES_FORM, getAuxiliaryDefaultDataHistoryVersionDifferencesForm()),
+      Map.entry(DefaultFormKind.AUX_COLLABORATION_SYSTEM_USERS_CHOICE_FORM, getAuxiliaryDefaultCollaborationSystemUsersChoiceForm())
+    );
+  }
+
+  /**
+   * Возвращает ссылку на основную форму конфигурации по типу.
+   *
+   * @param kind Тип основной формы
+   * @return Ссылка на форму или {@link MdoReference#EMPTY}, если её нет либо тип неприменим
+   */
+  default MdoReference getDefaultFormLink(DefaultFormKind kind) {
+    return getDefaultFormMap().getOrDefault(kind, MdoReference.EMPTY);
+  }
+
+  /**
+   * Возвращает основную форму конфигурации по типу.
+   * Ищет общую форму в {@link #getCommonForms()} по ссылке, полученной из {@link #getDefaultFormLink}.
+   *
+   * @param kind Тип основной формы
+   * @return Форма или {@link Optional#empty()}, если ссылка не указана или форма не найдена в списке
+   */
+  default Optional<CommonForm> getDefaultForm(DefaultFormKind kind) {
+    var link = getDefaultFormLink(kind);
+    if (link.isEmpty()) {
+      return Optional.empty();
+    }
+    return findCommonForm(form -> form.getMdoReference().equals(link));
+  }
 
   /**
    * Возвращает соответствие пути к модулю его типу

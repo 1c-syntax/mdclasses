@@ -284,6 +284,114 @@ public class ConfigurationExtension implements CF {
   String namePrefix = "";
 
   /**
+   * Ссылка на основную форму констант
+   */
+  @Default
+  MdoReference defaultConstantsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму отчёта
+   */
+  @Default
+  MdoReference defaultReportForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму варианта отчёта
+   */
+  @Default
+  MdoReference defaultReportVariantForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму настроек отчёта
+   */
+  @Default
+  MdoReference defaultReportSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму настроек динамического списка
+   */
+  @Default
+  MdoReference defaultDynamicListSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму поиска
+   */
+  @Default
+  MdoReference defaultSearchForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму истории изменений истории данных
+   */
+  @Default
+  MdoReference defaultDataHistoryChangeHistoryForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму данных версии истории данных
+   */
+  @Default
+  MdoReference defaultDataHistoryVersionDataForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму различий версий истории данных
+   */
+  @Default
+  MdoReference defaultDataHistoryVersionDifferencesForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму выбора пользователей системы взаимодействия
+   */
+  @Default
+  MdoReference defaultCollaborationSystemUsersChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму отчёта
+   */
+  @Default
+  MdoReference auxiliaryDefaultReportForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму варианта отчёта
+   */
+  @Default
+  MdoReference auxiliaryDefaultReportVariantForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму настроек отчёта
+   */
+  @Default
+  MdoReference auxiliaryDefaultReportSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму настроек динамического списка
+   */
+  @Default
+  MdoReference auxiliaryDefaultDynamicListSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму истории изменений истории данных
+   */
+  @Default
+  MdoReference auxiliaryDefaultDataHistoryChangeHistoryForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму данных версии истории данных
+   */
+  @Default
+  MdoReference auxiliaryDefaultDataHistoryVersionDataForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму различий версий истории данных
+   */
+  @Default
+  MdoReference auxiliaryDefaultDataHistoryVersionDifferencesForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму выбора пользователей системы взаимодействия
+   */
+  @Default
+  MdoReference auxiliaryDefaultCollaborationSystemUsersChoiceForm = MdoReference.EMPTY;
+
+  /**
    * Возвращает перечень возможных прав доступа
    */
   public static List<RoleRight> possibleRights() {
