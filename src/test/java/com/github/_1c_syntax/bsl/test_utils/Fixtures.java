@@ -282,6 +282,7 @@ public class Fixtures {
             xstream.omitField(clazz, "childrenByMdoRef");
             xstream.omitField(clazz, "configurationSource");
             xstream.omitField(clazz, "configurationExtensionCompatibilityMode");
+            xstream.omitField(clazz, "defaultFormMap");
           }
 
           if (ExternalSource.class.isAssignableFrom(clazz)) {

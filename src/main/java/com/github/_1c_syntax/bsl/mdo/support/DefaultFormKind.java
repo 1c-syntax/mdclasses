@@ -46,11 +46,16 @@ public enum DefaultFormKind implements EnumWithName {
   VARIANT_FORM("VariantForm", "ФормаВарианта"),
   SAVE_FORM("SaveForm", "ФормаЗаписи"),
   LOAD_FORM("LoadForm", "ФормаОткрытия"),
+  CONSTANTS_FORM("ConstantsForm", "ФормаКонстант"),
   REPORT_FORM("ReportForm", "ФормаОтчета"),
   REPORT_VARIANT_FORM("ReportVariantForm", "ФормаВариантаОтчета"),
   REPORT_SETTINGS_FORM("ReportSettingsForm", "ФормаНастроекОтчета"),
   DYNAMIC_LIST_SETTINGS_FORM("DynamicListSettingsForm", "ФормаНастроекДинамическогоСписка"),
   SEARCH_FORM("SearchForm", "ФормаПоиска"),
+  DATA_HISTORY_CHANGE_HISTORY_FORM("DataHistoryChangeHistoryForm", "ФормаИсторииИзмененийИсторииДанных"),
+  DATA_HISTORY_VERSION_DATA_FORM("DataHistoryVersionDataForm", "ФормаДанныхВерсииИсторииДанных"),
+  DATA_HISTORY_VERSION_DIFFERENCES_FORM("DataHistoryVersionDifferencesForm", "ФормаРазличийВерсийИсторииДанных"),
+  COLLABORATION_SYSTEM_USERS_CHOICE_FORM("CollaborationSystemUsersChoiceForm", "ФормаВыбораПользователейСистемыВзаимодействия"),
   AUX_OBJECT_FORM("AuxiliaryObjectForm", "ДополнительнаяФормаОбъекта"),
   AUX_FOLDER_FORM("AuxiliaryFolderForm", "ДополнительнаяФормаГруппы"),
   AUX_LIST_FORM("AuxiliaryListForm", "ДополнительнаяФормаСписка"),
@@ -65,7 +70,11 @@ public enum DefaultFormKind implements EnumWithName {
   AUX_REPORT_SETTINGS_FORM("AuxiliaryReportSettingsForm", "ДополнительнаяФормаНастроекОтчета"),
   AUX_DYNAMIC_LIST_SETTINGS_FORM("AuxiliaryDynamicListSettingsForm", "ДополнительнаяФормаНастроекДинамическогоСписка"),
   AUX_SAVE_FORM("AuxiliarySaveForm", "ДополнительнаяФормаЗаписи"),
-  AUX_LOAD_FORM("AuxiliaryLoadForm", "ДополнительнаяФормаОткрытия");
+  AUX_LOAD_FORM("AuxiliaryLoadForm", "ДополнительнаяФормаОткрытия"),
+  AUX_DATA_HISTORY_CHANGE_HISTORY_FORM("AuxiliaryDataHistoryChangeHistoryForm", "ДополнительнаяФормаИсторииИзмененийИсторииДанных"),
+  AUX_DATA_HISTORY_VERSION_DATA_FORM("AuxiliaryDataHistoryVersionDataForm", "ДополнительнаяФормаДанныхВерсииИсторииДанных"),
+  AUX_DATA_HISTORY_VERSION_DIFFERENCES_FORM("AuxiliaryDataHistoryVersionDifferencesForm", "ДополнительнаяФормаРазличийВерсийИсторииДанных"),
+  AUX_COLLABORATION_SYSTEM_USERS_CHOICE_FORM("AuxiliaryCollaborationSystemUsersChoiceForm", "ДополнительнаяФормаВыбораПользователейСистемыВзаимодействия");
 
   private static final Map<String, DefaultFormKind> KEYS = EnumWithName.computeKeys(values());
 
