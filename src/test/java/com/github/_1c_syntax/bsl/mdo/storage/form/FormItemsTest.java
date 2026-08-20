@@ -77,7 +77,7 @@ class FormItemsTest {
     assertThat(objectAttr.getName()).isEqualTo("Объект");
     assertThat(objectAttr.isMainAttribute()).isTrue();
     assertThat(objectAttr.isSavedData()).isTrue();
-    assertThat(objectAttr.getType().getTypes()).hasSize(1);
+    assertThat(objectAttr.getValueType().getTypes()).hasSize(1);
     assertThat(objectAttr.getFillCheck()).isEqualTo(FillChecking.DONT_CHECK);
     assertThat(objectAttr.getComment()).isEmpty();
     assertThat(objectAttr.getTitle()).isEqualTo(MultiLanguageString.EMPTY);
@@ -155,7 +155,7 @@ class FormItemsTest {
     assertThat(objectAttr.getId()).isEqualTo(1);
     assertThat(objectAttr.isMainAttribute()).isTrue();
     assertThat(objectAttr.isSavedData()).isTrue();
-    assertThat(objectAttr.getType().getTypes()).hasSize(1);
+    assertThat(objectAttr.getValueType().getTypes()).hasSize(1);
     assertThat(objectAttr.getFillCheck()).isEqualTo(FillChecking.DONT_CHECK);
     assertThat(objectAttr.getComment()).isEmpty();
     assertThat(objectAttr.getTitle()).isEqualTo(MultiLanguageString.EMPTY);
@@ -164,13 +164,13 @@ class FormItemsTest {
     var tableAttr = findAttr(attributes, "ТаблицаВопросовРаздела");
     assertThat(tableAttr).isNotNull();
     assertThat(tableAttr.getId()).isEqualTo(8);
-    assertThat(tableAttr.getType().contains(V8ValueType.VALUE_TABLE)).isTrue();
+    assertThat(tableAttr.getValueType().contains(V8ValueType.VALUE_TABLE)).isTrue();
     assertThat(tableAttr.getColumns()).hasSize(34);
 
     var treeAttr = findAttr(attributes, "ДеревоРазделов");
     assertThat(treeAttr).isNotNull();
     assertThat(treeAttr.getId()).isEqualTo(12);
-    assertThat(treeAttr.getType().contains(V8ValueType.VALUE_TREE)).isTrue();
+    assertThat(treeAttr.getValueType().contains(V8ValueType.VALUE_TREE)).isTrue();
     assertThat(treeAttr.getTitle().isEmpty()).isFalse();
     assertThat(treeAttr.getColumns()).hasSize(6);
     assertThat(treeAttr.getColumns().get(1).getName()).isEqualTo("ПолныйКод");
@@ -231,6 +231,67 @@ class FormItemsTest {
     assertThat(plainEventHandlers.get("Респондент.StartChoice").handler()).isEqualTo("РеспондентНачалоВыбора");
     assertThat(plainEventHandlers.get("Комментарий.StartChoice").handler()).isEqualTo("КомментарийНачалоВыбора");
     assertThat(plainEventHandlers.get("ДеревоРазделов.Selection").handler()).isEqualTo("ДеревоРазделовВыбор");
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, ssl_3_2, Catalogs.ГруппыДоступа",
+    "false, ssl_3_2, Catalogs.ГруппыДоступа",
+  })
+  void shouldReadAdditionalColumnsForObjectAttribute(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo)
+      .isNotNull()
+      .isInstanceOf(FormOwner.class);
+
+    var formOwner = (FormOwner) mdo;
+    var form = formOwner.getForms().stream()
+      .filter(f -> f.getName().equals("ФормаЭлемента"))
+      .findFirst()
+      .orElse(null);
+
+    assertThat(form).isNotNull();
+    var formData = form.getData();
+    assertThat(formData).isNotNull();
+
+    var objectAttr = findAttr(formData.getAttributes(), "Объект");
+    assertThat(objectAttr).isNotNull();
+    assertThat(objectAttr).isInstanceOf(FormSimpleAttribute.class);
+
+    var additionalColumns = objectAttr.getColumns().stream()
+      .map(FormAdditionalColumnsAttribute.class::cast)
+      .toList();
+    assertThat(additionalColumns)
+      .extracting(FormAttribute::getName)
+      .containsExactly("Объект.Пользователи", "Объект.ВидыДоступа", "Объект.ЗначенияДоступа");
+
+    var users = additionalColumns.stream()
+      .filter(col -> col.getName().equals("Объект.Пользователи"))
+      .findFirst()
+      .orElseThrow();
+    assertThat(users.getColumns()).hasSize(1);
+    assertThat(users.getColumns().getFirst().getName()).isEqualTo("НомерКартинки");
+    assertThat(users.getColumns().getFirst().getId()).isEqualTo(1);
+
+    var kinds = additionalColumns.stream()
+      .filter(col -> col.getName().equals("Объект.ВидыДоступа"))
+      .findFirst()
+      .orElseThrow();
+    assertThat(kinds.getColumns()).hasSize(2);
+    assertThat(kinds.getColumns()).extracting(FormAttribute::getName)
+      .containsExactly("ВидДоступаПредставление", "ВсеРазрешеныПредставление");
+
+    var values = additionalColumns.stream()
+      .filter(col -> col.getName().equals("Объект.ЗначенияДоступа"))
+      .findFirst()
+      .orElseThrow();
+    assertThat(values.getColumns()).hasSize(1);
+    assertThat(values.getColumns().getFirst().getName()).isEqualTo("НомерСтрокиПоВиду");
+
+    var plain = formData.getPlainAttributes();
+    assertThat(plain.get("Объект.Пользователи")).isEqualTo(users);
+    assertThat(plain.get("Объект.Пользователи.НомерКартинки")).isNotNull();
+    assertThat(plain.get("Объект.Пользователи.НомерКартинки").getId()).isEqualTo(1);
   }
 
   private static FormAttribute findAttr(List<? extends FormAttribute> attrs, String name) {

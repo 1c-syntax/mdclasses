@@ -38,6 +38,8 @@ import java.util.List;
  * <p>
  * Загружает формы (ObjectForm из родителей + CommonForm напрямую),
  * обходит их FormData и сохраняет JSON-фикстуры.
+ * <p>
+ * Запуск: снять @Disabled и выполнить тест GenerateFormDataFixtures.
  */
 @Disabled
 class GenerateFormDataFixtures {

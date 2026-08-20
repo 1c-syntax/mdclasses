@@ -23,7 +23,6 @@ package com.github._1c_syntax.bsl.reader.common.context;
 
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAddition;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormButton;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormCommand;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormContextMenu;
@@ -41,7 +40,6 @@ import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -56,8 +54,14 @@ public class FormElementReaderContext extends AbstractReaderContext {
   private static final Map<String, Class<?>> CLASSES = fillClassesMap();
   private static final Map<FormElementType, Class<?>> ELEMENT_CLASSES = fillElementClasses();
 
+  /**
+   * Имя узла XML (не перетирается именем читаемого объекта в отличие от {@link #getName()})
+   */
+  private final String nodeName;
+
   public FormElementReaderContext(String elementName, HierarchicalStreamReader reader) {
     super(reader);
+    nodeName = elementName;
     name = elementName;
     realClass = CLASSES.get(elementName.toLowerCase(Locale.ROOT));
     builder = TransformationUtils.builder(realClass);
@@ -65,6 +69,7 @@ public class FormElementReaderContext extends AbstractReaderContext {
 
   public FormElementReaderContext(FormElementType formElementType, String elementName, HierarchicalStreamReader reader) {
     super(reader);
+    nodeName = elementName;
     name = elementName;
     realClass = CLASSES.getOrDefault(elementName.toLowerCase(Locale.ROOT), DEFAULT_CLASS_FORM_ELEMENT);
     if (realClass == DEFAULT_CLASS_FORM_ELEMENT) {
@@ -80,14 +85,27 @@ public class FormElementReaderContext extends AbstractReaderContext {
 
   @Override
   public Object build() {
-    if (realClass == FormAttribute.class) {
-      // нужно смержить колонки с допколонками
-      mergeAdditionalColumns();
+    if (realClass == FormAttributeWrapper.class) {
+      // для колонок возвращаем сырое значение, а сборку конкретного класса
+      // (включая слияние с допколонками) выполняет родительский атрибут
+      var wrapper = (FormAttributeWrapper) super.build();
+      if (isTopLevelAttribute(nodeName)) {
+        return wrapper.toFormAttribute();
+      }
+      return wrapper;
     } else if (realClass == FormExtendedTooltip.class) {
       // в формате EDT тип подсказки приходит тегом <type>Label</type> и перетирает тип
       setValue("type", FormElementType.EXTENDED_TOOLTIP);
     }
     return super.build();
+  }
+
+  /**
+   * Имя узла верхнеуровневого реквизита (в отличие от узлов колонок).
+   * В формате EDT реквизит лежит в узле {@code attributes}, в конфигураторе - {@code Attribute}.
+   */
+  private static boolean isTopLevelAttribute(String nodeName) {
+    return "Attribute".equals(nodeName) || "attributes".equals(nodeName);
   }
 
   @Override
@@ -150,56 +168,14 @@ public class FormElementReaderContext extends AbstractReaderContext {
       Map.entry("parameters", FormParameter.class),
       Map.entry("parameter", FormParameter.class),
       Map.entry("form", ManagedFormData.class),
-      Map.entry("attributes", FormAttribute.class),
-      Map.entry("columns", FormAttribute.class),
+      Map.entry("attributes", FormAttributeWrapper.class),
+      Map.entry("columns", FormAttributeWrapper.class),
       Map.entry("autocommandbar", FormGroup.class),
-      Map.entry("additionalcolumns", FormAttribute.class),
-      Map.entry("attribute", FormAttribute.class),
-      Map.entry("column", FormAttribute.class),
+      Map.entry("additionalcolumns", FormAttributeWrapper.class),
+      Map.entry("attribute", FormAttributeWrapper.class),
+      Map.entry("column", FormAttributeWrapper.class),
       Map.entry(ManagedFormData.class.getName().toLowerCase(Locale.ROOT), ManagedFormData.class)
     );
-  }
-
-  private void mergeAdditionalColumns() {
-    var value = getFromCache("columns");
-
-    List<FormAttribute> columns = new ArrayList<>();
-    if (value instanceof FormAttribute attribute) {
-      columns.add(attribute);
-    } else if (value instanceof List<?> list) {
-      columns = list.stream().map(FormAttribute.class::cast).toList();
-    } else {
-      return;
-    }
-
-    var hasDotted = columns.stream().anyMatch(c -> c.getName().contains("."));
-    if (!hasDotted) {
-      return;
-    }
-
-    var regular = new ArrayList<FormAttribute>();
-    var additional = new ArrayList<FormAttribute>();
-    for (var fa : columns) {
-      (fa.getName().contains(".") ? additional : regular).add(fa);
-    }
-
-    for (var addCol : additional) {
-      var baseName = addCol.getName().substring(addCol.getName().lastIndexOf('.') + 1);
-      for (int i = 0; i < regular.size(); i++) {
-        if (regular.get(i).getName().equals(baseName)) {
-          var mergedChildren = new ArrayList<>(regular.get(i).getColumns());
-          mergedChildren.addAll(addCol.getColumns());
-          regular.set(i, regular.get(i).toBuilder()
-            .clearColumns()
-            .columns(mergedChildren)
-            .build());
-          break;
-        }
-      }
-    }
-
-    TransformationUtils.invoke(builder, "clearColumns");
-    setValue("columns", regular);
   }
 
 }

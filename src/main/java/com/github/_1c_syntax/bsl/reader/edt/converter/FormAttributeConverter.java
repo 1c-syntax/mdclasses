@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
-import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.reader.common.context.FormAttributeWrapper;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -55,6 +55,6 @@ public class FormAttributeConverter implements ReadConverter {
 
   @Override
   public boolean canConvert(Class type) {
-    return type == FormAttribute.class;
+    return type == FormAttributeWrapper.class;
   }
 }
