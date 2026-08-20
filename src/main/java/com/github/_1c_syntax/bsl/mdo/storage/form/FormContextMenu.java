@@ -33,15 +33,14 @@ import lombok.Value;
 import java.util.List;
 
 /**
- * Дополнение формы
+ * Контекстное меню элемента формы
  * <p>
- * Маппинг типов: {@link FormElementType#SEARCH_STRING_ADDITION},
- * {@link FormElementType#SEARCH_CONTROL_ADDITION}, {@link FormElementType#VIEW_STATUS_ADDITION}
+ * Маппинг типов: {@link FormElementType#CONTEXT_MENU}
  */
 @Value
 @Builder
 @ToString(of = "name")
-public class FormAddition implements FormElement, FormElementOwner {
+public class FormContextMenu implements FormElement, FormElementOwner {
 
   @Default
   int id = -1;
@@ -50,7 +49,7 @@ public class FormAddition implements FormElement, FormElementOwner {
   String name = "";
 
   @Default
-  FormElementType type = FormElementType.SEARCH_CONTROL_ADDITION;
+  FormElementType type = FormElementType.CONTEXT_MENU;
 
   @Default
   MultiLanguageString title = MultiLanguageString.EMPTY;

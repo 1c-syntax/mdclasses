@@ -2,7 +2,17 @@
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
   "elements": [
    {
-    "elements": [],
+    "elements": [
+     {
+      "name": "ГруппаПользовательскихНастроекРасширеннаяПодсказка",
+      "comment": "",
+      "id": 52,
+      "type": "EXTENDED_TOOLTIP",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     }
+    ],
     "name": "ГруппаПользовательскихНастроек",
     "comment": "",
     "id": 51,
@@ -29,6 +39,27 @@
    {
     "elements": [
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокСостояниеПросмотраКонтекстноеМеню",
+        "comment": "",
+        "id": 59,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокСостояниеПросмотраРасширеннаяПодсказка",
+        "comment": "",
+        "id": 60,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокСостояниеПросмотра",
       "comment": "",
       "id": 58,
@@ -38,6 +69,27 @@
       }
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокСтрокаПоискаКонтекстноеМеню",
+        "comment": "",
+        "id": 56,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокСтрокаПоискаРасширеннаяПодсказка",
+        "comment": "",
+        "id": 57,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокСтрокаПоиска",
       "comment": "",
       "id": 55,
@@ -47,6 +99,27 @@
       }
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокУправлениеПоискомКонтекстноеМеню",
+        "comment": "",
+        "id": 62,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокУправлениеПоискомРасширеннаяПодсказка",
+        "comment": "",
+        "id": 63,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокУправлениеПоиском",
       "comment": "",
       "id": 61,
@@ -56,6 +129,140 @@
       }
      },
      {
+      "elements": [
+       {
+        "commandName": "Form.Item.Список.StandardCommand.Change",
+        "elements": [
+         {
+          "name": "СписокКонтекстноеМенюИзменитьРасширеннаяПодсказка",
+          "comment": "",
+          "id": 35,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         }
+        ],
+        "name": "СписокКонтекстноеМенюИзменить",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 10,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Открыть карточку"
+          }
+         ]
+        }
+       },
+       {
+        "commandName": "Form.Item.Список.StandardCommand.CopyToClipboard",
+        "elements": [
+         {
+          "name": "СписокКонтекстноеМенюКопироватьВБуферОбменаРасширеннаяПодсказка",
+          "comment": "",
+          "id": 37,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         }
+        ],
+        "name": "СписокКонтекстноеМенюКопироватьВБуферОбмена",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 12,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "commandName": "Form.Command.Удалить",
+        "elements": [
+         {
+          "name": "СписокКонтекстноеМенюУдалитьРасширеннаяПодсказка",
+          "comment": "",
+          "id": 77,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         }
+        ],
+        "name": "СписокКонтекстноеМенюУдалить",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 76,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[2]\/title"
+        }
+       },
+       {
+        "commandName": "Form.Item.Список.StandardCommand.SetDeletionMark",
+        "elements": [
+         {
+          "name": "СписокКонтекстноеМенюУстановитьПометкуУдаленияРасширеннаяПодсказка",
+          "comment": "",
+          "id": 36,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         }
+        ],
+        "name": "СписокКонтекстноеМенюУстановитьПометкуУдаления",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 11,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
+      "name": "СписокКонтекстноеМеню",
+      "comment": "",
+      "id": 2,
+      "type": "CONTEXT_MENU",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "name": "СписокРасширеннаяПодсказка",
+      "comment": "",
+      "id": 38,
+      "type": "EXTENDED_TOOLTIP",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+      }
+     },
+     {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокАвторКонтекстноеМеню",
+        "comment": "",
+        "id": 19,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокАвторРасширеннаяПодсказка",
+        "comment": "",
+        "id": 41,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокАвтор",
       "comment": "",
       "eventHandlers": [],
@@ -67,6 +274,27 @@
       "dataPath": "Список.Автор"
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокВладелецКонтекстноеМеню",
+        "comment": "",
+        "id": 17,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокВладелецРасширеннаяПодсказка",
+        "comment": "",
+        "id": 40,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокВладелец",
       "comment": "",
       "eventHandlers": [],
@@ -78,6 +306,27 @@
       "dataPath": "Список.Владелец"
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокДатаСозданияКонтекстноеМеню",
+        "comment": "",
+        "id": 23,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокДатаСозданияРасширеннаяПодсказка",
+        "comment": "",
+        "id": 43,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокДатаСоздания",
       "comment": "",
       "eventHandlers": [],
@@ -89,6 +338,27 @@
       "dataPath": "Список.ДатаСоздания"
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокКомментарийКонтекстноеМеню",
+        "comment": "",
+        "id": 21,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокКомментарийРасширеннаяПодсказка",
+        "comment": "",
+        "id": 42,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокКомментарий",
       "comment": "",
       "eventHandlers": [],
@@ -105,6 +375,27 @@
       "dataPath": "Список.Комментарий"
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокНомерВерсииКонтекстноеМеню",
+        "comment": "",
+        "id": 27,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокНомерВерсииРасширеннаяПодсказка",
+        "comment": "",
+        "id": 45,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокНомерВерсии",
       "comment": "",
       "eventHandlers": [],
@@ -116,6 +407,27 @@
       "dataPath": "Список.НомерВерсии"
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокПолноеНаименованиеКонтекстноеМеню",
+        "comment": "",
+        "id": 9,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокПолноеНаименованиеРасширеннаяПодсказка",
+        "comment": "",
+        "id": 39,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокПолноеНаименование",
       "comment": "",
       "eventHandlers": [],
@@ -132,6 +444,27 @@
       "dataPath": "Список.Наименование"
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокРазмерКонтекстноеМеню",
+        "comment": "",
+        "id": 25,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокРазмерРасширеннаяПодсказка",
+        "comment": "",
+        "id": 44,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокРазмер",
       "comment": "",
       "eventHandlers": [],
@@ -143,6 +476,27 @@
       "dataPath": "Список.Размер"
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокРасширениеКонтекстноеМеню",
+        "comment": "",
+        "id": 31,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокРасширениеРасширеннаяПодсказка",
+        "comment": "",
+        "id": 47,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокРасширение",
       "comment": "",
       "eventHandlers": [],
@@ -154,6 +508,27 @@
       "dataPath": "Список.Расширение"
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокСсылкаКонтекстноеМеню",
+        "comment": "",
+        "id": 49,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокСсылкаРасширеннаяПодсказка",
+        "comment": "",
+        "id": 50,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "СписокСсылка",
       "comment": "",
       "eventHandlers": [],
@@ -167,7 +542,26 @@
      {
       "elements": [
        {
-        "elements": [],
+        "name": "ГруппаВертикальноРасширеннаяПодсказка",
+        "comment": "",
+        "id": 65,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       },
+       {
+        "elements": [
+         {
+          "name": "ГруппаОсновноеРасширеннаяПодсказка",
+          "comment": "",
+          "id": 67,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         }
+        ],
         "name": "ГруппаОсновное",
         "comment": "",
         "id": 66,
@@ -199,6 +593,17 @@
       "elements": [
        {
         "commandName": "Form.Command.ПоказыватьПомеченныеФайлы",
+        "elements": [
+         {
+          "name": "ПоказыватьПомеченныеФайлыРасширеннаяПодсказка",
+          "comment": "",
+          "id": 75,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         }
+        ],
         "name": "ПоказыватьПомеченныеФайлы",
         "comment": "",
         "eventHandlers": [],
@@ -210,24 +615,41 @@
        },
        {
         "commandName": "Form.Item.Список.StandardCommand.Change",
+        "elements": [
+         {
+          "name": "ФормаИзменитьРасширеннаяПодсказка",
+          "comment": "",
+          "id": 32,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         }
+        ],
         "name": "ФормаИзменить",
         "comment": "",
         "eventHandlers": [],
         "id": 13,
         "type": "COMMAND_BAR_BUTTON",
         "title": {
-         "content": [
-          {
-           "langKey": "ru",
-           "value": "Открыть карточку"
-          }
-         ]
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormTable\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormContextMenu\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormButton\/title"
         }
        },
        {
         "elements": [
          {
           "commandName": "Form.Item.Список.StandardCommand.SetDeletionMark",
+          "elements": [
+           {
+            "name": "УстановитьПометкуУдаленияРасширеннаяПодсказка",
+            "comment": "",
+            "id": 71,
+            "type": "EXTENDED_TOOLTIP",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           }
+          ],
           "name": "УстановитьПометкуУдаления",
           "comment": "",
           "eventHandlers": [],
@@ -239,6 +661,17 @@
          },
          {
           "commandName": "Form.Command.Удалить",
+          "elements": [
+           {
+            "name": "ФормаУдалитьРасширеннаяПодсказка",
+            "comment": "",
+            "id": 73,
+            "type": "EXTENDED_TOOLTIP",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           }
+          ],
           "name": "ФормаУдалить",
           "comment": "",
           "eventHandlers": [],
@@ -246,6 +679,15 @@
           "type": "COMMAND_BAR_BUTTON",
           "title": {
            "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/commands\/com.github._1c_syntax.bsl.mdo.storage.form.FormCommand[2]\/title"
+          }
+         },
+         {
+          "name": "ГруппаУдалениеРасширеннаяПодсказка",
+          "comment": "",
+          "id": 69,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
           }
          }
         ],

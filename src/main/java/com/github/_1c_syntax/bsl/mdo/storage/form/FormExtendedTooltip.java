@@ -21,27 +21,21 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
-import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
-import lombok.Getter;
-import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
-import java.util.List;
-
 /**
- * Дополнение формы
+ * Расширенная подсказка элемента формы
  * <p>
- * Маппинг типов: {@link FormElementType#SEARCH_STRING_ADDITION},
- * {@link FormElementType#SEARCH_CONTROL_ADDITION}, {@link FormElementType#VIEW_STATUS_ADDITION}
+ * Маппинг типов: {@link FormElementType#EXTENDED_TOOLTIP}
  */
 @Value
 @Builder
 @ToString(of = "name")
-public class FormAddition implements FormElement, FormElementOwner {
+public class FormExtendedTooltip implements FormElement {
 
   @Default
   int id = -1;
@@ -50,17 +44,11 @@ public class FormAddition implements FormElement, FormElementOwner {
   String name = "";
 
   @Default
-  FormElementType type = FormElementType.SEARCH_CONTROL_ADDITION;
+  FormElementType type = FormElementType.EXTENDED_TOOLTIP;
 
   @Default
   MultiLanguageString title = MultiLanguageString.EMPTY;
 
   @Default
   String comment = "";
-
-  @Singular("addElements")
-  List<FormElement> elements;
-
-  @Getter(lazy = true)
-  List<FormElement> plainElements = LazyLoader.computePlainFormElements(this);
 }

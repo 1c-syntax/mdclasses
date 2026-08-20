@@ -66,13 +66,22 @@ class FormElementTest {
     assertThat(elements).hasSize(10);
 
     var plainElements = formData.getPlainElements();
-    assertThat(plainElements).hasSize(10);
+    assertThat(plainElements).hasSize(28);
 
     var first = findElement(elements, "Ссылка");
     assertThat(first).isInstanceOf(FormField.class);
     assertThat(first.getId()).isEqualTo(1);
     assertThat(first.getType()).isEqualTo(FormElementType.INPUT_FIELD);
     assertThat(((FormField) first).getDataPath()).isEqualTo("Объект.Ref");
+
+    var firstContextMenu = findElement(((FormField) first).getElements(), "СсылкаКонтекстноеМеню");
+    assertThat(firstContextMenu).isInstanceOf(FormContextMenu.class);
+    assertThat(firstContextMenu.getType()).isEqualTo(FormElementType.CONTEXT_MENU);
+    assertThat(((FormContextMenu) firstContextMenu).getElements()).isEmpty();
+
+    var firstExtendedTooltip = findElement(((FormField) first).getElements(), "СсылкаРасширеннаяПодсказка");
+    assertThat(firstExtendedTooltip).isInstanceOf(FormExtendedTooltip.class);
+    assertThat(firstExtendedTooltip.getType()).isEqualTo(FormElementType.EXTENDED_TOOLTIP);
 
     var deletionMark = findElement(elements, "ПометкаУдаления");
     assertThat(deletionMark).isInstanceOf(FormField.class);
@@ -139,7 +148,7 @@ class FormElementTest {
     assertThat(elements).hasSize(3);
 
     var plainElements = formData.getPlainElements();
-    assertThat(plainElements).hasSize(49);
+    assertThat(plainElements).hasSize(117);
 
     var pagesGroup = findElement(elements, "Страницы");
     assertThat(pagesGroup).isNotNull();
@@ -216,22 +225,24 @@ class FormElementTest {
   // Строка: className, f0, f1, f2, f3, f4, f5, f6
   private static final String CLASS_MATRIX_TXT = """
     FormField,         57,16, 1,19, 6,11,7
-    FormGroup,         75,34, 1,35, 9, 9,1
+    FormGroup,         78,34, 1,38, 9, 9,1
     FormTable,          5, 2, 0, 2, 0, 0,0
-    FormButton,        60,16, 0,26, 5, 3,1
+    FormButton,        96,17, 0,38, 6, 3,1
     FormDecoration,     2,15, 0, 6, 0, 3,0
     FormAddition,      17, 7, 0, 6, 0, 0,0
+    FormContextMenu,   81,40, 1,33, 6,14,7
+    FormExtendedTooltip, 249,88, 1,106,20,25,8
     FormUnknown,        0, 0, 0, 0, 0, 0,0
     """;
 
   // Строка: typeName, f0, f1, f2, f3, f4, f5, f6
   private static final String TYPE_MATRIX_TXT = """
-    POPUP,                      7, 0,0, 2,0,0,0
+    POPUP,                     10, 0,0, 4,0,0,0
     PAGES,                      6, 2,0, 3,1,0,0
     COMMAND_BAR,               10, 7,1, 7,2,1,1
-    COMMAND_BAR_BUTTON,        59,11,0,25,5,3,1
-    COMMAND_BAR_HYPERLINK,      0, 0,0, 0,0,0,0
-    BUTTON_GROUP,               7, 0,0, 2,1,0,0
+    COMMAND_BAR_BUTTON,        94,12,0,37,6,3,1
+    COMMAND_BAR_HYPERLINK,      1, 0,0, 0,0,0,0
+    BUTTON_GROUP,               7, 0,0, 3,1,0,0
     INPUT_FIELD,               35, 5,0,12,4,8,4
     PAGE,                      18,10,0, 7,2,0,0
     USUAL_GROUP,               23,15,0,13,3,8,0
@@ -257,6 +268,8 @@ class FormElementTest {
     TRACK_BAR_FIELD,            0, 0,0, 0,0,1,0
     CHART_FIELD,                0, 0,0, 0,0,0,1
     CALENDAR_FIELD,             0, 0,1, 0,0,0,0
+    CONTEXT_MENU,              81,40, 1,33, 6,14,7
+    EXTENDED_TOOLTIP,         249,88, 1,106,20,25,8
     GANTT_CHART_FIELD,          0, 0,0, 0,0,0,0
     GEOGRAPHICAL_SCHEMA_FIELD,  0, 0,0, 0,0,0,0
     PDF_DOCUMENT_FIELD,         0, 0,0, 0,0,0,0
@@ -279,18 +292,18 @@ class FormElementTest {
   private static Stream<Arguments> formFileProvider() {
     // File metadata: pack, parentRef, formRef, total
     var files = new String[][]{
-      {"ssl_3_2", "Catalogs.РассылкиОтчетов", "Catalog.РассылкиОтчетов.Form.ФормаЭлемента", "216"},
+      {"ssl_3_2", "Catalogs.РассылкиОтчетов", "Catalog.РассылкиОтчетов.Form.ФормаЭлемента", "585"},
       {"ssl_3_1", "DataProcessors.ЗагрузкаДанныхИзФайла",
-        "DataProcessor.ЗагрузкаДанныхИзФайла.Form.ЗагрузкаДанныхИзФайла", "90"},
+        "DataProcessor.ЗагрузкаДанныхИзФайла.Form.ЗагрузкаДанныхИзФайла", "219"},
       {"ssl_3_1", "SettingsStorages.ХранилищеВариантовОтчетов",
-        "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборФинансовогоПериодаДень", "2"},
+        "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборФинансовогоПериодаДень", "4"},
       {"ssl_3_1", "Documents.ЭлектронноеПисьмоИсходящее", "Document.ЭлектронноеПисьмоИсходящее.Form.ФормаДокумента",
-        "94"},
+        "248"},
       {"ssl_3_1", "DataProcessors.КартаМаршрутаБизнесПроцесса", "DataProcessor.КартаМаршрутаБизнесПроцесса.Form.Форма",
-        "20"},
-      {"ssl_3_1", "DataProcessors.Сканирование", "DataProcessor.Сканирование.Form.НастройкаСканированияНаСеанс", "26"},
+        "47"},
+      {"ssl_3_1", "DataProcessors.Сканирование", "DataProcessor.Сканирование.Form.НастройкаСканированияНаСеанс", "65"},
       {"ssl_3_1", "DataProcessors.ОценкаПроизводительности",
-        "DataProcessor.ОценкаПроизводительности.Form.ПодборЦелевогоВремениКлючевойОперации", "9"},
+        "DataProcessor.ОценкаПроизводительности.Form.ПодборЦелевогоВремениКлючевойОперации", "24"},
     };
 
     var baseClasses = new HashMap<String, Long>();

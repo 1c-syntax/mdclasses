@@ -29,8 +29,10 @@ import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAddition;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormCommand;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormContextMenu;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormGroup;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
@@ -72,6 +74,8 @@ public class Unmarshaller {
     "formCommands", new ClassField(FormCommand.class, "commands"),
     "additionalColumns", new ClassField(FormAttribute.class, "columns"),
     "items", new ClassField(FormElement.class, "elements"),
+    "contextMenu", new ClassField(FormContextMenu.class, "elements"),
+    "extendedTooltip", new ClassField(FormExtendedTooltip.class, "elements"),
     "autoCommandBar", new ClassField(FormGroup.class, "elements"),
     "searchControlAddition", new ClassField(FormAddition.class, "elements"),
     "viewStatusAddition", new ClassField(FormAddition.class, "elements"),
