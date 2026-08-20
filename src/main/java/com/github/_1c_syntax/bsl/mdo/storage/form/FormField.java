@@ -21,9 +21,11 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
+import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -48,7 +50,7 @@ import java.util.List;
 @Value
 @Builder
 @ToString(of = "name")
-public class FormField implements FormElement, FormDataPathOwner, FormEventHandlerOwner {
+public class FormField implements FormElement, FormElementOwner, FormDataPathOwner, FormEventHandlerOwner {
 
   @Default
   int id = -1;
@@ -70,4 +72,10 @@ public class FormField implements FormElement, FormDataPathOwner, FormEventHandl
 
   @Singular("addEventHandlers")
   List<FormEventHandler> eventHandlers;
+
+  @Singular("addElements")
+  List<FormElement> elements;
+
+  @Getter(lazy = true)
+  List<FormElement> plainElements = LazyLoader.computePlainFormElements(this);
 }

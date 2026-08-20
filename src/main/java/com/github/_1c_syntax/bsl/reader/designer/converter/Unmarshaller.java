@@ -70,6 +70,7 @@ public class Unmarshaller {
   private static final Map<String, String> NODE_REMAPPING
     = Map.of(
     "AutoCommandBar", "elements",
+    "ContextMenu", "elements",
     "SearchControlAddition", "elements",
     "ViewStatusAddition", "elements",
     "SearchStringAddition", "elements",

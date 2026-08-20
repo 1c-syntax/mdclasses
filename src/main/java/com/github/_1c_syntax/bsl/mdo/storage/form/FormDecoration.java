@@ -21,11 +21,16 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
+import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
+import lombok.Getter;
+import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
+
+import java.util.List;
 
 /**
  * Декорация формы (надпись, картинка)
@@ -35,7 +40,7 @@ import lombok.Value;
 @Value
 @Builder
 @ToString(of = "name")
-public class FormDecoration implements FormElement {
+public class FormDecoration implements FormElement, FormElementOwner {
 
   @Default
   int id = -1;
@@ -51,4 +56,10 @@ public class FormDecoration implements FormElement {
 
   @Default
   String comment = "";
+
+  @Singular("addElements")
+  List<FormElement> elements;
+
+  @Getter(lazy = true)
+  List<FormElement> plainElements = LazyLoader.computePlainFormElements(this);
 }

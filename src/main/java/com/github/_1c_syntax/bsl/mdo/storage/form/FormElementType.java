@@ -41,6 +41,7 @@ public enum FormElementType implements EnumWithName {
   CHART_FIELD("ChartField", "ПолеДиаграммы"),
   CHECK_BOX_FIELD("CheckBoxField", "ПолеФлажка"),
   COLUMN_GROUP("ColumnGroup", "ГруппаКолонок"),
+  CONTEXT_MENU("ContextMenu", "КонтекстноеМеню"),
   COMMAND_BAR("CommandBar", "КоманднаяПанель"),
   COMMAND_BAR_BUTTON("CommandBarButton", "КнопкаКоманднойПанели"),
   COMMAND_BAR_HYPERLINK("CommandBarHyperlink", "ГиперссылкаКоманднойПанели"),

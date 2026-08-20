@@ -43,7 +43,6 @@ import java.util.List;
 class GenerateFormDataFixtures {
 
   private static final Path FIXTURES_BASE = Fixtures.FIXTURES_PATH;
-
   private static List<PackParent> parents() {
     return List.of(
       // mdclasses

@@ -4,6 +4,18 @@
    {
     "elements": [
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "КоличествоПоказываемыхСобытийКонтекстноеМеню",
+        "comment": "",
+        "id": 102,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "КоличествоПоказываемыхСобытий",
       "comment": "",
       "eventHandlers": [
@@ -25,6 +37,18 @@
       "dataPath": "КоличествоПоказываемыхСобытий"
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "КритичностьКонтекстноеМеню",
+        "comment": "",
+        "id": 171,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "Критичность",
       "comment": "",
       "eventHandlers": [
@@ -45,6 +69,18 @@
       "dataPath": "Критичность"
      },
      {
+      "elements": [
+       {
+        "elements": [],
+        "name": "ПредставлениеОтбораКонтекстноеМеню",
+        "comment": "",
+        "id": 36,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+        }
+       }
+      ],
       "name": "ПредставлениеОтбора",
       "comment": "",
       "eventHandlers": [
@@ -86,6 +122,18 @@
        {
         "elements": [
          {
+          "elements": [
+           {
+            "elements": [],
+            "name": "ЖурналСостояниеПросмотраКонтекстноеМеню",
+            "comment": "",
+            "id": 185,
+            "type": "CONTEXT_MENU",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           }
+          ],
           "name": "ЖурналСостояниеПросмотра",
           "comment": "",
           "id": 184,
@@ -95,6 +143,18 @@
           }
          },
          {
+          "elements": [
+           {
+            "elements": [],
+            "name": "ЖурналСтрокаПоискаКонтекстноеМеню",
+            "comment": "",
+            "id": 182,
+            "type": "CONTEXT_MENU",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           }
+          ],
           "name": "ЖурналСтрокаПоиска",
           "comment": "",
           "id": 181,
@@ -104,6 +164,18 @@
           }
          },
          {
+          "elements": [
+           {
+            "elements": [],
+            "name": "ЖурналУправлениеПоискомКонтекстноеМеню",
+            "comment": "",
+            "id": 188,
+            "type": "CONTEXT_MENU",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           }
+          ],
           "name": "ЖурналУправлениеПоиском",
           "comment": "",
           "id": 187,
@@ -113,6 +185,89 @@
           }
          },
          {
+          "elements": [
+           {
+            "commandName": "Form.Command.ОткрытьДанныеДляПросмотра",
+            "name": "ОткрытьДанныеДляПросмотраКонтекст",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 97,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           },
+           {
+            "commandName": "Form.Command.ПросмотрТекущегоСобытияВОтдельномОкне",
+            "name": "ПросмотрТекущегоСобытияВОтдельномОкнеКонтекст",
+            "comment": "",
+            "eventHandlers": [],
+            "id": 96,
+            "type": "COMMAND_BAR_BUTTON",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           },
+           {
+            "elements": [
+             {
+              "commandName": "Form.Command.ОтключитьОтбор",
+              "name": "ЖурналКонтекстноеМенюОтключитьОтбор",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 113,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             },
+             {
+              "commandName": "Form.Command.УстановитьОтборПоЗначениюВТекущейКолонке",
+              "name": "УстановитьОтборПоЗначениюВТекущейКолонкеКонтекст",
+              "comment": "",
+              "eventHandlers": [],
+              "id": 98,
+              "type": "COMMAND_BAR_BUTTON",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             }
+            ],
+            "name": "ОтборГруппаКонтекст",
+            "comment": "",
+            "id": 107,
+            "type": "BUTTON_GROUP",
+            "title": {
+             "content": [
+              {
+               "langKey": "ru",
+               "value": "Отбор группа контекст"
+              }
+             ]
+            }
+           }
+          ],
+          "name": "ЖурналКонтекстноеМеню",
+          "comment": "",
+          "id": 49,
+          "type": "CONTEXT_MENU",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         },
+         {
+          "elements": [
+           {
+            "elements": [],
+            "name": "ДатаКонтекстноеМеню",
+            "comment": "",
+            "id": 52,
+            "type": "CONTEXT_MENU",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           }
+          ],
           "name": "Дата",
           "comment": "",
           "eventHandlers": [],
@@ -129,6 +284,18 @@
           "dataPath": "Журнал.Дата"
          },
          {
+          "elements": [
+           {
+            "elements": [],
+            "name": "ДатаНаСервереКонтекстноеМеню",
+            "comment": "",
+            "id": 207,
+            "type": "CONTEXT_MENU",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           }
+          ],
           "name": "ДатаНаСервере",
           "comment": "",
           "eventHandlers": [],
@@ -140,6 +307,18 @@
           "dataPath": "Журнал.ДатаНаСервере"
          },
          {
+          "elements": [
+           {
+            "elements": [],
+            "name": "ПредставлениеРазделенияДанныхСеансаКонтекстноеМеню",
+            "comment": "",
+            "id": 120,
+            "type": "CONTEXT_MENU",
+            "title": {
+             "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+            }
+           }
+          ],
           "name": "ПредставлениеРазделенияДанныхСеанса",
           "comment": "",
           "eventHandlers": [],
@@ -153,6 +332,18 @@
          {
           "elements": [
            {
+            "elements": [
+             {
+              "elements": [],
+              "name": "ИмяПользователяКонтекстноеМеню",
+              "comment": "",
+              "id": 55,
+              "type": "CONTEXT_MENU",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             }
+            ],
             "name": "ИмяПользователя",
             "comment": "",
             "eventHandlers": [],
@@ -169,6 +360,18 @@
             "dataPath": "Журнал.ИмяПользователя"
            },
            {
+            "elements": [
+             {
+              "elements": [],
+              "name": "КомпьютерКонтекстноеМеню",
+              "comment": "",
+              "id": 57,
+              "type": "CONTEXT_MENU",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             }
+            ],
             "name": "Компьютер",
             "comment": "",
             "eventHandlers": [],
@@ -182,6 +385,18 @@
            {
             "elements": [
              {
+              "elements": [
+               {
+                "elements": [],
+                "name": "ПредставлениеПриложенияКонтекстноеМеню",
+                "comment": "",
+                "id": 60,
+                "type": "CONTEXT_MENU",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                }
+               }
+              ],
               "name": "ПредставлениеПриложения",
               "comment": "",
               "eventHandlers": [],
@@ -198,6 +413,18 @@
               "dataPath": "Журнал.ПредставлениеПриложения"
              },
              {
+              "elements": [
+               {
+                "elements": [],
+                "name": "СеансКонтекстноеМеню",
+                "comment": "",
+                "id": 81,
+                "type": "CONTEXT_MENU",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                }
+               }
+              ],
               "name": "Сеанс",
               "comment": "",
               "eventHandlers": [],
@@ -239,6 +466,18 @@
          {
           "elements": [
            {
+            "elements": [
+             {
+              "elements": [],
+              "name": "ВспомогательныйIPПортКонтекстноеМеню",
+              "comment": "",
+              "id": 92,
+              "type": "CONTEXT_MENU",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             }
+            ],
             "name": "ВспомогательныйIPПорт",
             "comment": "",
             "eventHandlers": [],
@@ -250,6 +489,18 @@
             "dataPath": "Журнал.ВспомогательныйIPПорт"
            },
            {
+            "elements": [
+             {
+              "elements": [],
+              "name": "ОсновнойIPПортКонтекстноеМеню",
+              "comment": "",
+              "id": 90,
+              "type": "CONTEXT_MENU",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             }
+            ],
             "name": "ОсновнойIPПорт",
             "comment": "",
             "eventHandlers": [],
@@ -261,6 +512,18 @@
             "dataPath": "Журнал.ОсновнойIPПорт"
            },
            {
+            "elements": [
+             {
+              "elements": [],
+              "name": "РабочийСерверКонтекстноеМеню",
+              "comment": "",
+              "id": 86,
+              "type": "CONTEXT_MENU",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             }
+            ],
             "name": "РабочийСервер",
             "comment": "",
             "eventHandlers": [],
@@ -288,6 +551,18 @@
          {
           "elements": [
            {
+            "elements": [
+             {
+              "elements": [],
+              "name": "КомментарийКонтекстноеМеню",
+              "comment": "",
+              "id": 67,
+              "type": "CONTEXT_MENU",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             }
+            ],
             "name": "Комментарий",
             "comment": "",
             "eventHandlers": [],
@@ -299,6 +574,18 @@
             "dataPath": "Журнал.Комментарий"
            },
            {
+            "elements": [
+             {
+              "elements": [],
+              "name": "ПредставлениеСобытияКонтекстноеМеню",
+              "comment": "",
+              "id": 65,
+              "type": "CONTEXT_MENU",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             }
+            ],
             "name": "ПредставлениеСобытия",
             "comment": "",
             "eventHandlers": [],
@@ -317,6 +604,18 @@
            {
             "elements": [
              {
+              "elements": [
+               {
+                "elements": [],
+                "name": "ДанныеКонтекстноеМеню",
+                "comment": "",
+                "id": 77,
+                "type": "CONTEXT_MENU",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                }
+               }
+              ],
               "name": "Данные",
               "comment": "",
               "eventHandlers": [],
@@ -328,6 +627,18 @@
               "dataPath": "Журнал.Данные"
              },
              {
+              "elements": [
+               {
+                "elements": [],
+                "name": "ПредставлениеМетаданныхКонтекстноеМеню",
+                "comment": "",
+                "id": 75,
+                "type": "CONTEXT_MENU",
+                "title": {
+                 "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+                }
+               }
+              ],
               "name": "ПредставлениеМетаданных",
               "comment": "",
               "eventHandlers": [],
@@ -374,6 +685,18 @@
          {
           "elements": [
            {
+            "elements": [
+             {
+              "elements": [],
+              "name": "СтатусТранзакцииКонтекстноеМеню",
+              "comment": "",
+              "id": 70,
+              "type": "CONTEXT_MENU",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             }
+            ],
             "name": "СтатусТранзакции",
             "comment": "",
             "eventHandlers": [],
@@ -385,6 +708,18 @@
             "dataPath": "Журнал.СтатусТранзакции"
            },
            {
+            "elements": [
+             {
+              "elements": [],
+              "name": "ТранзакцияКонтекстноеМеню",
+              "comment": "",
+              "id": 72,
+              "type": "CONTEXT_MENU",
+              "title": {
+               "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+              }
+             }
+            ],
             "name": "Транзакция",
             "comment": "",
             "eventHandlers": [],
@@ -639,6 +974,18 @@
      {
       "elements": [
        {
+        "elements": [
+         {
+          "elements": [],
+          "name": "ПолеИндикаторДлительныхОперацийКонтекстноеМеню",
+          "comment": "",
+          "id": 115,
+          "type": "CONTEXT_MENU",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
+          }
+         }
+        ],
         "name": "ПолеИндикаторДлительныхОпераций",
         "comment": "",
         "eventHandlers": [],
