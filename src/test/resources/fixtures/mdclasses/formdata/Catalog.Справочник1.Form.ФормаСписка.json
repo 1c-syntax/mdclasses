@@ -14,8 +14,10 @@
   ],
   "attributes": [
    {
+    "mainTable": "Catalog.МойСправочник",
     "columns": [],
     "name": "МойСписок",
+    "queryText": "ВЫБРАТЬ\n\tМойСправочник.Ссылка КАК Ссылка,\n\tМойСправочник.ВерсияДанных КАК ВерсияДанных,\n\tМойСправочник.ПометкаУдаления КАК ПометкаУдаления,\n\tМойСправочник.Код КАК Код,\n\tМойСправочник.Наименование КАК Наименование,\n\tМойСправочник.Предопределенный КАК Предопределенный,\n\tМойСправочник.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных\nИЗ\n\tСправочник.МойСправочник КАК МойСправочник",
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 2,
@@ -35,11 +37,14 @@
      "composite": false,
      "qualifiers": []
     },
-    "mainAttribute": false
+    "mainAttribute": false,
+    "customQuery": true
    },
    {
+    "mainTable": "",
     "columns": [],
     "name": "Объект",
+    "queryText": "",
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 1,
@@ -69,7 +74,8 @@
      "composite": true,
      "qualifiers": []
     },
-    "mainAttribute": true
+    "mainAttribute": true,
+    "customQuery": false
    }
   ],
   "eventHandlers": [],

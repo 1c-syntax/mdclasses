@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
@@ -56,6 +57,14 @@ public class Unmarshaller {
   private static final String STANDARD_ATTRIBUTES_NODE = "StandardAttributes";
   private static final String STANDARD_ATTRIBUTE_NODE = "StandardAttribute";
   private static final String ATTRIBUTE_FIELD_NAME = "Attribute";
+  private static final String SETTINGS_NODE = "Settings";
+
+  private static final Map<String, String> DYNAMIC_LIST_SETTINGS_REMAPPING
+    = Map.of(
+    "MainTable", "mainTable",
+    "ManualQuery", "customQuery",
+    "QueryText", "queryText"
+  );
 
   private static final Map<String, String> ITEM_NODE_REMAPPING
     = Map.of(
@@ -101,6 +110,8 @@ public class Unmarshaller {
       var itemNode = ITEM_NODE_REMAPPING.get(name);
       if (itemNode != null) {
         readItemNode(reader, context, readerContext, itemNode);
+      } else if (readerContext.getRealClass() == FormAttribute.class && SETTINGS_NODE.equals(name)) {
+        readDynamicListSettings(reader, context, readerContext);
       } else {
         var node = NODE_REMAPPING.get(name);
         if (node != null) {
@@ -108,6 +119,25 @@ public class Unmarshaller {
         } else {
           readNode(reader.getNodeName(), context, readerContext);
         }
+      }
+      reader.moveUp();
+    }
+  }
+
+  /**
+   * Читает настройки динамического списка из узла {@code <Settings xsi:type="DynamicList">}
+   * реквизита формы. Остальные дочерние узлы (например {@code ListSettings}) пропускаются
+   */
+  private void readDynamicListSettings(HierarchicalStreamReader reader,
+                                       UnmarshallingContext context,
+                                       FormElementReaderContext readerContext) {
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      var name = reader.getNodeName();
+      var field = DYNAMIC_LIST_SETTINGS_REMAPPING.get(name);
+      if (field != null) {
+        var fieldClass = readerContext.fieldType(field);
+        readerContext.setValue(field, ExtendXStream.readValue(context, fieldClass));
       }
       reader.moveUp();
     }
