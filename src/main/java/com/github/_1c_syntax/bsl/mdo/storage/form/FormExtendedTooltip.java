@@ -21,27 +21,21 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
-import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
-import lombok.Getter;
-import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
-import java.util.List;
-
 /**
- * Кнопка формы
+ * Расширенная подсказка элемента формы
  * <p>
- * Маппинг типов: {@link FormElementType#USUAL_BUTTON}, {@link FormElementType#COMMAND_BAR_BUTTON},
- * {@link FormElementType#COMMAND_BAR_HYPERLINK}, {@link FormElementType#HYPERLINK}
+ * Маппинг типов: {@link FormElementType#EXTENDED_TOOLTIP}
  */
 @Value
 @Builder
 @ToString(of = "name")
-public class FormButton implements FormElement, FormElementOwner, FormEventHandlerOwner {
+public class FormExtendedTooltip implements FormElement {
 
   @Default
   int id = -1;
@@ -50,23 +44,11 @@ public class FormButton implements FormElement, FormElementOwner, FormEventHandl
   String name = "";
 
   @Default
-  FormElementType type = FormElementType.COMMAND_BAR_BUTTON;
+  FormElementType type = FormElementType.EXTENDED_TOOLTIP;
 
   @Default
   MultiLanguageString title = MultiLanguageString.EMPTY;
 
   @Default
-  String commandName = "";
-
-  @Default
   String comment = "";
-
-  @Singular("addEventHandlers")
-  List<FormEventHandler> eventHandlers;
-
-  @Singular("addElements")
-  List<FormElement> elements;
-
-  @Getter(lazy = true)
-  List<FormElement> plainElements = LazyLoader.computePlainFormElements(this);
 }

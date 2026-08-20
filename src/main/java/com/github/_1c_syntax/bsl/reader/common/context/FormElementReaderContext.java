@@ -29,6 +29,7 @@ import com.github._1c_syntax.bsl.mdo.storage.form.FormCommand;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormContextMenu;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormDecoration;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormField;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormGroup;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormParameter;
@@ -82,6 +83,9 @@ public class FormElementReaderContext extends AbstractReaderContext {
     if (realClass == FormAttribute.class) {
       // нужно смержить колонки с допколонками
       mergeAdditionalColumns();
+    } else if (realClass == FormExtendedTooltip.class) {
+      // в формате EDT тип подсказки приходит тегом <type>Label</type> и перетирает тип
+      setValue("type", FormElementType.EXTENDED_TOOLTIP);
     }
     return super.build();
   }
@@ -99,6 +103,7 @@ public class FormElementReaderContext extends AbstractReaderContext {
     Map<FormElementType, Class<?>> elementMap = new HashMap<>();
     elementMap.put(FormElementType.TABLE, FormTable.class);
     elementMap.put(FormElementType.CONTEXT_MENU, FormContextMenu.class);
+    elementMap.put(FormElementType.EXTENDED_TOOLTIP, FormExtendedTooltip.class);
 
     List.of(FormElementType.INPUT_FIELD, FormElementType.CHECK_BOX_FIELD,
         FormElementType.CALENDAR_FIELD, FormElementType.HTML_DOCUMENT_FIELD,

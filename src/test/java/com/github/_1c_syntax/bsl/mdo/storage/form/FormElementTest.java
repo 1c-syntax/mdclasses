@@ -66,7 +66,7 @@ class FormElementTest {
     assertThat(elements).hasSize(10);
 
     var plainElements = formData.getPlainElements();
-    assertThat(plainElements).hasSize(19);
+    assertThat(plainElements).hasSize(28);
 
     var first = findElement(elements, "Ссылка");
     assertThat(first).isInstanceOf(FormField.class);
@@ -78,6 +78,10 @@ class FormElementTest {
     assertThat(firstContextMenu).isInstanceOf(FormContextMenu.class);
     assertThat(firstContextMenu.getType()).isEqualTo(FormElementType.CONTEXT_MENU);
     assertThat(((FormContextMenu) firstContextMenu).getElements()).isEmpty();
+
+    var firstExtendedTooltip = findElement(((FormField) first).getElements(), "СсылкаРасширеннаяПодсказка");
+    assertThat(firstExtendedTooltip).isInstanceOf(FormExtendedTooltip.class);
+    assertThat(firstExtendedTooltip.getType()).isEqualTo(FormElementType.EXTENDED_TOOLTIP);
 
     var deletionMark = findElement(elements, "ПометкаУдаления");
     assertThat(deletionMark).isInstanceOf(FormField.class);
@@ -144,7 +148,7 @@ class FormElementTest {
     assertThat(elements).hasSize(3);
 
     var plainElements = formData.getPlainElements();
-    assertThat(plainElements).hasSize(68);
+    assertThat(plainElements).hasSize(117);
 
     var pagesGroup = findElement(elements, "Страницы");
     assertThat(pagesGroup).isNotNull();
@@ -227,6 +231,7 @@ class FormElementTest {
     FormDecoration,     2,15, 0, 6, 0, 3,0
     FormAddition,      17, 7, 0, 6, 0, 0,0
     FormContextMenu,   81,40, 1,33, 6,14,7
+    FormExtendedTooltip, 249,88, 1,106,20,25,8
     FormUnknown,        0, 0, 0, 0, 0, 0,0
     """;
 
@@ -264,6 +269,7 @@ class FormElementTest {
     CHART_FIELD,                0, 0,0, 0,0,0,1
     CALENDAR_FIELD,             0, 0,1, 0,0,0,0
     CONTEXT_MENU,              81,40, 1,33, 6,14,7
+    EXTENDED_TOOLTIP,         249,88, 1,106,20,25,8
     GANTT_CHART_FIELD,          0, 0,0, 0,0,0,0
     GEOGRAPHICAL_SCHEMA_FIELD,  0, 0,0, 0,0,0,0
     PDF_DOCUMENT_FIELD,         0, 0,0, 0,0,0,0
@@ -286,18 +292,18 @@ class FormElementTest {
   private static Stream<Arguments> formFileProvider() {
     // File metadata: pack, parentRef, formRef, total
     var files = new String[][]{
-      {"ssl_3_2", "Catalogs.РассылкиОтчетов", "Catalog.РассылкиОтчетов.Form.ФормаЭлемента", "336"},
+      {"ssl_3_2", "Catalogs.РассылкиОтчетов", "Catalog.РассылкиОтчетов.Form.ФормаЭлемента", "585"},
       {"ssl_3_1", "DataProcessors.ЗагрузкаДанныхИзФайла",
-        "DataProcessor.ЗагрузкаДанныхИзФайла.Form.ЗагрузкаДанныхИзФайла", "131"},
+        "DataProcessor.ЗагрузкаДанныхИзФайла.Form.ЗагрузкаДанныхИзФайла", "219"},
       {"ssl_3_1", "SettingsStorages.ХранилищеВариантовОтчетов",
-        "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборФинансовогоПериодаДень", "3"},
+        "SettingsStorage.ХранилищеВариантовОтчетов.Form.ВыборФинансовогоПериодаДень", "4"},
       {"ssl_3_1", "Documents.ЭлектронноеПисьмоИсходящее", "Document.ЭлектронноеПисьмоИсходящее.Form.ФормаДокумента",
-        "142"},
+        "248"},
       {"ssl_3_1", "DataProcessors.КартаМаршрутаБизнесПроцесса", "DataProcessor.КартаМаршрутаБизнесПроцесса.Form.Форма",
-        "27"},
-      {"ssl_3_1", "DataProcessors.Сканирование", "DataProcessor.Сканирование.Form.НастройкаСканированияНаСеанс", "40"},
+        "47"},
+      {"ssl_3_1", "DataProcessors.Сканирование", "DataProcessor.Сканирование.Form.НастройкаСканированияНаСеанс", "65"},
       {"ssl_3_1", "DataProcessors.ОценкаПроизводительности",
-        "DataProcessor.ОценкаПроизводительности.Form.ПодборЦелевогоВремениКлючевойОперации", "16"},
+        "DataProcessor.ОценкаПроизводительности.Form.ПодборЦелевогоВремениКлючевойОперации", "24"},
     };
 
     var baseClasses = new HashMap<String, Long>();

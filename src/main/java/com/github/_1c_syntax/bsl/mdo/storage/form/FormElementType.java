@@ -46,6 +46,7 @@ public enum FormElementType implements EnumWithName {
   COMMAND_BAR_BUTTON("CommandBarButton", "КнопкаКоманднойПанели"),
   COMMAND_BAR_HYPERLINK("CommandBarHyperlink", "ГиперссылкаКоманднойПанели"),
   DENDROGRAM_FIELD("DendrogramField", "ПолеДендрограммы"),
+  EXTENDED_TOOLTIP("ExtendedTooltip", "РасширеннаяПодсказка"),
   FORMATTED_DOCUMENT_FIELD("FormattedDocumentField", "ПолеФорматированногоДокумента"),
   GANTT_CHART_FIELD("GanttChartField", "ПолеДиаграммыГанта"),
   GEOGRAPHICAL_SCHEMA_FIELD("GeographicalSchemaField", "ПолеГеографическойСхемы"),

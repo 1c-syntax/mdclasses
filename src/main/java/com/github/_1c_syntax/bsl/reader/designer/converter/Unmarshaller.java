@@ -71,6 +71,7 @@ public class Unmarshaller {
     = Map.of(
     "AutoCommandBar", "elements",
     "ContextMenu", "elements",
+    "ExtendedTooltip", "elements",
     "SearchControlAddition", "elements",
     "ViewStatusAddition", "elements",
     "SearchStringAddition", "elements",
