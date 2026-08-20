@@ -21,49 +21,80 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
-import com.github._1c_syntax.bsl.mdo.ValueTypeOwner;
 import com.github._1c_syntax.bsl.mdo.support.FillChecking;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
+import lombok.Builder;
+import lombok.Builder.Default;
+import lombok.Singular;
+import lombok.ToString;
+import lombok.Value;
 
 import java.util.List;
 
 /**
- * Атрибут формы (реквизит, таблица, динамический список или дополнительные колонки)
+ * Реквизит формы (простой атрибут или колонка)
  */
-public interface FormAttribute extends FormItem, ValueTypeOwner {
+@Value
+@Builder
+@ToString(of = "name")
+public class FormSimpleAttribute implements FormAttribute {
 
   /**
    * Идентификатор
    */
-  int getId();
+  @Default
+  int id = -1;
+
+  /**
+   * Имя
+   */
+  String name;
 
   /**
    * Заголовок
    */
-  MultiLanguageString getTitle();
+  @Default
+  MultiLanguageString title = MultiLanguageString.EMPTY;
+
+  /**
+   * Тип значения
+   */
+  @Default
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
 
   /**
    * Признак основного реквизита
    */
-  boolean isMainAttribute();
+  @Default
+  boolean mainAttribute = false;
 
   /**
    * Признак сохранения с формой
    */
-  boolean isSavedData();
+  @Default
+  boolean savedData = false;
 
   /**
    * Проверка заполнения
    */
-  FillChecking getFillCheck();
+  @Default
+  FillChecking fillCheck = FillChecking.DONT_CHECK;
 
   /**
    * Комментарий
    */
-  String getComment();
+  @Default
+  String comment = "";
 
   /**
-   * Колонки (включая дополнительные колонки табличной части)
+   * Колонки
    */
-  List<FormAttribute> getColumns();
+  @Singular("addColumns")
+  List<FormAttribute> columns;
+
+  @Override
+  public ValueTypeDescription getValueType() {
+    return type;
+  }
 }

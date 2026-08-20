@@ -122,6 +122,11 @@ public class ManagedFormData implements FormData {
 
   private void putFlattened(Map<String, FormAttribute> map, String prefix, FormAttribute attr) {
     map.put(prefix, attr);
-    attr.getColumns().forEach(col -> putFlattened(map, prefix + "." + col.getName(), col));
+    attr.getColumns().forEach((FormAttribute col) -> {
+      var colName = col.getName();
+      // дополнительные колонки имеют полное имя (путь к табличной части)
+      var key = colName.contains(".") ? colName : prefix + "." + colName;
+      putFlattened(map, key, col);
+    });
   }
 }

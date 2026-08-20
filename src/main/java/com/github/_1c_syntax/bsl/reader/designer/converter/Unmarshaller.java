@@ -22,7 +22,7 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.reader.common.context.FormAttributeWrapper;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
@@ -112,7 +112,7 @@ public class Unmarshaller {
       var itemNode = ITEM_NODE_REMAPPING.get(name);
       if (itemNode != null) {
         readItemNode(reader, context, readerContext, itemNode);
-      } else if (readerContext.getRealClass() == FormAttribute.class && SETTINGS_NODE.equals(name)) {
+      } else if (readerContext.getRealClass() == FormAttributeWrapper.class && SETTINGS_NODE.equals(name)) {
         readDynamicListSettings(reader, context, readerContext);
       } else {
         var node = NODE_REMAPPING.get(name);

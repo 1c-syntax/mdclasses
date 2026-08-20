@@ -44,11 +44,14 @@ class FormAttributeTest {
     var form = getForm(argumentsAccessor, "Catalog.Справочник1.Form.ФормаСписка");
 
     var attr = findAttr(form.getData().getAttributes(), "МойСписок");
-    assertThat(attr).isNotNull();
-    assertThat(attr.getType().contains(V8ValueType.DYNAMIC_LIST)).isTrue();
-    assertThat(attr.getMainTable()).isEqualTo("Catalog.МойСправочник");
-    assertThat(attr.isCustomQuery()).isTrue();
-    assertThat(attr.getQueryText()).contains("Справочник.МойСправочник");
+    assertThat(attr)
+      .isNotNull()
+      .isInstanceOf(FormDynamicListAttribute.class);
+    var dynList = (FormDynamicListAttribute) attr;
+    assertThat(dynList.getType().contains(V8ValueType.DYNAMIC_LIST)).isTrue();
+    assertThat(dynList.getMainTable()).isEqualTo("Catalog.МойСправочник");
+    assertThat(dynList.isCustomQuery()).isTrue();
+    assertThat(dynList.getQueryText()).contains("Справочник.МойСправочник");
   }
 
   @ParameterizedTest
@@ -60,11 +63,14 @@ class FormAttributeTest {
     var form = getForm(argumentsAccessor, "Catalog.Справочник1.Form.ФормаСписка");
 
     var attr = findAttr(form.getData().getAttributes(), "Список");
-    assertThat(attr).isNotNull();
-    assertThat(attr.getType().contains(V8ValueType.DYNAMIC_LIST)).isTrue();
-    assertThat(attr.getMainTable()).isEqualTo("Catalog.Справочник1");
-    assertThat(attr.isCustomQuery()).isFalse();
-    assertThat(attr.getQueryText()).isEmpty();
+    assertThat(attr)
+      .isNotNull()
+      .isInstanceOf(FormDynamicListAttribute.class);
+    var dynList = (FormDynamicListAttribute) attr;
+    assertThat(dynList.getType().contains(V8ValueType.DYNAMIC_LIST)).isTrue();
+    assertThat(dynList.getMainTable()).isEqualTo("Catalog.Справочник1");
+    assertThat(dynList.isCustomQuery()).isFalse();
+    assertThat(dynList.getQueryText()).isEmpty();
   }
 
   @ParameterizedTest
@@ -76,10 +82,13 @@ class FormAttributeTest {
     var form = getForm(argumentsAccessor, "Catalog.Справочник1.Form.ФормаЭлемента");
 
     var attr = findAttr(form.getData().getAttributes(), "Объект");
-    assertThat(attr).isNotNull();
-    assertThat(attr.getMainTable()).isEmpty();
-    assertThat(attr.isCustomQuery()).isFalse();
-    assertThat(attr.getQueryText()).isEmpty();
+    assertThat(attr)
+      .isNotNull()
+      .isInstanceOf(FormDynamicListAttribute.class);
+    var dynList = (FormDynamicListAttribute) attr;
+    assertThat(dynList.getMainTable()).isEmpty();
+    assertThat(dynList.isCustomQuery()).isFalse();
+    assertThat(dynList.getQueryText()).isEmpty();
   }
 
   private static Form getForm(ArgumentsAccessor argumentsAccessor, String formRef) {

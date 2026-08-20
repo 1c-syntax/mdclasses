@@ -27,7 +27,6 @@ import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAddition;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormCommand;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormContextMenu;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
@@ -36,6 +35,7 @@ import com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormGroup;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
+import com.github._1c_syntax.bsl.reader.common.context.FormAttributeWrapper;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.MDCReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
@@ -72,7 +72,7 @@ public class Unmarshaller {
   private static final Map<String, ClassField> FORM_ELEMENT_REMAPPING
     = Map.of(
     "formCommands", new ClassField(FormCommand.class, "commands"),
-    "additionalColumns", new ClassField(FormAttribute.class, "columns"),
+    "additionalColumns", new ClassField(FormAttributeWrapper.class, "columns"),
     "items", new ClassField(FormElement.class, "elements"),
     "contextMenu", new ClassField(FormContextMenu.class, "elements"),
     "extendedTooltip", new ClassField(FormExtendedTooltip.class, "elements"),
