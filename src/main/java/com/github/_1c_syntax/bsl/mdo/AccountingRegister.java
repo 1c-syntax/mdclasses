@@ -109,6 +109,12 @@ public class AccountingRegister implements Register {
    */
 
   /**
+   * План счетов, к которому относится регистр
+   */
+  @Default
+  MdoReference chartOfAccounts = MdoReference.EMPTY;
+
+  /**
    * Ссылка на форму списка по умолчанию
    */
   @Default
