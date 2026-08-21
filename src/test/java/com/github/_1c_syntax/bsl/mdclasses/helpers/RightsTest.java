@@ -25,9 +25,15 @@ import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
+import com.github._1c_syntax.bsl.mdo.Role;
+import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.nio.file.Path;
 
@@ -226,5 +232,71 @@ class RightsTest {
     assertThat(Rights.rolesAccess(cfe, RoleRight.DELETE, mdoReference)).hasSize(1);
     assertThat(Rights.rolesAccess(cfe, RoleRight.INTERACTIVE_DELETE_MARKED, mdoReference)).hasSize(1);
     assertThat(Rights.rolesAccess(cfe, RoleRight.UPDATE_DATA_HISTORY_SETTINGS, mdoReference)).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "ssl_3_1, false",
+    "ssl_3_1, true"
+  })
+  void restrictionByCondition(String pack, boolean edt) {
+    var cf = (CF) Fixtures.get(pack, edt, MDCReadSettings.DEFAULT);
+    assertThat(cf).isNotNull();
+
+    var role = cf.getRoles().stream()
+      .filter(r -> r.getName().equals("ДобавлениеИзменениеВзаимодействий"))
+      .findFirst();
+    assertThat(role).isPresent();
+
+    var roleData = role.get().getData();
+    assertThat(roleData.objectRights()).isNotEmpty();
+
+    var objectRight = roleData.objectRights().stream()
+      .filter(or -> or.name().getMdoRef().equals("Catalog.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы"))
+      .findFirst();
+    assertThat(objectRight).isPresent();
+
+    var readRight = objectRight.get().rights().stream()
+      .filter(r -> r.name() == RoleRight.READ)
+      .findFirst();
+    assertThat(readRight).isPresent();
+    assertThat(readRight.get().restrictionCondition()).isNotEmpty();
+    assertThat(readRight.get().restrictionCondition()).contains("ДляОбъекта");
+
+    var viewRight = objectRight.get().rights().stream()
+      .filter(r -> r.name() == RoleRight.VIEW)
+      .findFirst();
+    assertThat(viewRight).isPresent();
+    assertThat(viewRight.get().restrictionCondition()).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "ssl_3_1, false",
+    "ssl_3_1, true"
+  })
+  void restrictionTemplate(String pack, boolean edt) {
+    var cf = (CF) Fixtures.get(pack, edt, MDCReadSettings.DEFAULT);
+    assertThat(cf).isNotNull();
+
+    var role = cf.getRoles().stream()
+      .filter(r -> r.getName().equals("ДобавлениеИзменениеВзаимодействий"))
+      .findFirst();
+    assertThat(role).isPresent();
+
+    var roleData = role.get().getData();
+    assertThat(roleData.restrictionTemplates()).isNotEmpty();
+
+    var template = roleData.restrictionTemplates().stream()
+      .filter(t -> t.name().startsWith("ДляОбъекта"))
+      .findFirst();
+    assertThat(template).isPresent();
+    assertThat(template.get().condition()).contains("ГДЕ");
+
+    var forRegister = roleData.restrictionTemplates().stream()
+      .filter(t -> t.name().startsWith("ДляРегистра"))
+      .findFirst();
+    assertThat(forRegister).isPresent();
+    assertThat(forRegister.get().condition()).contains("ГДЕ");
   }
 }

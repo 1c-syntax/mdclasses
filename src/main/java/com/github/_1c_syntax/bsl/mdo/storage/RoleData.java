@@ -35,10 +35,12 @@ import java.util.List;
  * @param setForNewObjects                Устанавливать права для новых объектов
  * @param setForAttributesByDefault       Устанавливать права для реквизитов и табличных частей по умолчанию
  * @param independentRightsOfChildObjects Независимые права подчиненных объектов
+ * @param restrictionTemplates            Шаблоны ограничения доступа на уровне записей
  */
 @Builder
 public record RoleData(boolean setForNewObjects, boolean setForAttributesByDefault,
-                       boolean independentRightsOfChildObjects, @Singular List<ObjectRight> objectRights) {
+                       boolean independentRightsOfChildObjects, @Singular List<ObjectRight> objectRights,
+                       @Singular List<RestrictionTemplate> restrictionTemplates) {
 
   public static final RoleData EMPTY = RoleData.builder().build();
   public static final GenericInterner<Right> RIGHT_INTERNER = new GenericInterner<>();
@@ -52,10 +54,21 @@ public record RoleData(boolean setForNewObjects, boolean setForAttributesByDefau
   }
 
   /**
-   * @param name  Право
-   * @param value Признак установленности права
+   * @param name                 Право
+   * @param value                Признак установленности права
+   * @param restrictionCondition Код ограничения доступа на уровне записей для данного права
    */
   @Builder
-  public record Right(RoleRight name, boolean value) {
+  public record Right(RoleRight name, boolean value, String restrictionCondition) {
+  }
+
+  /**
+   * Шаблон ограничения доступа на уровне записей
+   *
+   * @param name      Имя шаблона с параметрами
+   * @param condition Код тела шаблона
+   */
+  @Builder
+  public record RestrictionTemplate(String name, String condition) {
   }
 }
