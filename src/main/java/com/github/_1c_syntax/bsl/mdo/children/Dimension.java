@@ -100,6 +100,12 @@ public class Dimension implements Attribute, AccessRightsOwner {
   boolean useInTotals = true;
 
   /**
+   * Признак базовое измерение.
+   * Определяет, является ли измерение регистра расчета базовым.
+   */
+  boolean baseDimension = false;
+
+  /**
    * Возвращает перечень возможных прав доступа
    */
   public static List<RoleRight> possibleRights() {

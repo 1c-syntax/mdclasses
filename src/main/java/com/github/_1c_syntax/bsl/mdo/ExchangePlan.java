@@ -32,6 +32,7 @@ import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
 import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
@@ -175,6 +176,27 @@ public class ExchangePlan implements MutableReferenceObject, PredefinedDataOwner
    * Распределенная информационная база
    */
   boolean distributedInfoBase;
+
+  /**
+   * Длина кода плана обмена.
+   * Если равна 0, то у плана обмена нет кода.
+   */
+  @Default
+  int codeLength = 0;
+
+  /**
+   * Длина наименования плана обмена.
+   * Если равна 0, то у плана обмена нет наименования.
+   */
+  @Default
+  int descriptionLength = 0;
+
+  /**
+   * Основное представление плана обмена.
+   * Значение по умолчанию: {@link DefaultPresentation#AS_CODE}.
+   */
+  @Default
+  DefaultPresentation defaultPresentation = DefaultPresentation.AS_CODE;
 
   /**
    * Включать расширения информационной базы

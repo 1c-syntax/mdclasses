@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -71,5 +72,23 @@ class ChartOfCalculationTypesTest {
 
     // --- PredefinedDataOwner ---
     assertThat(predefinedValues).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, ChartOfCalculationTypes.ПланВидовРасчета1",
+    "false, mdclasses_3_27, ChartOfCalculationTypes.ПланВидовРасчета1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(ChartOfCalculationTypes.class);
+
+    var chartOfCalculationTypes = (ChartOfCalculationTypes) mdo;
+    assertThat(chartOfCalculationTypes).isNotNull();
+
+    assertThat(chartOfCalculationTypes.getCodeLength()).isEqualTo(9);
+    assertThat(chartOfCalculationTypes.getDescriptionLength()).isEqualTo(40);
+    assertThat(chartOfCalculationTypes.getDefaultPresentation())
+      .isEqualTo(DefaultPresentation.AS_DESCRIPTION);
   }
 }

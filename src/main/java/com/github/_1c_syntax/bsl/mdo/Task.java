@@ -177,6 +177,20 @@ public class Task implements MutableReferenceObject {
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
+   * Длина номера задачи.
+   * Если равна 0, то у задачи нет номера.
+   */
+  @Default
+  int numberLength = 0;
+
+  /**
+   * Длина наименования задачи.
+   * Если равна 0, то у задачи нет наименования.
+   */
+  @Default
+  int descriptionLength = 0;
+
+  /**
    * Режим полнотекстового поиска
    */
   @Default

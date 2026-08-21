@@ -33,6 +33,7 @@ import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
 import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
@@ -214,6 +215,34 @@ public class ChartOfAccounts implements MutableReferenceObject, PredefinedDataOw
    */
   @Default
   CodeSeries codeSeries = CodeSeries.WHOLE_CATALOG;
+
+  /**
+   * Длина кода плана счетов.
+   * Если равна 0, то у плана счетов нет кода.
+   */
+  @Default
+  int codeLength = 0;
+
+  /**
+   * Длина наименования плана счетов.
+   * Если равна 0, то у плана счетов нет наименования.
+   */
+  @Default
+  int descriptionLength = 0;
+
+  /**
+   * Длина порядка плана счетов.
+   * Если равна 0, то у плана счетов нет порядка.
+   */
+  @Default
+  int orderLength = 0;
+
+  /**
+   * Основное представление плана счетов.
+   * Значение по умолчанию: {@link DefaultPresentation#AS_CODE}.
+   */
+  @Default
+  DefaultPresentation defaultPresentation = DefaultPresentation.AS_CODE;
 
   /**
    * Ввод по строке - список реквизитов для ввода по строке

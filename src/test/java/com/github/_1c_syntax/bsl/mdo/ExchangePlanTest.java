@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -99,5 +100,22 @@ class ExchangePlanTest {
       .containsAll(attributes, tabularSections, forms, templates, commands);
     Assertions.assertThat(exchangePlan.getPlainChildren(), true)
       .containsAllPlain(attributes, tabularSections, forms, templates, commands);
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, ExchangePlans.ПланОбмена1",
+    "false, mdclasses_3_27, ExchangePlans.ПланОбмена1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(ExchangePlan.class);
+
+    var exchangePlan = (ExchangePlan) mdo;
+    assertThat(exchangePlan).isNotNull();
+
+    assertThat(exchangePlan.getCodeLength()).isEqualTo(9);
+    assertThat(exchangePlan.getDescriptionLength()).isEqualTo(25);
+    assertThat(exchangePlan.getDefaultPresentation()).isEqualTo(DefaultPresentation.AS_CODE);
   }
 }

@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -206,5 +207,22 @@ class CatalogTest {
     assertThat(index2.getAdditionalFields()).hasSize(1);
     assertThat(index2.getAdditionalFields()).extracting(MdoReference::getMdoRef)
       .containsExactly("Catalog.Справочник1.StandardAttribute.DeletionMark");
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, Catalogs.Справочник1",
+    "false, mdclasses_3_27, Catalogs.Справочник1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Catalog.class);
+
+    var catalog = (Catalog) mdo;
+    assertThat(catalog).isNotNull();
+
+    assertThat(catalog.getCodeLength()).isEqualTo(9);
+    assertThat(catalog.getDescriptionLength()).isEqualTo(25);
+    assertThat(catalog.getDefaultPresentation()).isEqualTo(DefaultPresentation.AS_DESCRIPTION);
   }
 }

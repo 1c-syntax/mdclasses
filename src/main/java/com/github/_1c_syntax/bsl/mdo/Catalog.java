@@ -32,6 +32,7 @@ import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.mdo.support.HierarchyType;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
@@ -264,6 +265,30 @@ public class Catalog implements MutableReferenceObject, PredefinedDataOwner {
    */
   @Default
   CodeSeries codeSeries = CodeSeries.WHOLE_CATALOG;
+
+  /**
+   * Длина кода справочника.
+   * Определяет суммарную длину всех составляющих кода справочника.
+   * Если равна 0, то у справочника нет кода.
+   */
+  @Default
+  int codeLength = 0;
+
+  /**
+   * Длина наименования справочника.
+   * Определяет длину наименования справочника.
+   * Если равна 0, то у справочника нет наименования.
+   */
+  @Default
+  int descriptionLength = 0;
+
+  /**
+   * Основное представление справочника.
+   * Определяет, что выводится в качестве представления элемента справочника: код или наименование.
+   * Значение по умолчанию: {@link DefaultPresentation#AS_CODE}.
+   */
+  @Default
+  DefaultPresentation defaultPresentation = DefaultPresentation.AS_CODE;
 
   /**
    * Ввод по строке - список реквизитов для ввода по строке

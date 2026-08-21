@@ -100,4 +100,19 @@ class DocumentTest {
         MdoReference.create("Document.СообщениеSMS")
       );
   }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, Documents.Документ1",
+    "false, mdclasses_3_27, Documents.Документ1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Document.class);
+
+    var document = (Document) mdo;
+    assertThat(document).isNotNull();
+
+    assertThat(document.getNumberLength()).isEqualTo(9);
+  }
 }

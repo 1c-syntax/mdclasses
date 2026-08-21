@@ -170,6 +170,20 @@ public class BusinessProcess implements MutableReferenceObject {
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
+   * Длина номера бизнес-процесса.
+   * Если равна 0, то у бизнес-процесса нет номера.
+   */
+  @Default
+  int numberLength = 0;
+
+  /**
+   * Длина наименования бизнес-процесса.
+   * Если равна 0, то у бизнес-процесса нет наименования.
+   */
+  @Default
+  int descriptionLength = 0;
+
+  /**
    * Режим полнотекстового поиска
    */
   @Default

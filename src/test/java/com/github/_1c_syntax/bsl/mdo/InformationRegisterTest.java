@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
+import com.github._1c_syntax.bsl.mdo.support.RegisterWriteMode;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -87,5 +88,23 @@ class InformationRegisterTest {
       .containsAll(informationRegister.getAttributes(),
         informationRegister.getDimensions(),
         informationRegister.getResources());
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, InformationRegisters.РегистрСведений1, INDEPENDENT",
+    "false, mdclasses_3_27, InformationRegisters.РегистрСведений1, INDEPENDENT",
+    "true, mdclasses_3_27, InformationRegisters.РегистрСведений2, RECORDER_SUBORDINATE",
+    "false, mdclasses_3_27, InformationRegisters.РегистрСведений2, RECORDER_SUBORDINATE"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(InformationRegister.class);
+
+    var informationRegister = (InformationRegister) mdo;
+    assertThat(informationRegister).isNotNull();
+
+    var expectedWriteMode = RegisterWriteMode.valueOf(argumentsAccessor.getString(3));
+    assertThat(informationRegister.getWriteMode()).isEqualTo(expectedWriteMode);
   }
 }

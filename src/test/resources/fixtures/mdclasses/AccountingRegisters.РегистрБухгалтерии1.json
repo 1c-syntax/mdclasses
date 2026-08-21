@@ -1,5 +1,38 @@
 {
  "com.github._1c_syntax.bsl.mdo.AccountingRegister": {
+  "possibleRights": [
+   "EDIT",
+   "READ",
+   "TOTALS_CONTROL",
+   "UPDATE",
+   "VIEW"
+  ],
+  "description": "Регистр бухгалтерии",
+  "explanation": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+  },
+  "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+  "mdoRef": "AccountingRegister.РегистрБухгалтерии1",
+  "supportVariant": "NONE",
+  "auxiliaryListForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "synonym": {
+   "content": [
+    {
+     "langKey": "en",
+     "value": "Accounting register"
+    },
+    {
+     "langKey": "ru",
+     "value": "Регистр бухгалтерии"
+    }
+   ]
+  },
+  "objectBelonging": "OWN",
+  "commands": [],
   "fullTextSearch": "DONT_USE",
   "mdoType": "ACCOUNTING_REGISTER",
   "defaultFormMap": [
@@ -15,20 +48,13 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/auxiliaryListForm"
   },
-  "possibleRights": [
-   "EDIT",
-   "READ",
-   "TOTALS_CONTROL",
-   "UPDATE",
-   "VIEW"
-  ],
+  "correspondence": false,
   "chartOfAccounts": {
    "mdoRefRu": "ПланСчетов.ПланСчетов1",
    "type": "CHART_OF_ACCOUNTS",
    "mdoRef": "ChartOfAccounts.ПланСчетов1"
   },
   "templates": [],
-  "description": "Регистр бухгалтерии",
   "resources": [
    {
     "owner": {
@@ -66,33 +92,10 @@
     "comment": ""
    }
   ],
-  "explanation": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
-  },
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
   },
-  "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
-  "mdoRef": "AccountingRegister.РегистрБухгалтерии1",
   "modules": [],
-  "supportVariant": "NONE",
-  "auxiliaryListForm": {
-   "mdoRefRu": "",
-   "type": "UNKNOWN",
-   "mdoRef": ""
-  },
-  "synonym": {
-   "content": [
-    {
-     "langKey": "en",
-     "value": "Accounting register"
-    },
-    {
-     "langKey": "ru",
-     "value": "Регистр бухгалтерии"
-    }
-   ]
-  },
   "name": "РегистрБухгалтерии1",
   "attributes": [
    {
@@ -689,8 +692,6 @@
    }
   ],
   "comment": "",
-  "objectBelonging": "OWN",
-  "commands": [],
   "forms": [],
   "dimensions": [
    {
@@ -719,6 +720,7 @@
      "type": "DIMENSION",
      "mdoRef": "AccountingRegister.РегистрБухгалтерии1.Dimension.Измерение1"
     },
+    "baseDimension": false,
     "supportVariant": "NONE",
     "master": false,
     "synonym": {

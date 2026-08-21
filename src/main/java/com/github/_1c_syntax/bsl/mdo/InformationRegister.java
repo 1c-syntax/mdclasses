@@ -32,6 +32,7 @@ import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.RegisterWriteMode;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -116,6 +117,14 @@ public class InformationRegister implements Register {
    */
   @Default
   InformationRegisterPeriodicity informationRegisterPeriodicity = InformationRegisterPeriodicity.NONPERIODICAL;
+
+  /**
+   * Режим записи регистра сведений.
+   * Определяет, может ли регистр писаться независимо или только в составе документа-регистратора.
+   * Значение по умолчанию: {@link RegisterWriteMode#INDEPENDENT}.
+   */
+  @Default
+  RegisterWriteMode writeMode = RegisterWriteMode.INDEPENDENT;
 
   /**
    * Ссылка на форму списка по умолчанию
