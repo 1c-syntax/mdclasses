@@ -34,6 +34,7 @@ import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
+import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementOwner;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -332,6 +333,14 @@ public class Fixtures {
 
           if (Qualifier.class.isAssignableFrom(clazz)) {
             xstream.omitField(clazz, "description");
+          }
+
+          if (RoleData.RestrictionTemplate.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "condition");
+          }
+
+          if (RoleData.Right.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "restrictionCondition");
           }
 
         } catch (ClassNotFoundException e) {
