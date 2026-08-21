@@ -1,0 +1,1738 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://1c-syntax.github.io/mdclasses/dev/platform-indexes/">
+      
+      
+      
+      
+        
+          <link rel="alternate" href="/mdclasses/dev/en/" hreflang="en">
+        
+          <link rel="alternate" href="/mdclasses/dev/" hreflang="ru">
+        
+      
+      
+      <link rel="icon" href="../assets/images/logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Алгоритмы формирования платформенных индексов - MDClasses Dev</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#Алгоритмы-формирования-платформенных-индексов" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href=".." title="MDClasses Dev" class="md-header__button md-logo" aria-label="MDClasses Dev" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MDClasses Dev
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Алгоритмы формирования платформенных индексов
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Выберите язык">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="/mdclasses/dev/en/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="/mdclasses/dev/" hreflang="ru" class="md-select__link">
+              Русский
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/1c-syntax/mdclasses" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    1c-syntax/mdclasses
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href=".." class="md-tabs__link">
+          
+  
+  
+  Домашняя
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MDClasses Dev" class="md-nav__button md-logo" aria-label="MDClasses Dev" data-md-component="logo">
+      
+  <img src="../assets/images/logo.png" alt="logo">
+
+    </a>
+    MDClasses Dev
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/1c-syntax/mdclasses" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    1c-syntax/mdclasses
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Домашняя
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Домашняя
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MDClasses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Примеры использования MDClasses
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../systemRequirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Системные требования
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../benchmark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Бенчмарки
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javadoc/index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    JavaDoc
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="Алгоритмы-формирования-платформенных-индексов">Алгоритмы формирования платформенных индексов<a class="headerlink" href="#Алгоритмы-формирования-платформенных-индексов" title="Permanent link">&para;</a></h1>
+<p>Документ фиксирует правила формирования индексов таблиц базы данных объектов метаданных
+и алгоритмы их расчёта в модели MDClasses. Для каждого объекта метаданных приведены правила,
+для каждого правила — полный состав индекса и условие из документации платформы, алгоритмы
+формирования и статус включения в модель.</p>
+<p>Документ является чек-листом трассировки: правило → алгоритм → ветка калькулятора → эталонный объект в тестах.</p>
+<p><em>Источник правил: 1С:Предприятие 8.3.27, методическая поддержка для разработчиков и администраторов (its.1c.ru, раздел «Индексы таблиц базы данных»).</em></p>
+<h2 id="Общие-соглашения">Общие соглашения<a class="headerlink" href="#Общие-соглашения" title="Permanent link">&para;</a></h2>
+<h3 id="Разделители">Разделители<a class="headerlink" href="#Разделители" title="Permanent link">&para;</a></h3>
+<p>Во все индексы объекта первыми полями входят общие реквизиты, являющиеся разделителями
+данного объекта в режиме «Разделять независимо»: общие реквизиты конфигурации, у которых
+свойство «Разделение данных» равно <code>SEPARATE_INDEPENDENTLY</code> и данный объект входит
+в их состав (список использования). В составе индекса обозначаются <code>[ОРНР…]</code>.</p>
+<p>Часть условий документации описывает выбор между полем конкретного разделителя (<code>ОРНР1</code>)
+и полем хэш-функции значений разделителей (<code>ОРРХ</code>). Хэш (<code>ОРРХ</code>) — физическое представление
+индекса в СУБД и в модели не строится: во всех таких случаях в индекс включаются все
+независимые разделители объекта.</p>
+<h3 id="Соответствие-имён">Соответствие имён<a class="headerlink" href="#Соответствие-имён" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Условное имя документации</th>
+<th>Поле модели</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ссылка</td>
+<td>стандартный реквизит «Ссылка»</td>
+</tr>
+<tr>
+<td>Код</td>
+<td>стандартный реквизит «Код»</td>
+</tr>
+<tr>
+<td>Наименование</td>
+<td>стандартный реквизит «Наименование»</td>
+</tr>
+<tr>
+<td>Номер</td>
+<td>стандартный реквизит «Номер»</td>
+</tr>
+<tr>
+<td>Дата</td>
+<td>стандартный реквизит «Дата»</td>
+</tr>
+<tr>
+<td>Родитель</td>
+<td>стандартный реквизит «Родитель»</td>
+</tr>
+<tr>
+<td>ЭтоГруппа</td>
+<td>стандартный реквизит «ЭтоГруппа»</td>
+</tr>
+<tr>
+<td>Владелец</td>
+<td>стандартный реквизит «Владелец»</td>
+</tr>
+<tr>
+<td>Порядок</td>
+<td>стандартный реквизит «Порядок»</td>
+</tr>
+<tr>
+<td>Предопределенный</td>
+<td>стандартный реквизит «Предопределенный»</td>
+</tr>
+<tr>
+<td>ИмяПредопределенныхДанных</td>
+<td>стандартный реквизит «ИмяПредопределенныхДанных»</td>
+</tr>
+<tr>
+<td>Период</td>
+<td>стандартный реквизит «Период»</td>
+</tr>
+<tr>
+<td>Регистратор</td>
+<td>стандартный реквизит «Регистратор»</td>
+</tr>
+<tr>
+<td>НомерСтроки</td>
+<td>стандартный реквизит «НомерСтроки»</td>
+</tr>
+<tr>
+<td>ПериодРегистрации</td>
+<td>стандартный реквизит «ПериодРегистрации»</td>
+</tr>
+<tr>
+<td>ПериодДействия</td>
+<td>стандартный реквизит «ПериодДействия»</td>
+</tr>
+<tr>
+<td>Завершен</td>
+<td>стандартный реквизит «Завершен»</td>
+</tr>
+<tr>
+<td>Стартован</td>
+<td>стандартный реквизит «Стартован»</td>
+</tr>
+<tr>
+<td>Выполнена</td>
+<td>стандартный реквизит «Выполнена»</td>
+</tr>
+<tr>
+<td>ВедущаяЗадача</td>
+<td>стандартный реквизит «ВедущаяЗадача»</td>
+</tr>
+<tr>
+<td>БизнесПроцесс</td>
+<td>стандартный реквизит «БизнесПроцесс»</td>
+</tr>
+<tr>
+<td>ТочкаМаршрута</td>
+<td>стандартный реквизит «ТочкаМаршрута»</td>
+</tr>
+<tr>
+<td>Реквизит</td>
+<td>реквизит объекта (атрибут)</td>
+</tr>
+<tr>
+<td>Измерение</td>
+<td>измерение регистра</td>
+</tr>
+<tr>
+<td>Ресурс</td>
+<td>ресурс регистра</td>
+</tr>
+<tr>
+<td>Графа</td>
+<td>графа журнала документов</td>
+</tr>
+<tr>
+<td>БазовоеИзмерениеN</td>
+<td>измерение регистра расчета со свойством «Базовое» (<code>baseDimension</code>)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Легенда">Легенда<a class="headerlink" href="#Легенда" title="Permanent link">&para;</a></h3>
+<ul>
+<li>✅ — правило включено в модель;</li>
+<li>❌ — правило исключено из модели с указанием причины;</li>
+<li><code>codeLength</code>, <code>descriptionLength</code>, <code>numberLength</code>, <code>orderLength</code> — соответствующие свойства длины объекта;</li>
+<li><code>mainPresentation</code> — свойство «Основное представление» (<code>AS_CODE</code> / <code>AS_DESCRIPTION</code>);</li>
+<li><code>indexing</code> — свойство «Индексировать» реквизита/графы (<code>INDEX</code> / <code>INDEX_WITH_ADDITIONAL_ORDER</code>);</li>
+<li><code>master</code> — свойство «Ведущее» измерения;</li>
+<li><code>foldersOnTop</code> — свойство «Размещать группы сверху»;</li>
+<li><code>writeMode</code> — режим записи регистра сведений (<code>INDEPENDENT</code> / <code>RECORDER_SUBORDINATE</code>);</li>
+<li><code>periodicity</code> — периодичность регистра сведений;</li>
+<li><code>correspondence</code> — свойство «Корреспонденция» регистра бухгалтерии;</li>
+<li><code>actionPeriod</code> — свойство «Период действия» регистра расчета.</li>
+</ul>
+<hr />
+<h2 id="Справочник">Справочник<a class="headerlink" href="#Справочник" title="Permanent link">&para;</a></h2>
+<h3 id="Основные-индексы">Основные индексы<a class="headerlink" href="#Основные-индексы" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-1--ОРНР1----Ссылка-Кластерный">Правило 1 — [ОРНР1 + ... +] Ссылка (Кластерный)<a class="headerlink" href="#Правило-1--ОРНР1----Ссылка-Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, которые разделяют этот справочник.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Ссылка, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Код--Ссылка">Правило 2 — [ОРРХ | ОРНР1 +] Код + Ссылка<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина кода" не равно 0. Если справочник разделяется одним независимым
+разделителем, тип которого не Строка, то индекс содержит поле этого разделителя. Если тип
+разделителя - Строка, или разделитель независимый и совместный, или разделителей больше
+одного, то индекс содержит поле значения хэш-функции значений разделителей. Это правило
+справедливо для всех индексов, в составе которых указано [ОРРХ | ОРНР1 +].</p>
+<p>Алгоритм 2.1: Если <code>codeLength != 0</code> — создать индекс состава [ОРНР…] + Код + Ссылка.
+Выбор между полем разделителя и хэшем (часть условия про ОРРХ) не моделируется:
+включаются все независимые разделители объекта.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Наименование--Ссылка">Правило 3 — [ОРРХ | ОРНР1 +] Наименование + Ссылка<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина наименования" не равно 0.</p>
+<p>Алгоритм 3.1: Если <code>descriptionLength != 0</code> — создать индекс состава [ОРНР…] + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Реквизит--Ссылка">Правило 4 — [ОРРХ | ОРНР1 +] Реквизит + Ссылка<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Реквизит--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 4.N: Для каждого реквизита справочника с <code>indexing == INDEX</code> — создать индекс
+состава [ОРНР…] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--Реквизит--Код--Ссылка">Правило 5 — [ОРРХ | ОРНР1 +] Реквизит + Код + Ссылка<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--Реквизит--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина кода" не равно 0,
+а свойство "Основное представление" равно "В виде кода".</p>
+<p>Алгоритм 5.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>codeLength != 0 &amp;&amp; mainPresentation == AS_CODE</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-6--ОРРХ--ОРНР1--Реквизит--Наименование--Ссылка">Правило 6 — [ОРРХ | ОРНР1 +] Реквизит + Наименование + Ссылка<a class="headerlink" href="#Правило-6--ОРРХ--ОРНР1--Реквизит--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина наименования" не равно 0,
+а свойство "основное представление" равно "В виде наименования".</p>
+<p>Алгоритм 6.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>descriptionLength != 0 &amp;&amp; mainPresentation == AS_DESCRIPTION</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-7--ОРРХ--ОРНР1--Реквизит">Правило 7 — [ОРРХ | ОРНР1 +] Реквизит<a class="headerlink" href="#Правило-7--ОРРХ--ОРНР1--Реквизит" title="Permanent link">&para;</a></h4>
+<p>Условие: Справочник включен в критерий отбора через реквизит "Реквизит".</p>
+<p>Алгоритм 7.N: Для каждого реквизита, входящего в состав (content) любого критерия отбора
+конфигурации вместе со ссылкой на данный справочник, — создать индекс состава
+[ОРНР…] + Реквизит_N.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-8--ОРРХ--ОРНР1--PredefinedID">Правило 8 — [ОРРХ | ОРНР1 +] PredefinedID<a class="headerlink" href="#Правило-8--ОРРХ--ОРНР1--PredefinedID" title="Permanent link">&para;</a></h4>
+<p>Условие: Индекс по идентификатору предопределенного объекта метаданных.</p>
+<p>Статус: ❌ Не реализуется.</p>
+<h3 id="Дополнительные-индексы-для-подчиненного-справочника-вне-зависимости-от-иерархичности-справочника">Дополнительные индексы для подчиненного справочника (вне зависимости от иерархичности справочника)<a class="headerlink" href="#Дополнительные-индексы-для-подчиненного-справочника-вне-зависимости-от-иерархичности-справочника" title="Permanent link">&para;</a></h3>
+<p>Правила применяются, если справочник подчинён (список владельцев непустой). Индексы
+добавляются к основным.</p>
+<h4 id="Правило-9--ОРРХ--ОРНР1--Владелец--Ссылка">Правило 9 — [ОРРХ | ОРНР1 +] Владелец + Ссылка<a class="headerlink" href="#Правило-9--ОРРХ--ОРНР1--Владелец--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина кода" равно 0.</p>
+<p>Алгоритм 9.1: Если справочник подчинённый и <code>codeLength == 0</code> — создать индекс состава
+[ОРНР…] + Владелец + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-10--ОРРХ--ОРНР1--Владелец--Код--Ссылка">Правило 10 — [ОРРХ | ОРНР1 +] Владелец + Код + Ссылка<a class="headerlink" href="#Правило-10--ОРРХ--ОРНР1--Владелец--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина кода" не равно 0.</p>
+<p>Алгоритм 10.1: Если справочник подчинённый и <code>codeLength != 0</code> — создать индекс состава
+[ОРНР…] + Владелец + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-11--ОРРХ--ОРНР1--Владелец--Наименование--Ссылка">Правило 11 — [ОРРХ | ОРНР1 +] Владелец + Наименование + Ссылка<a class="headerlink" href="#Правило-11--ОРРХ--ОРНР1--Владелец--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина наименования" не равно 0.</p>
+<p>Алгоритм 11.1: Если справочник подчинённый и <code>descriptionLength != 0</code> — создать индекс состава
+[ОРНР…] + Владелец + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-12--ОРРХ--ОРНР1--Владелец--Реквизит--Ссылка">Правило 12 — [ОРРХ | ОРНР1 +] Владелец + Реквизит + Ссылка<a class="headerlink" href="#Правило-12--ОРРХ--ОРНР1--Владелец--Реквизит--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 12.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Владелец + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-13--ОРРХ--ОРНР1--Владелец--Реквизит--Код--Ссылка">Правило 13 — [ОРРХ | ОРНР1 +] Владелец + Реквизит + Код + Ссылка<a class="headerlink" href="#Правило-13--ОРРХ--ОРНР1--Владелец--Реквизит--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина кода" не равно 0,
+а свойство "Основное представление" равно "В виде кода".</p>
+<p>Алгоритм 13.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>codeLength != 0 &amp;&amp; mainPresentation == AS_CODE</code> — создать индекс состава
+[ОРНР…] + Владелец + Реквизит_N + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-14--ОРРХ--ОРНР1--Владелец--Реквизит--Наименование--Ссылка">Правило 14 — [ОРРХ | ОРНР1 +] Владелец + Реквизит + Наименование + Ссылка<a class="headerlink" href="#Правило-14--ОРРХ--ОРНР1--Владелец--Реквизит--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина наименования" не равно 0,
+а свойство "основное представление" равно "В виде наименования".</p>
+<p>Алгоритм 14.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>descriptionLength != 0 &amp;&amp; mainPresentation == AS_DESCRIPTION</code> — создать индекс состава
+[ОРНР…] + Владелец + Реквизит_N + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h3 id="Дополнительные-индексы-для-иерархического-неподчиненного-справочника">Дополнительные индексы для иерархического неподчиненного справочника<a class="headerlink" href="#Дополнительные-индексы-для-иерархического-неподчиненного-справочника" title="Permanent link">&para;</a></h3>
+<p>Правила применяются, если справочник иерархический и не подчинён. Если установлено свойство
+«Размещать группы сверху» (<code>foldersOnTop</code>), в индексах наряду с полем Родитель участвует
+поле ЭтоГруппа; без размещения групп сверху состав тот же, но поле ЭтоГруппа не включается.
+Индексы добавляются к основным.</p>
+<h4 id="Правило-15--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Ссылка">Правило 15 — [ОРРХ | ОРНР1 +] Родитель + ЭтоГруппа + Ссылка<a class="headerlink" href="#Правило-15--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина кода" равно 0 и свойство "Длина наименования" равно 0.</p>
+<p>Алгоритм 15.1: Если справочник иерархический неподчинённый, обе длины равны 0
+(<code>codeLength == 0 &amp;&amp; descriptionLength == 0</code>) — создать индекс состава
+[ОРНР…] + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-16--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Код--Ссылка">Правило 16 — [ОРРХ | ОРНР1 +] Родитель + ЭтоГруппа + Код + Ссылка<a class="headerlink" href="#Правило-16--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина кода" не равно 0.</p>
+<p>Алгоритм 16.1: Если справочник иерархический неподчинённый и <code>codeLength != 0</code> — создать
+индекс состава [ОРНР…] + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-17--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Наименование--Ссылка">Правило 17 — [ОРРХ | ОРНР1 +] Родитель + ЭтоГруппа + Наименование + Ссылка<a class="headerlink" href="#Правило-17--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина наименования" не равно 0.</p>
+<p>Алгоритм 17.1: Если справочник иерархический неподчинённый и <code>descriptionLength != 0</code> —
+создать индекс состава [ОРНР…] + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-18--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Ссылка">Правило 18 — [ОРРХ | ОРНР1 +] Родитель + ЭтоГруппа + Реквизит + Ссылка<a class="headerlink" href="#Правило-18--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 18.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-19--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Код--Ссылка">Правило 19 — [ОРРХ | ОРНР1 +] Родитель + ЭтоГруппа + Реквизит + Код + Ссылка<a class="headerlink" href="#Правило-19--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина кода" не равно 0,
+а свойство "Основное представление" равно "В виде кода".</p>
+<p>Алгоритм 19.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>codeLength != 0 &amp;&amp; mainPresentation == AS_CODE</code> — создать индекс состава
+[ОРНР…] + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Реквизит_N + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-20--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Наименование--Ссылка">Правило 20 — [ОРРХ | ОРНР1 +] Родитель + ЭтоГруппа + Реквизит + Наименование + Ссылка<a class="headerlink" href="#Правило-20--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина наименования" не равно 0,
+а свойство "основное представление" равно "В виде наименования".</p>
+<p>Алгоритм 20.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>descriptionLength != 0 &amp;&amp; mainPresentation == AS_DESCRIPTION</code> — создать индекс состава
+[ОРНР…] + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Реквизит_N + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h3 id="Дополнительные-индексы-для-иерархического-подчиненного-справочника">Дополнительные индексы для иерархического подчиненного справочника<a class="headerlink" href="#Дополнительные-индексы-для-иерархического-подчиненного-справочника" title="Permanent link">&para;</a></h3>
+<p>Правила применяются, если справочник иерархический и подчинён. Поле ЭтоГруппа участвует
+при <code>foldersOnTop</code>, как и для неподчинённого. Индексы добавляются к основным.</p>
+<h4 id="Правило-21--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Ссылка">Правило 21 — [ОРРХ | ОРНР1 +] Владелец + Родитель + ЭтоГруппа + Ссылка<a class="headerlink" href="#Правило-21--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина кода" равно 0 и свойство "Длина наименования" равно 0.</p>
+<p>Алгоритм 21.1: Если справочник иерархический подчинённый, обе длины равны 0 — создать индекс
+состава [ОРНР…] + Владелец + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-22--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Код--Ссылка">Правило 22 — [ОРРХ | ОРНР1 +] Владелец + Родитель + ЭтоГруппа + Код + Ссылка<a class="headerlink" href="#Правило-22--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина кода" не равно 0.</p>
+<p>Алгоритм 22.1: Если справочник иерархический подчинённый и <code>codeLength != 0</code> — создать индекс
+состава [ОРНР…] + Владелец + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-23--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Наименование--Ссылка">Правило 23 — [ОРРХ | ОРНР1 +] Владелец + Родитель + ЭтоГруппа + Наименование + Ссылка<a class="headerlink" href="#Правило-23--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина наименования" не равно 0.</p>
+<p>Алгоритм 23.1: Если справочник иерархический подчинённый и <code>descriptionLength != 0</code> — создать
+индекс состава [ОРНР…] + Владелец + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-24--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Реквизит--Ссылка">Правило 24 — [ОРРХ | ОРНР1 +] Владелец + Родитель + ЭтоГруппа + Реквизит + Ссылка<a class="headerlink" href="#Правило-24--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Реквизит--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 24.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Владелец + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-25--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Реквизит--Код--Ссылка">Правило 25 — [ОРРХ | ОРНР1 +] Владелец + Родитель + ЭтоГруппа + Реквизит + Код + Ссылка<a class="headerlink" href="#Правило-25--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Реквизит--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина кода" не равно 0,
+а свойство "Основное представление" равно "В виде кода".</p>
+<p>Алгоритм 25.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>codeLength != 0 &amp;&amp; mainPresentation == AS_CODE</code> — создать индекс состава
+[ОРНР…] + Владелец + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Реквизит_N + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-26--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Реквизит--Наименование--Ссылка">Правило 26 — [ОРРХ | ОРНР1 +] Владелец + Родитель + ЭтоГруппа + Реквизит + Наименование + Ссылка<a class="headerlink" href="#Правило-26--ОРРХ--ОРНР1--Владелец--Родитель--ЭтоГруппа--Реквизит--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина наименования" не равно 0,
+а свойство "основное представление" равно "В виде наименования".</p>
+<p>Алгоритм 26.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>descriptionLength != 0 &amp;&amp; mainPresentation == AS_DESCRIPTION</code> — создать индекс состава
+[ОРНР…] + Владелец + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Реквизит_N + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h3 id="Таблица-опций-справочника">Таблица опций справочника<a class="headerlink" href="#Таблица-опций-справочника" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-27--ОРРХ--ОРНР1--Идентификатор-Кластерный">Правило 27 — [ОРРХ | ОРНР1 +] Идентификатор (Кластерный)<a class="headerlink" href="#Правило-27--ОРРХ--ОРНР1--Идентификатор-Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Статус: ❌ Служебная таблица опций исключена из модели решением задачи.</p>
+<hr />
+<h2 id="Документ">Документ<a class="headerlink" href="#Документ" title="Permanent link">&para;</a></h2>
+<h4 id="Правило-1--ОРНР1----Ссылка-Кластерный_1">Правило 1 — [ОРНР1 + ... +] Ссылка (Кластерный)<a class="headerlink" href="#Правило-1--ОРНР1----Ссылка-Кластерный_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, которые разделяют этот документ.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Ссылка, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Дата--Ссылка">Правило 2 — [ОРРХ | ОРНР1 +] Дата + Ссылка<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Дата--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Дата + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Номер--Ссылка">Правило 3 — [ОРРХ | ОРНР1 +] Номер + Ссылка<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Номер--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина номера" не равно 0.</p>
+<p>Алгоритм 3.1: Если <code>numberLength != 0</code> — создать индекс состава [ОРНР…] + Номер + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Реквизит--Ссылка_1">Правило 4 — [ОРРХ | ОРНР1 +] Реквизит + Ссылка<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Реквизит--Ссылка_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 4.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--Реквизит--Дата--Ссылка">Правило 5 — [ОРРХ | ОРНР1 +] Реквизит + Дата + Ссылка<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--Реквизит--Дата--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием".</p>
+<p>Алгоритм 5.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code> — создать
+индекс состава [ОРНР…] + Реквизит_N + Дата + Ссылка (условия на длины и основное
+представление, в отличие от справочника, отсутствуют).</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-6--ОРРХ--ОРНР1--Реквизит">Правило 6 — [ОРРХ | ОРНР1 +] Реквизит<a class="headerlink" href="#Правило-6--ОРРХ--ОРНР1--Реквизит" title="Permanent link">&para;</a></h4>
+<p>Условие: Документ включен в критерий отбора через реквизит "Реквизит".</p>
+<p>Алгоритм 6.N: Для каждого реквизита, входящего в состав любого критерия отбора конфигурации
+вместе со ссылкой на данный документ, — создать индекс состава [ОРНР…] + Реквизит_N.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-7--ОРРХ--ОРНР1--ПрефиксНомера--Номер--Ссылка">Правило 7 — [ОРРХ | ОРНР1 +] ПрефиксНомера + Номер + Ссылка<a class="headerlink" href="#Правило-7--ОРРХ--ОРНР1--ПрефиксНомера--Номер--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина номера" не равно 0.</p>
+<p>Статус: ❌ Правило исключено — особенность реализации в СУБД.</p>
+<hr />
+<h2 id="Журнал-документов">Журнал документов<a class="headerlink" href="#Журнал-документов" title="Permanent link">&para;</a></h2>
+<h4 id="Правило-1--ОРРХ--ОРНР1--Ссылка-Кластерный">Правило 1 — [ОРРХ | ОРНР1 +] Ссылка (Кластерный)<a class="headerlink" href="#Правило-1--ОРРХ--ОРНР1--Ссылка-Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Ссылка, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Дата--Ссылка_1">Правило 2 — [ОРРХ | ОРНР1 +] Дата + Ссылка<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Дата--Ссылка_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Дата + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Графа--Ссылка">Правило 3 — [ОРРХ | ОРНР1 +] Графа + Ссылка<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Графа--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для графы журнала "Графа" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 3.N: Для каждой графы журнала с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Графа_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Графа--Дата--Ссылка">Правило 4 — [ОРРХ | ОРНР1 +] Графа + Дата + Ссылка<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Графа--Дата--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для графы журнала "Графа" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием".</p>
+<p>Алгоритм 4.N: Для каждой графы журнала с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code> — создать
+индекс состава [ОРНР…] + Графа_N + Дата + Ссылка.</p>
+<p>Статус: ✅</p>
+<hr />
+<h2 id="План-видов-характеристик">План видов характеристик<a class="headerlink" href="#План-видов-характеристик" title="Permanent link">&para;</a></h2>
+<p>Состав соответствует основным индексам справочника с поправками: длина кода и длина
+наименования плана видов характеристик не может быть равной нулю; план видов характеристик
+не может быть подчиненным. Иерархические индексы применяются, если план видов характеристик
+иерархический.</p>
+<h4 id="Правило-1--ОРНР1----Ссылка-Кластерный_2">Правило 1 — [ОРНР1 + ... +] Ссылка (Кластерный)<a class="headerlink" href="#Правило-1--ОРНР1----Ссылка-Кластерный_2" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Ссылка, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Код--Ссылка_1">Правило 2 — [ОРРХ | ОРНР1 +] Код + Ссылка<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Код--Ссылка_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина кода" не равно 0 (у плана видов характеристик длина кода всегда не нулевая).</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Наименование--Ссылка_1">Правило 3 — [ОРРХ | ОРНР1 +] Наименование + Ссылка<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Наименование--Ссылка_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина наименования" не равно 0 (у плана видов характеристик длина
+наименования всегда не нулевая).</p>
+<p>Алгоритм 3.1: Создать индекс состава [ОРНР…] + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Реквизит--Ссылка_2">Правило 4 — [ОРРХ | ОРНР1 +] Реквизит + Ссылка<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Реквизит--Ссылка_2" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 4.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--Реквизит--Код--Ссылка_1">Правило 5 — [ОРРХ | ОРНР1 +] Реквизит + Код + Ссылка<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--Реквизит--Код--Ссылка_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина кода" не равно 0,
+а свойство "Основное представление" равно "В виде кода".</p>
+<p>Алгоритм 5.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>mainPresentation == AS_CODE</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-6--ОРРХ--ОРНР1--Реквизит--Наименование--Ссылка_1">Правило 6 — [ОРРХ | ОРНР1 +] Реквизит + Наименование + Ссылка<a class="headerlink" href="#Правило-6--ОРРХ--ОРНР1--Реквизит--Наименование--Ссылка_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина наименования" не равно 0,
+а свойство "основное представление" равно "В виде наименования".</p>
+<p>Алгоритм 6.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>mainPresentation == AS_DESCRIPTION</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-7--ОРРХ--ОРНР1--Реквизит_1">Правило 7 — [ОРРХ | ОРНР1 +] Реквизит<a class="headerlink" href="#Правило-7--ОРРХ--ОРНР1--Реквизит_1" title="Permanent link">&para;</a></h4>
+<p>Условие: План видов характеристик включен в критерий отбора через реквизит "Реквизит".</p>
+<p>Алгоритм 7.N: Для каждого реквизита, входящего в состав любого критерия отбора конфигурации
+вместе со ссылкой на данный план видов характеристик, — создать индекс состава
+[ОРНР…] + Реквизит_N.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-8--ОРРХ--ОРНР1--PredefinedID_1">Правило 8 — [ОРРХ | ОРНР1 +] PredefinedID<a class="headerlink" href="#Правило-8--ОРРХ--ОРНР1--PredefinedID_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Индекс по идентификатору предопределенного объекта метаданных.</p>
+<p>Статус: ❌ Правило не реализуется.</p>
+<h4 id="Правило-9--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Код--Ссылка">Правило 9 — [ОРРХ | ОРНР1 +] Родитель + ЭтоГруппа + Код + Ссылка<a class="headerlink" href="#Правило-9--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина кода" не равно 0. Применяется для иерархического плана видов характеристик.</p>
+<p>Алгоритм 9.1: Если план видов характеристик иерархический — создать
+индекс состава [ОРНР…] + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-10--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Наименование--Ссылка">Правило 10 — [ОРРХ | ОРНР1 +] Родитель + ЭтоГруппа + Наименование + Ссылка<a class="headerlink" href="#Правило-10--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина наименования" не равно 0. Применяется для иерархического плана видов характеристик.</p>
+<p>Алгоритм 10.1: Если план видов характеристик иерархический —
+создать индекс состава [ОРНР…] + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-11--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Ссылка">Правило 11 — [ОРРХ | ОРНР1 +] Родитель + ЭтоГруппа + Реквизит + Ссылка<a class="headerlink" href="#Правило-11--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".
+Применяется для иерархического плана видов характеристик.</p>
+<p>Алгоритм 11.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-12--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Код--Ссылка">Правило 12 — [ОРРХ | ОРНР1 +] Родитель + ЭтоГруппа + Реквизит + Код + Ссылка<a class="headerlink" href="#Правило-12--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина кода" не равно 0,
+а свойство "Основное представление" равно "В виде кода". Применяется для иерархического
+плана видов характеристик.</p>
+<p>Алгоритм 12.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>mainPresentation == AS_CODE</code> — создать индекс состава
+[ОРНР…] + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Реквизит_N + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-13--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Наименование--Ссылка">Правило 13 — [ОРРХ | ОРНР1 +] Родитель + ЭтоГруппа + Реквизит + Наименование + Ссылка<a class="headerlink" href="#Правило-13--ОРРХ--ОРНР1--Родитель--ЭтоГруппа--Реквизит--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина наименования" не равно 0,
+а свойство "основное представление" равно "В виде наименования". Применяется для
+иерархического плана видов характеристик.</p>
+<p>Алгоритм 13.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>mainPresentation == AS_DESCRIPTION</code> — создать индекс состава
+[ОРНР…] + Родитель [+ ЭтоГруппа при <code>foldersOnTop</code>] + Реквизит_N + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<p>Примечание: индекс «Родитель + ЭтоГруппа + Ссылка» (обе длины равны 0) для плана видов
+характеристик недостижим, т.к. длины кода и наименования всегда не нулевые.</p>
+<h3 id="Таблица-опций-плана-видов-характеристик">Таблица опций плана видов характеристик<a class="headerlink" href="#Таблица-опций-плана-видов-характеристик" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-14--Идентификатор">Правило 14 — Идентификатор<a class="headerlink" href="#Правило-14--Идентификатор" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Статус: ❌ Служебная таблица опций исключена из модели решением задачи.</p>
+<hr />
+<h2 id="План-счетов">План счетов<a class="headerlink" href="#План-счетов" title="Permanent link">&para;</a></h2>
+<h4 id="Правило-1--ОРНР1----Ссылка-Кластерный_3">Правило 1 — [ОРНР1 + ... +] Ссылка (Кластерный)<a class="headerlink" href="#Правило-1--ОРНР1----Ссылка-Кластерный_3" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, которые разделяют этот план счетов.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Ссылка, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Код--Ссылка_2">Правило 2 — [ОРРХ | ОРНР1 +] Код + Ссылка<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Код--Ссылка_2" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Родитель--Код--Ссылка">Правило 3 — [ОРРХ | ОРНР1 +] Родитель + Код + Ссылка<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Родитель--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда (план счетов всегда иерархический).</p>
+<p>Алгоритм 3.1: Создать индекс состава [ОРНР…] + Родитель + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Наименование--Ссылка">Правило 4 — [ОРРХ | ОРНР1 +] Наименование + Ссылка<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 4.1: Создать индекс состава [ОРНР…] + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--Родитель--Наименование--Ссылка">Правило 5 — [ОРРХ | ОРНР1 +] Родитель + Наименование + Ссылка<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--Родитель--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 5.1: Создать индекс состава [ОРНР…] + Родитель + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-6--ОРРХ--ОРНР1--Порядок--Ссылка">Правило 6 — [ОРРХ | ОРНР1 +] Порядок + Ссылка<a class="headerlink" href="#Правило-6--ОРРХ--ОРНР1--Порядок--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина порядка" не равно 0.</p>
+<p>Алгоритм 6.1: Если <code>orderLength != 0</code> — создать индекс состава [ОРНР…] + Порядок + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-7--ОРРХ--ОРНР1--Родитель--Порядок--Ссылка">Правило 7 — [ОРРХ | ОРНР1 +] Родитель + Порядок + Ссылка<a class="headerlink" href="#Правило-7--ОРРХ--ОРНР1--Родитель--Порядок--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина порядка" не равно 0.</p>
+<p>Алгоритм 7.1: Если <code>orderLength != 0</code> — создать индекс состава [ОРНР…] + Родитель + Порядок + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-8--ОРРХ--ОРНР1--Реквизит--Ссылка">Правило 8 — [ОРРХ | ОРНР1 +] Реквизит + Ссылка<a class="headerlink" href="#Правило-8--ОРРХ--ОРНР1--Реквизит--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 8.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-9--ОРРХ--ОРНР1--Родитель--Реквизит--Ссылка">Правило 9 — [ОРРХ | ОРНР1 +] Родитель + Реквизит + Ссылка<a class="headerlink" href="#Правило-9--ОРРХ--ОРНР1--Родитель--Реквизит--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 9.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Родитель + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-10--ОРРХ--ОРНР1--Реквизит--Порядок--Ссылка">Правило 10 — [ОРРХ | ОРНР1 +] Реквизит + Порядок + Ссылка<a class="headerlink" href="#Правило-10--ОРРХ--ОРНР1--Реквизит--Порядок--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина порядка" не равно 0.</p>
+<p>Алгоритм 10.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>orderLength != 0</code> — создать индекс состава [ОРНР…] + Реквизит_N + Порядок + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-11--ОРРХ--ОРНР1--Родитель--Реквизит--Порядок--Ссылка">Правило 11 — [ОРРХ | ОРНР1 +] Родитель + Реквизит + Порядок + Ссылка<a class="headerlink" href="#Правило-11--ОРРХ--ОРНР1--Родитель--Реквизит--Порядок--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина порядка" не равно 0.</p>
+<p>Алгоритм 11.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>orderLength != 0</code> — создать индекс состава [ОРНР…] + Родитель + Реквизит_N + Порядок + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-12--ОРРХ--ОРНР1--Реквизит--Код--Ссылка">Правило 12 — [ОРРХ | ОРНР1 +] Реквизит + Код + Ссылка<a class="headerlink" href="#Правило-12--ОРРХ--ОРНР1--Реквизит--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина порядка" равно 0,
+а свойство "Основное представление" - "В виде кода".</p>
+<p>Алгоритм 12.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>orderLength == 0 &amp;&amp; mainPresentation == AS_CODE</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-13--ОРРХ--ОРНР1--Родитель--Реквизит--Код--Ссылка">Правило 13 — [ОРРХ | ОРНР1 +] Родитель + Реквизит + Код + Ссылка<a class="headerlink" href="#Правило-13--ОРРХ--ОРНР1--Родитель--Реквизит--Код--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина порядка" равно 0,
+а свойство "Основное представление" - "В виде кода".</p>
+<p>Алгоритм 13.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>orderLength == 0 &amp;&amp; mainPresentation == AS_CODE</code> — создать индекс состава
+[ОРНР…] + Родитель + Реквизит_N + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-14--ОРРХ--ОРНР1--Реквизит--Наименование--Ссылка">Правило 14 — [ОРРХ | ОРНР1 +] Реквизит + Наименование + Ссылка<a class="headerlink" href="#Правило-14--ОРРХ--ОРНР1--Реквизит--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина порядка" равно 0,
+а свойство "Основное представление" - "В виде наименования".</p>
+<p>Алгоритм 14.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>orderLength == 0 &amp;&amp; mainPresentation == AS_DESCRIPTION</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-15--ОРРХ--ОРНР1--Родитель--Реквизит--Наименование--Ссылка">Правило 15 — [ОРРХ | ОРНР1 +] Родитель + Реквизит + Наименование + Ссылка<a class="headerlink" href="#Правило-15--ОРРХ--ОРНР1--Родитель--Реквизит--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина порядка" равно 0,
+а свойство "Основное представление" - "В виде наименования".</p>
+<p>Алгоритм 15.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>orderLength == 0 &amp;&amp; mainPresentation == AS_DESCRIPTION</code> — создать индекс состава
+[ОРНР…] + Родитель + Реквизит_N + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-16--ОРРХ--ОРНР1--Реквизит">Правило 16 — [ОРРХ | ОРНР1 +] Реквизит<a class="headerlink" href="#Правило-16--ОРРХ--ОРНР1--Реквизит" title="Permanent link">&para;</a></h4>
+<p>Условие: План счетов включен в критерий отбора через реквизит "Реквизит".</p>
+<p>Алгоритм 16.N: Для каждого реквизита, входящего в состав любого критерия отбора конфигурации
+вместе со ссылкой на данный план счетов, — создать индекс состава [ОРНР…] + Реквизит_N.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-17--ОРРХ--ОРНР1--PredefinedID">Правило 17 — [ОРРХ | ОРНР1 +] PredefinedID<a class="headerlink" href="#Правило-17--ОРРХ--ОРНР1--PredefinedID" title="Permanent link">&para;</a></h4>
+<p>Условие: Индекс по идентификатору предопределенного объекта метаданных.</p>
+<p>Статус: ❌ Решением задачи индекс предопределённости не моделируется.</p>
+<h3 id="Таблица-опций-плана-счетов">Таблица опций плана счетов<a class="headerlink" href="#Таблица-опций-плана-счетов" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-18--Идентификатор">Правило 18 — Идентификатор<a class="headerlink" href="#Правило-18--Идентификатор" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Статус: ❌ Служебная таблица опций исключена из модели решением задачи.</p>
+<hr />
+<h2 id="План-видов-расчета">План видов расчета<a class="headerlink" href="#План-видов-расчета" title="Permanent link">&para;</a></h2>
+<p>Состав соответствует основным индексам справочника с поправкой: длина кода и длина
+наименования плана видов расчета не может быть равной нулю. План видов расчета не бывает
+подчинённым и иерархическим.</p>
+<h4 id="Правило-1--ОРНР1----Ссылка-Кластерный_4">Правило 1 — [ОРНР1 + ... +] Ссылка (Кластерный)<a class="headerlink" href="#Правило-1--ОРНР1----Ссылка-Кластерный_4" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Ссылка, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Код--Ссылка_3">Правило 2 — [ОРРХ | ОРНР1 +] Код + Ссылка<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Код--Ссылка_3" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина кода" не равно 0 (у плана видов расчета длина кода всегда не нулевая).</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Наименование--Ссылка_2">Правило 3 — [ОРРХ | ОРНР1 +] Наименование + Ссылка<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Наименование--Ссылка_2" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина наименования" не равно 0 (у плана видов расчета длина наименования
+всегда не нулевая).</p>
+<p>Алгоритм 3.1: Создать индекс состава [ОРНР…] + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Реквизит--Ссылка_3">Правило 4 — [ОРРХ | ОРНР1 +] Реквизит + Ссылка<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Реквизит--Ссылка_3" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 4.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--Реквизит--Код--Ссылка_2">Правило 5 — [ОРРХ | ОРНР1 +] Реквизит + Код + Ссылка<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--Реквизит--Код--Ссылка_2" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина кода" не равно 0,
+а свойство "Основное представление" равно "В виде кода".</p>
+<p>Алгоритм 5.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>mainPresentation == AS_CODE</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-6--ОРРХ--ОРНР1--Реквизит--Наименование--Ссылка_2">Правило 6 — [ОРРХ | ОРНР1 +] Реквизит + Наименование + Ссылка<a class="headerlink" href="#Правило-6--ОРРХ--ОРНР1--Реквизит--Наименование--Ссылка_2" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина наименования" не равно 0,
+а свойство "основное представление" равно "В виде наименования".</p>
+<p>Алгоритм 6.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>mainPresentation == AS_DESCRIPTION</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-7--ОРРХ--ОРНР1--Реквизит_2">Правило 7 — [ОРРХ | ОРНР1 +] Реквизит<a class="headerlink" href="#Правило-7--ОРРХ--ОРНР1--Реквизит_2" title="Permanent link">&para;</a></h4>
+<p>Условие: План видов расчета включен в критерий отбора через реквизит "Реквизит".</p>
+<p>Алгоритм 7.N: Для каждого реквизита, входящего в состав любого критерия отбора конфигурации
+вместе со ссылкой на данный план видов расчета, — создать индекс состава [ОРНР…] + Реквизит_N.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-8--ОРРХ--ОРНР1--PredefinedID_2">Правило 8 — [ОРРХ | ОРНР1 +] PredefinedID<a class="headerlink" href="#Правило-8--ОРРХ--ОРНР1--PredefinedID_2" title="Permanent link">&para;</a></h4>
+<p>Условие: Индекс по идентификатору предопределенного объекта метаданных.</p>
+<p>Статус: ❌ Решением задачи индекс предопределённости не моделируется.</p>
+<h3 id="Таблица-опций-плана-видов-расчета">Таблица опций плана видов расчета<a class="headerlink" href="#Таблица-опций-плана-видов-расчета" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-9--Идентификатор">Правило 9 — Идентификатор<a class="headerlink" href="#Правило-9--Идентификатор" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Статус: ❌ Служебная таблица опций исключена из модели решением задачи.</p>
+<hr />
+<h2 id="План-обмена">План обмена<a class="headerlink" href="#План-обмена" title="Permanent link">&para;</a></h2>
+<p>Состав соответствует основным индексам справочника с поправкой: длина кода и длина
+наименования плана обмена не может быть равной нулю. План обмена не бывает подчинённым
+и иерархическим.</p>
+<h4 id="Правило-1--ОРНР1----Ссылка-Кластерный_5">Правило 1 — [ОРНР1 + ... +] Ссылка (Кластерный)<a class="headerlink" href="#Правило-1--ОРНР1----Ссылка-Кластерный_5" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Ссылка, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Код--Ссылка_4">Правило 2 — [ОРРХ | ОРНР1 +] Код + Ссылка<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Код--Ссылка_4" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина кода" не равно 0 (у плана обмена длина кода всегда не нулевая).</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Наименование--Ссылка_3">Правило 3 — [ОРРХ | ОРНР1 +] Наименование + Ссылка<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Наименование--Ссылка_3" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина наименования" не равно 0 (у плана обмена длина наименования всегда
+не нулевая).</p>
+<p>Алгоритм 3.1: Создать индекс состава [ОРНР…] + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Реквизит--Ссылка_4">Правило 4 — [ОРРХ | ОРНР1 +] Реквизит + Ссылка<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Реквизит--Ссылка_4" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 4.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--Реквизит--Код--Ссылка_3">Правило 5 — [ОРРХ | ОРНР1 +] Реквизит + Код + Ссылка<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--Реквизит--Код--Ссылка_3" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина кода" не равно 0,
+а свойство "Основное представление" равно "В виде кода".</p>
+<p>Алгоритм 5.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>mainPresentation == AS_CODE</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Код + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-6--ОРРХ--ОРНР1--Реквизит--Наименование--Ссылка_3">Правило 6 — [ОРРХ | ОРНР1 +] Реквизит + Наименование + Ссылка<a class="headerlink" href="#Правило-6--ОРРХ--ОРНР1--Реквизит--Наименование--Ссылка_3" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием" и при этом свойство "Длина наименования" не равно 0,
+а свойство "основное представление" равно "В виде наименования".</p>
+<p>Алгоритм 6.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code>
+при <code>mainPresentation == AS_DESCRIPTION</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-7--ОРРХ--ОРНР1--Реквизит_3">Правило 7 — [ОРРХ | ОРНР1 +] Реквизит<a class="headerlink" href="#Правило-7--ОРРХ--ОРНР1--Реквизит_3" title="Permanent link">&para;</a></h4>
+<p>Условие: План обмена включен в критерий отбора через реквизит "Реквизит".</p>
+<p>Алгоритм 7.N: Для каждого реквизита, входящего в состав любого критерия отбора конфигурации
+вместе со ссылкой на данный план обмена, — создать индекс состава [ОРНР…] + Реквизит_N.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-8--ОРРХ--ОРНР1--PredefinedID_3">Правило 8 — [ОРРХ | ОРНР1 +] PredefinedID<a class="headerlink" href="#Правило-8--ОРРХ--ОРНР1--PredefinedID_3" title="Permanent link">&para;</a></h4>
+<p>Условие: Индекс по идентификатору предопределенного объекта метаданных.</p>
+<p>Статус: ❌ Правило исключено</p>
+<hr />
+<h2 id="Табличная-часть">Табличная часть<a class="headerlink" href="#Табличная-часть" title="Permanent link">&para;</a></h2>
+<p>Правила применяются для всех таблиц, которые предоставляют доступ к табличным частям объектов.</p>
+<h4 id="Правило-1--ОРНР1----Ссылка--Ключ-Кластерный">Правило 1 — [ОРНР1 + ... +] Ссылка + Ключ (Кластерный)<a class="headerlink" href="#Правило-1--ОРНР1----Ссылка--Ключ-Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, разделяющих объект,
+которому принадлежит табличная часть.</p>
+<p>Статус: ❌ Правило исключено — особенность реализации в СУБД.</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Реквизит--Ссылка">Правило 2 — [ОРРХ | ОРНР1 +] Реквизит + Ссылка<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Реквизит--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Объект конфигурации включен в критерий отбора через реквизит "Реквизит" табличной
+части или для реквизита табличной части установлено свойство "Индексировать".</p>
+<p>Алгоритм 2.N: Для каждого реквизита табличной части, у которого <code>indexing == INDEX</code> или
+который входит в состав любого критерия отбора конфигурации вместе со ссылкой на
+объект-владельца, — создать индекс состава [ОРНР…] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--PredefinedID">Правило 3 — [ОРРХ | ОРНР1 +] PredefinedID<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--PredefinedID" title="Permanent link">&para;</a></h4>
+<p>Условие: Индекс по идентификатору предопределенного объекта метаданных.</p>
+<p>Статус: ❌ Правило исключено.</p>
+<hr />
+<h2 id="Регистр-сведений">Регистр сведений<a class="headerlink" href="#Регистр-сведений" title="Permanent link">&para;</a></h2>
+<h3 id="Непериодический-регистр-сведений">Непериодический регистр сведений<a class="headerlink" href="#Непериодический-регистр-сведений" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-1--ОРРХ--ОРНР1--Измерение1--Измерение2--Кластерный">Правило 1 — [ОРРХ | ОРНР1 +] Измерение1 + [Измерение2 +...] (Кластерный)<a class="headerlink" href="#Правило-1--ОРРХ--ОРНР1--Измерение1--Измерение2--Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Есть хоть одно измерение регистра. Индекс, включающий все измерения в том порядке,
+в котором они заданы при конфигурировании. Индекс кластерный, если регистр независимый.</p>
+<p>Алгоритм 1.1: Если у регистра есть хотя бы одно измерение — создать индекс состава
+[ОРНР…] + Измерение1 + … + ИзмерениеM (все измерения по порядку задания).
+Кластерный ⇔ <code>writeMode == INDEPENDENT</code>.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--ИзмерениеN--Измерение1--Измерение2-">Правило 2 — [ОРРХ | ОРНР1 +] ИзмерениеN + Измерение1 + [Измерение2 +...]<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--ИзмерениеN--Измерение1--Измерение2-" title="Permanent link">&para;</a></h4>
+<p>Условие: Измерению "ИзмерениеN" задано свойство "Индексировать" или свойство "Ведущее"
+и при этом это не первое и не единственное измерение. Индекс, включающий все измерения.
+Первое поле - ИзмерениеN, затем все остальные измерения в том порядке, в котором они заданы
+при конфигурировании.</p>
+<p>Алгоритм 2.N: Для каждого измерения N, кроме первого и единственного, с
+<code>indexing == INDEX || master</code> — создать индекс состава [ОРНР…] + ИзмерениеN +
+Измерение1 + … (остальные измерения по порядку задания).</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Реквизит--Измерение1--Измерение2-">Правило 3 — [ОРРХ | ОРНР1 +] Реквизит + Измерение1 + [Измерение2 +...]<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Реквизит--Измерение1--Измерение2-" title="Permanent link">&para;</a></h4>
+<p>Условие: Реквизиту "Реквизит" задано свойство "Индексировать". Индекс в котором первое поле -
+Реквизит, затем все измерения в том порядке, в котором они заданы при конфигурировании.</p>
+<p>Алгоритм 3.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Измерение1 + … (все измерения по порядку задания).</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Ресурс--Измерение1--Измерение2-">Правило 4 — [ОРРХ | ОРНР1 +] Ресурс + Измерение1 + [Измерение2 +...]<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Ресурс--Измерение1--Измерение2-" title="Permanent link">&para;</a></h4>
+<p>Условие: Ресурсу "Ресурс" задано свойство "Индексировать". Индекс в котором первое поле -
+Ресурс, затем все измерения в том порядке, в котором они заданы при конфигурировании.</p>
+<p>Алгоритм 4.N: Для каждого ресурса с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Ресурс_N + Измерение1 + … (все измерения по порядку задания).</p>
+<p>Статус: ✅</p>
+<h3 id="Периодический-регистр-сведений">Периодический регистр сведений<a class="headerlink" href="#Периодический-регистр-сведений" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-1--ОРРХ--ОРНР1--Период--Измерение1--">Правило 1 — [ОРРХ | ОРНР1 +] Период + [Измерение1 + ...]<a class="headerlink" href="#Правило-1--ОРРХ--ОРНР1--Период--Измерение1--" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Период + Измерение1 + … (все измерения
+по порядку задания).</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Измерение1--Измерение2---Период-Кластерный">Правило 2 — [ОРРХ | ОРНР1 +] Измерение1 + [Измерение2 +...] + Период (Кластерный)<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Измерение1--Измерение2---Период-Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Есть хоть одно измерение регистра. Индекс, включающий все измерения в том порядке,
+в котором они заданы при конфигурировании и поле Период.</p>
+<p>Алгоритм 2.1: Если у регистра есть хотя бы одно измерение — создать индекс состава
+[ОРНР…] + Измерение1 + … + ИзмерениеM + Период. Интерпретация: кластерный ⇔
+<code>writeMode == INDEPENDENT</code> (по аналогии с непериодическим регистром).</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--ИзмерениеN--Период--Измерение1--Измерение2-">Правило 3 — [ОРРХ | ОРНР1 +] ИзмерениеN + Период + Измерение1 + [Измерение2 +...]<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--ИзмерениеN--Период--Измерение1--Измерение2-" title="Permanent link">&para;</a></h4>
+<p>Условие: Измерению "ИзмерениеN" задано свойство "Индексировать" или свойство "Ведущее"
+и при этом это не единственное измерение. Индекс, включающий поле Период и все измерения.
+Первое поле - ИзмерениеN, затем поле Период, затем все остальные измерения в том порядке,
+в котором они заданы при конфигурировании.</p>
+<p>Алгоритм 3.N: Для каждого измерения N, кроме единственного, с <code>indexing == INDEX || master</code> —
+создать индекс состава [ОРНР…] + ИзмерениеN + Период + Измерение1 + … (остальные измерения
+по порядку задания). В отличие от непериодического регистра, первое измерение также
+участвует (если оно не единственное).</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Реквизит--Период--Измерение1--">Правило 4 — [ОРРХ | ОРНР1 +] Реквизит + Период + [Измерение1 + ...]<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Реквизит--Период--Измерение1--" title="Permanent link">&para;</a></h4>
+<p>Условие: Реквизиту "Реквизит" задано свойство "Индексировать". Индекс в котором первое поле -
+Реквизит, затем поле Период, затем все измерения в том порядке, в котором они заданы
+при конфигурировании.</p>
+<p>Алгоритм 4.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Период + Измерение1 + …</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--Ресурс--Период--Измерение1--">Правило 5 — [ОРРХ | ОРНР1 +] Ресурс + Период + [Измерение1 + ...]<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--Ресурс--Период--Измерение1--" title="Permanent link">&para;</a></h4>
+<p>Условие: Ресурсу "Ресурс" задано свойство "Индексировать". Индекс в котором первое поле -
+Ресурс, затем поле Период, затем все измерения в том порядке, в котором они заданы
+при конфигурировании.</p>
+<p>Алгоритм 5.N: Для каждого ресурса с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Ресурс_N + Период + Измерение1 + …</p>
+<p>Статус: ✅</p>
+<h3 id="Дополнительный-индекс-для-регистра-сведений-подчиненного-регистратору">Дополнительный индекс для регистра сведений, подчиненного регистратору<a class="headerlink" href="#Дополнительный-индекс-для-регистра-сведений-подчиненного-регистратору" title="Permanent link">&para;</a></h3>
+<p>Правила применяются при <code>writeMode == RECORDER_SUBORDINATE</code>.</p>
+<h4 id="Правило-1--ОРНР1----Регистратор--НомерСтроки-Кластерный">Правило 1 — [ОРНР1 + ... +] Регистратор + НомерСтроки (Кластерный)<a class="headerlink" href="#Правило-1--ОРНР1----Регистратор--НомерСтроки-Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, которые разделяют этот регистр.
+Индекс кластерный, если регистр непериодический.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Регистратор + НомерСтроки.
+Кластерный ⇔ регистр непериодический.</p>
+<p>Статус: ✅</p>
+<h3 id="Регистр-сведений-с-периодичностью-По-позиции-регистратора">Регистр сведений с периодичностью "По позиции регистратора"<a class="headerlink" href="#Регистр-сведений-с-периодичностью-По-позиции-регистратора" title="Permanent link">&para;</a></h3>
+<p>Правила применяются при <code>periodicity == RECORDER_POSITION</code>; набор заменяет обычные индексы
+периодического регистра сведений (интерпретация).</p>
+<h4 id="Правило-1--ОРРХ--ОРНР1--Период--Регистратор--НомерСтроки">Правило 1 — [ОРРХ | ОРНР1 +] Период + Регистратор + НомерСтроки<a class="headerlink" href="#Правило-1--ОРРХ--ОРНР1--Период--Регистратор--НомерСтроки" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Период + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРНР1----Регистратор--НомерСтроки">Правило 2 — [ОРНР1 + ... +] Регистратор + НомерСтроки<a class="headerlink" href="#Правило-2--ОРНР1----Регистратор--НомерСтроки" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, которые разделяют этот регистр.</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Измерение1--Измерение2----Период--Регистратор--НомерСтроки-Кластерный">Правило 3 — [ОРРХ | ОРНР1 +] Измерение1 + [Измерение2 + ...] + Период + Регистратор + НомерСтроки (Кластерный)<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Измерение1--Измерение2----Период--Регистратор--НомерСтроки-Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Есть хоть одно измерение регистра. Индекс, включающий все измерения в том порядке,
+в котором они заданы при конфигурировании, поле Период и поле Регистратор.</p>
+<p>Алгоритм 3.1: Если у регистра есть хотя бы одно измерение — создать индекс состава
+[ОРНР…] + Измерение1 + … + ИзмерениеM + Период + Регистратор + НомерСтроки, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Измерение--Период--Регистратор--НомерСтроки">Правило 4 — [ОРРХ | ОРНР1 +] Измерение + Период + Регистратор + НомерСтроки<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Измерение--Период--Регистратор--НомерСтроки" title="Permanent link">&para;</a></h4>
+<p>Условие: Измерению "Измерение" задано свойство "Индексировать".</p>
+<p>Алгоритм 4.N: Для каждого измерения с <code>indexing == INDEX</code> (любого, включая первое) — создать
+индекс состава [ОРНР…] + Измерение_N + Период + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--Реквизит--Период--Регистратор--НомерСтроки">Правило 5 — [ОРРХ | ОРНР1 +] Реквизит + Период + Регистратор + НомерСтроки<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--Реквизит--Период--Регистратор--НомерСтроки" title="Permanent link">&para;</a></h4>
+<p>Условие: Реквизиту "Реквизит" задано свойство "Индексировать".</p>
+<p>Алгоритм 5.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Период + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-6--ОРРХ--ОРНР1--Ресурс--Период--Регистратор--НомерСтроки">Правило 6 — [ОРРХ | ОРНР1 +] Ресурс + Период + Регистратор + НомерСтроки<a class="headerlink" href="#Правило-6--ОРРХ--ОРНР1--Ресурс--Период--Регистратор--НомерСтроки" title="Permanent link">&para;</a></h4>
+<p>Условие: Ресурсу "Ресурс" задано свойство "Индексировать".</p>
+<p>Алгоритм 6.N: Для каждого ресурса с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Ресурс_N + Период + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h3 id="ИтогиСрезПервых">ИтогиСрезПервых<a class="headerlink" href="#ИтогиСрезПервых" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-1--ОРРХ--ОРНР1--Измерение1--Измерение2----Период-Кластерный">Правило 1 — [ОРРХ | ОРНР1 +] Измерение1 + [Измерение2 + ...] + Период (Кластерный)<a class="headerlink" href="#Правило-1--ОРРХ--ОРНР1--Измерение1--Измерение2----Период-Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Есть хоть одно измерение регистра. Индекс, включающий все измерения в том порядке,
+в котором они заданы при конфигурировании.</p>
+<p>Статус: ❌ Таблица итогов срезов — служебная, исключена из модели решением задачи.</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Реквизит--Измерение1--">Правило 2 — [ОРРХ | ОРНР1 +] Реквизит + [Измерение1 + ...]<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Реквизит--Измерение1--" title="Permanent link">&para;</a></h4>
+<p>Условие: Реквизиту "Реквизит" задано свойство "Индексировать".</p>
+<p>Статус: ❌ Таблица итогов срезов — служебная, исключена из модели решением задачи.</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Ресурс--Измерение1--">Правило 3 — [ОРРХ | ОРНР1 +] Ресурс + [Измерение1 + ...]<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Ресурс--Измерение1--" title="Permanent link">&para;</a></h4>
+<p>Условие: Ресурсу "Ресурс" задано свойство "Индексировать".</p>
+<p>Статус: ❌ Таблица итогов срезов — служебная, исключена из модели решением задачи.</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--ИзмерениеN--Измерение1--Измерение2-">Правило 4 — [ОРРХ | ОРНР1 +] ИзмерениеN + Измерение1 + [Измерение2 +...]<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--ИзмерениеN--Измерение1--Измерение2-" title="Permanent link">&para;</a></h4>
+<p>Условие: Измерению "ИзмерениеN" задано свойство "Индексировать" или свойство "Ведущее"
+и при этом это не единственное измерение. Индекс, включающий все измерения. Первое поле -
+ИзмерениеN, затем все остальные измерения в том порядке, в котором они заданы
+при конфигурировании.</p>
+<p>Статус: ❌ Таблица итогов срезов — служебная, исключена из модели решением задачи.</p>
+<h3 id="ИтогиСрезПоследних">ИтогиСрезПоследних<a class="headerlink" href="#ИтогиСрезПоследних" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-1--ОРРХ--ОРНР1--Измерение1--Измерение2----Период-Кластерный_1">Правило 1 — [ОРРХ | ОРНР1 +] Измерение1 + [Измерение2 + ...] + Период (Кластерный)<a class="headerlink" href="#Правило-1--ОРРХ--ОРНР1--Измерение1--Измерение2----Период-Кластерный_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Есть хоть одно измерение регистра. Индекс, включающий все измерения в том порядке,
+в котором они заданы при конфигурировании.</p>
+<p>Статус: ❌ Таблица итогов срезов — служебная, исключена из модели решением задачи.</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Реквизит--Измерение1--_1">Правило 2 — [ОРРХ | ОРНР1 +] Реквизит + [Измерение1 + ...]<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Реквизит--Измерение1--_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Реквизиту "Реквизит" задано свойство "Индексировать".</p>
+<p>Статус: ❌ Таблица итогов срезов — служебная, исключена из модели решением задачи.</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Ресурс--Измерение1--_1">Правило 3 — [ОРРХ | ОРНР1 +] Ресурс + [Измерение1 + ...]<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Ресурс--Измерение1--_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Ресурсу "Ресурс" задано свойство "Индексировать".</p>
+<p>Статус: ❌ Таблица итогов срезов — служебная, исключена из модели решением задачи.</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--ИзмерениеN--Измерение1--Измерение2-_1">Правило 4 — [ОРРХ | ОРНР1 +] ИзмерениеN + Измерение1 + [Измерение2 +...]<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--ИзмерениеN--Измерение1--Измерение2-_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Измерению "ИзмерениеN" задано свойство "Индексировать" или свойство "Ведущее"
+и при этом это не единственное измерение. Индекс, включающий все измерения. Первое поле -
+ИзмерениеN, затем все остальные измерения в том порядке, в котором они заданы
+при конфигурировании.</p>
+<p>Статус: ❌ Таблица итогов срезов — служебная, исключена из модели решением задачи.</p>
+<hr />
+<h2 id="Регистр-накопления">Регистр накопления<a class="headerlink" href="#Регистр-накопления" title="Permanent link">&para;</a></h2>
+<h3 id="Основная-таблица-регистра">Основная таблица регистра<a class="headerlink" href="#Основная-таблица-регистра" title="Permanent link">&para;</a></h3>
+<p>Свойство «Вид регистра» (<code>registerType</code>) на состав индексов основной таблицы не влияет.</p>
+<h4 id="Правило-1--ОРРХ--ОРНР1--Период--Регистратор--НомерСтроки-Кластерный">Правило 1 — [ОРРХ | ОРНР1 +] Период + Регистратор + НомерСтроки (Кластерный)<a class="headerlink" href="#Правило-1--ОРРХ--ОРНР1--Период--Регистратор--НомерСтроки-Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Период + Регистратор + НомерСтроки, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРНР1----Регистратор--НомерСтроки_1">Правило 2 — [ОРНР1 + ... +] Регистратор + НомерСтроки<a class="headerlink" href="#Правило-2--ОРНР1----Регистратор--НомерСтроки_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, которые разделяют этот регистр.</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Измерение--Период--Регистратор--НомерСтроки">Правило 3 — [ОРРХ | ОРНР1 +] Измерение + Период + Регистратор + НомерСтроки<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Измерение--Период--Регистратор--НомерСтроки" title="Permanent link">&para;</a></h4>
+<p>Условие: Измерению "Измерение" задано свойство "Индексировать".</p>
+<p>Алгоритм 3.N: Для каждого измерения с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Измерение_N + Период + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Реквизит--Период--Регистратор--НомерСтроки">Правило 4 — [ОРРХ | ОРНР1 +] Реквизит + Период + Регистратор + НомерСтроки<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Реквизит--Период--Регистратор--НомерСтроки" title="Permanent link">&para;</a></h4>
+<p>Условие: Реквизиту "Реквизит" задано свойство "Индексировать".</p>
+<p>Алгоритм 4.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Период + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<hr />
+<h2 id="Регистр-бухгалтерии">Регистр бухгалтерии<a class="headerlink" href="#Регистр-бухгалтерии" title="Permanent link">&para;</a></h2>
+<h3 id="Основная-таблица-регистра-без-корреспонденции">Основная таблица регистра без корреспонденции<a class="headerlink" href="#Основная-таблица-регистра-без-корреспонденции" title="Permanent link">&para;</a></h3>
+<p>Правила применяются при <code>correspondence == false</code>.</p>
+<h4 id="Правило-1--ОРРХ--ОРНР1--Период--Регистратор--НомерСтроки-Кластерный_1">Правило 1 — [ОРРХ | ОРНР1 +] Период + Регистратор + НомерСтроки (Кластерный)<a class="headerlink" href="#Правило-1--ОРРХ--ОРНР1--Период--Регистратор--НомерСтроки-Кластерный_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Период + Регистратор + НомерСтроки, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРНР1----Регистратор--НомерСтроки_2">Правило 2 — [ОРНР1 + ... +] Регистратор + НомерСтроки<a class="headerlink" href="#Правило-2--ОРНР1----Регистратор--НомерСтроки_2" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, которые разделяют этот регистр.</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Счет--Период--Регистратор">Правило 3 — [ОРРХ | ОРНР1 +] Счет + Период + Регистратор<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Счет--Период--Регистратор" title="Permanent link">&para;</a></h4>
+<p>Условие: Регистру назначен план счетов.</p>
+<p>Алгоритм 3.1: Создать индекс состава [ОРНР…] + Счет + Период + Регистратор. У регистра
+бухгалтерии план счетов обязателен, поэтому индекс создаётся всегда.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Измерение--Период--Регистратор--НомерСтроки_1">Правило 4 — [ОРРХ | ОРНР1 +] Измерение + Период + Регистратор + НомерСтроки<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Измерение--Период--Регистратор--НомерСтроки_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Измерению "Измерение" задано свойство "Индексировать".</p>
+<p>Алгоритм 4.N: Для каждого измерения с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Измерение_N + Период + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--Реквизит--Период--Регистратор--НомерСтроки_1">Правило 5 — [ОРРХ | ОРНР1 +] Реквизит + Период + Регистратор + НомерСтроки<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--Реквизит--Период--Регистратор--НомерСтроки_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Реквизиту "Реквизит" задано свойство "Индексировать".</p>
+<p>Алгоритм 5.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Период + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h3 id="Основная-таблица-регистра-с-корреспонденцией">Основная таблица регистра с корреспонденцией<a class="headerlink" href="#Основная-таблица-регистра-с-корреспонденцией" title="Permanent link">&para;</a></h3>
+<p>Правила применяются при <code>correspondence == true</code>. От состава индексов регистра без
+корреспонденции отличается лишь тем, что вместо индекса по счету создаются два индекса
+по счету дебета и счету кредита; остальные правила (1, 2, 4, 5) применяются без изменений.</p>
+<h4 id="Правило-3Дт--ОРРХ--ОРНР1--СчетДт--Период--Регистратор">Правило 3Дт — [ОРРХ | ОРНР1 +] СчетДт + Период + Регистратор<a class="headerlink" href="#Правило-3Дт--ОРРХ--ОРНР1--СчетДт--Период--Регистратор" title="Permanent link">&para;</a></h4>
+<p>Условие: Регистру назначен план счетов.</p>
+<p>Статус: ❌ Правило исключено — виртуальные поля СчетДт/СчетКт в модели не хранятся.</p>
+<h4 id="Правило-3Кт--ОРРХ--ОРНР1--СчетКт--Период--Регистратор">Правило 3Кт — [ОРРХ | ОРНР1 +] СчетКт + Период + Регистратор<a class="headerlink" href="#Правило-3Кт--ОРРХ--ОРНР1--СчетКт--Период--Регистратор" title="Permanent link">&para;</a></h4>
+<p>Условие: Регистру назначен план счетов.</p>
+<p>Статус: ❌ Правило исключено — виртуальные поля СчетДт/СчетКт в модели не хранятся.</p>
+<hr />
+<h2 id="Регистр-расчета">Регистр расчета<a class="headerlink" href="#Регистр-расчета" title="Permanent link">&para;</a></h2>
+<h3 id="Основная-таблица-регистра-расчета">Основная таблица регистра расчета<a class="headerlink" href="#Основная-таблица-регистра-расчета" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-1--ОРРХ--ОРНР1--ПериодРегистрации--Регистратор--НомерСтроки">Правило 1 — [ОРРХ | ОРНР1 +] ПериодРегистрации + Регистратор + НомерСтроки<a class="headerlink" href="#Правило-1--ОРРХ--ОРНР1--ПериодРегистрации--Регистратор--НомерСтроки" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + ПериодРегистрации + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРНР1----Регистратор--НомерСтроки_3">Правило 2 — [ОРНР1 + ... +] Регистратор + НомерСтроки<a class="headerlink" href="#Правило-2--ОРНР1----Регистратор--НомерСтроки_3" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, которые разделяют этот регистр.</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--ПериодРегистрации--БазовоеИзмерение1-">Правило 3 — [ОРРХ | ОРНР1 +] ПериодРегистрации + [БазовоеИзмерение1 +...]<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--ПериодРегистрации--БазовоеИзмерение1-" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. Индекс по полю ПериодРегистрации и всем базовым измерениям, т.е. по тем
+измерениям, у которых установлено свойство "Базовое". Базовые измерения следуют в том
+порядке, в котором они заданы при конфигурировании.</p>
+<p>Алгоритм 3.1: Создать индекс состава [ОРНР…] + ПериодРегистрации + БазовоеИзмерение1 + …
+(базовые измерения — измерения с <code>baseDimension == true</code> — по порядку задания).</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--БазовоеИзмерение1---ПериодРегистрации">Правило 4 — [ОРРХ | ОРНР1 +] [БазовоеИзмерение1 +...] + ПериодРегистрации<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--БазовоеИзмерение1---ПериодРегистрации" title="Permanent link">&para;</a></h4>
+<p>Условие: Есть хоть одно базовое измерение. Индекс по всем базовым измерениям, т.е. по тем
+измерениям, у которых установлено свойство "Базовое" и полю ПериодРегистрации.</p>
+<p>Алгоритм 4.1: Если есть хотя бы одно измерение с <code>baseDimension == true</code> — создать индекс
+состава [ОРНР…] + БазовоеИзмерение1 + … + ПериодРегистрации.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--ПериодДействия--БазовоеИзмерение1-">Правило 5 — [ОРРХ | ОРНР1 +] ПериодДействия + [БазовоеИзмерение1 +...]<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--ПериодДействия--БазовоеИзмерение1-" title="Permanent link">&para;</a></h4>
+<p>Условие: Установлено свойство регистра расчета "ПериодДействия". Индекс по полю
+ПериодДействия и всем базовым измерениям, т.е. по тем измерениям, у которых установлено
+свойство "Базовое". Базовые измерения следуют в том порядке, в котором они заданы
+при конфигурировании.</p>
+<p>Алгоритм 5.1: Если <code>actionPeriod == true</code> — создать индекс состава [ОРНР…] + ПериодДействия +
+БазовоеИзмерение1 + …</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-6--ОРРХ--ОРНР1--БазовоеИзмерение1---ПериодДействия">Правило 6 — [ОРРХ | ОРНР1 +] [БазовоеИзмерение1 +...] + ПериодДействия<a class="headerlink" href="#Правило-6--ОРРХ--ОРНР1--БазовоеИзмерение1---ПериодДействия" title="Permanent link">&para;</a></h4>
+<p>Условие: Установлено свойство регистра расчета "ПериодДействия" и есть хоть одно базовое
+измерение. Индекс по всем базовым измерениям, т.е. по тем измерениям, у которых установлено
+свойство "Базовое" и полю ПериодРегистрации.</p>
+<p>Алгоритм 6.1: Если <code>actionPeriod == true</code> и есть хотя бы одно измерение с
+<code>baseDimension == true</code> — создать индекс состава [ОРНР…] + БазовоеИзмерение1 + … + ПериодДействия.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-7--ОРРХ--ОРНР1--Измерение--ПериодРегистрации--Регистратор--НомерСтроки">Правило 7 — [ОРРХ | ОРНР1 +] Измерение + ПериодРегистрации + Регистратор + НомерСтроки<a class="headerlink" href="#Правило-7--ОРРХ--ОРНР1--Измерение--ПериодРегистрации--Регистратор--НомерСтроки" title="Permanent link">&para;</a></h4>
+<p>Условие: Измерению "Измерение" задано свойство "Индексировать".</p>
+<p>Алгоритм 7.N: Для каждого измерения с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Измерение_N + ПериодРегистрации + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-8--ОРРХ--ОРНР1--Реквизит--ПериодРегистрации--Регистратор--НомерСтроки">Правило 8 — [ОРРХ | ОРНР1 +] Реквизит + ПериодРегистрации + Регистратор + НомерСтроки<a class="headerlink" href="#Правило-8--ОРРХ--ОРНР1--Реквизит--ПериодРегистрации--Регистратор--НомерСтроки" title="Permanent link">&para;</a></h4>
+<p>Условие: Реквизиту "Реквизит" задано свойство "Индексировать".</p>
+<p>Алгоритм 8.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + ПериодРегистрации + Регистратор + НомерСтроки.</p>
+<p>Статус: ✅</p>
+<hr />
+<h2 id="Последовательности">Последовательности<a class="headerlink" href="#Последовательности" title="Permanent link">&para;</a></h2>
+<h3 id="Основная-таблица-последовательности">Основная таблица последовательности<a class="headerlink" href="#Основная-таблица-последовательности" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-1--ОРРХ--ОРНР1--Регистратор">Правило 1 — [ОРРХ | ОРНР1 +] Регистратор<a class="headerlink" href="#Правило-1--ОРРХ--ОРНР1--Регистратор" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Регистратор.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Измерение1----Период--Регистратор">Правило 2 — [ОРРХ | ОРНР1 +] [Измерение1 + ...] + Период + Регистратор<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Измерение1----Период--Регистратор" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. Индекс по всем полям измерений, полю Период и полю Регистратор. Поля
+измерений следуют в том порядке, в котором они заданы при конфигурировании.</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Измерение1 + … + ИзмерениеM + Период +
+Регистратор (измерения по порядку задания; при отсутствии измерений — [ОРНР…] + Период +
+Регистратор).</p>
+<p>Статус: ✅</p>
+<hr />
+<h2 id="Перечисления">Перечисления<a class="headerlink" href="#Перечисления" title="Permanent link">&para;</a></h2>
+<h4 id="Правило-1--ОРРХ--ОРНР1--Порядок--Ссылка">Правило 1 — [ОРРХ | ОРНР1 +] Порядок + Ссылка<a class="headerlink" href="#Правило-1--ОРРХ--ОРНР1--Порядок--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. Поле порядок таблиц перечислений соответствует порядку в котором значения
+перечисления расположены в дереве конфигурации.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Порядок + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРНР1----Ссылка-Кластерный">Правило 2 — [ОРНР1 + ... +] Ссылка (Кластерный)<a class="headerlink" href="#Правило-2--ОРНР1----Ссылка-Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, которые разделяют это перечисление.</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Ссылка, кластерный.</p>
+<p>Статус: ✅</p>
+<hr />
+<h2 id="Бизнес-процессы">Бизнес-процессы<a class="headerlink" href="#Бизнес-процессы" title="Permanent link">&para;</a></h2>
+<h3 id="Основная-таблица-бизнес-процесса">Основная таблица бизнес-процесса<a class="headerlink" href="#Основная-таблица-бизнес-процесса" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-1--ОРНР1----Ссылка-Кластерный_6">Правило 1 — [ОРНР1 + ... +] Ссылка (Кластерный)<a class="headerlink" href="#Правило-1--ОРНР1----Ссылка-Кластерный_6" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, которые разделяют этот бизнес-процесс.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Ссылка, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Дата--Ссылка_2">Правило 2 — [ОРРХ | ОРНР1 +] Дата + Ссылка<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Дата--Ссылка_2" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Дата + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Номер--Ссылка_1">Правило 3 — [ОРРХ | ОРНР1 +] Номер + Ссылка<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Номер--Ссылка_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина номера" не равно 0.</p>
+<p>Алгоритм 3.1: Если <code>numberLength != 0</code> — создать индекс состава [ОРНР…] + Номер + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Завершен--Дата--Ссылка">Правило 4 — [ОРРХ | ОРНР1 +] Завершен + Дата + Ссылка<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Завершен--Дата--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 4.1: Создать индекс состава [ОРНР…] + Завершен + Дата + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--Стартован--Дата--Ссылка">Правило 5 — [ОРРХ | ОРНР1 +] Стартован + Дата + Ссылка<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--Стартован--Дата--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 5.1: Создать индекс состава [ОРНР…] + Стартован + Дата + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-6--ОРРХ--ОРНР1--ВедущаяЗадача--Ссылка">Правило 6 — [ОРРХ | ОРНР1 +] ВедущаяЗадача + Ссылка<a class="headerlink" href="#Правило-6--ОРРХ--ОРНР1--ВедущаяЗадача--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 6.1: Создать индекс состава [ОРНР…] + ВедущаяЗадача + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-7--ОРРХ--ОРНР1--Реквизит--Ссылка">Правило 7 — [ОРРХ | ОРНР1 +] Реквизит + Ссылка<a class="headerlink" href="#Правило-7--ОРРХ--ОРНР1--Реквизит--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 7.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-8--ОРРХ--ОРНР1--Реквизит--Дата--Ссылка">Правило 8 — [ОРРХ | ОРНР1 +] Реквизит + Дата + Ссылка<a class="headerlink" href="#Правило-8--ОРРХ--ОРНР1--Реквизит--Дата--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием".</p>
+<p>Алгоритм 8.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code> — создать
+индекс состава [ОРНР…] + Реквизит_N + Дата + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-9--ОРРХ--ОРНР1--Реквизит">Правило 9 — [ОРРХ | ОРНР1 +] Реквизит<a class="headerlink" href="#Правило-9--ОРРХ--ОРНР1--Реквизит" title="Permanent link">&para;</a></h4>
+<p>Условие: Бизнес-процесс включен в критерий отбора через реквизит "Реквизит".</p>
+<p>Алгоритм 9.N: Для каждого реквизита, входящего в состав любого критерия отбора конфигурации
+вместе со ссылкой на данный бизнес-процесс, — создать индекс состава [ОРНР…] + Реквизит_N.</p>
+<p>Статус: ✅</p>
+<h3 id="Таблица-точек-маршрута-бизнес-процесса">Таблица точек маршрута бизнес-процесса<a class="headerlink" href="#Таблица-точек-маршрута-бизнес-процесса" title="Permanent link">&para;</a></h3>
+<h4 id="Правило-10--ОРНР1----Ссылка-Кластерный">Правило 10 — [ОРНР1 + ... +] Ссылка (Кластерный)<a class="headerlink" href="#Правило-10--ОРНР1----Ссылка-Кластерный" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Статус: ❌ Таблица точек маршрута — служебная, исключена из модели решением задачи.</p>
+<h4 id="Правило-11--ОРРХ--ОРНР1--Порядок--Ссылка">Правило 11 — [ОРРХ | ОРНР1 +] Порядок + Ссылка<a class="headerlink" href="#Правило-11--ОРРХ--ОРНР1--Порядок--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. Поле порядок таблиц точек соответствует порядку в котором точки маршрута
+были введены в графическую схему бизнес-процесса.</p>
+<p>Статус: ❌ Таблица точек маршрута — служебная, исключена из модели решением задачи.</p>
+<hr />
+<h2 id="Задачи">Задачи<a class="headerlink" href="#Задачи" title="Permanent link">&para;</a></h2>
+<h4 id="Правило-1--ОРНР1----Ссылка-Кластерный_7">Правило 1 — [ОРНР1 + ... +] Ссылка (Кластерный)<a class="headerlink" href="#Правило-1--ОРНР1----Ссылка-Кластерный_7" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда. В индекс входят поля независимых разделителей, которые разделяют эту задачу.</p>
+<p>Алгоритм 1.1: Создать индекс состава [ОРНР…] + Ссылка, кластерный.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-2--ОРРХ--ОРНР1--Дата--Ссылка_3">Правило 2 — [ОРРХ | ОРНР1 +] Дата + Ссылка<a class="headerlink" href="#Правило-2--ОРРХ--ОРНР1--Дата--Ссылка_3" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 2.1: Создать индекс состава [ОРНР…] + Дата + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-3--ОРРХ--ОРНР1--Номер--Ссылка_2">Правило 3 — [ОРРХ | ОРНР1 +] Номер + Ссылка<a class="headerlink" href="#Правило-3--ОРРХ--ОРНР1--Номер--Ссылка_2" title="Permanent link">&para;</a></h4>
+<p>Условие: Свойство "Длина номера" не равно 0.</p>
+<p>Алгоритм 3.1: Если <code>numberLength != 0</code> — создать индекс состава [ОРНР…] + Номер + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-4--ОРРХ--ОРНР1--Наименование--Ссылка_1">Правило 4 — [ОРРХ | ОРНР1 +] Наименование + Ссылка<a class="headerlink" href="#Правило-4--ОРРХ--ОРНР1--Наименование--Ссылка_1" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 4.1: Создать индекс состава [ОРНР…] + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-5--ОРРХ--ОРНР1--Выполнена--Наименование--Ссылка">Правило 5 — [ОРРХ | ОРНР1 +] Выполнена + Наименование + Ссылка<a class="headerlink" href="#Правило-5--ОРРХ--ОРНР1--Выполнена--Наименование--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 5.1: Создать индекс состава [ОРНР…] + Выполнена + Наименование + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-6--ОРРХ--ОРНР1--Выполнена--Дата--Ссылка">Правило 6 — [ОРРХ | ОРНР1 +] Выполнена + Дата + Ссылка<a class="headerlink" href="#Правило-6--ОРРХ--ОРНР1--Выполнена--Дата--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 6.1: Создать индекс состава [ОРНР…] + Выполнена + Дата + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-7--ОРРХ--ОРНР1--БизнесПроцесс--ТочкаМаршрута--Ссылка">Правило 7 — [ОРРХ | ОРНР1 +] БизнесПроцесс + ТочкаМаршрута + Ссылка<a class="headerlink" href="#Правило-7--ОРРХ--ОРНР1--БизнесПроцесс--ТочкаМаршрута--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 7.1: Создать индекс состава [ОРНР…] + БизнесПроцесс + ТочкаМаршрута + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-8--ОРРХ--ОРНР1--Выполнена--БизнесПроцесс--ТочкаМаршрута--Ссылка">Правило 8 — [ОРРХ | ОРНР1 +] Выполнена + БизнесПроцесс + ТочкаМаршрута + Ссылка<a class="headerlink" href="#Правило-8--ОРРХ--ОРНР1--Выполнена--БизнесПроцесс--ТочкаМаршрута--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 8.1: Создать индекс состава [ОРНР…] + Выполнена + БизнесПроцесс + ТочкаМаршрута + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-9--ОРРХ--ОРНР1--БизнесПроцесс--Дата--Ссылка">Правило 9 — [ОРРХ | ОРНР1 +] БизнесПроцесс + Дата + Ссылка<a class="headerlink" href="#Правило-9--ОРРХ--ОРНР1--БизнесПроцесс--Дата--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Всегда.</p>
+<p>Алгоритм 9.1: Создать индекс состава [ОРНР…] + БизнесПроцесс + Дата + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-10--ОРРХ--ОРНР1--Реквизит--Ссылка">Правило 10 — [ОРРХ | ОРНР1 +] Реквизит + Ссылка<a class="headerlink" href="#Правило-10--ОРРХ--ОРНР1--Реквизит--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение "Индексировать".</p>
+<p>Алгоритм 10.N: Для каждого реквизита с <code>indexing == INDEX</code> — создать индекс состава
+[ОРНР…] + Реквизит_N + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-11--ОРРХ--ОРНР1--Реквизит--Дата--Ссылка">Правило 11 — [ОРРХ | ОРНР1 +] Реквизит + Дата + Ссылка<a class="headerlink" href="#Правило-11--ОРРХ--ОРНР1--Реквизит--Дата--Ссылка" title="Permanent link">&para;</a></h4>
+<p>Условие: Для реквизита "Реквизит" свойство "Индексировать" установлено в значение
+"Индексировать с доп. упорядочиванием".</p>
+<p>Алгоритм 11.N: Для каждого реквизита с <code>indexing == INDEX_WITH_ADDITIONAL_ORDER</code> — создать
+индекс состава [ОРНР…] + Реквизит_N + Дата + Ссылка.</p>
+<p>Статус: ✅</p>
+<h4 id="Правило-12--ОРРХ--ОРНР1--Реквизит">Правило 12 — [ОРРХ | ОРНР1 +] Реквизит<a class="headerlink" href="#Правило-12--ОРРХ--ОРНР1--Реквизит" title="Permanent link">&para;</a></h4>
+<p>Условие: Задача включена в критерий отбора через реквизит "Реквизит".</p>
+<p>Алгоритм 12.N: Для каждого реквизита, входящего в состав любого критерия отбора конфигурации
+вместе со ссылкой на данную задачу, — создать индекс состава [ОРНР…] + Реквизит_N.</p>
+<p>Статус: ✅</p>
+<hr />
+<h2 id="Исключённые-индексы-сводно">Исключённые индексы (сводно)<a class="headerlink" href="#Исключённые-индексы-сводно" title="Permanent link">&para;</a></h2>
+<p>Следующие группы индексов документации в модели не строятся:</p>
+<table>
+<thead>
+<tr>
+<th>Группа</th>
+<th>Причина</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Индексы по PredefinedID (все объекты)</td>
+<td>Решением задачи индекс предопределённости не моделируется</td>
+</tr>
+<tr>
+<td>Таблицы опций всех объектов («Идентификатор»)</td>
+<td>Служебные таблицы исключены</td>
+</tr>
+<tr>
+<td>Регистр накопления: таблицы остатков и оборотов, агрегаты (агрегаты, статистика, опции сети агрегатов, буфер новых оборотов, новые обороты, коды измерений, сеть агрегатов)</td>
+<td>Служебные таблицы исключены</td>
+</tr>
+<tr>
+<td>Регистр сведений: таблицы итогов срезов (ИтогиСрезПервых, ИтогиСрезПоследних)</td>
+<td>Служебные таблицы исключены</td>
+</tr>
+<tr>
+<td>Регистр бухгалтерии: таблицы итогов по счету и между счетами, таблица субконто</td>
+<td>Служебные таблицы исключены</td>
+</tr>
+<tr>
+<td>Регистр расчета: таблица перерасчета, таблица фактических периодов действия</td>
+<td>Служебные таблицы исключены</td>
+</tr>
+<tr>
+<td>Последовательности: таблица границ последовательности</td>
+<td>Служебные таблицы исключены</td>
+</tr>
+<tr>
+<td>Бизнес-процессы: таблица точек маршрута</td>
+<td>Служебные таблицы исключены</td>
+</tr>
+<tr>
+<td>Сервисы интеграции, история данных</td>
+<td>Служебные таблицы, вне скоупа задачи</td>
+</tr>
+<tr>
+<td>Поля ОРРХ (хэш разделителей), DimHash, Splitter, ХэшИзмерений, РазделительИтогов</td>
+<td>Физическое представление индексов в СУБД, в модели не строятся</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Зафиксированные-интерпретации">Зафиксированные интерпретации<a class="headerlink" href="#Зафиксированные-интерпретации" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Хэш разделителей (ОРРХ): во всех индексах вместо выбора «поле разделителя или хэш»
+   включаются все независимые разделители объекта.</li>
+<li>Кластерность индекса по измерениям периодического регистра сведений — по аналогии
+   с непериодическим: кластерный ⇔ регистр независимый.</li>
+<li>Набор индексов регистра сведений с периодичностью «По позиции регистратора» заменяет
+   обычный набор периодического регистра.</li>
+<li>План счетов регистра бухгалтерии обязателен, поэтому индекс по счёту (Счет) создаётся всегда.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/1c-syntax" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://t.me/bsl_language_server" target="_blank" rel="noopener" title="t.me" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M256 8a248 248 0 1 0 0 496 248 248 0 1 0 0-496m115 168.7c-3.7 39.2-19.9 134.4-28.1 178.3-3.5 18.6-10.3 24.8-16.9 25.4-14.4 1.3-25.3-9.5-39.3-18.7-21.8-14.3-34.2-23.2-55.3-37.2-24.5-16.1-8.6-25 5.3-39.5 3.7-3.8 67.1-61.5 68.3-66.7.2-.7.3-3.1-1.2-4.4s-3.6-.8-5.1-.5c-2.2.5-37.1 23.5-104.6 69.1-9.9 6.8-18.9 10.1-26.9 9.9-8.9-.2-25.9-5-38.6-9.1-15.5-5-27.9-7.7-26.8-16.3.6-4.5 6.7-9 18.4-13.7 72.3-31.5 120.5-52.3 144.6-62.3 68.9-28.6 83.2-33.6 92.5-33.8 2.1 0 6.6.5 9.6 2.9 2 1.7 3.2 4.1 3.5 6.7.5 3.2.6 6.5.4 9.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tabs", "search.highlight", "toc.integrate", "header.autohide"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="../assets/javascripts/tables.js"></script>
+      
+    
+  </body>
+</html>
