@@ -40,7 +40,9 @@ import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.CommonAttributeSeparatedDataUse;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.HierarchyType;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
@@ -56,6 +58,7 @@ import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.TransferDirection;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
+import com.github._1c_syntax.bsl.mdo.support.RegisterWriteMode;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.converter.CommonConverter;
 import com.github._1c_syntax.bsl.reader.common.converter.EnumConverter;
@@ -274,6 +277,7 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
     registerConverter(new EnumConverter<>(DataLockControlMode.class));
     registerConverter(new EnumConverter<>(DataSeparation.class));
+    registerConverter(new EnumConverter<>(CommonAttributeSeparatedDataUse.class));
     registerConverter(new EnumConverter<>(FormType.class));
     registerConverter(new EnumConverter<>(IndexingType.class));
     registerConverter(new EnumConverter<>(InformationRegisterPeriodicity.class));
@@ -297,6 +301,8 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(SearchStringMode.class));
     registerConverter(new EnumConverter<>(CommandRepresentation.class));
     registerConverter(new EnumConverter<>(FillChecking.class));
+    registerConverter(new EnumConverter<>(DefaultPresentation.class));
+    registerConverter(new EnumConverter<>(RegisterWriteMode.class));
   }
 
   private void init() {

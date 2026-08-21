@@ -81,4 +81,19 @@ class BusinessProcessTest {
         MdoReference.create("Task.ЗадачаИсполнителя")
       );
   }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, BusinessProcesses.БизнесПроцесс1",
+    "false, mdclasses_3_27, BusinessProcesses.БизнесПроцесс1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(BusinessProcess.class);
+
+    var businessProcess = (BusinessProcess) mdo;
+    assertThat(businessProcess).isNotNull();
+
+    assertThat(businessProcess.getNumberLength()).isEqualTo(9);
+  }
 }

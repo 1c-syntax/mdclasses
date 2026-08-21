@@ -28,7 +28,7 @@ import java.util.List;
 /**
  * Объект метаданных, содержащий дополнительные индексы
  */
-public interface AdditionalIndexOwner {
+public interface AdditionalIndexOwner extends IndexOwner {
   /**
    * Список дополнительных индексов объекта
    */

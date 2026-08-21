@@ -22,11 +22,14 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.BusinessProcess;
+import com.github._1c_syntax.bsl.mdo.Catalog;
 import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndex;
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -72,6 +75,39 @@ class ConfigurationTest {
       .hasSize(packName)
       .containsAllChildren()
       .containsAllPlainChildren();
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, mdclasses_3_27",
+      "false, mdclasses_3_27"
+    }
+  )
+  void testGetIndexes(ArgumentsAccessor argumentsAccessor) {
+    var formatEDT = argumentsAccessor.getBoolean(0);
+    var packName = argumentsAccessor.getString(1);
+    var cf = (Configuration) Fixtures.get(packName, "Configuration", formatEDT);
+    var catalog = (Catalog) Fixtures.get(packName, "Catalogs.Справочник1", formatEDT);
+
+    // 5 платформенных индексов основной таблицы + 2 дополнительных
+    var indexes = cf.getIndexes(catalog);
+    assertThat(indexes).hasSize(7);
+    assertThat(indexes.subList(0, 5)).allSatisfy(index -> assertThat(index).isInstanceOf(PlatformIndex.class));
+    assertThat(indexes.subList(5, 7)).allSatisfy(index -> assertThat(index).isInstanceOf(AdditionalIndex.class));
+
+    // индекс по табличной части принадлежит самой ТЧ
+    var tabularSection = catalog.getTabularSections().stream()
+      .filter(section -> section.getName().equals("ТабличнаяЧасть2"))
+      .findFirst()
+      .orElseThrow();
+    assertThat(cf.getIndexes(tabularSection)).hasSize(1);
+
+    // получение по ссылке на объект
+    assertThat(cf.getIndexes(catalog.getMdoReference())).isEqualTo(indexes);
+
+    // по неизвестной ссылке список пуст
+    assertThat(cf.getIndexes(MdoReference.create("Catalog.НетТакого"))).isEmpty();
   }
 
   @ParameterizedTest

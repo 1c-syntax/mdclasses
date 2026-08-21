@@ -281,6 +281,7 @@ public class Fixtures {
             xstream.omitField(clazz, "modulesByObject");
             xstream.omitField(clazz, "commonModulesByName");
             xstream.omitField(clazz, "childrenByMdoRef");
+            xstream.omitField(clazz, "indexesByMdoRef");
             xstream.omitField(clazz, "configurationSource");
             xstream.omitField(clazz, "configurationExtensionCompatibilityMode");
             xstream.omitField(clazz, "defaultFormMap");

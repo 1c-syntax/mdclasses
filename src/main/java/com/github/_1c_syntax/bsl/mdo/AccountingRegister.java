@@ -115,6 +115,13 @@ public class AccountingRegister implements Register {
   MdoReference chartOfAccounts = MdoReference.EMPTY;
 
   /**
+   * Признак корреспонденции.
+   * Определяет, ведется ли в регистре бухгалтерии учет по корреспонденции счетов.
+   */
+  @Default
+  boolean correspondence = false;
+
+  /**
    * Ссылка на форму списка по умолчанию
    */
   @Default

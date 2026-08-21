@@ -163,7 +163,7 @@ public class StdAtrInfo {
   }
 
   private static ValueTypeDescription computeDescription(MDReaderContext parentContext) {
-    var descriptionLength = Integer.parseInt(parentContext.getFromCache("descriptionLength", "100"));
+    var descriptionLength = parentContext.getFromCache("descriptionLength", 100);
     return ValueTypeDescription.createString(descriptionLength);
   }
 
@@ -171,10 +171,10 @@ public class StdAtrInfo {
     if ("String".equals(parentContext.getFromCache("codeType", "Number"))) {
       var codeAllowedLength = AllowedLength.valueByName(
         parentContext.getFromCache("codeAllowedLength", "Fixed"));
-      var codeLength = Integer.parseInt(parentContext.getFromCache("codeLength", "0"));
+      var codeLength = parentContext.getFromCache("codeLength", 0);
       return ValueTypeDescription.createString(codeLength, codeAllowedLength);
     } else {
-      var codeLength = Integer.parseInt(parentContext.getFromCache("codeLength", "0"));
+      var codeLength = parentContext.getFromCache("codeLength", 0);
       return ValueTypeDescription.createNumber(codeLength);
     }
   }
@@ -183,10 +183,10 @@ public class StdAtrInfo {
     if ("String".equals(parentContext.getFromCache("numberType", "Number"))) {
       var numberAllowedLength = AllowedLength.valueByName(
         parentContext.getFromCache("numberAllowedLength", "Fixed"));
-      var numberLength = Integer.parseInt(parentContext.getFromCache("numberLength", "0"));
+      var numberLength = parentContext.getFromCache("numberLength", 0);
       return ValueTypeDescription.createString(numberLength, numberAllowedLength);
     } else {
-      var numberLength = Integer.parseInt(parentContext.getFromCache("numberLength", "0"));
+      var numberLength = parentContext.getFromCache("numberLength", 0);
       return ValueTypeDescription.createNumber(numberLength);
     }
   }

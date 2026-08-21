@@ -125,6 +125,13 @@ public class CalculationRegister implements Register {
   CalculationRegisterPeriodicity periodicity = CalculationRegisterPeriodicity.MONTH;
 
   /**
+   * Признак период действия.
+   * Определяет, используется ли в регистре расчета период действия.
+   */
+  @Default
+  boolean actionPeriod = false;
+
+  /**
    * Ссылка на форму списка по умолчанию
    */
   @Default

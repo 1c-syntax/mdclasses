@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.support.CommonAttributeSeparatedDataUse;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -117,10 +118,12 @@ public class CommonAttribute implements MDObject, AccessRightsOwner, ValueTypeOw
   MdoReference dataSeparationValue = MdoReference.EMPTY;
 
   /**
-   * Использование разделения данных
+   * Использование разделяемых данных.
+   * Определяет режим разделения данных: независимо или независимо и совместно.
+   * Значение по умолчанию: {@link CommonAttributeSeparatedDataUse#UNKNOWN}.
    */
   @Default
-  MdoReference dataSeparationUse = MdoReference.EMPTY;
+  CommonAttributeSeparatedDataUse dataSeparationUse = CommonAttributeSeparatedDataUse.UNKNOWN;
 
   /**
    * Условное разделение

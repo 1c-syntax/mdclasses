@@ -79,6 +79,8 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
+import com.github._1c_syntax.bsl.mdo.storage.Index;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndex;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -96,6 +98,7 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -273,6 +276,8 @@ public class Configuration implements CF {
   Map<String, CommonModule> commonModulesByName = LazyLoader.computeCommonModulesByName(this);
   @Getter(lazy = true)
   Map<MdoReference, MD> childrenByMdoRef = LazyLoader.computeChildrenByMdoRef(this);
+  @Getter(lazy = true)
+  Map<MdoReference, List<PlatformIndex>> indexesByMdoRef = LazyLoader.computeIndexes(this);
 
   /*
    * Свое

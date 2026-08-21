@@ -48,7 +48,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Enum implements ReferenceObject {
+public class Enum implements ReferenceObject, IndexOwner {
 
   /*
    * MDObject

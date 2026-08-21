@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.utils;
 
+import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
@@ -32,6 +33,7 @@ import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.Enum;
 import com.github._1c_syntax.bsl.mdo.ExternalDataSource;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
+import com.github._1c_syntax.bsl.mdo.IndexOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
@@ -41,6 +43,8 @@ import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndex;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndexCalculator;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementOwner;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -264,6 +268,21 @@ public class LazyLoader {
   public static Map<MdoReference, MD> computeChildrenByMdoRef(ChildrenOwner childrenOwner) {
     return childrenOwner.getPlainChildren().stream()
       .collect(Collectors.toUnmodifiableMap(MD::getMdoReference, child -> child));
+  }
+
+  /**
+   * Производит расчет соответствия ссылки объекта конфигурации к списку его платформенных индексов.
+   * Расчет выполняется только для объектов-владельцев индексов
+   *
+   * @param cf Конфигурация или расширение
+   * @return Немодифицируемое соответствие
+   */
+  public Map<MdoReference, List<PlatformIndex>> computeIndexes(CF cf) {
+    var result = new HashMap<MdoReference, List<PlatformIndex>>();
+    cf.getPlainChildren().stream()
+      .filter(IndexOwner.class::isInstance)
+      .forEach(mdo -> result.put(mdo.getMdoReference(), PlatformIndexCalculator.computeIndexes(mdo, cf)));
+    return Collections.unmodifiableMap(result);
   }
 
   /**

@@ -31,6 +31,7 @@ import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
 import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -167,6 +168,27 @@ public class ChartOfCalculationTypes implements MutableReferenceObject, Predefin
    */
   @Singular("addAdditionalIndex")
   List<AdditionalIndex> additionalIndexes;
+
+  /**
+   * Длина кода плана видов расчета.
+   * Если равна 0, то у плана видов расчета нет кода.
+   */
+  @Default
+  int codeLength = 0;
+
+  /**
+   * Длина наименования плана видов расчета.
+   * Если равна 0, то у плана видов расчета нет наименования.
+   */
+  @Default
+  int descriptionLength = 0;
+
+  /**
+   * Основное представление плана видов расчета.
+   * Значение по умолчанию: {@link DefaultPresentation#AS_CODE}.
+   */
+  @Default
+  DefaultPresentation defaultPresentation = DefaultPresentation.AS_CODE;
 
   /**
    * Пояснение

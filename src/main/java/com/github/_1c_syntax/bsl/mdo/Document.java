@@ -170,6 +170,13 @@ public class Document implements MutableReferenceObject {
   List<AdditionalIndex> additionalIndexes;
 
   /**
+   * Длина номера документа.
+   * Если равна 0, то у документа нет номера.
+   */
+  @Default
+  int numberLength = 0;
+
+  /**
    * Пояснение
    */
   @Default
