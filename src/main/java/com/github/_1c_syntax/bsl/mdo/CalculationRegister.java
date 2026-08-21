@@ -113,6 +113,12 @@ public class CalculationRegister implements Register {
    */
 
   /**
+   * План видов расчета, к которому относится регистр
+   */
+  @Default
+  MdoReference chartOfCalculationTypes = MdoReference.EMPTY;
+
+  /**
    * Периодичность регистра расчета
    */
   @Default

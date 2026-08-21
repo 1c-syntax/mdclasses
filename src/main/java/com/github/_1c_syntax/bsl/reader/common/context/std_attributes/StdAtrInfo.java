@@ -217,12 +217,7 @@ public class StdAtrInfo {
   }
 
   private static ValueTypeDescription computeAccount(MDReaderContext parentContext) {
-    var chartOfAccounts = parentContext.getFromCache("ChartOfAccounts", "");
-    if (!chartOfAccounts.isEmpty()) {
-      var mdoRef = MdoReference.create(chartOfAccounts);
-      return ValueTypeDescription.createRef(mdoRef);
-    }
-    return ValueTypeDescription.EMPTY;
+    return ValueTypeDescription.createRef(parentContext.getFromCache("ChartOfAccounts", MdoReference.EMPTY));
   }
 
   private static ValueTypeDescription computeValueType(MDReaderContext parentContext) {
