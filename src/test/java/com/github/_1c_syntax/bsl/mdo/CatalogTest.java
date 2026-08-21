@@ -190,17 +190,27 @@ class CatalogTest {
     assertThat(index1.getName()).isEqualTo("Индекс1");
     assertThat(index1.getUuid()).isEqualTo("00000000-0000-0000-0000-000000000000");
     assertThat(index1.getTable()).isEqualTo(MdoReference.create("Catalog.Справочник1"));
+    assertThat(index1.isClustered()).isFalse();
     assertThat(index1.getIndexedFields()).hasSize(2);
     assertThat(index1.getIndexedFields()).extracting(MdoReference::getMdoRef)
       .containsExactly("Catalog.Справочник1.StandardAttribute.Code", "Catalog.Справочник1.Attribute.Реквизит1");
     assertThat(index1.getAdditionalFields()).hasSize(2);
     assertThat(index1.getAdditionalFields()).extracting(MdoReference::getMdoRef)
       .containsExactly("Catalog.Справочник1.Attribute.Реквизит4", "Catalog.Справочник1.StandardAttribute.Predefined");
+    assertThat(index1.getFields()).hasSize(4);
+    assertThat(index1.getFields()).extracting(MdoReference::getMdoRef)
+      .containsExactly(
+        "Catalog.Справочник1.StandardAttribute.Code",
+        "Catalog.Справочник1.Attribute.Реквизит1",
+        "Catalog.Справочник1.Attribute.Реквизит4",
+        "Catalog.Справочник1.StandardAttribute.Predefined"
+      );
 
     var index2 = catalog.getAdditionalIndexes().get(1);
     assertThat(index2.getName()).isEqualTo("Индекс2");
     assertThat(index2.getUuid()).isEqualTo("4bf0a294-aae4-4965-b9f7-b1eaf3b4d021");
     assertThat(index2.getTable()).isEqualTo(MdoReference.create("Catalog.Справочник1"));
+    assertThat(index2.isClustered()).isFalse();
     assertThat(index2.getIndexedFields()).hasSize(2);
     assertThat(index2.getIndexedFields()).extracting(MdoReference::getMdoRef)
       .containsExactly("Catalog.Справочник1.StandardAttribute.Ref", "Catalog.Справочник1.StandardAttribute.Code");

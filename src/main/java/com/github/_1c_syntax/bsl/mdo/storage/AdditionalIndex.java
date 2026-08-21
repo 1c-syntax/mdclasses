@@ -27,13 +27,14 @@ import lombok.Singular;
 import lombok.Value;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
- * Данные дополнительного индекса таблицы
+ * Дополнительный индекс таблицы базы данных, заданный разработчиком конфигурации
  */
 @Value
 @Builder(toBuilder = true)
-public class AdditionalIndex {
+public class AdditionalIndex implements Index {
 
   /**
    * Уникальный идентификатор
@@ -61,4 +62,15 @@ public class AdditionalIndex {
    */
   @Singular("addAdditionalField")
   List<MdoReference> additionalFields;
+
+  @Override
+  public boolean isClustered() {
+    return false;
+  }
+
+  @Override
+  public List<MdoReference> getFields() {
+    return Stream.concat(indexedFields.stream(), additionalFields.stream())
+      .toList();
+  }
 }
