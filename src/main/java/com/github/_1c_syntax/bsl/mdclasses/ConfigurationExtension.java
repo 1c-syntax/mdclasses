@@ -78,6 +78,7 @@ import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndex;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -264,6 +265,8 @@ public class ConfigurationExtension implements CF {
   Map<URI, MD> modulesByObject = LazyLoader.computeModulesByObject(this);
   @Getter(lazy = true)
   Map<String, CommonModule> commonModulesByName = LazyLoader.computeCommonModulesByName(this);
+  @Getter(lazy = true)
+  Map<MdoReference, List<PlatformIndex>> indexesByMdoRef = LazyLoader.computeIndexes(this);
   @Getter(lazy = true)
   Map<MdoReference, MD> childrenByMdoRef = LazyLoader.computeChildrenByMdoRef(this);
 

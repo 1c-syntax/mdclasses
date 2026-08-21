@@ -21,30 +21,23 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import java.util.Collections;
+import com.github._1c_syntax.bsl.mdclasses.CF;
+import com.github._1c_syntax.bsl.mdo.storage.Index;
+
 import java.util.List;
 
 /**
- * Интерфейс табличных частей объектов (включая стандартные ТЧ)
+ * Объект метаданных, таблица которого имеет платформенные индексы,
+ * создаваемые платформой автоматически
  */
-public interface TabularSection extends MDChild, AttributeOwner, IndexOwner {
+public interface IndexOwner {
   /**
-   * Список реквизитов табличной части
+   * Возвращает список индексов таблицы БД объекта
+   *
+   * @param cf - Конфигурация или расширение, которому принадлежит объект
+   * @return Немодифицируемый список индексов
    */
-  List<Attribute> getAttributes();
-
-  @Override
-  default List<MD> getChildren() {
-    return Collections.unmodifiableList(getAttributes());
-  }
-
-  @Override
-  default List<MD> getStorageFields() {
-    return getChildren();
-  }
-
-  @Override
-  default List<Attribute> getAllAttributes() {
-    return getAttributes();
+  default List<Index> getIndexes(CF cf) {
+    return cf.getIndexes((MD) this);
   }
 }

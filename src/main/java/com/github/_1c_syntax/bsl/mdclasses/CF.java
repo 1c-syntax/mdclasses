@@ -21,12 +21,16 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.mdo.AdditionalIndexOwner;
 import com.github._1c_syntax.bsl.mdo.CommonForm;
 import com.github._1c_syntax.bsl.mdo.CommonModule;
+import com.github._1c_syntax.bsl.mdo.IndexOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Subsystem;
+import com.github._1c_syntax.bsl.mdo.storage.Index;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndex;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
@@ -37,6 +41,7 @@ import com.github._1c_syntax.bsl.types.ModuleType;
 import com.github._1c_syntax.bsl.types.ScriptVariant;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -253,6 +258,11 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
   Map<MdoReference, MD> getChildrenByMdoRef();
 
   /**
+   * Возвращает соответствие ссылок на объекты метаданных к списку их индексов
+   */
+  Map<MdoReference, List<PlatformIndex>> getIndexesByMdoRef();
+
+  /**
    * Возвращает соответствие типов модулей их путям к файлам для дочернего объекта
    */
   default Map<ModuleType, List<URI>> mdoModuleTypes(MdoReference mdoReference) {
@@ -349,5 +359,33 @@ public interface CF extends MDClass, ConfigurationTree, CFAccess {
    */
   default boolean isEmpty() {
     return this == Configuration.EMPTY;
+  }
+
+  /**
+   * Возвращает список индексов таблицы БД объекта
+   *
+   * @param mdo объект метаданных
+   * @return Немодифицируемый список индексов
+   */
+  default List<Index> getIndexes(MD mdo) {
+    if (mdo instanceof IndexOwner) {
+      var result = new ArrayList<Index>(getIndexesByMdoRef()
+        .getOrDefault(mdo.getMdoReference(), Collections.emptyList()));
+      if (mdo instanceof AdditionalIndexOwner additionalIndexOwner) {
+        result.addAll(additionalIndexOwner.getAdditionalIndexes());
+      }
+      return Collections.unmodifiableList(result);
+    }
+    return Collections.emptyList();
+  }
+
+  /**
+   * Возвращает список индексов таблицы БД объекта по ссылке на него
+   *
+   * @param mdoRef Ссылка на объект метаданных
+   * @return Немодифицируемый список индексов
+   */
+  default List<Index> getIndexes(MdoReference mdoRef) {
+    return getIndexes(getChildrenByMdoRef().get(mdoRef));
   }
 }

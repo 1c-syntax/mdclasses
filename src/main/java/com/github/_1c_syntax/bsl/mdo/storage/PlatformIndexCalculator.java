@@ -21,7 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
-import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdo.AccountingRegister;
 import com.github._1c_syntax.bsl.mdo.AccumulationRegister;
 import com.github._1c_syntax.bsl.mdo.Attribute;
@@ -41,7 +41,6 @@ import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Register;
 import com.github._1c_syntax.bsl.mdo.Sequence;
 import com.github._1c_syntax.bsl.mdo.TabularSection;
-import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.children.Dimension;
 import com.github._1c_syntax.bsl.mdo.support.CommonAttributeSeparatedDataUse;
@@ -85,7 +84,7 @@ public final class PlatformIndexCalculator {
    * @param configuration конфигурация-владелец
    * @return список индексов, таблица каждого индекса указана в самом индексе
    */
-  public static List<PlatformIndex> computeIndexes(MD mdo, Configuration configuration) {
+  public static List<PlatformIndex> computeIndexes(MD mdo, CF configuration) {
     var result = new ArrayList<PlatformIndex>();
     switch (mdo) {
       case Catalog catalog -> result.addAll(catalogIndexes(catalog, configuration));
@@ -111,21 +110,18 @@ public final class PlatformIndexCalculator {
       case CalculationRegister calculationRegister ->
         result.addAll(calculationRegisterIndexes(calculationRegister, configuration));
       case Sequence sequence -> result.addAll(sequenceIndexes(sequence, configuration));
+      case TabularSection tabularSection -> configuration
+        .findChild(tabularSection.getOwner())
+        .ifPresent(md -> result.addAll(tabularSectionIndexes(tabularSection, md, configuration)));
       default -> {
       }
-    }
-
-    if (mdo instanceof TabularSectionOwner tabularSectionOwner) {
-      tabularSectionOwner.getTabularSections().stream()
-        .map(tabularSection -> tabularSectionIndexes(tabularSection, mdo, configuration))
-        .forEach(result::addAll);
     }
     return List.copyOf(result);
   }
 
   // Справочник
 
-  private static List<PlatformIndex> catalogIndexes(Catalog catalog, Configuration configuration) {
+  private static List<PlatformIndex> catalogIndexes(Catalog catalog, CF configuration) {
     var table = catalog.getMdoReference();
     var sep = separators(catalog, configuration);
     var ref = stdAttribute(catalog, StdAttributeNames.REF);
@@ -201,7 +197,7 @@ public final class PlatformIndexCalculator {
 
   // Документ
 
-  private static List<PlatformIndex> documentIndexes(Document document, Configuration configuration) {
+  private static List<PlatformIndex> documentIndexes(Document document, CF configuration) {
     var table = document.getMdoReference();
     var sep = separators(document, configuration);
     var ref = stdAttribute(document, StdAttributeNames.REF);
@@ -221,7 +217,7 @@ public final class PlatformIndexCalculator {
 
   // Журнал документов
 
-  private static List<PlatformIndex> documentJournalIndexes(DocumentJournal journal, Configuration configuration) {
+  private static List<PlatformIndex> documentJournalIndexes(DocumentJournal journal, CF configuration) {
     var table = journal.getMdoReference();
     var sep = separators(journal, configuration);
     var ref = stdAttribute(journal, StdAttributeNames.REF);
@@ -242,7 +238,7 @@ public final class PlatformIndexCalculator {
   // План видов характеристик
 
   private static List<PlatformIndex> chartOfCharacteristicTypesIndexes(
-    ChartOfCharacteristicTypes chart, Configuration configuration) {
+    ChartOfCharacteristicTypes chart, CF configuration) {
     var table = chart.getMdoReference();
     var sep = separators(chart, configuration);
     var ref = stdAttribute(chart, StdAttributeNames.REF);
@@ -285,7 +281,7 @@ public final class PlatformIndexCalculator {
 
   // План счетов
 
-  private static List<PlatformIndex> chartOfAccountsIndexes(ChartOfAccounts chart, Configuration configuration) {
+  private static List<PlatformIndex> chartOfAccountsIndexes(ChartOfAccounts chart, CF configuration) {
     var table = chart.getMdoReference();
     var sep = separators(chart, configuration);
     var ref = stdAttribute(chart, StdAttributeNames.REF);
@@ -351,7 +347,7 @@ public final class PlatformIndexCalculator {
   // (план видов расчета, план обмена)
 
   private static List<PlatformIndex> referenceBasicIndexes(
-    MD mdo, List<? extends Attribute> attributes, Configuration configuration) {
+    MD mdo, List<? extends Attribute> attributes, CF configuration) {
     var table = mdo.getMdoReference();
     var sep = separators(mdo, configuration);
     var ref = stdAttribute(mdo, StdAttributeNames.REF);
@@ -376,7 +372,7 @@ public final class PlatformIndexCalculator {
 
   // Перечисление
 
-  private static List<PlatformIndex> enumIndexes(Enum enumValue, Configuration configuration) {
+  private static List<PlatformIndex> enumIndexes(Enum enumValue, CF configuration) {
     var table = enumValue.getMdoReference();
     var sep = separators(enumValue, configuration);
     var ref = stdAttribute(enumValue, StdAttributeNames.REF);
@@ -392,7 +388,7 @@ public final class PlatformIndexCalculator {
 
   // Бизнес-процесс
 
-  private static List<PlatformIndex> businessProcessIndexes(BusinessProcess process, Configuration configuration) {
+  private static List<PlatformIndex> businessProcessIndexes(BusinessProcess process, CF configuration) {
     var table = process.getMdoReference();
     var sep = separators(process, configuration);
     var ref = stdAttribute(process, StdAttributeNames.REF);
@@ -421,7 +417,7 @@ public final class PlatformIndexCalculator {
 
   // Задача
 
-  private static List<PlatformIndex> taskIndexes(Task task, Configuration configuration) {
+  private static List<PlatformIndex> taskIndexes(Task task, CF configuration) {
     var table = task.getMdoReference();
     var sep = separators(task, configuration);
     var ref = stdAttribute(task, StdAttributeNames.REF);
@@ -464,7 +460,7 @@ public final class PlatformIndexCalculator {
   // Регистр сведений
 
   private static List<PlatformIndex> informationRegisterIndexes(
-    InformationRegister register, Configuration configuration) {
+    InformationRegister register, CF configuration) {
     var sep = separators(register, configuration);
     if (register.getInformationRegisterPeriodicity() == InformationRegisterPeriodicity.RECORDER_POSITION) {
       return recorderPositionInfoRegIndexes(register, sep);
@@ -553,7 +549,7 @@ public final class PlatformIndexCalculator {
   // Регистр накопления
 
   private static List<PlatformIndex> turnoverRegisterIndexes(
-    AccumulationRegister register, Configuration configuration) {
+    AccumulationRegister register, CF configuration) {
     var table = register.getMdoReference();
     var sep = separators(register, configuration);
     var tail = List.of(stdAttribute(register, StdAttributeNames.PERIOD),
@@ -574,7 +570,7 @@ public final class PlatformIndexCalculator {
   // Регистр бухгалтерии
 
   private static List<PlatformIndex> accountingRegisterIndexes(
-    AccountingRegister register, Configuration configuration) {
+    AccountingRegister register, CF configuration) {
     var table = register.getMdoReference();
     var sep = separators(register, configuration);
     var period = stdAttribute(register, StdAttributeNames.PERIOD);
@@ -603,7 +599,7 @@ public final class PlatformIndexCalculator {
   // Регистр расчета
 
   private static List<PlatformIndex> calculationRegisterIndexes(
-    CalculationRegister register, Configuration configuration) {
+    CalculationRegister register, CF configuration) {
     var table = register.getMdoReference();
     var sep = separators(register, configuration);
     var registrationPeriod = stdAttribute(register, StdAttributeNames.REGISTRATION_PERIOD);
@@ -643,7 +639,7 @@ public final class PlatformIndexCalculator {
 
   // Последовательность
 
-  private static List<PlatformIndex> sequenceIndexes(Sequence sequence, Configuration configuration) {
+  private static List<PlatformIndex> sequenceIndexes(Sequence sequence, CF configuration) {
     var table = sequence.getMdoReference();
     var sep = separators(sequence, configuration);
     var recorder = stdAttribute(sequence, StdAttributeNames.RECORDER);
@@ -665,7 +661,7 @@ public final class PlatformIndexCalculator {
   // Табличная часть
 
   private static List<PlatformIndex> tabularSectionIndexes(
-    TabularSection tabularSection, MD owner, Configuration configuration) {
+    TabularSection tabularSection, MD owner, CF configuration) {
     var table = tabularSection.getMdoReference();
     var sep = separators(owner, configuration);
     var ownerRef = stdAttribute(owner, StdAttributeNames.REF);
@@ -685,7 +681,7 @@ public final class PlatformIndexCalculator {
    * Независимые разделители объекта: общие реквизиты с разделением "Разделять",
    * использованием разделяемых данных "Независимо" и данным объектом в составе использования.
    */
-  private static List<MdoReference> separators(MD mdo, Configuration configuration) {
+  private static List<MdoReference> separators(MD mdo, CF configuration) {
     return configuration.getCommonAttributes().stream()
       .filter(attribute -> attribute.getDataSeparation() == DataSeparation.SEPARATE
         && attribute.getDataSeparationUse() == CommonAttributeSeparatedDataUse.INDEPENDENTLY
@@ -923,7 +919,7 @@ public final class PlatformIndexCalculator {
    * @param excludeTabularSections исключить ли поля табличных частей
    */
   private static List<MdoReference> filterCriterionFields(
-    Configuration configuration, String ownerRef, boolean excludeTabularSections) {
+    CF configuration, String ownerRef, boolean excludeTabularSections) {
     return configuration.getFilterCriteria().stream()
       .flatMap(criterion -> criterion.getContent().stream())
       .map(MdoReference::getMdoRef)
@@ -934,7 +930,7 @@ public final class PlatformIndexCalculator {
   }
 
   private static List<PlatformIndex> filterCriterionIndexes(
-    Configuration configuration, MdoReference table, List<MdoReference> sep) {
+    CF configuration, MdoReference table, List<MdoReference> sep) {
     return filterCriterionFields(configuration, table.getMdoRef(), true).stream()
       .map(field -> index(table, sep, field))
       .collect(Collectors.toCollection(ArrayList::new));
