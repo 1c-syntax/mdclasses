@@ -44,15 +44,25 @@
     "savedData": false,
     "fields": [
      {
-      "name": "Реквизит1",
+      "kind": "NESTED_DATA_SET",
+      "name": "Группа",
       "type": {
        "types": [],
        "composite": false,
        "qualifiers": []
       },
+      "dataPath": "Группа"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Реквизит1",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
       "dataPath": "Группа.Реквизит1"
      },
      {
+      "kind": "FIELD",
       "name": "Наименование",
       "type": {
        "types": [
@@ -69,6 +79,7 @@
       "dataPath": "Наименование"
      },
      {
+      "kind": "FIELD",
       "name": "Ссылка",
       "type": {
        "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"

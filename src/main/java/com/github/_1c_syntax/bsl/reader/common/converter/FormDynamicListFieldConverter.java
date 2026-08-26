@@ -22,11 +22,13 @@
 package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField;
+import com.github._1c_syntax.bsl.mdo.support.DynamicListFieldKind;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Конвертор поля состава динамического списка, применяемый в формах.
@@ -38,10 +40,16 @@ public class FormDynamicListFieldConverter implements ReadConverter {
   private static final String DATA_PATH_NODE_NAME = "dataPath";
   private static final String FIELD_NODE_NAME = "field";
   private static final String VALUE_TYPE_NODE_NAME = "valueType";
+  private static final String TYPE_ATTRIBUTE_NAME = "type";
+
+  /** Окончания имени типа записи, по которым различаются ее виды. */
+  private static final String NESTED_DATA_SET_SUFFIX = "NestedDataSet";
+  private static final String FOLDER_SUFFIX = "Folder";
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var field = FormDynamicListField.builder();
+    var field = FormDynamicListField.builder()
+      .kind(kindOf(reader.getAttribute(TYPE_ATTRIBUTE_NAME)));
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       switch (reader.getNodeName()) {
@@ -55,6 +63,29 @@ public class FormDynamicListFieldConverter implements ReadConverter {
       reader.moveUp();
     }
     return field.build();
+  }
+
+  /**
+   * Вид записи по имени ее типа. Имя пишется с префиксом пространства имен, а сам
+   * префикс у форматов и файлов разный ({@code dcssch:DataSetFieldNestedDataSet},
+   * {@code schema:DataCompositionSchemaNestedDataSet}, в макете СКД - вовсе без
+   * префикса), поэтому вид определяется по окончанию имени.
+   *
+   * @param typeName значение атрибута {@code xsi:type}; может отсутствовать.
+   * @return вид записи; {@link DynamicListFieldKind#FIELD}, если имя не названо
+   *   либо не опознано.
+   */
+  private static DynamicListFieldKind kindOf(@Nullable String typeName) {
+    if (typeName == null) {
+      return DynamicListFieldKind.FIELD;
+    }
+    if (typeName.endsWith(NESTED_DATA_SET_SUFFIX)) {
+      return DynamicListFieldKind.NESTED_DATA_SET;
+    }
+    if (typeName.endsWith(FOLDER_SUFFIX)) {
+      return DynamicListFieldKind.FOLDER;
+    }
+    return DynamicListFieldKind.FIELD;
   }
 
   @Override

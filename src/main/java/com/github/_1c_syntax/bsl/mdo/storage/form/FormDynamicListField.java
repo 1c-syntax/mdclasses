@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
 import com.github._1c_syntax.bsl.mdo.ValueTypeOwner;
+import com.github._1c_syntax.bsl.mdo.support.DynamicListFieldKind;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
 import lombok.Builder;
 import lombok.Builder.Default;
@@ -36,6 +37,13 @@ import lombok.Value;
 @Builder
 @ToString(of = "dataPath")
 public class FormDynamicListField implements FormDataPathOwner, ValueTypeOwner {
+
+  /**
+   * Вид записи: собственно поле, вложенный набор данных или папка.
+   * Значение по умолчанию: {@link DynamicListFieldKind#FIELD}
+   */
+  @Default
+  DynamicListFieldKind kind = DynamicListFieldKind.FIELD;
 
   /**
    * Путь к данным поля

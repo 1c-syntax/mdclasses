@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo.storage.form;
 
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Form;
+import com.github._1c_syntax.bsl.mdo.support.DynamicListFieldKind;
 import com.github._1c_syntax.bsl.mdo.support.DynamicListKeyType;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
@@ -93,12 +94,18 @@ class FormAttributeTest {
     // then
     assertThat(dynList.getFields())
       .extracting(FormDynamicListField::getDataPath)
-      .containsExactly("Ссылка", "Наименование", "Группа.Реквизит1");
+      .containsExactly("Ссылка", "Наименование", "Группа", "Группа.Реквизит1");
 
     // имя поля отличается от пути к данным у полей, сгруппированных под общим префиксом
     assertThat(dynList.getFields())
       .extracting(FormDynamicListField::getName)
-      .containsExactly("Ссылка", "Наименование", "Реквизит1");
+      .containsExactly("Ссылка", "Наименование", "Группа", "Реквизит1");
+
+    // вложенный набор данных - не поле, а группа, под которой они лежат
+    assertThat(dynList.getFields())
+      .extracting(FormDynamicListField::getKind)
+      .containsExactly(DynamicListFieldKind.FIELD, DynamicListFieldKind.FIELD,
+        DynamicListFieldKind.NESTED_DATA_SET, DynamicListFieldKind.FIELD);
 
     // тип у поля состава указывается редко, поэтому по умолчанию он пустой
     var fieldsByPath = dynList.getFields().stream()
