@@ -753,14 +753,8 @@
   ],
   "attributes": [
    {
-    "mainTable": "Catalog.ВерсииФайлов",
     "columns": [],
-    "name": "Список",
-    "queryText": "ВЫБРАТЬ\n\tВерсииФайлов.Ссылка КАК Ссылка,\n\tВерсииФайлов.НомерВерсии КАК НомерВерсии,\n\tВерсииФайлов.ФайлХранилище КАК ФайлХранилище,\n\tВерсииФайлов.Размер КАК Размер,\n\tВЫРАЗИТЬ(ВерсииФайлов.Комментарий КАК СТРОКА(128)) КАК Комментарий,\n\tВерсииФайлов.Автор КАК Автор,\n\tВерсииФайлов.ДатаСоздания КАК ДатаСоздания,\n\tВерсииФайлов.Наименование КАК Наименование,\n\tВерсииФайлов.ИндексКартинки КАК ИндексКартинки,\n\tВерсииФайлов.ПометкаУдаления КАК ПометкаУдаления,\n\tВерсииФайлов.Расширение КАК Расширение,\n\tВерсииФайлов.Владелец КАК Владелец\nИЗ\n\tСправочник.ВерсииФайлов КАК ВерсииФайлов",
     "fillCheck": "DONT_CHECK",
-    "comment": "",
-    "id": 1,
-    "savedData": false,
     "title": {
      "content": []
     },
@@ -772,6 +766,177 @@
      "qualifiers": []
     },
     "mainAttribute": true,
+    "mainTable": "Catalog.ВерсииФайлов",
+    "name": "Список",
+    "queryText": "ВЫБРАТЬ\n\tВерсииФайлов.Ссылка КАК Ссылка,\n\tВерсииФайлов.НомерВерсии КАК НомерВерсии,\n\tВерсииФайлов.ФайлХранилище КАК ФайлХранилище,\n\tВерсииФайлов.Размер КАК Размер,\n\tВЫРАЗИТЬ(ВерсииФайлов.Комментарий КАК СТРОКА(128)) КАК Комментарий,\n\tВерсииФайлов.Автор КАК Автор,\n\tВерсииФайлов.ДатаСоздания КАК ДатаСоздания,\n\tВерсииФайлов.Наименование КАК Наименование,\n\tВерсииФайлов.ИндексКартинки КАК ИндексКартинки,\n\tВерсииФайлов.ПометкаУдаления КАК ПометкаУдаления,\n\tВерсииФайлов.Расширение КАК Расширение,\n\tВерсииФайлов.Владелец КАК Владелец\nИЗ\n\tСправочник.ВерсииФайлов КАК ВерсииФайлов",
+    "comment": "",
+    "id": 1,
+    "savedData": false,
+    "fields": [
+     {
+      "name": "Автор",
+      "type": {
+       "types": [],
+       "composite": false,
+       "qualifiers": []
+      },
+      "dataPath": "Автор"
+     },
+     {
+      "name": "Владелец",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Владелец"
+     },
+     {
+      "name": "ДатаМодификацииУниверсальная",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ДатаМодификацииУниверсальная"
+     },
+     {
+      "name": "ДатаМодификацииФайла",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ДатаМодификацииФайла"
+     },
+     {
+      "name": "ДатаСоздания",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ДатаСоздания"
+     },
+     {
+      "name": "ИмяПредопределенныхДанных",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ИмяПредопределенныхДанных"
+     },
+     {
+      "name": "ИндексКартинки",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ИндексКартинки"
+     },
+     {
+      "name": "Код",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Код"
+     },
+     {
+      "name": "Комментарий",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Комментарий"
+     },
+     {
+      "name": "Наименование",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Наименование"
+     },
+     {
+      "name": "НомерВерсии",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "НомерВерсии"
+     },
+     {
+      "name": "ПометкаУдаления",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ПометкаУдаления"
+     },
+     {
+      "name": "Предопределенный",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Предопределенный"
+     },
+     {
+      "name": "ПутьКФайлу",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ПутьКФайлу"
+     },
+     {
+      "name": "Размер",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Размер"
+     },
+     {
+      "name": "Расширение",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Расширение"
+     },
+     {
+      "name": "РодительскаяВерсия",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "РодительскаяВерсия"
+     },
+     {
+      "name": "Ссылка",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Ссылка"
+     },
+     {
+      "name": "СтатусИзвлеченияТекста",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "СтатусИзвлеченияТекста"
+     },
+     {
+      "name": "ТекстХранилище",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ТекстХранилище"
+     },
+     {
+      "name": "ТипХраненияФайла",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ТипХраненияФайла"
+     },
+     {
+      "name": "Том",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Том"
+     },
+     {
+      "name": "ФайлХранилище",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ФайлХранилище"
+     }
+    ],
     "customQuery": true
    }
   ],

@@ -109,6 +109,14 @@ public class FormDynamicListAttribute implements FormAttribute {
   String queryText = "";
 
   /**
+   * Состав полей динамического списка - поля, которые список объявляет поверх
+   * основной таблицы или текста запроса.
+   * Заполняется только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Singular("addFields")
+  List<FormDynamicListField> fields;
+
+  /**
    * Колонки
    */
   @Singular("addColumns")

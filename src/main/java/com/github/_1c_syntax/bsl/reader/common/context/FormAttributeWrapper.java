@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdo.ValueTypeOwner;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAdditionalColumnsAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormSimpleAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormTableAttribute;
@@ -121,6 +122,13 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
   String queryText = "";
 
   /**
+   * Состав полей динамического списка.
+   * Заполняется только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Singular("addFields")
+  List<FormDynamicListField> fields;
+
+  /**
    * Колонки таблицы
    */
   @Singular("addColumns")
@@ -213,6 +221,7 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
         .mainTable(mainTable)
         .customQuery(customQuery)
         .queryText(queryText)
+        .fields(fields)
         .columns(columns)
         .build();
     }

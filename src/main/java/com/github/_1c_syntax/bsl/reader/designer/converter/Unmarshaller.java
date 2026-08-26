@@ -63,7 +63,8 @@ public class Unmarshaller {
     = Map.of(
     "MainTable", "mainTable",
     "ManualQuery", "customQuery",
-    "QueryText", "queryText"
+    "QueryText", "queryText",
+    "Field", "fields"
   );
 
   private static final Map<String, String> ITEM_NODE_REMAPPING

@@ -14,14 +14,8 @@
   ],
   "attributes": [
    {
-    "mainTable": "Catalog.МойСправочник",
     "columns": [],
-    "name": "МойСписок",
-    "queryText": "ВЫБРАТЬ\n\tМойСправочник.Ссылка КАК Ссылка,\n\tМойСправочник.ВерсияДанных КАК ВерсияДанных,\n\tМойСправочник.ПометкаУдаления КАК ПометкаУдаления,\n\tМойСправочник.Код КАК Код,\n\tМойСправочник.Наименование КАК Наименование,\n\tМойСправочник.Предопределенный КАК Предопределенный,\n\tМойСправочник.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных\nИЗ\n\tСправочник.МойСправочник КАК МойСправочник",
     "fillCheck": "DONT_CHECK",
-    "comment": "",
-    "id": 2,
-    "savedData": false,
     "title": {
      "content": [
       {
@@ -38,6 +32,46 @@
      "qualifiers": []
     },
     "mainAttribute": false,
+    "mainTable": "Catalog.МойСправочник",
+    "name": "МойСписок",
+    "queryText": "ВЫБРАТЬ\n\tМойСправочник.Ссылка КАК Ссылка,\n\tМойСправочник.ВерсияДанных КАК ВерсияДанных,\n\tМойСправочник.ПометкаУдаления КАК ПометкаУдаления,\n\tМойСправочник.Код КАК Код,\n\tМойСправочник.Наименование КАК Наименование,\n\tМойСправочник.Предопределенный КАК Предопределенный,\n\tМойСправочник.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных\nИЗ\n\tСправочник.МойСправочник КАК МойСправочник",
+    "comment": "",
+    "id": 2,
+    "savedData": false,
+    "fields": [
+     {
+      "name": "Реквизит1",
+      "type": {
+       "types": [],
+       "composite": false,
+       "qualifiers": []
+      },
+      "dataPath": "Группа.Реквизит1"
+     },
+     {
+      "name": "Наименование",
+      "type": {
+       "types": [
+        "STRING"
+       ],
+       "composite": false,
+       "qualifiers": [
+        {
+         "length": 0,
+         "allowedLength": 0
+        }
+       ]
+      },
+      "dataPath": "Наименование"
+     },
+     {
+      "name": "Ссылка",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Ссылка"
+     }
+    ],
     "customQuery": true
    },
    {
