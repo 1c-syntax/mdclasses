@@ -238,6 +238,14 @@ public class ChartOfAccounts implements MutableReferenceObject, PredefinedDataOw
   int orderLength = 0;
 
   /**
+   * Максимальное количество субконто у счета.
+   * Задает предел и для конфигурации, и для пользовательского режима.
+   * Если равно 0, то субконто у счетов нет.
+   */
+  @Default
+  int maxExtDimensionCount = 0;
+
+  /**
    * Основное представление плана счетов.
    * Значение по умолчанию: {@link DefaultPresentation#AS_CODE}.
    */

@@ -95,4 +95,21 @@ class ChartOfAccountsTest {
     assertThat(chartOfAccounts.getOrderLength()).isZero();
     assertThat(chartOfAccounts.getDefaultPresentation()).isEqualTo(DefaultPresentation.AS_CODE);
   }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses, ChartsOfAccounts.ПланСчетов1",
+    "false, mdclasses, ChartsOfAccounts.ПланСчетов1"
+  })
+  void shouldReadMaxExtDimensionCount(ArgumentsAccessor argumentsAccessor) {
+    // given
+    var mdo = Fixtures.get(argumentsAccessor);
+
+    // when
+    var chartOfAccounts = (ChartOfAccounts) mdo;
+
+    // then
+    assertThat(chartOfAccounts).isNotNull();
+    assertThat(chartOfAccounts.getMaxExtDimensionCount()).isEqualTo(3);
+  }
 }
