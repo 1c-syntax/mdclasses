@@ -55,6 +55,7 @@ import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.mdo.support.ReuseSessions;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
+import com.github._1c_syntax.bsl.mdo.support.TableDataType;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.TransferDirection;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
@@ -289,6 +290,7 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(ReuseSessions.class));
     registerConverter(new EnumConverter<>(RoleRight.class));
     registerConverter(new EnumConverter<>(ScriptVariant.class));
+    registerConverter(new EnumConverter<>(TableDataType.class));
     registerConverter(new EnumConverter<>(TemplateType.class));
     registerConverter(new EnumConverter<>(TransferDirection.class));
     registerConverter(new EnumConverter<>(UseMode.class));
