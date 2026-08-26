@@ -64,7 +64,9 @@ public class Unmarshaller {
     "MainTable", "mainTable",
     "ManualQuery", "customQuery",
     "QueryText", "queryText",
-    "Field", "fields"
+    "Field", "fields",
+    "KeyType", "keyType",
+    "KeyField", "keyFields"
   );
 
   private static final Map<String, String> ITEM_NODE_REMAPPING

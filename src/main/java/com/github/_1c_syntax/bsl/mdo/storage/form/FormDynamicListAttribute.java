@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
+import com.github._1c_syntax.bsl.mdo.support.DynamicListKeyType;
 import com.github._1c_syntax.bsl.mdo.support.FillChecking;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
@@ -115,6 +116,21 @@ public class FormDynamicListAttribute implements FormAttribute {
    */
   @Singular("addFields")
   List<FormDynamicListField> fields;
+
+  /**
+   * Вид ключа строки: чем список адресует свою строку.
+   * Значение по умолчанию: {@link DynamicListKeyType#AUTO}
+   */
+  @Default
+  DynamicListKeyType keyType = DynamicListKeyType.AUTO;
+
+  /**
+   * Поля ключа строки. Заполняются при виде ключа
+   * {@link DynamicListKeyType#FIELD_VALUE} и {@link DynamicListKeyType#ROW_KEY};
+   * полей бывает несколько
+   */
+  @Singular("addKeyFields")
+  List<String> keyFields;
 
   /**
    * Колонки

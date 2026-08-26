@@ -29,6 +29,7 @@ import com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormSimpleAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormTableAttribute;
+import com.github._1c_syntax.bsl.mdo.support.DynamicListKeyType;
 import com.github._1c_syntax.bsl.mdo.support.FillChecking;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
@@ -129,6 +130,20 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
   List<FormDynamicListField> fields;
 
   /**
+   * Вид ключа строки динамического списка.
+   * Заполняется только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Default
+  DynamicListKeyType keyType = DynamicListKeyType.AUTO;
+
+  /**
+   * Поля ключа строки динамического списка.
+   * Заполняются только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Singular("addKeyFields")
+  List<String> keyFields;
+
+  /**
    * Колонки таблицы
    */
   @Singular("addColumns")
@@ -222,6 +237,8 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
         .customQuery(customQuery)
         .queryText(queryText)
         .fields(fields)
+        .keyType(keyType)
+        .keyFields(keyFields)
         .columns(columns)
         .build();
     }

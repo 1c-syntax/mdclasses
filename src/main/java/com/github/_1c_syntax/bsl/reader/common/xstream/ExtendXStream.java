@@ -41,6 +41,7 @@ import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.CommonAttributeSeparatedDataUse;
+import com.github._1c_syntax.bsl.mdo.support.DynamicListKeyType;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
@@ -278,6 +279,7 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(DataLockControlMode.class));
     registerConverter(new EnumConverter<>(DataSeparation.class));
     registerConverter(new EnumConverter<>(CommonAttributeSeparatedDataUse.class));
+    registerConverter(new EnumConverter<>(DynamicListKeyType.class));
     registerConverter(new EnumConverter<>(FormType.class));
     registerConverter(new EnumConverter<>(IndexingType.class));
     registerConverter(new EnumConverter<>(InformationRegisterPeriodicity.class));

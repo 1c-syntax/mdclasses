@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo.storage.form;
 
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Form;
+import com.github._1c_syntax.bsl.mdo.support.DynamicListKeyType;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
 import com.github._1c_syntax.bsl.types.value.PrimitiveValueType;
@@ -104,6 +105,44 @@ class FormAttributeTest {
       .collect(Collectors.toMap(FormDynamicListField::getDataPath, Function.identity()));
     assertThat(fieldsByPath.get("Ссылка").getValueType()).isEqualTo(ValueTypeDescription.EMPTY);
     assertThat(fieldsByPath.get("Наименование").getValueType().contains(PrimitiveValueType.STRING)).isTrue();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses, Catalogs.Справочник1",
+    "false, mdclasses, Catalogs.Справочник1",
+  })
+  void shouldReadRowKeyOfDynamicList(ArgumentsAccessor argumentsAccessor) {
+    // given
+    var form = getForm(argumentsAccessor, "Catalog.Справочник1.Form.ФормаСписка");
+
+    // when
+    var dynList = (FormDynamicListAttribute) findAttr(form.getData().getAttributes(), "МойСписок");
+
+    // then
+    assertThat(dynList.getKeyType()).isEqualTo(DynamicListKeyType.FIELD_VALUE);
+    assertThat(dynList.getKeyFields())
+      .as("полей ключа бывает несколько")
+      .containsExactly("Ссылка", "Код");
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, Catalogs.Справочник1",
+    "false, mdclasses_3_27, Catalogs.Справочник1",
+  })
+  void shouldKeepRowKeyDefaultWhenNotDeclared(ArgumentsAccessor argumentsAccessor) {
+    // given
+    var form = getForm(argumentsAccessor, "Catalog.Справочник1.Form.ФормаСписка");
+
+    // when
+    var dynList = (FormDynamicListAttribute) findAttr(form.getData().getAttributes(), "Список");
+
+    // then
+    assertThat(dynList.getKeyType())
+      .as("вид ключа по умолчанию платформа в выгрузку не пишет")
+      .isEqualTo(DynamicListKeyType.AUTO);
+    assertThat(dynList.getKeyFields()).isEmpty();
   }
 
   @ParameterizedTest

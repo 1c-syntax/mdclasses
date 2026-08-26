@@ -70,17 +70,20 @@ public class Unmarshaller {
   private static final String PREDEFINED_VALUES_FIELD = "predefinedValues";
 
   private static final Map<String, ClassField> FORM_ELEMENT_REMAPPING
-    = Map.of(
-    "formCommands", new ClassField(FormCommand.class, "commands"),
-    "additionalColumns", new ClassField(FormAttributeWrapper.class, "columns"),
-    "items", new ClassField(FormElement.class, "elements"),
-    "contextMenu", new ClassField(FormContextMenu.class, "elements"),
-    "extendedTooltip", new ClassField(FormExtendedTooltip.class, "elements"),
-    "autoCommandBar", new ClassField(FormGroup.class, "elements"),
-    "searchControlAddition", new ClassField(FormAddition.class, "elements"),
-    "viewStatusAddition", new ClassField(FormAddition.class, "elements"),
-    "searchStringAddition", new ClassField(FormAddition.class, "elements"),
-    "handlers", new ClassField(FormEventHandler.class, "eventHandlers")
+    = Map.ofEntries(
+    Map.entry("formCommands", new ClassField(FormCommand.class, "commands")),
+    Map.entry("additionalColumns", new ClassField(FormAttributeWrapper.class, "columns")),
+    Map.entry("items", new ClassField(FormElement.class, "elements")),
+    Map.entry("contextMenu", new ClassField(FormContextMenu.class, "elements")),
+    Map.entry("extendedTooltip", new ClassField(FormExtendedTooltip.class, "elements")),
+    Map.entry("autoCommandBar", new ClassField(FormGroup.class, "elements")),
+    Map.entry("searchControlAddition", new ClassField(FormAddition.class, "elements")),
+    Map.entry("viewStatusAddition", new ClassField(FormAddition.class, "elements")),
+    Map.entry("searchStringAddition", new ClassField(FormAddition.class, "elements")),
+    Map.entry("handlers", new ClassField(FormEventHandler.class, "eventHandlers")),
+    // поле ключа строки динамического списка EDT пишет в единственном числе,
+    // а полей бывает несколько
+    Map.entry("keyField", new ClassField(String.class, "keyFields"))
   );
 
   private static final Map<String, ClassField> ELEMENT_REMAPPING
