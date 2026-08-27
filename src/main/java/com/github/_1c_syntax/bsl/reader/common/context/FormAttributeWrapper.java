@@ -149,6 +149,12 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
   @Singular("addColumns")
   List<FormAttributeWrapper> columns;
 
+  /**
+   * Пути к данным полей, помеченных «использовать всегда»
+   */
+  @Singular("addUseAlwaysFields")
+  List<String> useAlwaysFields;
+
   @Override
   public ValueTypeDescription getValueType() {
     return type;
@@ -221,6 +227,7 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
         .fillCheck(fillCheck)
         .comment(comment)
         .columns(columns)
+        .useAlwaysFields(useAlwaysFields)
         .build();
     }
     if (type.contains(V8ValueType.DYNAMIC_LIST)) {
@@ -240,12 +247,14 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
         .keyType(keyType)
         .keyFields(keyFields)
         .columns(columns)
+        .useAlwaysFields(useAlwaysFields)
         .build();
     }
     if (isAdditional()) {
       return FormAdditionalColumnsAttribute.builder()
         .name(name)
         .columns(columns)
+        .useAlwaysFields(useAlwaysFields)
         .build();
     }
     return FormSimpleAttribute.builder()
@@ -258,6 +267,7 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
       .fillCheck(fillCheck)
       .comment(comment)
       .columns(columns)
+      .useAlwaysFields(useAlwaysFields)
       .build();
   }
 

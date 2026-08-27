@@ -68,6 +68,9 @@ public class Unmarshaller {
   private static final String PREDEFINED_NODE = "predefined";
   private static final String ITEMS_NODE = "items";
   private static final String PREDEFINED_VALUES_FIELD = "predefinedValues";
+  private static final String USE_ALWAYS_NODE = "notDefaultUseAlwaysAttributes";
+  private static final String USE_ALWAYS_FIELD = "useAlwaysFields";
+  private static final String SEGMENTS_NODE = "segments";
 
   private static final Map<String, ClassField> FORM_ELEMENT_REMAPPING
     = Map.ofEntries(
@@ -109,6 +112,8 @@ public class Unmarshaller {
         && readerContext instanceof MDReaderContext
         && PredefinedDataOwner.class.isAssignableFrom(readerContext.getRealClass())) {
         readPredefined(reader, context, readerContext);
+      } else if (USE_ALWAYS_NODE.equals(nodeName)) {
+        readUseAlwaysField(reader, context, readerContext);
       } else if ("extInfo".equals(nodeName) || "tablePath".equals(nodeName)) {
         while (reader.hasMoreChildren()) {
           reader.moveDown();
@@ -117,6 +122,22 @@ public class Unmarshaller {
         }
       } else {
         readNode(nodeName, context, readerContext);
+      }
+      reader.moveUp();
+    }
+  }
+
+  /**
+   * Читает одно поле, помеченное «использовать всегда»: путь к данным лежит
+   * во вложенном {@code <segments>}, а сам узел повторяется по полю
+   */
+  private void readUseAlwaysField(HierarchicalStreamReader reader,
+                                  UnmarshallingContext context,
+                                  AbstractReaderContext readerContext) {
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      if (SEGMENTS_NODE.equals(reader.getNodeName())) {
+        readerContext.setValue(USE_ALWAYS_FIELD, ExtendXStream.readValue(context, String.class));
       }
       reader.moveUp();
     }

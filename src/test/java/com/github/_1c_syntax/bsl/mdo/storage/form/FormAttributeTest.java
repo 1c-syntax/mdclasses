@@ -180,6 +180,40 @@ class FormAttributeTest {
     assertThat(attr).isNotNull().isInstanceOf(FormSimpleAttribute.class);
   }
 
+  @ParameterizedTest
+  @CsvSource({
+    "true, ssl_3_1, Tasks.ЗадачаИсполнителя",
+    "false, ssl_3_1, Tasks.ЗадачаИсполнителя",
+  })
+  void shouldReadUseAlwaysFields(ArgumentsAccessor argumentsAccessor) {
+    // given
+    var form = getForm(argumentsAccessor, "Task.ЗадачаИсполнителя.Form.ЗадачиПоБизнесПроцессу");
+
+    // when
+    var dynList = (FormDynamicListAttribute) findAttr(form.getData().getAttributes(), "Список");
+
+    // then
+    assertThat(dynList.getUseAlwaysFields())
+      .as("поля, которые форма читает независимо от того, показывает ли их элемент")
+      .containsExactlyInAnyOrder("Список.BusinessProcess", "Список.Ref");
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, Catalogs.Справочник1",
+    "false, mdclasses_3_27, Catalogs.Справочник1",
+  })
+  void shouldKeepUseAlwaysFieldsEmptyWhenNotDeclared(ArgumentsAccessor argumentsAccessor) {
+    // given
+    var form = getForm(argumentsAccessor, "Catalog.Справочник1.Form.ФормаСписка");
+
+    // when
+    var dynList = (FormDynamicListAttribute) findAttr(form.getData().getAttributes(), "Список");
+
+    // then
+    assertThat(dynList.getUseAlwaysFields()).isEmpty();
+  }
+
   private static Form getForm(ArgumentsAccessor argumentsAccessor, String formRef) {
     var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isNotNull();

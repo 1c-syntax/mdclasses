@@ -76,7 +76,8 @@ public class Unmarshaller {
     "Attributes", "attributes",
     "Columns", "columns",
     "ChildItems", "elements",
-    "Events", "eventHandlers"
+    "Events", "eventHandlers",
+    "UseAlways", "useAlwaysFields"
   );
 
   private static final Map<String, String> NODE_REMAPPING
