@@ -197,9 +197,13 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
         if (regular.get(i).getName().equals(baseName)) {
           var mergedChildren = new ArrayList<>(regular.get(i).getColumns());
           mergedChildren.addAll(addCol.getColumns());
+          var mergedUseAlways = new ArrayList<>(regular.get(i).getUseAlwaysFields());
+          mergedUseAlways.addAll(addCol.getUseAlwaysFields());
           regular.set(i, regular.get(i).toBuilder()
             .clearColumns()
             .columns(mergedChildren)
+            .clearUseAlwaysFields()
+            .useAlwaysFields(mergedUseAlways)
             .build());
           matched = true;
           break;
