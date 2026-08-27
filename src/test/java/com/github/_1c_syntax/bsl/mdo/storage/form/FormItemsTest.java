@@ -316,6 +316,33 @@ class FormItemsTest {
       .contains("Том0", "ОбъектПрототип.Том");
   }
 
+  @ParameterizedTest
+  @CsvSource({
+    "true, ssl_3_1, Reports.ПрогрессОтложенногоОбновления",
+    "false, ssl_3_1, Reports.ПрогрессОтложенногоОбновления",
+  })
+  void shouldReadRowPictureDataPath(ArgumentsAccessor argumentsAccessor) {
+    // given
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isNotNull();
+    var form = (Form) ((ChildrenOwner) mdo)
+      .findChild("Report.ПрогрессОтложенногоОбновления.Form.ЗарегистрированныеДанные")
+      .orElseThrow();
+
+    // when
+    var table = form.getData().getPlainElements().stream()
+      .filter(FormTable.class::isInstance)
+      .map(FormTable.class::cast)
+      .findFirst()
+      .orElseThrow();
+
+    // then
+    assertThat(table.getRowPictureDataPath())
+      .as("путь отдаётся как записан: в этой выгрузке конфигуратор пишет его "
+        + "с тильдой, а EDT — без неё")
+      .endsWith("Список.DefaultPicture");
+  }
+
   private static FormAttribute findAttr(List<? extends FormAttribute> attrs, String name) {
     return attrs.stream().filter(a -> a.getName().equals(name)).findFirst().orElse(null);
   }
