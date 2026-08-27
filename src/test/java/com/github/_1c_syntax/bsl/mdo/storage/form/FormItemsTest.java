@@ -294,6 +294,28 @@ class FormItemsTest {
     assertThat(plain.get("Объект.Пользователи.НомерКартинки").getId()).isEqualTo(1);
   }
 
+  @ParameterizedTest
+  @CsvSource({
+    "true, ssl_3_2, DataProcessors.РаботаСФайлами",
+    "false, ssl_3_2, DataProcessors.РаботаСФайлами",
+  })
+  void shouldReadConditionalAppearanceFields(ArgumentsAccessor argumentsAccessor) {
+    // given
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isNotNull();
+    var form = (Form) ((ChildrenOwner) mdo)
+      .findChild("DataProcessor.РаботаСФайлами.Form.ВерсияПрисоединенногоФайла")
+      .orElseThrow();
+
+    // when
+    var fields = form.getData().getConditionalAppearanceFields();
+
+    // then
+    assertThat(fields)
+      .as("оформляемое поле и поле условия — оба читаются формой")
+      .contains("Том0", "ОбъектПрототип.Том");
+  }
+
   private static FormAttribute findAttr(List<? extends FormAttribute> attrs, String name) {
     return attrs.stream().filter(a -> a.getName().equals(name)).findFirst().orElse(null);
   }

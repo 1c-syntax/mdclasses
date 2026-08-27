@@ -200,6 +200,24 @@ class FormAttributeTest {
 
   @ParameterizedTest
   @CsvSource({
+    "true, ssl_3_1, Tasks.ЗадачаИсполнителя",
+    "false, ssl_3_1, Tasks.ЗадачаИсполнителя",
+  })
+  void shouldReadSettingsFieldsOfDynamicList(ArgumentsAccessor argumentsAccessor) {
+    // given
+    var form = getForm(argumentsAccessor, "Task.ЗадачаИсполнителя.Form.ЗадачиПоБизнесПроцессу");
+
+    // when
+    var dynList = (FormDynamicListAttribute) findAttr(form.getData().getAttributes(), "Список");
+
+    // then
+    assertThat(dynList.getSettingsFields())
+      .as("поле, названное в порядке списка, список читает независимо от колонок")
+      .contains("Number");
+  }
+
+  @ParameterizedTest
+  @CsvSource({
     "true, mdclasses_3_27, Catalogs.Справочник1",
     "false, mdclasses_3_27, Catalogs.Справочник1",
   })

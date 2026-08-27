@@ -37,7 +37,7 @@ import java.util.List;
  * Динамический список формы (реквизит типа динамический список)
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = "name")
 public class FormDynamicListAttribute implements FormAttribute {
 
@@ -143,6 +143,14 @@ public class FormDynamicListAttribute implements FormAttribute {
    */
   @Singular("addUseAlwaysFields")
   List<String> useAlwaysFields;
+
+  /**
+   * Поля, названные в настройках самого списка: в отборе, порядке и условном
+   * оформлении. Имена даны относительно списка ({@code ПометкаУдаления}),
+   * а список читает такое поле независимо от того, показывает ли его элемент
+   */
+  @Singular("addSettingsFields")
+  List<String> settingsFields;
 
   @Override
   public ValueTypeDescription getValueType() {

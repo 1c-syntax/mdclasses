@@ -44,7 +44,7 @@ import java.util.Map;
  * Реализация содержимого управляемой формы
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 public class ManagedFormData implements FormData {
 
   /**
@@ -82,6 +82,12 @@ public class ManagedFormData implements FormData {
    */
   @Singular("addParameters")
   List<FormParameter> parameters;
+
+  /**
+   * Пути к данным, названные в условном оформлении формы
+   */
+  @Singular("addConditionalAppearanceFields")
+  List<String> conditionalAppearanceFields;
 
   /**
    * Все элементы формы (включая вложенные)

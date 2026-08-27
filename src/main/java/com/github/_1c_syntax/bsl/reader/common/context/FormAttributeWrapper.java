@@ -155,6 +155,13 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
   @Singular("addUseAlwaysFields")
   List<String> useAlwaysFields;
 
+  /**
+   * Поля, названные в настройках динамического списка.
+   * Заполняется только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Singular("addSettingsFields")
+  List<String> settingsFields;
+
   @Override
   public ValueTypeDescription getValueType() {
     return type;
@@ -252,6 +259,7 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
         .keyFields(keyFields)
         .columns(columns)
         .useAlwaysFields(useAlwaysFields)
+        .settingsFields(settingsFields)
         .build();
     }
     if (isAdditional()) {
