@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
+import com.github._1c_syntax.bsl.mdo.support.DynamicListKeyType;
 import com.github._1c_syntax.bsl.mdo.support.FillChecking;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
@@ -36,7 +37,7 @@ import java.util.List;
  * Динамический список формы (реквизит типа динамический список)
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = "name")
 public class FormDynamicListAttribute implements FormAttribute {
 
@@ -109,10 +110,47 @@ public class FormDynamicListAttribute implements FormAttribute {
   String queryText = "";
 
   /**
+   * Состав полей динамического списка - поля, которые список объявляет поверх
+   * основной таблицы или текста запроса.
+   * Заполняется только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Singular("addFields")
+  List<FormDynamicListField> fields;
+
+  /**
+   * Вид ключа строки: чем список адресует свою строку.
+   * Значение по умолчанию: {@link DynamicListKeyType#AUTO}
+   */
+  @Default
+  DynamicListKeyType keyType = DynamicListKeyType.AUTO;
+
+  /**
+   * Поля ключа строки. Заполняются при виде ключа
+   * {@link DynamicListKeyType#FIELD_VALUE} и {@link DynamicListKeyType#ROW_KEY};
+   * полей бывает несколько
+   */
+  @Singular("addKeyFields")
+  List<String> keyFields;
+
+  /**
    * Колонки
    */
   @Singular("addColumns")
   List<FormAttribute> columns;
+
+  /**
+   * Пути к данным полей, помеченных «использовать всегда»
+   */
+  @Singular("addUseAlwaysFields")
+  List<String> useAlwaysFields;
+
+  /**
+   * Поля, названные в настройках самого списка: в отборе, порядке и условном
+   * оформлении. Имена даны относительно списка ({@code ПометкаУдаления}),
+   * а список читает такое поле независимо от того, показывает ли его элемент
+   */
+  @Singular("addSettingsFields")
+  List<String> settingsFields;
 
   @Override
   public ValueTypeDescription getValueType() {

@@ -159,6 +159,11 @@ public class ExternalDataSourceCubeDimensionTable implements MDChild, ModuleOwne
   @Default
   DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
 
+  /**
+   * Иерархическая ли таблица: у записи иерархической таблицы есть родитель
+   */
+  boolean hierarchical;
+
   @Override
   public List<Attribute> getAllAttributes() {
     return Collections.unmodifiableList(fields);

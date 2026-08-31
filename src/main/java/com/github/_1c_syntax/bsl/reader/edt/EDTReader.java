@@ -51,6 +51,10 @@ import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute;
+import com.github._1c_syntax.bsl.reader.common.DataCompositionFields;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendStaxDriver;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
@@ -77,6 +81,7 @@ import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -92,6 +97,21 @@ public class EDTReader implements MDReader {
    * Имя корневого файла конфигурации
    */
   public static final String CONFIGURATION_MDO_FILE_NAME = "Configuration.mdo";
+
+  /**
+   * Файл условного оформления формы
+   */
+  private static final String CONDITIONAL_APPEARANCE_FILE = "ConditionalAppearance.dcssca";
+
+  /**
+   * Каталог дополнительных сведений реквизита формы
+   */
+  private static final String EXT_INFO_FOLDER = "ExtInfo";
+
+  /**
+   * Файл настроек динамического списка
+   */
+  private static final String LIST_SETTINGS_FILE = "ListSettings.dcss";
 
   @Getter
   private final ExtendXStream xstream;
@@ -199,7 +219,66 @@ public class EDTReader implements MDReader {
     if (!formDataPath.toFile().exists()) {
       return EmptyFormData.EMPTY;
     }
-    return (FormData) read(formDataPath);
+    var formData = (FormData) read(formDataPath);
+    if (formData instanceof ManagedFormData managedFormData) {
+      return withCompositionSettings(managedFormData, formDataPath.getParent());
+    }
+    return formData;
+  }
+
+  /**
+   * Дочитывает настройки компоновки, которые EDT держит отдельными файлами:
+   * условное оформление формы лежит рядом с ней, а настройки динамического
+   * списка — в каталоге его реквизита
+   */
+  private ManagedFormData withCompositionSettings(ManagedFormData formData, Path formFolder) {
+    var appearanceFields = compositionFields(formFolder.resolve(CONDITIONAL_APPEARANCE_FILE));
+    var attributes = formData.getAttributes().stream()
+      .map(attribute -> withSettingsFields(attribute, formFolder))
+      .toList();
+    if (appearanceFields.isEmpty() && attributes.equals(formData.getAttributes())) {
+      return formData;
+    }
+    return formData.toBuilder()
+      .clearAttributes()
+      .attributes(attributes)
+      .clearConditionalAppearanceFields()
+      .conditionalAppearanceFields(appearanceFields)
+      .build();
+  }
+
+  private FormAttribute withSettingsFields(FormAttribute attribute, Path formFolder) {
+    if (!(attribute instanceof FormDynamicListAttribute dynamicList)) {
+      return attribute;
+    }
+    var settingsPath = formFolder.resolve(
+      Path.of(MDOType.ATTRIBUTE.groupName(), dynamicList.getName(), EXT_INFO_FOLDER, LIST_SETTINGS_FILE));
+    var fields = compositionFields(settingsPath);
+    if (fields.isEmpty()) {
+      return attribute;
+    }
+    return dynamicList.toBuilder()
+      .clearSettingsFields()
+      .settingsFields(fields)
+      .build();
+  }
+
+  /**
+   * Поля, названные в настройках компоновки из отдельного файла
+   *
+   * @param path путь к файлу настроек
+   * @return поля; пусто, если файла нет
+   */
+  private List<String> compositionFields(Path path) {
+    if (!path.toFile().exists()) {
+      return List.of();
+    }
+    var reader = new ExtendStaxDriver(this).createReader(path.toFile());
+    try {
+      return DataCompositionFields.collect(reader);
+    } finally {
+      reader.close();
+    }
   }
 
   @Override

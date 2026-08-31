@@ -93,6 +93,12 @@ public class FormSimpleAttribute implements FormAttribute {
   @Singular("addColumns")
   List<FormAttribute> columns;
 
+  /**
+   * Пути к данным полей, помеченных «использовать всегда»
+   */
+  @Singular("addUseAlwaysFields")
+  List<String> useAlwaysFields;
+
   @Override
   public ValueTypeDescription getValueType() {
     return type;

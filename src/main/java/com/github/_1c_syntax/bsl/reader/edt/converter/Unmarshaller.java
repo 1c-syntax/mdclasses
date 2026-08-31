@@ -68,19 +68,25 @@ public class Unmarshaller {
   private static final String PREDEFINED_NODE = "predefined";
   private static final String ITEMS_NODE = "items";
   private static final String PREDEFINED_VALUES_FIELD = "predefinedValues";
+  private static final String USE_ALWAYS_NODE = "notDefaultUseAlwaysAttributes";
+  private static final String USE_ALWAYS_FIELD = "useAlwaysFields";
+  private static final String SEGMENTS_NODE = "segments";
 
   private static final Map<String, ClassField> FORM_ELEMENT_REMAPPING
-    = Map.of(
-    "formCommands", new ClassField(FormCommand.class, "commands"),
-    "additionalColumns", new ClassField(FormAttributeWrapper.class, "columns"),
-    "items", new ClassField(FormElement.class, "elements"),
-    "contextMenu", new ClassField(FormContextMenu.class, "elements"),
-    "extendedTooltip", new ClassField(FormExtendedTooltip.class, "elements"),
-    "autoCommandBar", new ClassField(FormGroup.class, "elements"),
-    "searchControlAddition", new ClassField(FormAddition.class, "elements"),
-    "viewStatusAddition", new ClassField(FormAddition.class, "elements"),
-    "searchStringAddition", new ClassField(FormAddition.class, "elements"),
-    "handlers", new ClassField(FormEventHandler.class, "eventHandlers")
+    = Map.ofEntries(
+    Map.entry("formCommands", new ClassField(FormCommand.class, "commands")),
+    Map.entry("additionalColumns", new ClassField(FormAttributeWrapper.class, "columns")),
+    Map.entry("items", new ClassField(FormElement.class, "elements")),
+    Map.entry("contextMenu", new ClassField(FormContextMenu.class, "elements")),
+    Map.entry("extendedTooltip", new ClassField(FormExtendedTooltip.class, "elements")),
+    Map.entry("autoCommandBar", new ClassField(FormGroup.class, "elements")),
+    Map.entry("searchControlAddition", new ClassField(FormAddition.class, "elements")),
+    Map.entry("viewStatusAddition", new ClassField(FormAddition.class, "elements")),
+    Map.entry("searchStringAddition", new ClassField(FormAddition.class, "elements")),
+    Map.entry("handlers", new ClassField(FormEventHandler.class, "eventHandlers")),
+    // поле ключа строки динамического списка EDT пишет в единственном числе,
+    // а полей бывает несколько
+    Map.entry("keyField", new ClassField(String.class, "keyFields"))
   );
 
   private static final Map<String, ClassField> ELEMENT_REMAPPING
@@ -106,6 +112,8 @@ public class Unmarshaller {
         && readerContext instanceof MDReaderContext
         && PredefinedDataOwner.class.isAssignableFrom(readerContext.getRealClass())) {
         readPredefined(reader, context, readerContext);
+      } else if (USE_ALWAYS_NODE.equals(nodeName)) {
+        readUseAlwaysField(reader, context, readerContext);
       } else if ("extInfo".equals(nodeName) || "tablePath".equals(nodeName)) {
         while (reader.hasMoreChildren()) {
           reader.moveDown();
@@ -114,6 +122,22 @@ public class Unmarshaller {
         }
       } else {
         readNode(nodeName, context, readerContext);
+      }
+      reader.moveUp();
+    }
+  }
+
+  /**
+   * Читает одно поле, помеченное «использовать всегда»: путь к данным лежит
+   * во вложенном {@code <segments>}, а сам узел повторяется по полю
+   */
+  private void readUseAlwaysField(HierarchicalStreamReader reader,
+                                  UnmarshallingContext context,
+                                  AbstractReaderContext readerContext) {
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      if (SEGMENTS_NODE.equals(reader.getNodeName())) {
+        readerContext.setValue(USE_ALWAYS_FIELD, ExtendXStream.readValue(context, String.class));
       }
       reader.moveUp();
     }

@@ -268,6 +268,7 @@
                 }
                },
                {
+                "rowPictureDataPath": "Закладки.DefaultPicture",
                 "elements": [
                  {
                   "elements": [
@@ -657,6 +658,7 @@
                 }
                },
                {
+                "rowPictureDataPath": "Категории.НомерКартинки",
                 "elements": [
                  {
                   "elements": [
@@ -1169,6 +1171,7 @@
                 }
                },
                {
+                "rowPictureDataPath": "",
                 "elements": [
                  {
                   "elements": [
@@ -1766,6 +1769,7 @@
                 }
                },
                {
+                "rowPictureDataPath": "Папки.НомерКартинки",
                 "elements": [
                  {
                   "elements": [
@@ -2428,6 +2432,7 @@
                 }
                },
                {
+                "rowPictureDataPath": "",
                 "elements": [
                  {
                   "elements": [
@@ -3033,6 +3038,7 @@
                 }
                },
                {
+                "rowPictureDataPath": "Свойства.НомерКартинки",
                 "elements": [
                  {
                   "elements": [
@@ -3864,6 +3870,7 @@
           }
          },
          {
+          "rowPictureDataPath": "",
           "elements": [
            {
             "elements": [
@@ -5985,14 +5992,12 @@
   ],
   "attributes": [
    {
-    "mainTable": "Catalog.ЗакладкиВзаимодействий",
     "columns": [],
-    "name": "Закладки",
-    "queryText": "",
+    "useAlwaysFields": [
+     "Закладки.IsFolder",
+     "Закладки.Ref"
+    ],
     "fillCheck": "DONT_CHECK",
-    "comment": "",
-    "id": 7,
-    "savedData": false,
     "title": {
      "content": [
       {
@@ -6009,17 +6014,24 @@
      "qualifiers": []
     },
     "mainAttribute": false,
+    "mainTable": "Catalog.ЗакладкиВзаимодействий",
+    "keyFields": [],
+    "settingsFields": [],
+    "name": "Закладки",
+    "queryText": "",
+    "comment": "",
+    "id": 7,
+    "savedData": false,
+    "fields": [],
+    "keyType": "AUTO",
     "customQuery": false
    },
    {
-    "mainTable": "InformationRegister.СостоянияКонтактовВзаимодействий",
     "columns": [],
-    "name": "КонтактыПанельНавигации",
-    "queryText": "ВЫБРАТЬ РАЗЛИЧНЫЕ\n\tСостоянияКонтактовВзаимодействийПереопределяемый.Контакт КАК Контакт,\n\tСостоянияКонтактовВзаимодействийПереопределяемый.КоличествоНеРассмотрено КАК КоличествоНеРассмотрено,\n\tСостоянияКонтактовВзаимодействийПереопределяемый.ДатаПоследнегоВзаимодействия КАК ДатаПоследнегоВзаимодействия,\n\tТИПЗНАЧЕНИЯ(СостоянияКонтактовВзаимодействийПереопределяемый.Контакт) КАК ТипКонтакта\nИЗ\n\tРегистрСведений.СостоянияКонтактовВзаимодействий КАК СостоянияКонтактовВзаимодействийПереопределяемый\n\t\t{ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.КонтактыВзаимодействий КАК КонтактыВзаимодействийПереопределяемый\n\t\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыПапкиВзаимодействийПереопределяемый\n\t\t\tПО КонтактыВзаимодействийПереопределяемый.Взаимодействие = ПредметыПапкиВзаимодействийПереопределяемый.Взаимодействие\n\t\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ ЖурналДокументов.Взаимодействия КАК ВзаимодействияПереопределяемый\n\t\t\tПО КонтактыВзаимодействийПереопределяемый.Взаимодействие = ВзаимодействияПереопределяемый.Ссылка\n\t\tПО СостоянияКонтактовВзаимодействийПереопределяемый.Контакт = КонтактыВзаимодействийПереопределяемый.Контакт}\n{ГДЕ\n\tВзаимодействияПереопределяемый.Ответственный,\n\tВзаимодействияПереопределяемый.Тип,\n\tВзаимодействияПереопределяемый.Важность,\n\tВзаимодействияПереопределяемый.СтатусИсходящегоПисьма,\n\tВзаимодействияПереопределяемый.УчетнаяЗапись,\n\tВзаимодействияПереопределяемый.Автор,\n\tВзаимодействияПереопределяемый.Входящий,\n\tПредметыПапкиВзаимодействийПереопределяемый.Рассмотрено,\n\tПредметыПапкиВзаимодействийПереопределяемый.РассмотретьПосле}",
+    "useAlwaysFields": [
+     "КонтактыПанельНавигации.ТипКонтакта"
+    ],
     "fillCheck": "DONT_CHECK",
-    "comment": "",
-    "id": 1,
-    "savedData": false,
     "title": {
      "content": [
       {
@@ -6032,17 +6044,30 @@
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/type"
     },
     "mainAttribute": false,
+    "mainTable": "InformationRegister.СостоянияКонтактовВзаимодействий",
+    "keyFields": [],
+    "settingsFields": [
+     "ДатаПоследнегоВзаимодействия",
+     "КоличествоНеРассмотрено",
+     "КоличествоНеРассмотрено",
+     "Контакт",
+     "ТипКонтакта"
+    ],
+    "name": "КонтактыПанельНавигации",
+    "queryText": "ВЫБРАТЬ РАЗЛИЧНЫЕ\n\tСостоянияКонтактовВзаимодействийПереопределяемый.Контакт КАК Контакт,\n\tСостоянияКонтактовВзаимодействийПереопределяемый.КоличествоНеРассмотрено КАК КоличествоНеРассмотрено,\n\tСостоянияКонтактовВзаимодействийПереопределяемый.ДатаПоследнегоВзаимодействия КАК ДатаПоследнегоВзаимодействия,\n\tТИПЗНАЧЕНИЯ(СостоянияКонтактовВзаимодействийПереопределяемый.Контакт) КАК ТипКонтакта\nИЗ\n\tРегистрСведений.СостоянияКонтактовВзаимодействий КАК СостоянияКонтактовВзаимодействийПереопределяемый\n\t\t{ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.КонтактыВзаимодействий КАК КонтактыВзаимодействийПереопределяемый\n\t\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыПапкиВзаимодействийПереопределяемый\n\t\t\tПО КонтактыВзаимодействийПереопределяемый.Взаимодействие = ПредметыПапкиВзаимодействийПереопределяемый.Взаимодействие\n\t\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ ЖурналДокументов.Взаимодействия КАК ВзаимодействияПереопределяемый\n\t\t\tПО КонтактыВзаимодействийПереопределяемый.Взаимодействие = ВзаимодействияПереопределяемый.Ссылка\n\t\tПО СостоянияКонтактовВзаимодействийПереопределяемый.Контакт = КонтактыВзаимодействийПереопределяемый.Контакт}\n{ГДЕ\n\tВзаимодействияПереопределяемый.Ответственный,\n\tВзаимодействияПереопределяемый.Тип,\n\tВзаимодействияПереопределяемый.Важность,\n\tВзаимодействияПереопределяемый.СтатусИсходящегоПисьма,\n\tВзаимодействияПереопределяемый.УчетнаяЗапись,\n\tВзаимодействияПереопределяемый.Автор,\n\tВзаимодействияПереопределяемый.Входящий,\n\tПредметыПапкиВзаимодействийПереопределяемый.Рассмотрено,\n\tПредметыПапкиВзаимодействийПереопределяемый.РассмотретьПосле}",
+    "comment": "",
+    "id": 1,
+    "savedData": false,
+    "fields": [],
+    "keyType": "AUTO",
     "customQuery": true
    },
    {
-    "mainTable": "InformationRegister.СостоянияПредметовВзаимодействий",
     "columns": [],
-    "name": "ПредметыПанельНавигации",
-    "queryText": "ВЫБРАТЬ РАЗЛИЧНЫЕ\n\tСостоянияПредметовВзаимодействийПереопределяемый.Предмет КАК Предмет,\n\tСостоянияПредметовВзаимодействийПереопределяемый.КоличествоНеРассмотрено КАК КоличествоНеРассмотрено,\n\tСостоянияПредметовВзаимодействийПереопределяемый.Активен КАК Активен,\n\tСостоянияПредметовВзаимодействийПереопределяемый.ДатаПоследнегоВзаимодействия КАК ДатаПоследнегоВзаимодействия,\n\tТИПЗНАЧЕНИЯ(СостоянияПредметовВзаимодействийПереопределяемый.Предмет) КАК ТипПредмета\nИЗ\n\tРегистрСведений.СостоянияПредметовВзаимодействий КАК СостоянияПредметовВзаимодействийПереопределяемый\n\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыПапкиВзаимодействийПереопределяемый\n\t\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ ЖурналДокументов.Взаимодействия КАК ВзаимодействияПереопределяемый\n\t\t\tПО ПредметыПапкиВзаимодействийПереопределяемый.Взаимодействие = ВзаимодействияПереопределяемый.Ссылка\n\t\tПО СостоянияПредметовВзаимодействийПереопределяемый.Предмет = ПредметыПапкиВзаимодействийПереопределяемый.Предмет\n{ГДЕ\n\tВзаимодействияПереопределяемый.Ответственный,\n\tВзаимодействияПереопределяемый.Тип,\n\tВзаимодействияПереопределяемый.Важность,\n\tВзаимодействияПереопределяемый.СтатусИсходящегоПисьма,\n\tВзаимодействияПереопределяемый.УчетнаяЗапись,\n\tВзаимодействияПереопределяемый.Автор,\n\tВзаимодействияПереопределяемый.ПометкаУдаления,\n\tВзаимодействияПереопределяемый.Входящий,\n\tПредметыПапкиВзаимодействийПереопределяемый.Рассмотрено,\n\tПредметыПапкиВзаимодействийПереопределяемый.РассмотретьПосле}",
+    "useAlwaysFields": [
+     "ПредметыПанельНавигации.Предмет"
+    ],
     "fillCheck": "DONT_CHECK",
-    "comment": "",
-    "id": 36,
-    "savedData": false,
     "title": {
      "content": [
       {
@@ -6055,17 +6080,42 @@
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/type"
     },
     "mainAttribute": false,
+    "mainTable": "InformationRegister.СостоянияПредметовВзаимодействий",
+    "keyFields": [],
+    "settingsFields": [
+     "ДатаПоследнегоВзаимодействия",
+     "КоличествоНеРассмотрено",
+     "КоличествоНеРассмотрено",
+     "Предмет",
+     "ТипПредмета"
+    ],
+    "name": "ПредметыПанельНавигации",
+    "queryText": "ВЫБРАТЬ РАЗЛИЧНЫЕ\n\tСостоянияПредметовВзаимодействийПереопределяемый.Предмет КАК Предмет,\n\tСостоянияПредметовВзаимодействийПереопределяемый.КоличествоНеРассмотрено КАК КоличествоНеРассмотрено,\n\tСостоянияПредметовВзаимодействийПереопределяемый.Активен КАК Активен,\n\tСостоянияПредметовВзаимодействийПереопределяемый.ДатаПоследнегоВзаимодействия КАК ДатаПоследнегоВзаимодействия,\n\tТИПЗНАЧЕНИЯ(СостоянияПредметовВзаимодействийПереопределяемый.Предмет) КАК ТипПредмета\nИЗ\n\tРегистрСведений.СостоянияПредметовВзаимодействий КАК СостоянияПредметовВзаимодействийПереопределяемый\n\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыПапкиВзаимодействийПереопределяемый\n\t\t\tВНУТРЕННЕЕ СОЕДИНЕНИЕ ЖурналДокументов.Взаимодействия КАК ВзаимодействияПереопределяемый\n\t\t\tПО ПредметыПапкиВзаимодействийПереопределяемый.Взаимодействие = ВзаимодействияПереопределяемый.Ссылка\n\t\tПО СостоянияПредметовВзаимодействийПереопределяемый.Предмет = ПредметыПапкиВзаимодействийПереопределяемый.Предмет\n{ГДЕ\n\tВзаимодействияПереопределяемый.Ответственный,\n\tВзаимодействияПереопределяемый.Тип,\n\tВзаимодействияПереопределяемый.Важность,\n\tВзаимодействияПереопределяемый.СтатусИсходящегоПисьма,\n\tВзаимодействияПереопределяемый.УчетнаяЗапись,\n\tВзаимодействияПереопределяемый.Автор,\n\tВзаимодействияПереопределяемый.ПометкаУдаления,\n\tВзаимодействияПереопределяемый.Входящий,\n\tПредметыПапкиВзаимодействийПереопределяемый.Рассмотрено,\n\tПредметыПапкиВзаимодействийПереопределяемый.РассмотретьПосле}",
+    "comment": "",
+    "id": 36,
+    "savedData": false,
+    "fields": [],
+    "keyType": "AUTO",
     "customQuery": true
    },
    {
-    "mainTable": "DocumentJournal.Взаимодействия",
     "columns": [],
-    "name": "Список",
-    "queryText": "ВЫБРАТЬ\n\tВЫБОР\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.Встреча\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 10\n\t\t\t\t\tИНАЧЕ 0\n\t\t\t\tКОНЕЦ\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.ЗапланированноеВзаимодействие\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 11\n\t\t\t\t\tИНАЧЕ 1\n\t\t\t\tКОНЕЦ\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.ТелефонныйЗвонок\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 12\n\t\t\t\t\tИНАЧЕ 2\n\t\t\t\tКОНЕЦ\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоВходящее\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 13\n\t\t\t\t\tИНАЧЕ 3\n\t\t\t\tКОНЕЦ\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоИсходящее\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 14\n\t\t\t\t\tИНАЧЕ ВЫБОР\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Черновик)\n\t\t\t\t\t\t\t\tТОГДА 15\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Исходящее)\n\t\t\t\t\t\t\t\tТОГДА 16\n\t\t\t\t\t\t\tИНАЧЕ 4\n\t\t\t\t\t\tКОНЕЦ\n\t\t\t\tКОНЕЦ\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.СообщениеSMS\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 22\n\t\t\t\t\tИНАЧЕ ВЫБОР\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Черновик)\n\t\t\t\t\t\t\t\tТОГДА 17\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Исходящее)\n\t\t\t\t\t\t\t\tТОГДА 18\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставляется)\n\t\t\t\t\t\t\t\tТОГДА 19\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.ЧастичноДоставлено)\n\t\t\t\t\t\t\t\tТОГДА 21\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.НеДоставлено)\n\t\t\t\t\t\t\t\tТОГДА 23\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставлено)\n\t\t\t\t\t\t\t\tТОГДА 24\n\t\t\t\t\t\t\tИНАЧЕ 17\n\t\t\t\t\t\tКОНЕЦ\n\t\t\t\tКОНЕЦ\n\tКОНЕЦ КАК НомерКартинки,\n\tЖурналДокументовВзаимодействияПереопределяемый.Ссылка,\n\tЖурналДокументовВзаимодействияПереопределяемый.Дата,\n\tЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления,\n\tЖурналДокументовВзаимодействияПереопределяемый.Номер,\n\tЖурналДокументовВзаимодействияПереопределяемый.Автор,\n\tЖурналДокументовВзаимодействияПереопределяемый.Входящий,\n\tЖурналДокументовВзаимодействияПереопределяемый.Тема,\n\tЖурналДокументовВзаимодействияПереопределяемый.Ответственный КАК Ответственный,\n\tЕСТЬNULL(ПредметыВзаимодействийПереопределяемый.Рассмотрено, Ложь) КАК Рассмотрено,\n\tЕСТЬNULL(ПредметыВзаимодействийПереопределяемый.РассмотретьПосле, ДатаВремя(1,1,1)) КАК РассмотретьПосле,\n\tЖурналДокументовВзаимодействияПереопределяемый.Участники,\n\tЖурналДокументовВзаимодействияПереопределяемый.Тип,\n\tЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма,\n\tВЫБОР\n\t\tКОГДА ЕСТЬNULL(ЖурналДокументовВзаимодействияПереопределяемый.ЕстьВложения, НаличиеФайловПереопределяемый.ЕстьФайлы) ЕСТЬ NULL\n\t\t\tТОГДА ЛОЖЬ\n\t\tКОГДА ЕСТЬNULL(ЖурналДокументовВзаимодействияПереопределяемый.ЕстьВложения, НаличиеФайловПереопределяемый.ЕстьФайлы)\n\t\t\tТОГДА ИСТИНА\n\t\tИНАЧЕ ЛОЖЬ\n\tКОНЕЦ КАК ЕстьВложения,\n\tЕСТЬNULL(ПредметыВзаимодействийПереопределяемый.Предмет, НЕОПРЕДЕЛЕНО) КАК Предмет,\n\tТИПЗНАЧЕНИЯ(ПредметыВзаимодействийПереопределяемый.Предмет) КАК ТипПредмета,\n\tЖурналДокументовВзаимодействияПереопределяемый.УчетнаяЗапись,\n\tЕСТЬNULL(ПредметыВзаимодействийПереопределяемый.ПапкаЭлектронногоПисьма, ЗНАЧЕНИЕ(Справочник.ПапкиЭлектронныхПисем.ПустаяСсылка)) КАК Папка,\n\tЖурналДокументовВзаимодействияПереопределяемый.ПолученоОтправлено КАК ПолученоОтправлено,\n\tВЫРАЗИТЬ(ЖурналДокументовВзаимодействияПереопределяемый.Размер \/ 1024 КАК ЧИСЛО(10, 2)) КАК Размер,\n\tЖурналДокументовВзаимодействияПереопределяемый.Важность,\n\tВЫБОР\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Высокая)\n\t\t\tТОГДА 2\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Низкая)\n\t\t\tТОГДА 0\n\t\tИНАЧЕ 1\n\tКОНЕЦ КАК ВажностьНомерКартинки\nИЗ\n\tЖурналДокументов.Взаимодействия КАК ЖурналДокументовВзаимодействияПереопределяемый\n\t\tЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыВзаимодействийПереопределяемый\n\t\tПО ЖурналДокументовВзаимодействияПереопределяемый.Ссылка = ПредметыВзаимодействийПереопределяемый.Взаимодействие\n\t\tЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НаличиеФайлов КАК НаличиеФайловПереопределяемый\n\t\tПО ЖурналДокументовВзаимодействияПереопределяемый.Ссылка = НаличиеФайловПереопределяемый.ОбъектСФайлами\n{ГДЕ\n\tЖурналДокументовВзаимодействияПереопределяемый.Ссылка КАК Поиск}",
+    "useAlwaysFields": [
+     "Список.ВажностьНомерКартинки",
+     "Список.Дата",
+     "Список.ЕстьВложения",
+     "Список.НомерКартинки",
+     "Список.Ответственный",
+     "Список.Папка",
+     "Список.ПометкаУдаления",
+     "Список.Предмет",
+     "Список.Рассмотрено",
+     "Список.Ссылка",
+     "Список.СтатусИсходящегоПисьма",
+     "Список.Тип",
+     "Список.УчетнаяЗапись"
+    ],
     "fillCheck": "DONT_CHECK",
-    "comment": "",
-    "id": 2,
-    "savedData": false,
     "title": {
      "content": []
     },
@@ -6073,11 +6123,259 @@
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/type"
     },
     "mainAttribute": true,
+    "mainTable": "DocumentJournal.Взаимодействия",
+    "keyFields": [],
+    "settingsFields": [
+     "Date"
+    ],
+    "name": "Список",
+    "queryText": "ВЫБРАТЬ\n\tВЫБОР\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.Встреча\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 10\n\t\t\t\t\tИНАЧЕ 0\n\t\t\t\tКОНЕЦ\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.ЗапланированноеВзаимодействие\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 11\n\t\t\t\t\tИНАЧЕ 1\n\t\t\t\tКОНЕЦ\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.ТелефонныйЗвонок\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 12\n\t\t\t\t\tИНАЧЕ 2\n\t\t\t\tКОНЕЦ\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоВходящее\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 13\n\t\t\t\t\tИНАЧЕ 3\n\t\t\t\tКОНЕЦ\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоИсходящее\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 14\n\t\t\t\t\tИНАЧЕ ВЫБОР\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Черновик)\n\t\t\t\t\t\t\t\tТОГДА 15\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Исходящее)\n\t\t\t\t\t\t\t\tТОГДА 16\n\t\t\t\t\t\t\tИНАЧЕ 4\n\t\t\t\t\t\tКОНЕЦ\n\t\t\t\tКОНЕЦ\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Ссылка ССЫЛКА Документ.СообщениеSMS\n\t\t\tТОГДА ВЫБОР\n\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления\n\t\t\t\t\t\tТОГДА 22\n\t\t\t\t\tИНАЧЕ ВЫБОР\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Черновик)\n\t\t\t\t\t\t\t\tТОГДА 17\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Исходящее)\n\t\t\t\t\t\t\t\tТОГДА 18\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставляется)\n\t\t\t\t\t\t\t\tТОГДА 19\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.ЧастичноДоставлено)\n\t\t\t\t\t\t\t\tТОГДА 21\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.НеДоставлено)\n\t\t\t\t\t\t\t\tТОГДА 23\n\t\t\t\t\t\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставлено)\n\t\t\t\t\t\t\t\tТОГДА 24\n\t\t\t\t\t\t\tИНАЧЕ 17\n\t\t\t\t\t\tКОНЕЦ\n\t\t\t\tКОНЕЦ\n\tКОНЕЦ КАК НомерКартинки,\n\tЖурналДокументовВзаимодействияПереопределяемый.Ссылка,\n\tЖурналДокументовВзаимодействияПереопределяемый.Дата,\n\tЖурналДокументовВзаимодействияПереопределяемый.ПометкаУдаления,\n\tЖурналДокументовВзаимодействияПереопределяемый.Номер,\n\tЖурналДокументовВзаимодействияПереопределяемый.Автор,\n\tЖурналДокументовВзаимодействияПереопределяемый.Входящий,\n\tЖурналДокументовВзаимодействияПереопределяемый.Тема,\n\tЖурналДокументовВзаимодействияПереопределяемый.Ответственный КАК Ответственный,\n\tЕСТЬNULL(ПредметыВзаимодействийПереопределяемый.Рассмотрено, Ложь) КАК Рассмотрено,\n\tЕСТЬNULL(ПредметыВзаимодействийПереопределяемый.РассмотретьПосле, ДатаВремя(1,1,1)) КАК РассмотретьПосле,\n\tЖурналДокументовВзаимодействияПереопределяемый.Участники,\n\tЖурналДокументовВзаимодействияПереопределяемый.Тип,\n\tЖурналДокументовВзаимодействияПереопределяемый.СтатусИсходящегоПисьма,\n\tВЫБОР\n\t\tКОГДА ЕСТЬNULL(ЖурналДокументовВзаимодействияПереопределяемый.ЕстьВложения, НаличиеФайловПереопределяемый.ЕстьФайлы) ЕСТЬ NULL\n\t\t\tТОГДА ЛОЖЬ\n\t\tКОГДА ЕСТЬNULL(ЖурналДокументовВзаимодействияПереопределяемый.ЕстьВложения, НаличиеФайловПереопределяемый.ЕстьФайлы)\n\t\t\tТОГДА ИСТИНА\n\t\tИНАЧЕ ЛОЖЬ\n\tКОНЕЦ КАК ЕстьВложения,\n\tЕСТЬNULL(ПредметыВзаимодействийПереопределяемый.Предмет, НЕОПРЕДЕЛЕНО) КАК Предмет,\n\tТИПЗНАЧЕНИЯ(ПредметыВзаимодействийПереопределяемый.Предмет) КАК ТипПредмета,\n\tЖурналДокументовВзаимодействияПереопределяемый.УчетнаяЗапись,\n\tЕСТЬNULL(ПредметыВзаимодействийПереопределяемый.ПапкаЭлектронногоПисьма, ЗНАЧЕНИЕ(Справочник.ПапкиЭлектронныхПисем.ПустаяСсылка)) КАК Папка,\n\tЖурналДокументовВзаимодействияПереопределяемый.ПолученоОтправлено КАК ПолученоОтправлено,\n\tВЫРАЗИТЬ(ЖурналДокументовВзаимодействияПереопределяемый.Размер \/ 1024 КАК ЧИСЛО(10, 2)) КАК Размер,\n\tЖурналДокументовВзаимодействияПереопределяемый.Важность,\n\tВЫБОР\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Высокая)\n\t\t\tТОГДА 2\n\t\tКОГДА ЖурналДокументовВзаимодействияПереопределяемый.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиВзаимодействия.Низкая)\n\t\t\tТОГДА 0\n\t\tИНАЧЕ 1\n\tКОНЕЦ КАК ВажностьНомерКартинки\nИЗ\n\tЖурналДокументов.Взаимодействия КАК ЖурналДокументовВзаимодействияПереопределяемый\n\t\tЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПредметыПапкиВзаимодействий КАК ПредметыВзаимодействийПереопределяемый\n\t\tПО ЖурналДокументовВзаимодействияПереопределяемый.Ссылка = ПредметыВзаимодействийПереопределяемый.Взаимодействие\n\t\tЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НаличиеФайлов КАК НаличиеФайловПереопределяемый\n\t\tПО ЖурналДокументовВзаимодействияПереопределяемый.Ссылка = НаличиеФайловПереопределяемый.ОбъектСФайлами\n{ГДЕ\n\tЖурналДокументовВзаимодействияПереопределяемый.Ссылка КАК Поиск}",
+    "comment": "",
+    "id": 2,
+    "savedData": false,
+    "fields": [
+     {
+      "kind": "FIELD",
+      "name": "Автор",
+      "type": {
+       "types": [],
+       "composite": false,
+       "qualifiers": []
+      },
+      "dataPath": "Автор"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Важность",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Важность"
+     },
+     {
+      "kind": "FIELD",
+      "name": "ВажностьНомерКартинки",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ВажностьНомерКартинки"
+     },
+     {
+      "kind": "FIELD",
+      "name": "ВзаимодействиеОснование",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ВзаимодействиеОснование"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Входящий",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Входящий"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Дата",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Дата"
+     },
+     {
+      "kind": "FIELD",
+      "name": "ДатаАктуальностиОтправки",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ДатаАктуальностиОтправки"
+     },
+     {
+      "kind": "FIELD",
+      "name": "ДатаКогдаОтправить",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ДатаКогдаОтправить"
+     },
+     {
+      "kind": "FIELD",
+      "name": "ЕстьВложения",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ЕстьВложения"
+     },
+     {
+      "kind": "FIELD",
+      "name": "ИдентификаторСообщения",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ИдентификаторСообщения"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Номер",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Номер"
+     },
+     {
+      "kind": "FIELD",
+      "name": "НомерКартинки",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "НомерКартинки"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Ответственный",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Ответственный"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Папка",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Папка"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Поиск",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Поиск"
+     },
+     {
+      "kind": "FIELD",
+      "name": "ПолученоОтправлено",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ПолученоОтправлено"
+     },
+     {
+      "kind": "FIELD",
+      "name": "ПометкаУдаления",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ПометкаУдаления"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Предмет",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Предмет"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Проведен",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Проведен"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Размер",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Размер"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Рассмотрено",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Рассмотрено"
+     },
+     {
+      "kind": "FIELD",
+      "name": "РассмотретьПосле",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "РассмотретьПосле"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Ссылка",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Ссылка"
+     },
+     {
+      "kind": "FIELD",
+      "name": "СтатусИсходящегоПисьма",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "СтатусИсходящегоПисьма"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Тема",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Тема"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Тип",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Тип"
+     },
+     {
+      "kind": "FIELD",
+      "name": "ТипПредмета",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "ТипПредмета"
+     },
+     {
+      "kind": "FIELD",
+      "name": "Участники",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "Участники"
+     },
+     {
+      "kind": "FIELD",
+      "name": "УчетнаяЗапись",
+      "type": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
+      },
+      "dataPath": "УчетнаяЗапись"
+     }
+    ],
+    "keyType": "AUTO",
     "customQuery": true
    },
    {
     "columns": [],
     "name": "ВзаимодействиеДляКоторогоСформированПредпросмотр",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 34,
@@ -6136,6 +6434,7 @@
    {
     "columns": [],
     "name": "ВключитьНебезопасноеСодержимое",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 42,
@@ -6155,6 +6454,7 @@
    {
     "columns": [],
     "name": "ГиперссылкаЦвет",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 37,
@@ -6163,15 +6463,14 @@
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/title"
     },
     "type": {
-     "types": [],
-     "composite": false,
-     "qualifiers": []
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
     },
     "mainAttribute": false
    },
    {
     "columns": [],
     "name": "ДатаПредыдущегоВыполненияКомандыОтправкиПолученияПочты",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 45,
@@ -6195,6 +6494,7 @@
    {
     "columns": [],
     "name": "ДатаПредыдущегоПолученияОтправкиПочты",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 46,
@@ -6210,6 +6510,7 @@
    {
     "columns": [],
     "name": "ДокументыДоступныеДляСоздания",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 32,
@@ -6229,6 +6530,7 @@
    {
     "columns": [],
     "name": "ЕстьНебезопасноеСодержимое",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 43,
@@ -6244,6 +6546,7 @@
    {
     "columns": [],
     "name": "ЗаголовокПанелиНавигации",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 39,
@@ -6268,6 +6571,7 @@
    {
     "columns": [],
     "name": "ЗаголовокПанелиНавигацииПодсказка",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 40,
@@ -6283,6 +6587,7 @@
    {
     "columns": [],
     "name": "ЗапрещеноОтображениеНебезопасногоСодержимогоВПисьмах",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 44,
@@ -6298,6 +6603,7 @@
    {
     "columns": [],
     "name": "ИмяТекущейПанелиНавигации",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 15,
@@ -6322,6 +6628,7 @@
    {
     "columns": [],
     "name": "ИндексПолнотекстовогоПоискаАктуален",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 49,
@@ -6337,6 +6644,7 @@
    {
     "columns": [],
     "name": "ИнформационнаяБазаФайловая",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 29,
@@ -6352,6 +6660,7 @@
    {
     "columns": [],
     "name": "ИспользоватьПризнакРассмотрено",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 33,
@@ -6367,6 +6676,7 @@
    {
     "columns": [],
     "name": "НеОтрабатыватьАктивизациюПанелиНавигации",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 22,
@@ -6382,6 +6692,7 @@
    {
     "columns": [],
     "name": "ОписаниеНайденоПолнотекстовымПоиском",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 30,
@@ -6402,6 +6713,7 @@
    {
     "columns": [],
     "name": "Ответственный",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 5,
@@ -6433,6 +6745,7 @@
    {
     "columns": [],
     "name": "ОтображатьОбластьЧтения",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 19,
@@ -6448,6 +6761,7 @@
    {
     "columns": [],
     "name": "ОтправкаПисемПриостановлена",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 38,
@@ -6463,6 +6777,7 @@
    {
     "columns": [],
     "name": "ОтправкаПолучениеПисемВыполняется",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 47,
@@ -6478,6 +6793,7 @@
    {
     "columns": [],
     "name": "ОтправлятьСообщениеСразу",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 23,
@@ -6493,6 +6809,7 @@
    {
     "columns": [],
     "name": "ПоказыватьВсеАктивныеПредметы",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 17,
@@ -6508,6 +6825,7 @@
    {
     "columns": [],
     "name": "ПоложениеНавигации",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 50,
@@ -6528,6 +6846,7 @@
    {
     "columns": [],
     "name": "ПравоПометкиУдаленияПапок",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 27,
@@ -6543,6 +6862,7 @@
    {
     "columns": [],
     "name": "Предпросмотр",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 9,
@@ -6563,6 +6883,7 @@
    {
     "columns": [],
     "name": "ПредпросмотрHTML",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 35,
@@ -6583,6 +6904,7 @@
    {
     "columns": [],
     "name": "ПредставлениеТекущегоСвойства",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 16,
@@ -6607,6 +6929,7 @@
    {
     "columns": [],
     "name": "РазделениеВключено",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 48,
@@ -6622,6 +6945,7 @@
    {
     "columns": [],
     "name": "РасширенныйПоиск",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 31,
@@ -6637,6 +6961,7 @@
    {
     "columns": [],
     "name": "СписокВыбораТипаПредмета",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 14,
@@ -6652,6 +6977,7 @@
    {
     "columns": [],
     "name": "Статус",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 4,
@@ -6681,6 +7007,7 @@
    {
     "columns": [],
     "name": "СтрокаПоиска",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 8,
@@ -6701,6 +7028,7 @@
    {
     "columns": [],
     "name": "ТекущееЗначениеПанелиНавигации",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 41,
@@ -6709,13 +7037,14 @@
      "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/title"
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormSimpleAttribute[3]\/type"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute[4]\/fields\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField\/type"
     },
     "mainAttribute": false
    },
    {
     "columns": [],
     "name": "ТекущееСвойствоПанелиНавигации",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 12,
@@ -6742,6 +7071,7 @@
    {
     "columns": [],
     "name": "ТекущееСвойствоПанелиНавигацииЯвляетсяРеквизитом",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 13,
@@ -6757,6 +7087,7 @@
    {
     "columns": [],
     "name": "ТипВзаимодействия",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 6,
@@ -6786,6 +7117,7 @@
    {
     "columns": [],
     "name": "ТолькоЗначимыеКонтакты",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 18,
@@ -6801,6 +7133,7 @@
    {
     "columns": [],
     "name": "ТолькоЗначимыеПредметы",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 3,
@@ -6816,6 +7149,7 @@
    {
     "columns": [],
     "name": "ТолькоПочта",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 26,
@@ -6833,6 +7167,7 @@
      {
       "columns": [],
       "name": "Значение",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 2,
@@ -6859,6 +7194,7 @@
      {
       "columns": [],
       "name": "НеРассмотрено",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 3,
@@ -6884,6 +7220,7 @@
      {
       "columns": [],
       "name": "НомерКартинки",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 4,
@@ -6914,6 +7251,7 @@
      {
       "columns": [],
       "name": "Представление",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 1,
@@ -6933,6 +7271,7 @@
      }
     ],
     "name": "Категории",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 25,
@@ -6959,6 +7298,7 @@
      {
       "columns": [],
       "name": "ИмяДерева",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 1,
@@ -6974,6 +7314,7 @@
      {
       "columns": [],
       "name": "РазвернутыеУзлы",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 2,
@@ -6989,6 +7330,7 @@
      {
       "columns": [],
       "name": "ТекущееЗначение",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 3,
@@ -7013,6 +7355,7 @@
      }
     ],
     "name": "НастройкиДеревьевПанелиНавигации",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 21,
@@ -7030,6 +7373,7 @@
      {
       "columns": [],
       "name": "Взаимодействие",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 1,
@@ -7045,6 +7389,7 @@
      {
       "columns": [],
       "name": "Значение",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 3,
@@ -7064,6 +7409,7 @@
      {
       "columns": [],
       "name": "Описание",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 2,
@@ -7078,6 +7424,7 @@
      }
     ],
     "name": "ОписанияНайденоПолнотекстовымПоиском",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 28,
@@ -7095,6 +7442,7 @@
      {
       "columns": [],
       "name": "ЕстьПравоНаИзменение",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 7,
@@ -7120,6 +7468,7 @@
      {
       "columns": [],
       "name": "Значение",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 2,
@@ -7159,6 +7508,7 @@
      {
       "columns": [],
       "name": "НеРассмотрено",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 4,
@@ -7174,6 +7524,7 @@
      {
       "columns": [],
       "name": "НомерКартинки",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 3,
@@ -7189,6 +7540,7 @@
      {
       "columns": [],
       "name": "ПредопределеннаяПапка",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 6,
@@ -7204,6 +7556,7 @@
      {
       "columns": [],
       "name": "Представление",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 5,
@@ -7228,6 +7581,7 @@
      {
       "columns": [],
       "name": "УчетнаяЗапись",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 1,
@@ -7248,6 +7602,7 @@
      }
     ],
     "name": "Папки",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 20,
@@ -7274,6 +7629,7 @@
      {
       "columns": [],
       "name": "Значение",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 1,
@@ -7300,6 +7656,7 @@
      {
       "columns": [],
       "name": "НеРассмотрено",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 5,
@@ -7315,6 +7672,7 @@
      {
       "columns": [],
       "name": "НомерКартинки",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 3,
@@ -7330,6 +7688,7 @@
      {
       "columns": [],
       "name": "Представление",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 6,
@@ -7344,6 +7703,7 @@
      }
     ],
     "name": "Свойства",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 11,
@@ -7366,6 +7726,7 @@
      {
       "columns": [],
       "name": "ДопРеквизитСведение",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 1,
@@ -7381,6 +7742,7 @@
      {
       "columns": [],
       "name": "ПорядковыйНомер",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 2,
@@ -7396,6 +7758,7 @@
      {
       "columns": [],
       "name": "Представление",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 4,
@@ -7411,6 +7774,7 @@
      {
       "columns": [],
       "name": "ЭтоРеквизит",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 3,
@@ -7425,6 +7789,7 @@
      }
     ],
     "name": "ТаблицаДопРеквизитовСвойств",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 10,
@@ -7442,6 +7807,7 @@
      {
       "columns": [],
       "name": "ДопРеквизитСведение",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 1,
@@ -7457,6 +7823,7 @@
      {
       "columns": [],
       "name": "Представление",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 4,
@@ -7472,6 +7839,7 @@
      {
       "columns": [],
       "name": "ЭтоРеквизит",
+      "useAlwaysFields": [],
       "fillCheck": "DONT_CHECK",
       "comment": "",
       "id": 3,
@@ -7486,6 +7854,7 @@
      }
     ],
     "name": "ТаблицаДопРеквизитовСвойствТипаБулево",
+    "useAlwaysFields": [],
     "fillCheck": "DONT_CHECK",
     "comment": "",
     "id": 24,
@@ -7499,6 +7868,7 @@
     "mainAttribute": false
    }
   ],
+  "conditionalAppearanceFields": [],
   "eventHandlers": [
    {
     "handler": "ПередЗакрытием",

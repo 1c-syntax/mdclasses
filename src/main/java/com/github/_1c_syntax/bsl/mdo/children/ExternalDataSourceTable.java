@@ -35,6 +35,7 @@ import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.mdo.support.TableDataType;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
@@ -164,6 +165,12 @@ public class ExternalDataSourceTable implements MDChild, ModuleOwner, CommandOwn
    */
   @Default
   DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Тип данных таблицы: объектные данные или необъектные
+   */
+  @Default
+  TableDataType tableDataType = TableDataType.OBJECT_DATA;
 
   @Override
   public List<Attribute> getAllAttributes() {

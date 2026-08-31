@@ -61,6 +61,7 @@ public class GenerateMdoFixtures {
           var fileName = path.getFileName().toString();
           return fileName.startsWith("InformationRegisters.")
             || fileName.startsWith("CalculationRegisters.")
+            || fileName.startsWith("ExternalDataSources.")
             || fileName.equals("Configuration.json");
         })
         .forEach(fixtureFile -> regenerate(pack, fixtureFile));

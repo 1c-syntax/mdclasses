@@ -66,4 +66,11 @@ public interface FormAttribute extends FormItem, ValueTypeOwner {
    * Колонки (включая дополнительные колонки табличной части)
    */
   List<FormAttribute> getColumns();
+
+  /**
+   * Пути к данным полей реквизита, помеченных «использовать всегда»
+   * ({@code Список.Ссылка}). Форма читает такое поле независимо от того,
+   * показывает ли его хоть один элемент
+   */
+  List<String> getUseAlwaysFields();
 }

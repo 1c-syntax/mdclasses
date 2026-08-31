@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.designer.converter;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.reader.common.context.FormAttributeWrapper;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.github._1c_syntax.bsl.reader.common.DataCompositionFields;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.MDCReaderContext;
@@ -58,12 +59,19 @@ public class Unmarshaller {
   private static final String STANDARD_ATTRIBUTE_NODE = "StandardAttribute";
   private static final String ATTRIBUTE_FIELD_NAME = "Attribute";
   private static final String SETTINGS_NODE = "Settings";
+  private static final String LIST_SETTINGS_NODE = "ListSettings";
+  private static final String SETTINGS_FIELDS_FIELD = "settingsFields";
+  private static final String CONDITIONAL_APPEARANCE_NODE = "ConditionalAppearance";
+  private static final String CONDITIONAL_APPEARANCE_FIELDS_FIELD = "conditionalAppearanceFields";
 
   private static final Map<String, String> DYNAMIC_LIST_SETTINGS_REMAPPING
     = Map.of(
     "MainTable", "mainTable",
     "ManualQuery", "customQuery",
-    "QueryText", "queryText"
+    "QueryText", "queryText",
+    "Field", "fields",
+    "KeyType", "keyType",
+    "KeyField", "keyFields"
   );
 
   private static final Map<String, String> ITEM_NODE_REMAPPING
@@ -73,7 +81,8 @@ public class Unmarshaller {
     "Attributes", "attributes",
     "Columns", "columns",
     "ChildItems", "elements",
-    "Events", "eventHandlers"
+    "Events", "eventHandlers",
+    "UseAlways", "useAlwaysFields"
   );
 
   private static final Map<String, String> NODE_REMAPPING
@@ -140,6 +149,9 @@ public class Unmarshaller {
       if (field != null) {
         var fieldClass = readerContext.fieldType(field);
         readerContext.setValue(field, ExtendXStream.readValue(context, fieldClass));
+      } else if (LIST_SETTINGS_NODE.equals(name)) {
+        DataCompositionFields.collect(reader)
+          .forEach(value -> readerContext.setValue(SETTINGS_FIELDS_FIELD, value));
       }
       reader.moveUp();
     }
@@ -189,7 +201,14 @@ public class Unmarshaller {
     }
     while (reader.hasMoreChildren()) {
       reader.moveDown();
-      readerContext.setValue(nodeName, ExtendXStream.readValue(context, fieldClass));
+      if (CONDITIONAL_APPEARANCE_NODE.equals(reader.getNodeName())) {
+        // Условное оформление формы лежит среди реквизитов, но реквизитом
+        // не является: из него нужны только названные поля
+        DataCompositionFields.collect(reader)
+          .forEach(value -> readerContext.setValue(CONDITIONAL_APPEARANCE_FIELDS_FIELD, value));
+      } else {
+        readerContext.setValue(nodeName, ExtendXStream.readValue(context, fieldClass));
+      }
       reader.moveUp();
     }
   }

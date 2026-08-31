@@ -25,9 +25,11 @@ import com.github._1c_syntax.bsl.mdo.ValueTypeOwner;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAdditionalColumnsAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListField;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormSimpleAttribute;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormTableAttribute;
+import com.github._1c_syntax.bsl.mdo.support.DynamicListKeyType;
 import com.github._1c_syntax.bsl.mdo.support.FillChecking;
 import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.github._1c_syntax.bsl.types.ValueTypeDescription;
@@ -121,10 +123,44 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
   String queryText = "";
 
   /**
+   * Состав полей динамического списка.
+   * Заполняется только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Singular("addFields")
+  List<FormDynamicListField> fields;
+
+  /**
+   * Вид ключа строки динамического списка.
+   * Заполняется только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Default
+  DynamicListKeyType keyType = DynamicListKeyType.AUTO;
+
+  /**
+   * Поля ключа строки динамического списка.
+   * Заполняются только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Singular("addKeyFields")
+  List<String> keyFields;
+
+  /**
    * Колонки таблицы
    */
   @Singular("addColumns")
   List<FormAttributeWrapper> columns;
+
+  /**
+   * Пути к данным полей, помеченных «использовать всегда»
+   */
+  @Singular("addUseAlwaysFields")
+  List<String> useAlwaysFields;
+
+  /**
+   * Поля, названные в настройках динамического списка.
+   * Заполняется только для реквизитов с типом {@code ДинамическийСписок}
+   */
+  @Singular("addSettingsFields")
+  List<String> settingsFields;
 
   @Override
   public ValueTypeDescription getValueType() {
@@ -168,9 +204,13 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
         if (regular.get(i).getName().equals(baseName)) {
           var mergedChildren = new ArrayList<>(regular.get(i).getColumns());
           mergedChildren.addAll(addCol.getColumns());
+          var mergedUseAlways = new ArrayList<>(regular.get(i).getUseAlwaysFields());
+          mergedUseAlways.addAll(addCol.getUseAlwaysFields());
           regular.set(i, regular.get(i).toBuilder()
             .clearColumns()
             .columns(mergedChildren)
+            .clearUseAlwaysFields()
+            .useAlwaysFields(mergedUseAlways)
             .build());
           matched = true;
           break;
@@ -198,6 +238,7 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
         .fillCheck(fillCheck)
         .comment(comment)
         .columns(columns)
+        .useAlwaysFields(useAlwaysFields)
         .build();
     }
     if (type.contains(V8ValueType.DYNAMIC_LIST)) {
@@ -213,13 +254,19 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
         .mainTable(mainTable)
         .customQuery(customQuery)
         .queryText(queryText)
+        .fields(fields)
+        .keyType(keyType)
+        .keyFields(keyFields)
         .columns(columns)
+        .useAlwaysFields(useAlwaysFields)
+        .settingsFields(settingsFields)
         .build();
     }
     if (isAdditional()) {
       return FormAdditionalColumnsAttribute.builder()
         .name(name)
         .columns(columns)
+        .useAlwaysFields(useAlwaysFields)
         .build();
     }
     return FormSimpleAttribute.builder()
@@ -232,6 +279,7 @@ public class FormAttributeWrapper implements FormItem, ValueTypeOwner {
       .fillCheck(fillCheck)
       .comment(comment)
       .columns(columns)
+      .useAlwaysFields(useAlwaysFields)
       .build();
   }
 

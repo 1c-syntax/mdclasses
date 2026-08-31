@@ -60,6 +60,17 @@ public class FormTable implements FormElement, FormElementOwner, FormDataPathOwn
   @Default
   String comment = "";
 
+  /**
+   * Путь к данным поля, из которого таблица берёт картинку строки
+   * ({@code Список.ИндексКартинки}). Колонки у такого поля нет — картинку
+   * рисует сама таблица, но данные она читает.
+   * <p>
+   * Отдаётся так, как записан: тильда в начале — пометка битого свойства,
+   * то есть путь ведёт туда, чего нет
+   */
+  @Default
+  String rowPictureDataPath = "";
+
   @Singular("addEventHandlers")
   List<FormEventHandler> eventHandlers;
 
