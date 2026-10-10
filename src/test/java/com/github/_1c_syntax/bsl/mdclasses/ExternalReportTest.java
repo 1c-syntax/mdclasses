@@ -23,6 +23,10 @@ package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormDecoration;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandlerOwner;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormGroup;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -98,5 +102,33 @@ class ExternalReportTest {
     assertThat(form.getFormType()).isEqualTo(FormType.ORDINARY);
 
     assertThat(form.getData().isEmpty()).isTrue();
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, external, ТестовыйВнешнийОтчет",
+      "false, external, ТестовыйВнешнийОтчет"
+    }
+  )
+  void shouldReadDecorationAndGroupEventHandlers(ArgumentsAccessor argumentsAccessor) {
+    var erf = (ExternalReport) Fixtures.get(argumentsAccessor);
+    var form = erf.getForms().stream().filter(objForm -> objForm.getName().equals("ФормаВарианта"))
+      .findFirst().orElseThrow();
+    var elements = form.getData().getPlainElements();
+
+    var decoration = elements.stream()
+      .filter(element -> element.getName().equals("ПереходКВыбраннымПолямОтчета"))
+      .findFirst().orElseThrow();
+    assertThat(decoration).isInstanceOf(FormDecoration.class);
+    assertThat(((FormEventHandlerOwner) decoration).getEventHandlers())
+      .containsExactly(FormEventHandler.create("Click", "ПерейтиКОтчету"));
+
+    var pages = elements.stream()
+      .filter(element -> element.getName().equals("СтраницыНастроек"))
+      .findFirst().orElseThrow();
+    assertThat(pages).isInstanceOf(FormGroup.class);
+    assertThat(((FormEventHandlerOwner) pages).getEventHandlers())
+      .containsExactly(FormEventHandler.create("OnCurrentPageChange", "СтраницыНастроекПриСменеСтраницы"));
   }
 }
