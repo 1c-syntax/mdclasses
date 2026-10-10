@@ -46,8 +46,7 @@ public class MetaDataObjectConverter implements ReadConverter {
     var nodeClassName = reader.getNodeName();
     Class<?> realClass = ExtendXStream.getRealClass(reader, nodeClassName);
     if (realClass == null) {
-      throw new IllegalStateException(
-        "Unexpected type `%s`, path: `%s`".formatted(nodeClassName, ExtendXStream.getCurrentPath(reader)));
+      throw new IllegalStateException("Unexpected type: " + nodeClassName);
     }
 
     var readerContext = new MDReaderContext(reader);
