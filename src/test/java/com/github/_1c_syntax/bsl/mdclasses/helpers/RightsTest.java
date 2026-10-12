@@ -36,6 +36,8 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.nio.file.Path;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -298,5 +300,24 @@ class RightsTest {
       .findFirst();
     assertThat(forRegister).isPresent();
     assertThat(forRegister.get().condition()).contains("ГДЕ");
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "ssl_3_1, false",
+    "ssl_3_1, true"
+  })
+  void sameRestrictionTemplatesOfDifferentRolesAreOneInstance(String pack, boolean edt) {
+    var cf = (CF) Fixtures.get(pack, edt, MDCReadSettings.DEFAULT);
+    assertThat(cf).isNotNull();
+
+    var templatesByContent = cf.getRoles().stream()
+      .flatMap(role -> role.getData().restrictionTemplates().stream())
+      .collect(Collectors.groupingBy(Function.identity()));
+
+    // Типовые шаблоны БСП повторяются в десятках ролей
+    assertThat(templatesByContent.values()).anyMatch(same -> same.size() > 1);
+    assertThat(templatesByContent.values())
+      .allMatch(same -> same.stream().allMatch(template -> template == same.get(0)));
   }
 }
