@@ -42,7 +42,7 @@ import java.util.List;
 @Value
 @Builder
 @ToString(of = "name")
-public class FormGroup implements FormElement, FormElementOwner {
+public class FormGroup implements FormElement, FormElementOwner, FormEventHandlerOwner {
 
   @Default
   int id = -1;
@@ -58,6 +58,9 @@ public class FormGroup implements FormElement, FormElementOwner {
 
   @Default
   String comment = "";
+
+  @Singular("addEventHandlers")
+  List<FormEventHandler> eventHandlers;
 
   @Singular("addElements")
   List<FormElement> elements;
