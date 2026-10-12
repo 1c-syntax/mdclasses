@@ -108,6 +108,16 @@ public class FormElementReaderContext extends AbstractReaderContext {
     return "Attribute".equals(nodeName) || "attributes".equals(nodeName);
   }
 
+  /**
+   * Строковые значения элементов формы — имена, пути к данным, команды — повторяются из формы
+   * в форму слово в слово (типовые «КомментарийРасширеннаяПодсказка», «СписокКонтекстноеМеню»,
+   * «Объект.Ссылка»), поэтому хранятся в одном экземпляре
+   */
+  @Override
+  public void setValue(String methodName, @Nullable Object value) {
+    super.setValue(methodName, value instanceof String text ? text.intern() : value);
+  }
+
   @Override
   public @Nullable Class<?> fieldType(String fieldName) {
     var clazz = CLASSES.get(fieldName.toLowerCase(Locale.ROOT));

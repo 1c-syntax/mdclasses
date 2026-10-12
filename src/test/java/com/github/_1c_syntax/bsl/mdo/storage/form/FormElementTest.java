@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
+import com.github._1c_syntax.bsl.mdclasses.CF;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.CommonForm;
 import com.github._1c_syntax.bsl.mdo.Form;
@@ -34,6 +36,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.counting;
@@ -328,6 +331,28 @@ class FormElementTest {
         Map.copyOf(baseClasses), Map.copyOf(baseTypes)));
     }
     return result.stream();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "ssl_3_1, false",
+    "ssl_3_1, true"
+  })
+  void sameElementNamesOfDifferentFormsAreOneInstance(String pack, boolean edt) {
+    var cf = (CF) Fixtures.get(pack, edt, MDCReadSettings.DEFAULT);
+    assertThat(cf).isNotNull();
+
+    var namesByValue = cf.getPlainChildren().stream()
+      .filter(Form.class::isInstance)
+      .map(Form.class::cast)
+      .flatMap(form -> form.getData().getPlainElements().stream())
+      .map(FormElement::getName)
+      .collect(groupingBy(Function.identity()));
+
+    // Типовые имена («КомментарийРасширеннаяПодсказка» и т.п.) повторяются в десятках форм
+    assertThat(namesByValue.values()).anyMatch(same -> same.size() > 1);
+    assertThat(namesByValue.values())
+      .allMatch(same -> same.stream().allMatch(name -> name == same.get(0)));
   }
 
   private static FormElement findElement(List<FormElement> elements, String name) {
