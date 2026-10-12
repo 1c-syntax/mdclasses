@@ -149,7 +149,7 @@ public class RoleDataConverter implements ReadConverter {
       }
       reader.moveUp();
     }
-    return builder.build();
+    return RoleData.RESTRICTION_TEMPLATE_INTERNER.intern(builder.build());
   }
 
   @Override

@@ -46,6 +46,12 @@ public record RoleData(boolean setForNewObjects, boolean setForAttributesByDefau
   public static final GenericInterner<Right> RIGHT_INTERNER = new GenericInterner<>();
 
   /**
+   * Шаблоны ограничения доступа повторяются во множестве ролей слово в слово (типовые
+   * шаблоны БСП — сотни килобайт текста в каждой роли), поэтому хранятся в одном экземпляре
+   */
+  public static final GenericInterner<RestrictionTemplate> RESTRICTION_TEMPLATE_INTERNER = new GenericInterner<>();
+
+  /**
    * @param name   Имя субъекта права (mdoref и базовые)
    * @param rights Набор самих прав
    */
