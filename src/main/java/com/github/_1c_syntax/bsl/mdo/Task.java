@@ -25,9 +25,16 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+import com.github._1c_syntax.bsl.mdo.storage.Characteristic;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -48,7 +55,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Task implements ReferenceObject, AccessRightsOwner {
+public class Task implements MutableReferenceObject {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
@@ -64,6 +71,10 @@ public class Task implements ReferenceObject, AccessRightsOwner {
   MdoReference mdoReference = MdoReference.EMPTY;
   @Default
   ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  @Singular("addBasedOn")
+  List<MdoReference> basedOn;
+
   @Default
   String comment = "";
   @Default
@@ -95,6 +106,12 @@ public class Task implements ReferenceObject, AccessRightsOwner {
 
   @Singular
   List<ObjectTemplate> templates;
+
+  /**
+   * Дополнительные индексы
+   */
+  @Singular("addAdditionalIndex")
+  List<AdditionalIndex> additionalIndexes;
 
   @Getter(lazy = true)
   List<MD> children = LazyLoader.computeChildren(this);
@@ -158,6 +175,80 @@ public class Task implements ReferenceObject, AccessRightsOwner {
    */
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Длина номера задачи.
+   * Если равна 0, то у задачи нет номера.
+   */
+  @Default
+  int numberLength = 0;
+
+  /**
+   * Длина наименования задачи.
+   * Если равна 0, то у задачи нет наименования.
+   */
+  @Default
+  int descriptionLength = 0;
+
+  /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
+
+  /**
+   * Ввод по строке - список реквизитов для ввода по строке
+   */
+  @Singular("addInputByString")
+  List<MdoReference> inputByString;
+
+  /**
+   * Режим полнотекстового поиска при вводе по строке
+   */
+  @Default
+  UseMode fullTextSearchOnInputByString = UseMode.USE;
+
+  /**
+   * Режим поиска при вводе по строке
+   */
+  @Default
+  SearchStringMode searchStringModeOnInputByString = SearchStringMode.BEGIN;
+
+  /**
+   * Режим получения данных выбора при вводе по строке
+   */
+  @Default
+  ChoiceDataGetMode choiceDataGetModeOnInputByString = ChoiceDataGetMode.DIRECTLY;
+
+  /**
+   * Создание при вводе
+   */
+  @Default
+  UseMode createOnInput = UseMode.USE;
+
+  /**
+   * Режим истории выбора при вводе по строке
+   */
+  @Default
+  ChoiceHistoryOnInputMode choiceHistoryOnInput = ChoiceHistoryOnInputMode.AUTO;
+
+  /**
+   * Поля блокировки данных - список реквизитов для блокировки данных
+   */
+  @Singular("addDataLockFields")
+  List<MdoReference> dataLockFields;
+
+  /**
+   * Режим управления блокировкой данных
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Характеристики объекта
+   */
+  @Singular("addCharacteristics")
+  List<Characteristic> characteristics;
 
   /**
    * Возвращает перечень возможных прав доступа

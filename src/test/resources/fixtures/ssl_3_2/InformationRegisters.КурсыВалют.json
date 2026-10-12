@@ -17,6 +17,7 @@
    "VIEW_DATA_HISTORY"
   ],
   "description": "Курсы валют",
+  "writeMode": "INDEPENDENT",
   "explanation": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
   },
@@ -39,6 +40,7 @@
   },
   "objectBelonging": "OWN",
   "commands": [],
+  "fullTextSearch": "DONT_USE",
   "mdoType": "INFORMATION_REGISTER",
   "defaultFormMap": [
    "AUX_LIST_FORM",
@@ -71,20 +73,9 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Кратность"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "Кратность",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "types": [
       "NUMBER"
@@ -104,26 +95,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.КурсыВалют.Resource.Кратность"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Кратность"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "Кратность",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Курс"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "Курс",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "types": [
       {
@@ -144,7 +136,19 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.КурсыВалют.Resource.Курс"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Курс"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "Курс",
+    "objectBelonging": "OWN",
+    "comment": ""
    }
   ],
   "mdoReference": {
@@ -179,6 +183,7 @@
      "type": "INFORMATION_REGISTER",
      "mdoRef": "InformationRegister.КурсыВалют"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -219,6 +224,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -265,6 +271,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -314,6 +321,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -432,6 +440,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "useInTotals": true,
@@ -455,6 +464,7 @@
      "type": "DIMENSION",
      "mdoRef": "InformationRegister.КурсыВалют.Dimension.Валюта"
     },
+    "baseDimension": false,
     "supportVariant": "NOT_EDITABLE",
     "master": true,
     "synonym": {

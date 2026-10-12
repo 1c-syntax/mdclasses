@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 
 /**
  * Интерфейс объектов, выступающих в роли реквизитов, т.е. хранящих данные
@@ -43,4 +44,9 @@ public interface Attribute extends MDChild, ValueTypeOwner {
    * Вариант индексирования реквизита
    */
   IndexingType getIndexing();
+
+  /**
+   * Режим использования полнотекстового поиска
+   */
+  UseMode getFullTextSearch();
 }

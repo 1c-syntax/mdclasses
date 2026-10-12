@@ -79,6 +79,8 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
+import com.github._1c_syntax.bsl.mdo.storage.Index;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndex;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -96,6 +98,7 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -273,6 +276,8 @@ public class Configuration implements CF {
   Map<String, CommonModule> commonModulesByName = LazyLoader.computeCommonModulesByName(this);
   @Getter(lazy = true)
   Map<MdoReference, MD> childrenByMdoRef = LazyLoader.computeChildrenByMdoRef(this);
+  @Getter(lazy = true)
+  Map<MdoReference, List<PlatformIndex>> indexesByMdoRef = LazyLoader.computeIndexes(this);
 
   /*
    * Свое
@@ -335,6 +340,114 @@ public class Configuration implements CF {
    */
   @Default
   MultiLanguageString briefInformation = MultiLanguageString.EMPTY;
+
+  /**
+   * Ссылка на основную форму констант
+   */
+  @Default
+  MdoReference defaultConstantsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму отчёта
+   */
+  @Default
+  MdoReference defaultReportForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму варианта отчёта
+   */
+  @Default
+  MdoReference defaultReportVariantForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму настроек отчёта
+   */
+  @Default
+  MdoReference defaultReportSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму настроек динамического списка
+   */
+  @Default
+  MdoReference defaultDynamicListSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму поиска
+   */
+  @Default
+  MdoReference defaultSearchForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму истории изменений истории данных
+   */
+  @Default
+  MdoReference defaultDataHistoryChangeHistoryForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму данных версии истории данных
+   */
+  @Default
+  MdoReference defaultDataHistoryVersionDataForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму различий версий истории данных
+   */
+  @Default
+  MdoReference defaultDataHistoryVersionDifferencesForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму выбора пользователей системы взаимодействия
+   */
+  @Default
+  MdoReference defaultCollaborationSystemUsersChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму отчёта
+   */
+  @Default
+  MdoReference auxiliaryDefaultReportForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму варианта отчёта
+   */
+  @Default
+  MdoReference auxiliaryDefaultReportVariantForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму настроек отчёта
+   */
+  @Default
+  MdoReference auxiliaryDefaultReportSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму настроек динамического списка
+   */
+  @Default
+  MdoReference auxiliaryDefaultDynamicListSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму истории изменений истории данных
+   */
+  @Default
+  MdoReference auxiliaryDefaultDataHistoryChangeHistoryForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму данных версии истории данных
+   */
+  @Default
+  MdoReference auxiliaryDefaultDataHistoryVersionDataForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму различий версий истории данных
+   */
+  @Default
+  MdoReference auxiliaryDefaultDataHistoryVersionDifferencesForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму выбора пользователей системы взаимодействия
+   */
+  @Default
+  MdoReference auxiliaryDefaultCollaborationSystemUsersChoiceForm = MdoReference.EMPTY;
 
   /**
    * Возвращает перечень возможных прав доступа

@@ -76,4 +76,20 @@ class TasksTest {
     Assertions.assertThat(task.getPlainStorageFields(), false)
       .containsAllPlain(task.getAttributes(), task.getTabularSections());
   }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, Tasks.Задача1",
+    "false, mdclasses_3_27, Tasks.Задача1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Task.class);
+
+    var task = (Task) mdo;
+    assertThat(task).isNotNull();
+
+    assertThat(task.getNumberLength()).isEqualTo(9);
+    assertThat(task.getDescriptionLength()).isEqualTo(25);
+  }
 }

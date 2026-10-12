@@ -55,13 +55,14 @@ import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
-import com.github._1c_syntax.bsl.mdo.storage.PredefinedData;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
+import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
 import com.github._1c_syntax.bsl.reader.common.converter.DesignerRootWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ConcurrentQNameMap;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.designer.converter.DesignerConverter;
+import com.github._1c_syntax.bsl.reader.designer.converter.PredefinedDataWrapper;
 import com.github._1c_syntax.bsl.reader.designer.converter.Unmarshaller;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
@@ -189,10 +190,26 @@ public class DesignerReader implements MDReader {
       return Collections.emptyList();
     }
     var value = read(predefinedPath);
-    if (value instanceof PredefinedData predefinedData) {
-      return predefinedData.getItems();
+    if (value instanceof PredefinedDataWrapper predefinedDataWrapper) {
+      return predefinedDataWrapper.getItems();
     }
     return Collections.emptyList();
+  }
+
+  @Override
+  public AdditionalIndexesWrapper readAdditionalIndexes(Path currentPath, String name, MDOType mdoType) {
+    var additionalIndexesPath = Paths.get(currentPath.getParent().toString(),
+      name,
+      "Ext",
+      "AdditionalIndexes.xml");
+
+    if (additionalIndexesPath.toFile().exists()) {
+      var value = read(additionalIndexesPath);
+      if (value instanceof AdditionalIndexesWrapper data) {
+        return data;
+      }
+    }
+    return AdditionalIndexesWrapper.EMPTY;
   }
 
   @Override
@@ -273,7 +290,7 @@ public class DesignerReader implements MDReader {
     xStream.alias("Method", HTTPServiceMethod.class);
     xStream.alias("Operation", WebServiceOperation.class);
     xStream.alias("Parameter", WebServiceOperationParameter.class);
-    xStream.alias("PredefinedData", PredefinedData.class);
+    xStream.alias("PredefinedData", PredefinedDataWrapper.class);
     xStream.alias("Recalculation", Recalculation.class);
     xStream.alias("Resource", Resource.class);
     xStream.alias("Table", ExternalDataSourceTable.class);

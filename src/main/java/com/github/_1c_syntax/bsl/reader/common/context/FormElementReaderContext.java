@@ -22,56 +22,172 @@
 package com.github._1c_syntax.bsl.reader.common.context;
 
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAddition;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormButton;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormCommand;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormContextMenu;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormDecoration;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
-import com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormField;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormGroup;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormParameter;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormTable;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormUnknown;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
+import com.github._1c_syntax.utils.StringInterner;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.Nullable;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
-/**
- * Для хранения контекста при чтении элементов форм
- */
+@Slf4j
 @EqualsAndHashCode(callSuper = true)
 public class FormElementReaderContext extends AbstractReaderContext {
 
-  private static final Map<String, Class<?>> CLASSES = Map.of(
-    "Form", ManagedFormData.class,
-    "attributes", FormAttribute.class,
-    "Attribute", FormAttribute.class,
-    "items", SimpleFormItem.class,
-    "Event", FormHandler.class,
-    "Events", FormHandler.class,
-    "ChildItems", SimpleFormItem.class,
-    ManagedFormData.class.getName(), ManagedFormData.class
-  );
+  private static final Class<?> DEFAULT_CLASS_FORM_ELEMENT = FormUnknown.class;
+  private static final Map<String, Class<?>> CLASSES = fillClassesMap();
+  private static final Map<FormElementType, Class<?>> ELEMENT_CLASSES = fillElementClasses();
+  private static final StringInterner STRING_INTERNER = new StringInterner();
 
-  private static final Class<?> DEFAULT_CLASS_FORM_ITEM = SimpleFormItem.class;
-
-  @Setter
-  @Getter
-  @Nullable
-  private FormElementType elementType;
+  /**
+   * Имя узла XML (не перетирается именем читаемого объекта в отличие от {@link #getName()})
+   */
+  private final String nodeName;
 
   public FormElementReaderContext(String elementName, HierarchicalStreamReader reader) {
     super(reader);
+    nodeName = elementName;
     name = elementName;
-    realClass = CLASSES.getOrDefault(elementName, DEFAULT_CLASS_FORM_ITEM);
+    realClass = CLASSES.get(elementName.toLowerCase(Locale.ROOT));
     builder = TransformationUtils.builder(realClass);
+  }
+
+  public FormElementReaderContext(FormElementType formElementType, String elementName, HierarchicalStreamReader reader) {
+    super(reader);
+    nodeName = elementName;
+    name = elementName;
+    realClass = CLASSES.getOrDefault(elementName.toLowerCase(Locale.ROOT), DEFAULT_CLASS_FORM_ELEMENT);
+    if (realClass == DEFAULT_CLASS_FORM_ELEMENT) {
+      var clazz = ELEMENT_CLASSES.getOrDefault(formElementType, FormUnknown.class);
+      if (clazz != realClass) {
+        realClass = clazz;
+      }
+    }
+
+    builder = TransformationUtils.builder(realClass);
+    setValue("type", formElementType);
+  }
+
+  @Override
+  public Object build() {
+    if (realClass == FormAttributeWrapper.class) {
+      // для колонок возвращаем сырое значение, а сборку конкретного класса
+      // (включая слияние с допколонками) выполняет родительский атрибут
+      var wrapper = (FormAttributeWrapper) super.build();
+      if (isTopLevelAttribute(nodeName)) {
+        return wrapper.toFormAttribute();
+      }
+      return wrapper;
+    } else if (realClass == FormExtendedTooltip.class) {
+      // в формате EDT тип подсказки приходит тегом <type>Label</type> и перетирает тип
+      setValue("type", FormElementType.EXTENDED_TOOLTIP);
+    }
+    return super.build();
+  }
+
+  /**
+   * Имя узла верхнеуровневого реквизита (в отличие от узлов колонок).
+   * В формате EDT реквизит лежит в узле {@code attributes}, в конфигураторе - {@code Attribute}.
+   */
+  private static boolean isTopLevelAttribute(String nodeName) {
+    return "Attribute".equals(nodeName) || "attributes".equals(nodeName);
+  }
+
+  /**
+   * Строковые значения элементов формы — имена, пути к данным, команды — повторяются из формы
+   * в форму слово в слово (типовые «КомментарийРасширеннаяПодсказка», «СписокКонтекстноеМеню»,
+   * «Объект.Ссылка»), поэтому хранятся в одном экземпляре
+   */
+  @Override
+  public void setValue(String methodName, @Nullable Object value) {
+    super.setValue(methodName, value instanceof String text ? STRING_INTERNER.intern(text) : value);
   }
 
   @Override
   public @Nullable Class<?> fieldType(String fieldName) {
-    var clazz = CLASSES.get(fieldName);
+    var clazz = CLASSES.get(fieldName.toLowerCase(Locale.ROOT));
     if (clazz == null) {
       clazz = super.fieldType(fieldName);
     }
     return clazz;
   }
+
+  private static Map<FormElementType, Class<?>> fillElementClasses() {
+    Map<FormElementType, Class<?>> elementMap = new HashMap<>();
+    elementMap.put(FormElementType.TABLE, FormTable.class);
+    elementMap.put(FormElementType.CONTEXT_MENU, FormContextMenu.class);
+    elementMap.put(FormElementType.EXTENDED_TOOLTIP, FormExtendedTooltip.class);
+
+    List.of(FormElementType.INPUT_FIELD, FormElementType.CHECK_BOX_FIELD,
+        FormElementType.CALENDAR_FIELD, FormElementType.HTML_DOCUMENT_FIELD,
+        FormElementType.TEXT_DOCUMENT_FIELD, FormElementType.SPREAD_SHEET_DOCUMENT_FIELD,
+        FormElementType.FORMATTED_DOCUMENT_FIELD, FormElementType.PDF_DOCUMENT_FIELD,
+        FormElementType.RADIO_BUTTON_FIELD, FormElementType.TRACK_BAR_FIELD,
+        FormElementType.PROGRESS_BAR_FIELD, FormElementType.PICTURE_FIELD,
+        FormElementType.LABEL_FIELD, FormElementType.PERIOD_FIELD,
+        FormElementType.PLANNER_FIELD)
+      .forEach(type -> elementMap.put(type, FormField.class));
+
+    List.of(FormElementType.GRAPHICAL_SCHEMA_FIELD, FormElementType.CHART_FIELD,
+        FormElementType.GANTT_CHART_FIELD, FormElementType.GEOGRAPHICAL_SCHEMA_FIELD,
+        FormElementType.DENDROGRAM_FIELD)
+      .forEach(type -> elementMap.put(type, FormField.class));
+
+    List.of(FormElementType.USUAL_GROUP, FormElementType.PAGE,
+        FormElementType.PAGES, FormElementType.BUTTON_GROUP,
+        FormElementType.COLUMN_GROUP, FormElementType.COMMAND_BAR,
+        FormElementType.POPUP)
+      .forEach(type -> elementMap.put(type, FormGroup.class));
+
+    List.of(FormElementType.USUAL_BUTTON, FormElementType.COMMAND_BAR_BUTTON,
+        FormElementType.COMMAND_BAR_HYPERLINK, FormElementType.HYPERLINK)
+      .forEach(type -> elementMap.put(type, FormButton.class));
+
+    List.of(FormElementType.LABEL_DECORATION, FormElementType.PICTURE_DECORATION)
+      .forEach(type -> elementMap.put(type, FormDecoration.class));
+
+    List.of(FormElementType.SEARCH_STRING_ADDITION,
+        FormElementType.SEARCH_CONTROL_ADDITION, FormElementType.VIEW_STATUS_ADDITION)
+      .forEach(type -> elementMap.put(type, FormAddition.class));
+
+    elementMap.put(FormElementType.UNKNOWN, FormUnknown.class);
+
+    return Collections.unmodifiableMap(elementMap);
+  }
+
+  private static Map<String, Class<?>> fillClassesMap() {
+    return Map.ofEntries(
+      Map.entry("formcommands", FormCommand.class),
+      Map.entry("commands", FormCommand.class),
+      Map.entry("command", FormCommand.class),
+      Map.entry("parameters", FormParameter.class),
+      Map.entry("parameter", FormParameter.class),
+      Map.entry("form", ManagedFormData.class),
+      Map.entry("attributes", FormAttributeWrapper.class),
+      Map.entry("columns", FormAttributeWrapper.class),
+      Map.entry("autocommandbar", FormGroup.class),
+      Map.entry("additionalcolumns", FormAttributeWrapper.class),
+      Map.entry("attribute", FormAttributeWrapper.class),
+      Map.entry("column", FormAttributeWrapper.class),
+      Map.entry(ManagedFormData.class.getName().toLowerCase(Locale.ROOT), ManagedFormData.class)
+    );
+  }
+
 }

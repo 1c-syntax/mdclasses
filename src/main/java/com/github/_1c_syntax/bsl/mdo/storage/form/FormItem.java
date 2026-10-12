@@ -21,46 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
-import com.github._1c_syntax.bsl.types.MultiLanguageString;
-
-import java.util.List;
-
 /**
- * Описание информации об элементе формы
+ * Базовый интерфейс для всех сущностей формы
  */
 public interface FormItem {
   /**
-   * Тип элемента (кнопка, группа и т.д.)
-   */
-  FormElementType getType();
-
-  /**
-   * Имя элемента формы
+   * Имя сущности
    */
   String getName();
-
-  /**
-   * Идентификатор
-   */
-  int getId();
-
-  /**
-   * Заголовок
-   */
-  MultiLanguageString getTitle();
-
-  /**
-   * Путь к реквизиту
-   */
-  String getDataPath();
-
-  /**
-   * Список дочерних визуальных элементов (непосредственных потомков)
-   */
-  List<FormItem> getItems();
-
-  /**
-   * Список всех визуальных элементов (со всеми дочерними)
-   */
-  List<FormItem> getPlainItems();
 }

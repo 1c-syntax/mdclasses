@@ -25,7 +25,15 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+import com.github._1c_syntax.bsl.mdo.storage.Characteristic;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
+import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
@@ -52,7 +60,7 @@ import java.util.Map;
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ChartOfCharacteristicTypes
-  implements ReferenceObject, AccessRightsOwner, ValueTypeOwner, PredefinedDataOwner {
+  implements MutableReferenceObject, ValueTypeOwner, PredefinedDataOwner {
 
   /*
    * ReferenceObject
@@ -66,6 +74,10 @@ public class ChartOfCharacteristicTypes
   MdoReference mdoReference = MdoReference.EMPTY;
   @Default
   ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  @Singular("addBasedOn")
+  List<MdoReference> basedOn;
+
   @Default
   String comment = "";
   @Default
@@ -188,10 +200,35 @@ public class ChartOfCharacteristicTypes
   List<PredefinedValue> predefinedValues;
 
   /**
+   * Дополнительные индексы
+   */
+  @Singular("addAdditionalIndex")
+  List<AdditionalIndex> additionalIndexes;
+
+  /**
    * Пояснение
    */
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
+
+  /**
+   * Определяет, является ли план видов характеристик иерархическим.
+   */
+  @Default
+  boolean hierarchical = false;
+
+  /**
+   * Группы сверху.
+   * Определяет расположение групп в списке.
+   */
+  @Default
+  boolean foldersOnTop = false;
 
   /**
    * Проверять уникальность кода плана видов характеристик.
@@ -210,6 +247,87 @@ public class ChartOfCharacteristicTypes
    */
   @Default
   CodeSeries codeSeries = CodeSeries.WHOLE_CATALOG;
+
+  /**
+   * Длина кода плана видов характеристик.
+   * Если равна 0, то у плана видов характеристик нет кода.
+   */
+  @Default
+  int codeLength = 0;
+
+  /**
+   * Длина наименования плана видов характеристик.
+   * Если равна 0, то у плана видов характеристик нет наименования.
+   */
+  @Default
+  int descriptionLength = 0;
+
+  /**
+   * Основное представление плана видов характеристик.
+   * Значение по умолчанию: {@link DefaultPresentation#AS_CODE}.
+   */
+  @Default
+  DefaultPresentation defaultPresentation = DefaultPresentation.AS_CODE;
+
+  /**
+   * Ввод по строке - список реквизитов для ввода по строке
+   */
+  @Singular("addInputByString")
+  List<MdoReference> inputByString;
+
+  /**
+   * Режим полнотекстового поиска при вводе по строке
+   */
+  @Default
+  UseMode fullTextSearchOnInputByString = UseMode.USE;
+
+  /**
+   * Режим поиска при вводе по строке
+   */
+  @Default
+  SearchStringMode searchStringModeOnInputByString = SearchStringMode.BEGIN;
+
+  /**
+   * Режим получения данных выбора при вводе по строке
+   */
+  @Default
+  ChoiceDataGetMode choiceDataGetModeOnInputByString = ChoiceDataGetMode.DIRECTLY;
+
+  /**
+   * Создание при вводе
+   */
+  @Default
+  UseMode createOnInput = UseMode.USE;
+
+  /**
+   * Режим истории выбора при вводе по строке
+   */
+  @Default
+  ChoiceHistoryOnInputMode choiceHistoryOnInput = ChoiceHistoryOnInputMode.AUTO;
+
+  /**
+   * Поля блокировки данных - список реквизитов для блокировки данных
+   */
+  @Singular("addDataLockFields")
+  List<MdoReference> dataLockFields;
+
+  /**
+   * Режим управления блокировкой данных
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Характеристики объекта
+   */
+  @Singular("addCharacteristics")
+  List<Characteristic> characteristics;
+
+  /**
+   * Расширенные значения характеристик
+   */
+  @Default
+  MdoReference characteristicExtValues = MdoReference.EMPTY;
 
   /**
    * Возвращает перечень возможных прав доступа

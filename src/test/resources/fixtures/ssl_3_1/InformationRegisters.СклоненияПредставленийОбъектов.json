@@ -1,5 +1,46 @@
 {
  "com.github._1c_syntax.bsl.mdo.InformationRegister": {
+  "possibleRights": [
+   "EDIT",
+   "EDIT_DATA_HISTORY_VERSION_COMMENT",
+   "READ",
+   "READ_DATA_HISTORY",
+   "READ_DATA_HISTORY_OF_MISSING_DATA",
+   "SWITCH_TO_DATA_HISTORY_VERSION",
+   "TOTALS_CONTROL",
+   "UPDATE",
+   "UPDATE_DATA_HISTORY",
+   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+   "UPDATE_DATA_HISTORY_SETTINGS",
+   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+   "VIEW",
+   "VIEW_DATA_HISTORY"
+  ],
+  "description": "Склонения представлений объектов",
+  "writeMode": "INDEPENDENT",
+  "explanation": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+  },
+  "uuid": "7bf36370-3761-4fd5-bea5-90fa142a9d57",
+  "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов",
+  "supportVariant": "NOT_EDITABLE",
+  "informationRegisterPeriodicity": "NONPERIODICAL",
+  "auxiliaryListForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Склонения представлений объектов"
+    }
+   ]
+  },
+  "objectBelonging": "OWN",
+  "commands": [],
+  "fullTextSearch": "DONT_USE",
   "mdoType": "INFORMATION_REGISTER",
   "defaultFormMap": [
    "AUX_LIST_FORM",
@@ -24,43 +65,15 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/auxiliaryListForm"
   },
-  "possibleRights": [
-   "EDIT",
-   "EDIT_DATA_HISTORY_VERSION_COMMENT",
-   "READ",
-   "READ_DATA_HISTORY",
-   "READ_DATA_HISTORY_OF_MISSING_DATA",
-   "SWITCH_TO_DATA_HISTORY_VERSION",
-   "TOTALS_CONTROL",
-   "UPDATE",
-   "UPDATE_DATA_HISTORY",
-   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
-   "UPDATE_DATA_HISTORY_SETTINGS",
-   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
-   "VIEW",
-   "VIEW_DATA_HISTORY"
-  ],
   "templates": [],
-  "description": "Склонения представлений объектов",
   "resources": [
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Предложный падеж"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ПредложныйПадеж",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "types": [
       "STRING"
@@ -79,26 +92,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов.Resource.ПредложныйПадеж"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Предложный падеж"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ПредложныйПадеж",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Именительный падеж"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ИменительныйПадеж",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/resources\/com.github._1c_syntax.bsl.mdo.children.Resource\/type"
     },
@@ -108,26 +122,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов.Resource.ИменительныйПадеж"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Именительный падеж"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ИменительныйПадеж",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Винительный падеж"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ВинительныйПадеж",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/resources\/com.github._1c_syntax.bsl.mdo.children.Resource\/type"
     },
@@ -137,26 +152,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов.Resource.ВинительныйПадеж"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Винительный падеж"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ВинительныйПадеж",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Творительный падеж"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ТворительныйПадеж",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/resources\/com.github._1c_syntax.bsl.mdo.children.Resource\/type"
     },
@@ -166,26 +182,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов.Resource.ТворительныйПадеж"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Творительный падеж"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ТворительныйПадеж",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Дательный падеж"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ДательныйПадеж",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/resources\/com.github._1c_syntax.bsl.mdo.children.Resource\/type"
     },
@@ -195,26 +212,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов.Resource.ДательныйПадеж"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Дательный падеж"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ДательныйПадеж",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Родительный падеж"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "РодительныйПадеж",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/resources\/com.github._1c_syntax.bsl.mdo.children.Resource\/type"
     },
@@ -224,35 +242,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов.Resource.РодительныйПадеж"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Родительный падеж"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "РодительныйПадеж",
+    "objectBelonging": "OWN",
+    "comment": ""
    }
   ],
-  "explanation": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
-  },
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
   },
-  "uuid": "7bf36370-3761-4fd5-bea5-90fa142a9d57",
-  "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов",
   "modules": [],
-  "supportVariant": "NOT_EDITABLE",
-  "informationRegisterPeriodicity": "NONPERIODICAL",
   "auxiliaryRecordForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/auxiliaryListForm"
-  },
-  "auxiliaryListForm": {
-   "mdoRefRu": "",
-   "type": "UNKNOWN",
-   "mdoRef": ""
-  },
-  "synonym": {
-   "content": [
-    {
-     "langKey": "ru",
-     "value": "Склонения представлений объектов"
-    }
-   ]
   },
   "name": "СклоненияПредставленийОбъектов",
   "attributes": [
@@ -262,6 +272,7 @@
      "type": "INFORMATION_REGISTER",
      "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -302,6 +313,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -348,6 +360,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -392,6 +405,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -428,11 +442,9 @@
    }
   ],
   "comment": "",
-  "objectBelonging": "OWN",
   "defaultRecordForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[4]"
   },
-  "commands": [],
   "forms": [
    {
     "owner": {
@@ -465,7 +477,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/ssl_3_1\/InformationRegisters\/СклоненияПредставлени_Объектов\/Forms\/ФормаЗаписи\/Module.bsl",
       "supportVariant": "NOT_EDITABLE"
      }
     ],
@@ -477,6 +488,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "useInTotals": true,
@@ -500,6 +512,7 @@
      "type": "DIMENSION",
      "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов.Dimension.Объект"
     },
+    "baseDimension": false,
     "supportVariant": "NOT_EDITABLE",
     "master": true,
     "synonym": {
@@ -520,6 +533,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "useInTotals": true,
@@ -541,6 +555,7 @@
      "type": "DIMENSION",
      "mdoRef": "InformationRegister.СклоненияПредставленийОбъектов.Dimension.ХешПредставления"
     },
+    "baseDimension": false,
     "supportVariant": "NOT_EDITABLE",
     "master": false,
     "synonym": {

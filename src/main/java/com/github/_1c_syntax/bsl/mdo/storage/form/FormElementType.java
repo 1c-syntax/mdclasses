@@ -36,21 +36,21 @@ import java.util.Map;
 @Slf4j
 @ToString(of = "fullName")
 public enum FormElementType implements EnumWithName {
-  ADDITION("Addition", "Дополнение"),
-  ATTRIBUTE("Attribute", "Реквизит"),
   BUTTON_GROUP("ButtonGroup", "ГруппаКнопок"),
   CALENDAR_FIELD("CalendarField", "ПолеКалендаря"),
   CHART_FIELD("ChartField", "ПолеДиаграммы"),
   CHECK_BOX_FIELD("CheckBoxField", "ПолеФлажка"),
   COLUMN_GROUP("ColumnGroup", "ГруппаКолонок"),
+  CONTEXT_MENU("ContextMenu", "КонтекстноеМеню"),
   COMMAND_BAR("CommandBar", "КоманднаяПанель"),
   COMMAND_BAR_BUTTON("CommandBarButton", "КнопкаКоманднойПанели"),
   COMMAND_BAR_HYPERLINK("CommandBarHyperlink", "ГиперссылкаКоманднойПанели"),
+  DENDROGRAM_FIELD("DendrogramField", "ПолеДендрограммы"),
+  EXTENDED_TOOLTIP("ExtendedTooltip", "РасширеннаяПодсказка"),
   FORMATTED_DOCUMENT_FIELD("FormattedDocumentField", "ПолеФорматированногоДокумента"),
-  FORM_FIELD("FormField", "ПолеФормы"),
   GANTT_CHART_FIELD("GanttChartField", "ПолеДиаграммыГанта"),
-  GRAPHICAL_SCHEMA_FIELD("GraphicalSchemaField", "ПолеГрафическойСхемы"),
   GEOGRAPHICAL_SCHEMA_FIELD("GeographicalSchemaField", "ПолеГеографическойСхемы"),
+  GRAPHICAL_SCHEMA_FIELD("GraphicalSchemaField", "ПолеГрафическойСхемы"),
   HTML_DOCUMENT_FIELD("HTMLDocumentField", "ПолеHTMLДокумента"),
   HYPERLINK("Hyperlink", "Гиперссылка"),
   INPUT_FIELD("InputField", "ПолеВвода"),
@@ -103,11 +103,15 @@ public enum FormElementType implements EnumWithName {
 
   private static Map<String, FormElementType> computeKeys() {
     var keys = new HashMap<>(EnumWithName.computeKeys(values()));
+    // перенаправление на нужные типы
     keys.put("button", FormElementType.COMMAND_BAR_BUTTON);
-    keys.put("formgroup", FormElementType.BUTTON_GROUP);
     keys.put("addition", FormElementType.SEARCH_STRING_ADDITION);
     keys.put("label", FormElementType.LABEL_DECORATION);
     keys.put("decoration", FormElementType.PICTURE_DECORATION);
+    keys.put("autocommandbar", FormElementType.COMMAND_BAR);
+    keys.put("formfield", FormElementType.INPUT_FIELD);
+    keys.put("formgroup", FormElementType.BUTTON_GROUP);
+
     return Collections.unmodifiableMap(keys);
   }
 }

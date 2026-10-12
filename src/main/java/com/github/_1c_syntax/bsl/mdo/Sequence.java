@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.children.Dimension;
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -41,7 +42,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Sequence implements MDObject, AttributeOwner, ModuleOwner, AccessRightsOwner {
+public class Sequence implements MDObject, AttributeOwner, ModuleOwner, AccessRightsOwner, AdditionalIndexOwner {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.EDIT);
 
@@ -86,6 +87,12 @@ public class Sequence implements MDObject, AttributeOwner, ModuleOwner, AccessRi
    */
   @Singular("addDocuments")
   List<MdoReference> documents;
+
+  /**
+   * Дополнительные индексы
+   */
+  @Singular("addAdditionalIndex")
+  List<AdditionalIndex> additionalIndexes;
 
   /*
    * Для AttributeOwner

@@ -55,6 +55,7 @@
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/dataProcessors\/com.github._1c_syntax.bsl.mdo.DataProcessor\/mdoReference"
       },
+      "fullTextSearch": "DONT_USE",
       "indexing": "DONT_INDEX",
       "kind": "CUSTOM",
       "multiLine": false,
@@ -122,6 +123,575 @@
     ]
    }
   ],
+  "useOrdinaryFormInManagedApplication": false,
+  "auxiliaryDefaultDataHistoryVersionDataForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+  },
+  "subsystems": [
+   4
+  ],
+  "mdoRef": "Configuration.Конфигурация",
+  "settingsStorages": [
+   2
+  ],
+  "defaultConstantsForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+  },
+  "httpServices": [
+   {
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "HTTPСервис1"
+      }
+     ]
+    },
+    "name": "HTTPСервис1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "c15d31cf-7043-4d7b-8f0c-63d6096d4925",
+    "mdoReference": {
+     "mdoRefRu": "HTTPСервис.HTTPСервис1",
+     "type": "HTTP_SERVICE",
+     "mdoRef": "HTTPService.HTTPСервис1"
+    },
+    "modules": [
+     1
+    ],
+    "urlTemplates": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/httpServices\/com.github._1c_syntax.bsl.mdo.HTTPService\/mdoReference"
+      },
+      "template": "\/*",
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+      },
+      "methods": [
+       4
+      ],
+      "name": "ШаблонURL1",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "3990f173-0843-43d6-80b6-28e5095c0c77",
+      "mdoReference": {
+       "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL1",
+       "type": "HTTP_SERVICE_URL_TEMPLATE",
+       "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL1"
+      },
+      "supportVariant": "NONE"
+     }
+    ],
+    "supportVariant": "NONE"
+   }
+  ],
+  "dataLockControlMode": "MANAGED",
+  "functionalOptions": [
+   2
+  ],
+  "interfaceCompatibilityMode": "TAXI",
+  "tasks": [
+   {
+    "choiceHistoryOnInput": "AUTO",
+    "explanation": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "uuid": "75688079-e0e9-476b-b0ad-54f65d5f1376",
+    "supportVariant": "NONE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Задача1"
+      }
+     ]
+    },
+    "auxiliaryListForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "choiceDataGetModeOnInputByString": "DIRECTLY",
+    "tabularSections": [],
+    "objectBelonging": "OWN",
+    "basedOn": [],
+    "commands": [],
+    "descriptionLength": 25,
+    "dataLockControlMode": "MANAGED",
+    "fullTextSearch": "USE",
+    "characteristics": [],
+    "auxiliaryChoiceForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "defaultListForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "defaultFormMap": {},
+    "templates": [],
+    "createOnInput": "DONT_USE",
+    "fullTextSearchOnInputByString": "DONT_USE",
+    "dataLockFields": [],
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/task"
+    },
+    "numberLength": 9,
+    "modules": [],
+    "defaultChoiceForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "defaultObjectForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "addressingAttributes": [],
+    "name": "Задача1",
+    "comment": "",
+    "attributes": [
+     10
+    ],
+    "auxiliaryObjectForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "searchStringModeOnInputByString": "BEGIN",
+    "forms": [],
+    "inputByString": [
+     2
+    ]
+   }
+  ],
+  "useManagedFormInOrdinaryApplication": false,
+  "auxiliaryDefaultDynamicListSettingsForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+  },
+  "objectAutonumerationMode": "NotAutoFree",
+  "accumulationRegisters": [
+   2
+  ],
+  "auxiliaryDefaultReportVariantForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+  },
+  "modalityUseMode": "DONT_USE",
+  "wsReferences": [
+   {
+    "locationURL": "http:\/\/www.dneonline.com\/calculator.asmx?wsdl",
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "name": "WSСсылка1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "c80972d9-f84a-42c6-9d2b-25977dcc5697",
+    "mdoReference": {
+     "mdoRefRu": "WSСсылка.WSСсылка1",
+     "type": "WS_REFERENCE",
+     "mdoRef": "WSReference.WSСсылка1"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "version": "",
+  "integrationServices": [
+   {
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "СервисИнтеграции1"
+      }
+     ]
+    },
+    "name": "СервисИнтеграции1",
+    "integrationServiceChannels": [
+     2
+    ],
+    "objectBelonging": "OWN",
+    "comment": "СервисИнтеграции1",
+    "externalIntegrationServiceAddress": "",
+    "uuid": "ffd437c5-0001-463f-bc24-c6c60e1f29fb",
+    "mdoReference": {
+     "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1",
+     "type": "INTEGRATION_SERVICE",
+     "mdoRef": "IntegrationService.СервисИнтеграции1"
+    },
+    "modules": [
+     1
+    ],
+    "supportVariant": "NONE"
+   }
+  ],
+  "commonTemplates": [
+   9
+  ],
+  "commonModules": [
+   4
+  ],
+  "styles": [
+   2
+  ],
+  "defaultReportSettingsForm": {
+   "mdoRefRu": "ОбщаяФорма.ФормаНастроекОтчета",
+   "type": "COMMON_FORM",
+   "mdoRef": "CommonForm.ФормаНастроекОтчета"
+  },
+  "eventSubscriptions": [
+   {
+    "handler": {
+     "methodPath": "CommonModule.ОбщийМодуль3.ПодпискаНаСобытие1ОбработкаЗаполнения",
+     "moduleName": "ОбщийМодуль3",
+     "methodName": "ПодпискаНаСобытие1ОбработкаЗаполнения"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "name": "ПодпискаНаСобытие1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "source": {
+     "types": [
+      1
+     ],
+     "composite": true,
+     "qualifiers": []
+    },
+    "event": "Filling",
+    "uuid": "b1c1d54e-aea7-43cb-8f1a-1223d33d6b4d",
+    "mdoReference": {
+     "mdoRefRu": "ПодпискаНаСобытие.ПодпискаНаСобытие1",
+     "type": "EVENT_SUBSCRIPTION",
+     "mdoRef": "EventSubscription.ПодпискаНаСобытие1"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "synchronousExtensionAndAddInCallUseMode": "USE_WITH_WARNINGS",
+  "sequences": [
+   {
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "documents": [
+     {
+      "mdoRefRu": "Документ.Документ1",
+      "type": "DOCUMENT",
+      "mdoRef": "Document.Документ1"
+     }
+    ],
+    "name": "Последовательность1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "e9aebb24-950a-4bdb-bc2f-b8026823293b",
+    "mdoReference": {
+     "mdoRefRu": "Последовательность.Последовательность1",
+     "type": "SEQUENCE",
+     "mdoRef": "Sequence.Последовательность1"
+    },
+    "modules": [],
+    "supportVariant": "NONE",
+    "dimensions": [
+     2
+    ]
+   }
+  ],
+  "supportVariant": "NONE",
+  "paletteColors": [],
+  "enums": [
+   {
+    "characteristics": [],
+    "auxiliaryChoiceForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "defaultListForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "defaultFormMap": {},
+    "templates": [],
+    "explanation": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "uuid": "c73ad4cc-bb53-41fc-a71c-f8a93fcc5d99",
+    "mdoReference": {
+     "mdoRefRu": "Перечисление.Перечисление1",
+     "type": "ENUM",
+     "mdoRef": "Enum.Перечисление1"
+    },
+    "modules": [],
+    "defaultChoiceForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "supportVariant": "NONE",
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "auxiliaryListForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "name": "Перечисление1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "attributes": [
+     2
+    ],
+    "commands": [],
+    "forms": [],
+    "enumValues": [
+     5
+    ]
+   }
+  ],
+  "defaultLanguage": {
+   "mdoRefRu": "Язык.Русский",
+   "type": "LANGUAGE",
+   "mdoRef": "Language.Русский"
+  },
+  "vendor": "",
+  "webSocketClients": [
+   {
+    "autoConnect": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "WebSocketКлиент1"
+      }
+     ]
+    },
+    "serverURL": "soc",
+    "name": "WebSocketКлиент1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "40a0b16c-4707-4528-acd4-42ca1ba47756",
+    "mdoReference": {
+     "mdoRefRu": "WebSocketКлиент.WebSocketКлиент1",
+     "type": "WEB_SOCKET_CLIENT",
+     "mdoRef": "WebSocketClient.WebSocketКлиент1"
+    },
+    "modules": [
+     1
+    ],
+    "predefined": false,
+    "timeout": 30,
+    "supportVariant": "NONE"
+   }
+  ],
+  "auxiliaryDefaultReportForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+  },
+  "webServices": [
+   {
+    "uuid": "d99cef24-7add-4483-97c7-a4eb78a2e7ab",
+    "mdoReference": {
+     "mdoRefRu": "WebСервис.WebСервис1",
+     "type": "WEB_SERVICE",
+     "mdoRef": "WebService.WebСервис1"
+    },
+    "modules": [
+     1
+    ],
+    "supportVariant": "NONE",
+    "sessionMaxAge": 20,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "WebСервис1"
+      }
+     ]
+    },
+    "operations": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/webServices\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
+      },
+      "transactioned": false,
+      "uuid": "9beed970-ed44-471b-b433-3fe4dbd4f167",
+      "mdoReference": {
+       "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция1",
+       "type": "WS_OPERATION",
+       "mdoRef": "WebService.WebСервис1.Operation.Операция1"
+      },
+      "supportVariant": "NONE",
+      "nillable": true,
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+      },
+      "procedureName": "Операция1",
+      "name": "Операция1",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "parameters": [
+       3
+      ],
+      "dataLockControlMode": "MANAGED"
+     }
+    ],
+    "name": "WebСервис1",
+    "namespace": "aaaaaa",
+    "descriptorFileName": "ws1.1cws",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "reuseSessions": "AUTO_USE"
+   }
+  ],
+  "documentNumerators": [
+   {
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "name": "НумераторДокументов1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "d7491517-6e81-4a32-8426-9a69f2373a23",
+    "mdoReference": {
+     "mdoRefRu": "НумераторДокументов.НумераторДокументов1",
+     "type": "DOCUMENT_NUMERATOR",
+     "mdoRef": "DocumentNumerator.НумераторДокументов1"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "commonCommands": [
+   {
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "name": "ОбщаяКоманда1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "3d661a98-c006-4f43-88a0-f0aa21d115ea",
+    "mdoReference": {
+     "mdoRefRu": "ОбщаяКоманда.ОбщаяКоманда1",
+     "type": "COMMON_COMMAND",
+     "mdoRef": "CommonCommand.ОбщаяКоманда1"
+    },
+    "modules": [
+     1
+    ],
+    "supportVariant": "NONE"
+   }
+  ],
+  "sessionParameters": [
+   4
+  ],
+  "defaultDataHistoryVersionDifferencesForm": {
+   "mdoRefRu": "ОбщаяФорма.ФормаРазличийВерсийИсторииДанных",
+   "type": "COMMON_FORM",
+   "mdoRef": "CommonForm.ФормаРазличийВерсийИсторииДанных"
+  },
+  "languages": [
+   2
+  ],
+  "copyrights": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+  },
+  "commandGroups": [
+   {
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "name": "ГруппаКоманд1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "60feee75-5805-49d9-b391-96d92bdd0e61",
+    "mdoReference": {
+     "mdoRefRu": "ГруппаКоманд.ГруппаКоманд1",
+     "type": "COMMAND_GROUP",
+     "mdoRef": "CommandGroup.ГруппаКоманд1"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "documentJournals": [
+   {
+    "defaultFormMap": {},
+    "columns": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/documentJournals\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/mdoReference"
+      },
+      "fullTextSearch": "DONT_USE",
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+      },
+      "indexing": "DONT_INDEX",
+      "references": [
+       {
+        "mdoRefRu": "Документ.Документ1.Реквизит.Реквизит2",
+        "type": "ATTRIBUTE",
+        "mdoRef": "Document.Документ1.Attribute.Реквизит2"
+       }
+      ],
+      "kind": "CUSTOM",
+      "name": "Графа1",
+      "objectBelonging": "OWN",
+      "comment": "",
+      "uuid": "f0c37c11-e734-4c1f-b7a8-996974337c17",
+      "mdoReference": {
+       "mdoRefRu": "ЖурналДокументов.ЖурналДокументов1.Колонка.Графа1",
+       "type": "COLUMN",
+       "mdoRef": "DocumentJournal.ЖурналДокументов1.Column.Графа1"
+      },
+      "supportVariant": "NONE"
+     }
+    ],
+    "templates": [],
+    "registeredDocuments": [
+     2
+    ],
+    "defaultForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "explanation": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "uuid": "8961ac19-ce99-43b2-82f5-0538ca26d8cb",
+    "mdoReference": {
+     "mdoRefRu": "ЖурналДокументов.ЖурналДокументов1",
+     "type": "DOCUMENT_JOURNAL",
+     "mdoRef": "DocumentJournal.ЖурналДокументов1"
+    },
+    "modules": [],
+    "supportVariant": "NONE",
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "name": "ЖурналДокументов1",
+    "auxiliaryForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "objectBelonging": "OWN",
+    "comment": "",
+    "commands": [],
+    "forms": []
+   }
+  ],
+  "commonPictures": [
+   {
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "name": "ОбщаяКартинка1",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "availabilityForChoice": false,
+    "uuid": "1c28775d-f405-4e89-9491-d75935635545",
+    "mdoReference": {
+     "mdoRefRu": "ОбщаяКартинка.ОбщаяКартинка1",
+     "type": "COMMON_PICTURE",
+     "mdoRef": "CommonPicture.ОбщаяКартинка1"
+    },
+    "availabilityForAppearance": false,
+    "supportVariant": "NONE"
+   }
+  ],
+  "mdoReference": {
+   "mdoRefRu": "Конфигурация.Конфигурация",
+   "type": "CONFIGURATION",
+   "mdoRef": "Configuration.Конфигурация"
+  },
+  "synchronousPlatformExtensionAndAddInCallUseMode": "DONT_USE",
+  "defaultDataHistoryChangeHistoryForm": {
+   "mdoRefRu": "ОбщаяФорма.ФормаИсторииИзмененийИсторииДанных",
+   "type": "COMMON_FORM",
+   "mdoRef": "CommonForm.ФормаИсторииИзмененийИсторииДанных"
+  },
   "compatibilityMode": {
    "minor": 3,
    "version": 27
@@ -142,14 +712,6 @@
          "value": "Основная схема компоновки данных"
         }
        ]
-      },
-      "data": {
-       "@class": "com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema",
-       "plainDataSets": {},
-       "dataSets": [
-        1
-       ],
-       "dataPath": "src\/test\/resources\/mdclasses_3_27\/Reports\/Отчет1\/Templates\/ОсновнаяСхемаКомпоновкиДанных\/Template.xml"
       },
       "name": "ОсновнаяСхемаКомпоновкиДанных",
       "objectBelonging": "OWN",
@@ -252,22 +814,24 @@
     }
    }
   ],
-  "useOrdinaryFormInManagedApplication": false,
+  "defaultReportForm": {
+   "mdoRefRu": "ОбщаяФорма.ФормаОтчета",
+   "type": "COMMON_FORM",
+   "mdoRef": "CommonForm.ФормаОтчета"
+  },
   "documents": [
    2
   ],
   "exchangePlans": [
    2
   ],
-  "subsystems": [
-   4
-  ],
   "uuid": "4d4edfda-61f8-417b-b512-415cadd6b654",
-  "mdoRef": "Configuration.Конфигурация",
   "empty": false,
-  "settingsStorages": [
-   2
-  ],
+  "defaultReportVariantForm": {
+   "mdoRefRu": "ОбщаяФорма.ФормаВариантаОтчета",
+   "type": "COMMON_FORM",
+   "mdoRef": "CommonForm.ФормаВариантаОтчета"
+  },
   "functionalOptionsParameters": [
    {
     "synonym": {
@@ -290,55 +854,6 @@
     "supportVariant": "NONE"
    }
   ],
-  "httpServices": [
-   {
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "HTTPСервис1"
-      }
-     ]
-    },
-    "name": "HTTPСервис1",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "uuid": "c15d31cf-7043-4d7b-8f0c-63d6096d4925",
-    "mdoReference": {
-     "mdoRefRu": "HTTPСервис.HTTPСервис1",
-     "type": "HTTP_SERVICE",
-     "mdoRef": "HTTPService.HTTPСервис1"
-    },
-    "modules": [
-     1
-    ],
-    "urlTemplates": [
-     {
-      "owner": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/httpServices\/com.github._1c_syntax.bsl.mdo.HTTPService\/mdoReference"
-      },
-      "template": "\/*",
-      "synonym": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-      },
-      "methods": [
-       4
-      ],
-      "name": "ШаблонURL1",
-      "objectBelonging": "OWN",
-      "comment": "",
-      "uuid": "3990f173-0843-43d6-80b6-28e5095c0c77",
-      "mdoReference": {
-       "mdoRefRu": "HTTPСервис.HTTPСервис1.ШаблонURL.ШаблонURL1",
-       "type": "HTTP_SERVICE_URL_TEMPLATE",
-       "mdoRef": "HTTPService.HTTPСервис1.URLTemplate.ШаблонURL1"
-      },
-      "supportVariant": "NONE"
-     }
-    ],
-    "supportVariant": "NONE"
-   }
-  ],
   "scheduledJobs": [
    2
   ],
@@ -350,12 +865,14 @@
   "chartsOfAccounts": [
    {
     "codeSeries": "WHOLE_CATALOG",
+    "choiceHistoryOnInput": "AUTO",
     "predefinedValues": [],
     "explanation": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
     },
     "uuid": "f4d65fbd-c9f1-4520-bf21-136cde5c815c",
     "extDimensionAccountingFlags": [],
+    "maxExtDimensionCount": 0,
     "supportVariant": "NONE",
     "synonym": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
@@ -363,22 +880,31 @@
     "auxiliaryListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
+    "choiceDataGetModeOnInputByString": "DIRECTLY",
     "checkUnique": true,
     "tabularSections": [],
     "objectBelonging": "OWN",
+    "basedOn": [],
     "commands": [],
+    "descriptionLength": 30,
+    "dataLockControlMode": "MANAGED",
+    "fullTextSearch": "USE",
+    "characteristics": [],
     "auxiliaryChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
+    "codeLength": 9,
     "defaultListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
     "defaultFormMap": {},
+    "defaultPresentation": "AS_CODE",
     "templates": [],
+    "createOnInput": "DONT_USE",
+    "fullTextSearchOnInputByString": "DONT_USE",
+    "dataLockFields": [],
     "mdoReference": {
-     "mdoRefRu": "ПланСчетов.ПланСчетов1",
-     "type": "CHART_OF_ACCOUNTS",
-     "mdoRef": "ChartOfAccounts.ПланСчетов1"
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/chartOfAccounts"
     },
     "modules": [],
     "defaultChoiceForm": {
@@ -391,17 +917,11 @@
     "accountingFlags": [
      {
       "owner": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/chartsOfAccounts\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/mdoReference"
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/chartOfAccounts"
       },
-      "synonym": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-      },
+      "fullTextSearch": "USE",
       "indexing": "DONT_INDEX",
       "kind": "CUSTOM",
-      "passwordMode": false,
-      "name": "ПризнакУчета1",
-      "objectBelonging": "OWN",
-      "comment": "",
       "type": {
        "types": [
         1
@@ -417,7 +937,14 @@
        "type": "ACCOUNTING_FLAG",
        "mdoRef": "ChartOfAccounts.ПланСчетов1.AccountingFlag.ПризнакУчета1"
       },
-      "supportVariant": "NONE"
+      "supportVariant": "NONE",
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+      },
+      "passwordMode": false,
+      "name": "ПризнакУчета1",
+      "objectBelonging": "OWN",
+      "comment": ""
      }
     ],
     "comment": "",
@@ -427,66 +954,17 @@
     "auxiliaryObjectForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
-    "forms": []
+    "searchStringModeOnInputByString": "BEGIN",
+    "orderLength": 0,
+    "forms": [],
+    "inputByString": [
+     2
+    ]
    }
   ],
-  "dataLockControlMode": "MANAGED",
-  "functionalOptions": [
-   2
-  ],
-  "interfaceCompatibilityMode": "TAXI",
-  "tasks": [
-   {
-    "auxiliaryChoiceForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "defaultListForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "defaultFormMap": {},
-    "templates": [],
-    "explanation": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "uuid": "75688079-e0e9-476b-b0ad-54f65d5f1376",
-    "mdoReference": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/businessProcesses\/com.github._1c_syntax.bsl.mdo.BusinessProcess\/task"
-    },
-    "modules": [],
-    "defaultChoiceForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "supportVariant": "NONE",
-    "defaultObjectForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Задача1"
-      }
-     ]
-    },
-    "auxiliaryListForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "addressingAttributes": [],
-    "name": "Задача1",
-    "tabularSections": [],
-    "objectBelonging": "OWN",
-    "comment": "",
-    "attributes": [
-     10
-    ],
-    "auxiliaryObjectForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "commands": [],
-    "forms": []
-   }
-  ],
-  "useManagedFormInOrdinaryApplication": false,
+  "auxiliaryDefaultDataHistoryChangeHistoryForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+  },
   "filterCriteria": [
    {
     "defaultFormMap": {},
@@ -539,13 +1017,10 @@
     "supportVariant": "NONE"
    }
   ],
-  "objectAutonumerationMode": "NotAutoFree",
-  "accumulationRegisters": [
-   2
-  ],
   "chartsOfCharacteristicTypes": [
    {
     "codeSeries": "WHOLE_CATALOG",
+    "choiceHistoryOnInput": "AUTO",
     "auxiliaryFolderChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
@@ -575,18 +1050,33 @@
     "auxiliaryListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
+    "choiceDataGetModeOnInputByString": "DIRECTLY",
+    "hierarchical": false,
+    "characteristicExtValues": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
     "checkUnique": true,
     "tabularSections": [],
     "objectBelonging": "OWN",
+    "basedOn": [],
     "commands": [],
+    "descriptionLength": 25,
+    "dataLockControlMode": "MANAGED",
+    "fullTextSearch": "USE",
+    "characteristics": [],
     "auxiliaryChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
+    "codeLength": 9,
     "defaultListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
     "defaultFormMap": {},
+    "defaultPresentation": "AS_DESCRIPTION",
     "templates": [],
+    "createOnInput": "DONT_USE",
+    "fullTextSearchOnInputByString": "DONT_USE",
+    "dataLockFields": [],
     "mdoReference": {
      "mdoRefRu": "ПланВидовХарактеристик.ПланВидовХарактеристик1",
      "type": "CHART_OF_CHARACTERISTIC_TYPES",
@@ -605,7 +1095,7 @@
     "name": "ПланВидовХарактеристик1",
     "comment": "",
     "attributes": [
-     9
+     7
     ],
     "auxiliaryObjectForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
@@ -613,26 +1103,12 @@
     "auxiliaryFolderForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
-    "forms": []
-   }
-  ],
-  "modalityUseMode": "DONT_USE",
-  "wsReferences": [
-   {
-    "locationURL": "http:\/\/www.dneonline.com\/calculator.asmx?wsdl",
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "name": "WSСсылка1",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "uuid": "c80972d9-f84a-42c6-9d2b-25977dcc5697",
-    "mdoReference": {
-     "mdoRefRu": "WSСсылка.WSСсылка1",
-     "type": "WS_REFERENCE",
-     "mdoRef": "WSReference.WSСсылка1"
-    },
-    "supportVariant": "NONE"
+    "searchStringModeOnInputByString": "BEGIN",
+    "forms": [],
+    "foldersOnTop": true,
+    "inputByString": [
+     2
+    ]
    }
   ],
   "styleItems": [
@@ -641,40 +1117,7 @@
   "commonAttributes": [
    2
   ],
-  "version": "",
   "modules": [],
-  "integrationServices": [
-   {
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "СервисИнтеграции1"
-      }
-     ]
-    },
-    "name": "СервисИнтеграции1",
-    "integrationServiceChannels": [
-     2
-    ],
-    "objectBelonging": "OWN",
-    "comment": "СервисИнтеграции1",
-    "externalIntegrationServiceAddress": "",
-    "uuid": "ffd437c5-0001-463f-bc24-c6c60e1f29fb",
-    "mdoReference": {
-     "mdoRefRu": "СервисИнтеграции.СервисИнтеграции1",
-     "type": "INTEGRATION_SERVICE",
-     "mdoRef": "IntegrationService.СервисИнтеграции1"
-    },
-    "modules": [
-     1
-    ],
-    "supportVariant": "NONE"
-   }
-  ],
-  "commonTemplates": [
-   9
-  ],
   "catalogs": [
    3
   ],
@@ -688,6 +1131,7 @@
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/externalDataSources\/com.github._1c_syntax.bsl.mdo.ExternalDataSource\/mdoReference"
       },
+      "tableDataType": "OBJECT_DATA",
       "defaultListForm": {
        "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
       },
@@ -700,10 +1144,6 @@
         },
         "synonym": {
          "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/calculationRegisters\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/templates\/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate\/synonym"
-        },
-        "data": {
-         "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData",
-         "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/calculationRegisters\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/templates\/com.github._1c_syntax.bsl.mdo.children.ObjectTemplate\/data"
         },
         "name": "Макет",
         "objectBelonging": "OWN",
@@ -823,7 +1263,7 @@
         "templates": [],
         "uuid": "1e4f16b6-3c26-40ca-ab45-3342028cb8c3",
         "mdoReference": {
-         "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.ТаблицаИзмерений.ddddd",
+         "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.ТаблицаИзмерения.ddddd",
          "type": "EXTERNAL_DATA_SOURCE_CUBE_DIMENSION_TABLE",
          "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.DimensionTable.ddddd"
         },
@@ -843,6 +1283,7 @@
           }
          ]
         },
+        "hierarchical": true,
         "name": "ddddd",
         "objectBelonging": "OWN",
         "comment": "",
@@ -864,7 +1305,7 @@
           "comment": "",
           "uuid": "d3f3b25a-91bd-4cbe-ba11-fa2242c934fe",
           "mdoReference": {
-           "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.ТаблицаИзмерений.ddddd.Форма.ФормаОбъекта",
+           "mdoRefRu": "ВнешнийИсточникДанных.ВнешнийИсточникДанных1.Куб.Куб1.ТаблицаИзмерения.ddddd.Форма.ФормаОбъекта",
            "type": "FORM",
            "mdoRef": "ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1.DimensionTable.ddddd.Form.ФормаОбъекта"
           },
@@ -952,12 +1393,6 @@
    }
   ],
   "name": "Конфигурация",
-  "commonModules": [
-   4
-  ],
-  "styles": [
-   2
-  ],
   "chartsOfCalculationTypes": [
    2
   ],
@@ -966,27 +1401,28 @@
   ],
   "accountingRegisters": [
    {
+    "fullTextSearch": "DONT_USE",
     "defaultListForm": {
      "mdoRefRu": "",
      "type": "UNKNOWN",
      "mdoRef": ""
     },
     "defaultFormMap": {},
+    "correspondence": false,
     "templates": [],
+    "chartOfAccounts": {
+     "mdoRefRu": "ПланСчетов.ПланСчетов1",
+     "type": "CHART_OF_ACCOUNTS",
+     "mdoRef": "ChartOfAccounts.ПланСчетов1"
+    },
     "resources": [
      {
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/mdoReference"
       },
-      "synonym": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-      },
+      "fullTextSearch": "USE",
       "indexing": "DONT_INDEX",
       "kind": "CUSTOM",
-      "passwordMode": false,
-      "name": "Ресурс1",
-      "objectBelonging": "OWN",
-      "comment": "",
       "type": {
        "types": [
         1
@@ -1002,7 +1438,14 @@
        "type": "RESOURCE",
        "mdoRef": "AccountingRegister.РегистрБухгалтерии1.Resource.Ресурс1"
       },
-      "supportVariant": "NONE"
+      "supportVariant": "NONE",
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+      },
+      "passwordMode": false,
+      "name": "Ресурс1",
+      "objectBelonging": "OWN",
+      "comment": ""
      }
     ],
     "explanation": {
@@ -1026,7 +1469,7 @@
     "objectBelonging": "OWN",
     "comment": "",
     "attributes": [
-     8
+     16
     ],
     "commands": [],
     "forms": [],
@@ -1035,6 +1478,7 @@
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/mdoReference"
       },
+      "fullTextSearch": "USE",
       "indexing": "DONT_INDEX",
       "kind": "CUSTOM",
       "useInTotals": true,
@@ -1053,6 +1497,7 @@
        "type": "DIMENSION",
        "mdoRef": "AccountingRegister.РегистрБухгалтерии1.Dimension.Измерение1"
       },
+      "baseDimension": false,
       "supportVariant": "NONE",
       "master": false,
       "synonym": {
@@ -1070,37 +1515,9 @@
   "usePurposes": [
    "PLATFORM_APPLICATION"
   ],
-  "eventSubscriptions": [
-   {
-    "handler": {
-     "methodPath": "CommonModule.ОбщийМодуль3.ПодпискаНаСобытие1ОбработкаЗаполнения",
-     "moduleName": "ОбщийМодуль3",
-     "methodName": "ПодпискаНаСобытие1ОбработкаЗаполнения"
-    },
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "name": "ПодпискаНаСобытие1",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "source": {
-     "types": [
-      1
-     ],
-     "composite": true,
-     "qualifiers": []
-    },
-    "event": "Filling",
-    "uuid": "b1c1d54e-aea7-43cb-8f1a-1223d33d6b4d",
-    "mdoReference": {
-     "mdoRefRu": "ПодпискаНаСобытие.ПодпискаНаСобытие1",
-     "type": "EVENT_SUBSCRIPTION",
-     "mdoRef": "EventSubscription.ПодпискаНаСобытие1"
-    },
-    "supportVariant": "NONE"
-   }
-  ],
-  "synchronousExtensionAndAddInCallUseMode": "USE_WITH_WARNINGS",
+  "auxiliaryDefaultReportSettingsForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+  },
   "possibleRights": [
    26
   ],
@@ -1108,85 +1525,17 @@
    2
   ],
   "description": "www",
-  "sequences": [
-   {
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "documents": [
-     {
-      "mdoRefRu": "Документ.Документ1",
-      "type": "DOCUMENT",
-      "mdoRef": "Document.Документ1"
-     }
-    ],
-    "name": "Последовательность1",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "uuid": "e9aebb24-950a-4bdb-bc2f-b8026823293b",
-    "mdoReference": {
-     "mdoRefRu": "Последовательность.Последовательность1",
-     "type": "SEQUENCE",
-     "mdoRef": "Sequence.Последовательность1"
-    },
-    "modules": [],
-    "supportVariant": "NONE",
-    "dimensions": [
-     2
-    ]
-   }
-  ],
-  "supportVariant": "NONE",
-  "paletteColors": [],
-  "enums": [
-   {
-    "auxiliaryChoiceForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "defaultListForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "defaultFormMap": {},
-    "templates": [],
-    "explanation": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "uuid": "c73ad4cc-bb53-41fc-a71c-f8a93fcc5d99",
-    "mdoReference": {
-     "mdoRefRu": "Перечисление.Перечисление1",
-     "type": "ENUM",
-     "mdoRef": "Enum.Перечисление1"
-    },
-    "modules": [],
-    "defaultChoiceForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "supportVariant": "NONE",
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "auxiliaryListForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "name": "Перечисление1",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "attributes": [
-     2
-    ],
-    "commands": [],
-    "forms": [],
-    "enumValues": [
-     5
-    ]
-   }
-  ],
+  "auxiliaryDefaultCollaborationSystemUsersChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+  },
   "calculationRegisters": [
    {
+    "fullTextSearch": "DONT_USE",
     "defaultListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
     "defaultFormMap": {},
+    "actionPeriod": true,
     "templates": [
      {
       "templateType": "TEXT_DOCUMENT",
@@ -1200,9 +1549,6 @@
          "value": "Макет"
         }
        ]
-      },
-      "data": {
-       "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData"
       },
       "name": "Макет",
       "objectBelonging": "OWN",
@@ -1221,15 +1567,9 @@
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/calculationRegisters\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/mdoReference"
       },
-      "synonym": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-      },
+      "fullTextSearch": "USE",
       "indexing": "DONT_INDEX",
       "kind": "CUSTOM",
-      "passwordMode": false,
-      "name": "Ресурс1",
-      "objectBelonging": "OWN",
-      "comment": "",
       "type": {
        "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/resources\/com.github._1c_syntax.bsl.mdo.children.Resource\/type"
       },
@@ -1239,7 +1579,14 @@
        "type": "RESOURCE",
        "mdoRef": "CalculationRegister.РегистрРасчета1.Resource.Ресурс1"
       },
-      "supportVariant": "NONE"
+      "supportVariant": "NONE",
+      "synonym": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+      },
+      "passwordMode": false,
+      "name": "Ресурс1",
+      "objectBelonging": "OWN",
+      "comment": ""
      }
     ],
     "explanation": {
@@ -1292,11 +1639,17 @@
     ],
     "commands": [],
     "forms": [],
+    "chartOfCalculationTypes": {
+     "mdoRefRu": "ПланВидовРасчета.ПланВидовРасчета2",
+     "type": "CHART_OF_CALCULATION_TYPES",
+     "mdoRef": "ChartOfCalculationTypes.ПланВидовРасчета2"
+    },
     "dimensions": [
      {
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/calculationRegisters\/com.github._1c_syntax.bsl.mdo.CalculationRegister\/mdoReference"
       },
+      "fullTextSearch": "USE",
       "indexing": "DONT_INDEX",
       "kind": "CUSTOM",
       "useInTotals": true,
@@ -1309,6 +1662,7 @@
        "type": "DIMENSION",
        "mdoRef": "CalculationRegister.РегистрРасчета1.Dimension.Измерение1"
       },
+      "baseDimension": false,
       "supportVariant": "NONE",
       "master": false,
       "synonym": {
@@ -1331,41 +1685,11 @@
     }
    ]
   },
-  "defaultLanguage": {
-   "mdoRefRu": "Язык.Русский",
-   "type": "LANGUAGE",
-   "mdoRef": "Language.Русский"
+  "defaultDataHistoryVersionDataForm": {
+   "mdoRefRu": "ОбщаяФорма.ФормаДанныхВерсииИсторииДанных",
+   "type": "COMMON_FORM",
+   "mdoRef": "CommonForm.ФормаДанныхВерсииИсторииДанных"
   },
-  "vendor": "",
-  "webSocketClients": [
-   {
-    "autoConnect": false,
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "WebSocketКлиент1"
-      }
-     ]
-    },
-    "serverURL": "soc",
-    "name": "WebSocketКлиент1",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "uuid": "40a0b16c-4707-4528-acd4-42ca1ba47756",
-    "mdoReference": {
-     "mdoRefRu": "WebSocketКлиент.WebSocketКлиент1",
-     "type": "WEB_SOCKET_CLIENT",
-     "mdoRef": "WebSocketClient.WebSocketКлиент1"
-    },
-    "modules": [
-     1
-    ],
-    "predefined": false,
-    "timeout": 30,
-    "supportVariant": "NONE"
-   }
-  ],
   "XDTOPackages": [
    {
     "synonym": {
@@ -1395,227 +1719,55 @@
     "supportVariant": "NONE"
    }
   ],
-  "webServices": [
-   {
-    "uuid": "d99cef24-7add-4483-97c7-a4eb78a2e7ab",
-    "mdoReference": {
-     "mdoRefRu": "WebСервис.WebСервис1",
-     "type": "WEB_SERVICE",
-     "mdoRef": "WebService.WebСервис1"
-    },
-    "modules": [
-     1
-    ],
-    "supportVariant": "NONE",
-    "sessionMaxAge": 20,
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "WebСервис1"
-      }
-     ]
-    },
-    "operations": [
-     {
-      "owner": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/webServices\/com.github._1c_syntax.bsl.mdo.WebService\/mdoReference"
-      },
-      "transactioned": false,
-      "uuid": "9beed970-ed44-471b-b433-3fe4dbd4f167",
-      "mdoReference": {
-       "mdoRefRu": "WebСервис.WebСервис1.Операция.Операция1",
-       "type": "WS_OPERATION",
-       "mdoRef": "WebService.WebСервис1.Operation.Операция1"
-      },
-      "supportVariant": "NONE",
-      "nillable": true,
-      "synonym": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-      },
-      "procedureName": "Операция1",
-      "name": "Операция1",
-      "objectBelonging": "OWN",
-      "comment": "",
-      "parameters": [
-       3
-      ],
-      "dataLockControlMode": "MANAGED"
-     }
-    ],
-    "name": "WebСервис1",
-    "namespace": "aaaaaa",
-    "descriptorFileName": "ws1.1cws",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "reuseSessions": "AUTO_USE"
-   }
-  ],
-  "documentNumerators": [
-   {
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "name": "НумераторДокументов1",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "uuid": "d7491517-6e81-4a32-8426-9a69f2373a23",
-    "mdoReference": {
-     "mdoRefRu": "НумераторДокументов.НумераторДокументов1",
-     "type": "DOCUMENT_NUMERATOR",
-     "mdoRef": "DocumentNumerator.НумераторДокументов1"
-    },
-    "supportVariant": "NONE"
-   }
-  ],
-  "commonCommands": [
-   {
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "name": "ОбщаяКоманда1",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "uuid": "3d661a98-c006-4f43-88a0-f0aa21d115ea",
-    "mdoReference": {
-     "mdoRefRu": "ОбщаяКоманда.ОбщаяКоманда1",
-     "type": "COMMON_COMMAND",
-     "mdoRef": "CommonCommand.ОбщаяКоманда1"
-    },
-    "modules": [
-     1
-    ],
-    "supportVariant": "NONE"
-   }
-  ],
-  "sessionParameters": [
-   4
-  ],
+  "auxiliaryDefaultDataHistoryVersionDifferencesForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+  },
   "interfaces": [],
   "mdoType": "CONFIGURATION",
   "detailedInformation": {
    "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
   },
-  "languages": [
-   2
-  ],
-  "copyrights": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+  "defaultCollaborationSystemUsersChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
   },
-  "commandGroups": [
-   {
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "name": "ГруппаКоманд1",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "uuid": "60feee75-5805-49d9-b391-96d92bdd0e61",
-    "mdoReference": {
-     "mdoRefRu": "ГруппаКоманд.ГруппаКоманд1",
-     "type": "COMMAND_GROUP",
-     "mdoRef": "CommandGroup.ГруппаКоманд1"
-    },
-    "supportVariant": "NONE"
-   }
-  ],
   "commonForms": [
    9
   ],
-  "documentJournals": [
-   {
-    "defaultFormMap": {},
-    "columns": [
-     {
-      "owner": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/documentJournals\/com.github._1c_syntax.bsl.mdo.DocumentJournal\/mdoReference"
-      },
-      "synonym": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-      },
-      "indexing": "DONT_INDEX",
-      "references": [
-       {
-        "mdoRefRu": "Документ.Документ1.Реквизит.Реквизит2",
-        "type": "ATTRIBUTE",
-        "mdoRef": "Document.Документ1.Attribute.Реквизит2"
-       }
-      ],
-      "kind": "CUSTOM",
-      "name": "Графа1",
-      "objectBelonging": "OWN",
-      "comment": "",
-      "uuid": "f0c37c11-e734-4c1f-b7a8-996974337c17",
-      "mdoReference": {
-       "mdoRefRu": "ЖурналДокументов.ЖурналДокументов1.Колонка.Графа1",
-       "type": "COLUMN",
-       "mdoRef": "DocumentJournal.ЖурналДокументов1.Column.Графа1"
-      },
-      "supportVariant": "NONE"
-     }
-    ],
-    "templates": [],
-    "registeredDocuments": [
-     2
-    ],
-    "defaultForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "explanation": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "uuid": "8961ac19-ce99-43b2-82f5-0538ca26d8cb",
-    "mdoReference": {
-     "mdoRefRu": "ЖурналДокументов.ЖурналДокументов1",
-     "type": "DOCUMENT_JOURNAL",
-     "mdoRef": "DocumentJournal.ЖурналДокументов1"
-    },
-    "modules": [],
-    "supportVariant": "NONE",
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "name": "ЖурналДокументов1",
-    "auxiliaryForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "objectBelonging": "OWN",
-    "comment": "",
-    "commands": [],
-    "forms": []
-   }
-  ],
-  "commonPictures": [
-   {
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "name": "ОбщаяКартинка1",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "availabilityForChoice": false,
-    "uuid": "1c28775d-f405-4e89-9491-d75935635545",
-    "mdoReference": {
-     "mdoRefRu": "ОбщаяКартинка.ОбщаяКартинка1",
-     "type": "COMMON_PICTURE",
-     "mdoRef": "CommonPicture.ОбщаяКартинка1"
-    },
-    "availabilityForAppearance": false,
-    "supportVariant": "NONE"
-   }
-  ],
-  "mdoReference": {
-   "mdoRefRu": "Конфигурация.Конфигурация",
-   "type": "CONFIGURATION",
-   "mdoRef": "Configuration.Конфигурация"
+  "defaultSearchForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
   },
   "scriptVariant": "RUSSIAN",
   "briefInformation": {
    "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
   },
-  "synchronousPlatformExtensionAndAddInCallUseMode": "DONT_USE",
+  "defaultDynamicListSettingsForm": {
+   "mdoRefRu": "ОбщаяФорма.ФормаНастроекДинамическогоСписка",
+   "type": "COMMON_FORM",
+   "mdoRef": "CommonForm.ФормаНастроекДинамическогоСписка"
+  },
   "businessProcesses": [
    {
+    "choiceHistoryOnInput": "AUTO",
+    "explanation": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "uuid": "92479750-0c73-4a09-bec3-0d5154027fd0",
+    "supportVariant": "NONE",
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
+    },
+    "auxiliaryListForm": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
+    },
+    "choiceDataGetModeOnInputByString": "DIRECTLY",
+    "tabularSections": [],
+    "objectBelonging": "OWN",
+    "basedOn": [],
+    "commands": [],
+    "descriptionLength": 0,
+    "dataLockControlMode": "MANAGED",
+    "fullTextSearch": "USE",
+    "characteristics": [],
     "auxiliaryChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
@@ -1624,27 +1776,20 @@
     },
     "defaultFormMap": {},
     "templates": [],
-    "explanation": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "uuid": "92479750-0c73-4a09-bec3-0d5154027fd0",
+    "createOnInput": "DONT_USE",
+    "fullTextSearchOnInputByString": "DONT_USE",
+    "dataLockFields": [],
     "mdoReference": {
      "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1",
      "type": "BUSINESS_PROCESS",
      "mdoRef": "BusinessProcess.БизнесПроцесс1"
     },
+    "numberLength": 9,
     "modules": [],
     "defaultChoiceForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
-    "supportVariant": "NONE",
     "defaultObjectForm": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
-    },
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/XDTOPackages\/com.github._1c_syntax.bsl.mdo.XDTOPackage\/synonym"
-    },
-    "auxiliaryListForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
     "task": {
@@ -1653,8 +1798,6 @@
      "mdoRef": "Task.Задача1"
     },
     "name": "БизнесПроцесс1",
-    "tabularSections": [],
-    "objectBelonging": "OWN",
     "comment": "",
     "attributes": [
      8
@@ -1662,8 +1805,15 @@
     "auxiliaryObjectForm": {
      "@reference": "\/com.github._1c_syntax.bsl.mdclasses.Configuration\/accountingRegisters\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/defaultListForm"
     },
-    "commands": [],
-    "forms": []
+    "searchStringModeOnInputByString": "BEGIN",
+    "forms": [],
+    "inputByString": [
+     {
+      "mdoRefRu": "БизнесПроцесс.БизнесПроцесс1.СтандартныйРеквизит.Номер",
+      "type": "STANDARD_ATTRIBUTE",
+      "mdoRef": "BusinessProcess.БизнесПроцесс1.StandardAttribute.Number"
+     }
+    ]
    }
   ],
   "definedTypes": [

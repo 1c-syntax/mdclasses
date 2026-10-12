@@ -29,7 +29,6 @@ import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -37,7 +36,6 @@ import java.util.Set;
 /**
  * Конвертор для объектов в формате конфигуратора: стили и интерфейсы
  */
-@Slf4j
 @EDTConverter
 public class MetaDataObjectConverter implements ReadConverter {
 
@@ -48,7 +46,6 @@ public class MetaDataObjectConverter implements ReadConverter {
     var nodeClassName = reader.getNodeName();
     Class<?> realClass = ExtendXStream.getRealClass(reader, nodeClassName);
     if (realClass == null) {
-      LOGGER.error("Unexpected type `{}`, path: `{}`", nodeClassName, ExtendXStream.getCurrentPath(reader));
       throw new IllegalStateException("Unexpected type: " + nodeClassName);
     }
 

@@ -1,6 +1,7 @@
 {
  "com.github._1c_syntax.bsl.mdo.ChartOfAccounts": {
   "codeSeries": "WHOLE_CATALOG",
+  "choiceHistoryOnInput": "AUTO",
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -39,15 +40,9 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
     },
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/synonym"
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ПризнакУчета",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/type"
     },
@@ -57,7 +52,14 @@
      "type": "EXT_DIMENSION_ACCOUNTING_FLAG",
      "mdoRef": "ChartOfAccounts.ПланСчетов1.ExtDimensionAccountingFlag.ПризнакУчета"
     },
-    "supportVariant": "NONE"
+    "supportVariant": "NONE",
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/synonym"
+    },
+    "passwordMode": false,
+    "name": "ПризнакУчета",
+    "objectBelonging": "OWN",
+    "comment": ""
    }
   ],
   "mdoRef": "ChartOfAccounts.ПланСчетов1",
@@ -68,16 +70,23 @@
   "synonym": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
   },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "checkUnique": true,
   "tabularSections": [],
   "objectBelonging": "OWN",
+  "basedOn": [],
   "commands": [],
+  "dataLockControlMode": "MANAGED",
+  "descriptionLength": 25,
+  "fullTextSearch": "USE",
+  "characteristics": [],
   "mdoType": "CHART_OF_ACCOUNTS",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
    "type": "UNKNOWN",
    "mdoRef": ""
   },
+  "codeLength": 9,
   "defaultFormMap": [
    "AUX_CHOICE_FORM",
    {
@@ -107,7 +116,11 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/auxiliaryChoiceForm"
   },
+  "defaultPresentation": "AS_CODE",
+  "createOnInput": "DONT_USE",
   "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
   },
@@ -121,7 +134,6 @@
     },
     "isProtected": false,
     "moduleType": "ObjectModule",
-    "uri": "src\/test\/resources\/mdclasses\/ChartsOfAccounts\/ПланСчетов1\/ObjectModule.bsl",
     "supportVariant": "NONE"
    }
   ],
@@ -135,20 +147,9 @@
      "type": "CHART_OF_ACCOUNTS",
      "mdoRef": "ChartOfAccounts.ПланСчетов1"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Признак учета"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ПризнакУчета",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "types": [
       "BOOLEAN"
@@ -162,7 +163,19 @@
      "type": "ACCOUNTING_FLAG",
      "mdoRef": "ChartOfAccounts.ПланСчетов1.AccountingFlag.ПризнакУчета"
     },
-    "supportVariant": "NONE"
+    "supportVariant": "NONE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Признак учета"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ПризнакУчета",
+    "objectBelonging": "OWN",
+    "comment": ""
    }
   ],
   "name": "ПланСчетов1",
@@ -171,6 +184,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -207,6 +221,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -252,6 +267,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -298,6 +314,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -343,6 +360,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -379,6 +397,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -425,6 +444,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -461,6 +481,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -508,6 +529,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -544,6 +566,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/accountingFlags\/com.github._1c_syntax.bsl.mdo.children.AccountingFlag\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -583,6 +606,17 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/auxiliaryChoiceForm"
   },
   "comment": "",
-  "forms": []
+  "searchStringModeOnInputByString": "BEGIN",
+  "orderLength": 0,
+  "maxExtDimensionCount": 3,
+  "forms": [],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.ChartOfAccounts\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]\/mdoReference"
+   }
+  ]
  }
 }

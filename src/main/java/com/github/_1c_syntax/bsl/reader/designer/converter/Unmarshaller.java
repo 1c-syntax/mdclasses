@@ -22,7 +22,9 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
+import com.github._1c_syntax.bsl.reader.common.context.FormAttributeWrapper;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
+import com.github._1c_syntax.bsl.reader.common.DataCompositionFields;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.MDCReaderContext;
@@ -36,6 +38,7 @@ import lombok.experimental.UtilityClass;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -46,13 +49,7 @@ public class Unmarshaller {
 
   private static final String PROPERTIES_NODE = "Properties";
   private static final String CHILD_OBJECTS_NODE = "ChildObjects";
-  private static final String CHILD_ITEMS_NODE = "ChildItems";
-  private static final String ITEMS_NODE = "items";
   private static final String USE_PURPOSES_NODE = "UsePurposes";
-
-  private static final String EVENTS_NODE = "Events";
-  private static final String HANDLES_NODE = "Handlers";
-  private static final String ATTRIBUTES_NODE = "Attributes";
 
   private static final String NAME_NODE = "Name";
   private static final String TEMPLATE_TYPE_NODE = "TemplateType";
@@ -61,6 +58,43 @@ public class Unmarshaller {
   private static final String STANDARD_ATTRIBUTES_NODE = "StandardAttributes";
   private static final String STANDARD_ATTRIBUTE_NODE = "StandardAttribute";
   private static final String ATTRIBUTE_FIELD_NAME = "Attribute";
+  private static final String SETTINGS_NODE = "Settings";
+  private static final String LIST_SETTINGS_NODE = "ListSettings";
+  private static final String SETTINGS_FIELDS_FIELD = "settingsFields";
+  private static final String CONDITIONAL_APPEARANCE_NODE = "ConditionalAppearance";
+  private static final String CONDITIONAL_APPEARANCE_FIELDS_FIELD = "conditionalAppearanceFields";
+
+  private static final Map<String, String> DYNAMIC_LIST_SETTINGS_REMAPPING
+    = Map.of(
+    "MainTable", "mainTable",
+    "ManualQuery", "customQuery",
+    "QueryText", "queryText",
+    "Field", "fields",
+    "KeyType", "keyType",
+    "KeyField", "keyFields"
+  );
+
+  private static final Map<String, String> ITEM_NODE_REMAPPING
+    = Map.of(
+    "Commands", "commands",
+    "Parameters", "parameters",
+    "Attributes", "attributes",
+    "Columns", "columns",
+    "ChildItems", "elements",
+    "Events", "eventHandlers",
+    "UseAlways", "useAlwaysFields"
+  );
+
+  private static final Map<String, String> NODE_REMAPPING
+    = Map.of(
+    "AutoCommandBar", "elements",
+    "ContextMenu", "elements",
+    "ExtendedTooltip", "elements",
+    "SearchControlAddition", "elements",
+    "ViewStatusAddition", "elements",
+    "SearchStringAddition", "elements",
+    "Column", "columns"
+  );
 
   /**
    * Читает информацию из файлов MD и MDC
@@ -84,14 +118,40 @@ public class Unmarshaller {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      if (CHILD_ITEMS_NODE.equals(name)) {
-        readItemNode(reader, context, readerContext, ITEMS_NODE);
-      } else if (ATTRIBUTES_NODE.equals(name)) {
-        readItemNode(reader, context, readerContext, ATTRIBUTES_NODE);
-      } else if (EVENTS_NODE.equals(name)) {
-        readItemNode(reader, context, readerContext, HANDLES_NODE);
+      var itemNode = ITEM_NODE_REMAPPING.get(name);
+      if (itemNode != null) {
+        readItemNode(reader, context, readerContext, itemNode);
+      } else if (readerContext.getRealClass() == FormAttributeWrapper.class && SETTINGS_NODE.equals(name)) {
+        readDynamicListSettings(reader, context, readerContext);
       } else {
-        readNode(reader.getNodeName(), context, readerContext);
+        var node = NODE_REMAPPING.get(name);
+        if (node != null) {
+          readNode(node, context, readerContext);
+        } else {
+          readNode(reader.getNodeName(), context, readerContext);
+        }
+      }
+      reader.moveUp();
+    }
+  }
+
+  /**
+   * Читает настройки динамического списка из узла {@code <Settings xsi:type="DynamicList">}
+   * реквизита формы. Остальные дочерние узлы (например {@code ListSettings}) пропускаются
+   */
+  private void readDynamicListSettings(HierarchicalStreamReader reader,
+                                       UnmarshallingContext context,
+                                       FormElementReaderContext readerContext) {
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      var name = reader.getNodeName();
+      var field = DYNAMIC_LIST_SETTINGS_REMAPPING.get(name);
+      if (field != null) {
+        var fieldClass = readerContext.fieldType(field);
+        readerContext.setValue(field, ExtendXStream.readValue(context, fieldClass));
+      } else if (LIST_SETTINGS_NODE.equals(name)) {
+        DataCompositionFields.collect(reader)
+          .forEach(value -> readerContext.setValue(SETTINGS_FIELDS_FIELD, value));
       }
       reader.moveUp();
     }
@@ -136,12 +196,19 @@ public class Unmarshaller {
                             AbstractReaderContext readerContext,
                             String nodeName) {
     var fieldClass = readerContext.fieldType(nodeName);
-    if(fieldClass == null) {
+    if (fieldClass == null) {
       return;
     }
     while (reader.hasMoreChildren()) {
       reader.moveDown();
-      readerContext.setValue(nodeName, ExtendXStream.readValue(context, fieldClass));
+      if (CONDITIONAL_APPEARANCE_NODE.equals(reader.getNodeName())) {
+        // Условное оформление формы лежит среди реквизитов, но реквизитом
+        // не является: из него нужны только названные поля
+        DataCompositionFields.collect(reader)
+          .forEach(value -> readerContext.setValue(CONDITIONAL_APPEARANCE_FIELDS_FIELD, value));
+      } else {
+        readerContext.setValue(nodeName, ExtendXStream.readValue(context, fieldClass));
+      }
       reader.moveUp();
     }
   }
@@ -160,15 +227,15 @@ public class Unmarshaller {
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      if (USE_PURPOSES_NODE.equals(name)) {
-        readItemNode(reader, context, readerContext, USE_PURPOSES_NODE);
-      } else if (STANDARD_ATTRIBUTES_NODE.equals(name)) {
-        readPropertiesNode(reader, context, readerContext);
-      } else if (STANDARD_ATTRIBUTE_NODE.equals(name)) {
-        readValue(reader, context, readerContext, StandardAttribute.class, ATTRIBUTE_FIELD_NAME);
-      } else {
-        var fieldClass = readerContext.fieldType(name);
-        readValue(reader, context, readerContext, Objects.requireNonNullElse(fieldClass, String.class), name);
+      switch (name) {
+        case USE_PURPOSES_NODE -> readItemNode(reader, context, readerContext, USE_PURPOSES_NODE);
+        case STANDARD_ATTRIBUTES_NODE -> readPropertiesNode(reader, context, readerContext);
+        case STANDARD_ATTRIBUTE_NODE ->
+          readValue(reader, context, readerContext, StandardAttribute.class, ATTRIBUTE_FIELD_NAME);
+        default -> {
+          var fieldClass = readerContext.fieldType(name);
+          readValue(reader, context, readerContext, Objects.requireNonNullElse(fieldClass, String.class), name);
+        }
       }
       reader.moveUp();
     }

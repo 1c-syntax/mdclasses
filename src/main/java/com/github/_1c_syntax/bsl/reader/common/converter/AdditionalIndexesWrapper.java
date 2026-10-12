@@ -19,9 +19,8 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.mdo.storage;
+package com.github._1c_syntax.bsl.reader.common.converter;
 
-import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import lombok.Builder;
 import lombok.Singular;
 import lombok.Value;
@@ -29,17 +28,28 @@ import lombok.Value;
 import java.util.List;
 
 /**
- * Контейнер предопределенных данных из отдельного файла {@code Ext/Predefined.xml} (формат Конфигуратора)
+ * Контейнер данных дополнительных индексов из отдельного файла
  */
 @Value
 @Builder
-public class PredefinedData {
+public class AdditionalIndexesWrapper {
 
-  public static final PredefinedData EMPTY = PredefinedData.builder().build();
+  public static final AdditionalIndexesWrapper EMPTY = builder().build();
 
-  /**
-   * Предопределенные элементы верхнего уровня
-   */
   @Singular
-  List<PredefinedValue> items;
+  List<AdditionalIndexItem> indexes;
+
+  @Value
+  @Builder
+  public static class AdditionalIndexItem {
+    String id;
+    String name;
+    String table;
+
+    @Singular("indexedField")
+    List<String> indexedFields;
+
+    @Singular("additionalField")
+    List<String> additionalFields;
+  }
 }

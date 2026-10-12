@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.utils;
 
+import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
@@ -32,6 +33,7 @@ import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.Enum;
 import com.github._1c_syntax.bsl.mdo.ExternalDataSource;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
+import com.github._1c_syntax.bsl.mdo.IndexOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
@@ -41,8 +43,10 @@ import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
-import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndex;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndexCalculator;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementOwner;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import lombok.experimental.UtilityClass;
@@ -267,6 +271,21 @@ public class LazyLoader {
   }
 
   /**
+   * Производит расчет соответствия ссылки объекта конфигурации к списку его платформенных индексов.
+   * Расчет выполняется только для объектов-владельцев индексов
+   *
+   * @param cf Конфигурация или расширение
+   * @return Немодифицируемое соответствие
+   */
+  public Map<MdoReference, List<PlatformIndex>> computeIndexes(CF cf) {
+    var result = new HashMap<MdoReference, List<PlatformIndex>>();
+    cf.getPlainChildren().stream()
+      .filter(IndexOwner.class::isInstance)
+      .forEach(mdo -> result.put(mdo.getMdoReference(), PlatformIndexCalculator.computeIndexes(mdo, cf)));
+    return Collections.unmodifiableMap(result);
+  }
+
+  /**
    * Создает соответствие URI модуля объекта модулю.
    * Используется все модуля объекта, включая дочерних объектов.
    *
@@ -281,28 +300,15 @@ public class LazyLoader {
   /**
    * Производит расчет списка дочерних элементов формы. Список включает все дочерних по иерархии вниз
    *
-   * @param formItem Элемент формы, у которого есть дочерние элементы
+   * @param element Элемент формы, у которого есть дочерние элементы
    * @return Немодифицируемый список дочерних объектов
    */
-  public List<FormItem> computePlainFormItems(FormItem formItem) {
-    List<FormItem> items = addAll(Collections.emptyList(), formItem.getItems());
+  public List<FormElement> computePlainFormElements(FormElementOwner element) {
+    List<FormElement> items = addAll(Collections.emptyList(), element.getElements());
     items = addAll(items, items.stream()
-      .map(FormItem::getPlainItems)
-      .flatMap(Collection::stream)
-      .toList());
-    return Collections.unmodifiableList(items);
-  }
-
-  /**
-   * Производит расчет списка дочерних элементов формы. Список включает все дочерних по иерархии вниз
-   *
-   * @param formData Форма, у которой есть дочерние элементы
-   * @return Немодифицируемый список дочерних объектов
-   */
-  public List<FormItem> computePlainFormItems(ManagedFormData formData) {
-    List<FormItem> items = addAll(Collections.emptyList(), formData.getItems());
-    items = addAll(items, items.stream()
-      .map(FormItem::getPlainItems)
+      .filter(FormElementOwner.class::isInstance)
+      .map(FormElementOwner.class::cast)
+      .map(FormElementOwner::getPlainElements)
       .flatMap(Collection::stream)
       .toList());
     return Collections.unmodifiableList(items);

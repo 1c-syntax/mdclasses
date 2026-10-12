@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.reader.common.context;
 
+import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Form;
@@ -33,10 +34,13 @@ import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.RecalculationDimension;
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
+import com.github._1c_syntax.bsl.reader.common.context.std_attributes.StdAtrInfo;
 import com.github._1c_syntax.bsl.reader.common.context.std_attributes.StdAttributeFiller;
+import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -48,13 +52,16 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -62,6 +69,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 @EqualsAndHashCode(callSuper = true)
 @ToString
+@Slf4j
 public class MDReaderContext extends AbstractReaderContext {
 
   private static final String MDO_REFERENCE_FIELD_NAME = "mdoReference";
@@ -90,6 +98,18 @@ public class MDReaderContext extends AbstractReaderContext {
    */
   @Setter
   private MdoReference owner = MdoReference.EMPTY;
+
+  /**
+   * Для доинициализации стандартного атрибута
+   */
+  @Nullable
+  private StdAtrInfo stdAtrInfo;
+
+  /**
+   * Построенные атрибуты (стандартные + пользовательские), собранные при setValueChildren
+   */
+  @Nullable
+  private Map<String, MdoReference> builtAttributes;
 
   public MDReaderContext(HierarchicalStreamReader reader) {
     super(reader);
@@ -196,8 +216,17 @@ public class MDReaderContext extends AbstractReaderContext {
       setValueChildren();
     }
 
+    if (AttributeOwner.class.isAssignableFrom(realClass)) {
+      setupAdditionalIndexes();
+    }
+
     if (ModuleOwner.class.isAssignableFrom(realClass)) {
       setValueModules();
+    }
+
+    if (StandardAttribute.class.isAssignableFrom(realClass)) {
+      stdAtrInfo = StdAtrInfo.get(name);
+      setValue("fullName", stdAtrInfo.getName());
     }
 
     return super.build();
@@ -243,16 +272,53 @@ public class MDReaderContext extends AbstractReaderContext {
   }
 
   private void setValueChildren() {
+    var allChildren = new HashMap<String, MdoReference>();
     childrenContexts.forEach((String collectionName, List<MDReaderContext> value) -> {
       var collection = value.parallelStream()
         .map((MDReaderContext childContext) -> {
           childContext.setOwner(mdoReference);
           return childContext.build();
         }).toList();
+      for (var obj : collection) {
+        if (obj instanceof Attribute attr) {
+          allChildren.put(attr.getName(), attr.getMdoReference());
+        }
+      }
       if (!collectionName.endsWith("s")) {
         collectionName += "s";
       }
       setValue(collectionName, collection);
     });
+    builtAttributes = allChildren;
+  }
+
+  private void setupAdditionalIndexes() {
+    var cached = getFromCache("additionalIndexes", Collections.emptyList());
+    if (!cached.isEmpty() || builtAttributes == null) {
+      return;
+    }
+
+    var raw = mdReader.readAdditionalIndexes(currentPath, name, mdoType);
+    if (raw == AdditionalIndexesWrapper.EMPTY || raw.getIndexes().isEmpty()) {
+      return;
+    }
+
+    var resolved = raw.getIndexes().stream().map((AdditionalIndexesWrapper.AdditionalIndexItem item) -> {
+      var tableRef = MdoReference.create(item.getTable());
+      return AdditionalIndex.builder()
+        .uuid(item.getId())
+        .name(item.getName())
+        .table(builtAttributes.getOrDefault(item.getTable(), tableRef))
+        .indexedFields(item.getIndexedFields().stream()
+          .map(fieldName -> builtAttributes.get(fieldName))
+          .filter(Objects::nonNull)
+          .toList())
+        .additionalFields(item.getAdditionalFields().stream()
+          .map(fieldName -> builtAttributes.get(fieldName))
+          .filter(Objects::nonNull)
+          .toList())
+        .build();
+    }).toList();
+    setValue("additionalIndexes", resolved);
   }
 }

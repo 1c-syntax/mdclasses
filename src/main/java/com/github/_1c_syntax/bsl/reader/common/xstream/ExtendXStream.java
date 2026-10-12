@@ -25,6 +25,9 @@ import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
 import com.github._1c_syntax.bsl.mdclasses.ExternalDataProcessor;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdo.MD;
+import com.github._1c_syntax.bsl.mdo.support.FillChecking;
+import com.github._1c_syntax.bsl.mdo.support.CommandRepresentation;
+import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
@@ -32,11 +35,17 @@ import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
 import com.github._1c_syntax.bsl.mdo.support.CalculationRegisterPeriodicity;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.CommonAttributeSeparatedDataUse;
+import com.github._1c_syntax.bsl.mdo.support.DynamicListKeyType;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.support.HierarchyType;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
@@ -45,10 +54,13 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.mdo.support.ReuseSessions;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
+import com.github._1c_syntax.bsl.mdo.support.TableDataType;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.TransferDirection;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
+import com.github._1c_syntax.bsl.mdo.support.RegisterWriteMode;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.converter.CommonConverter;
 import com.github._1c_syntax.bsl.reader.common.converter.EnumConverter;
@@ -267,6 +279,8 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
     registerConverter(new EnumConverter<>(DataLockControlMode.class));
     registerConverter(new EnumConverter<>(DataSeparation.class));
+    registerConverter(new EnumConverter<>(CommonAttributeSeparatedDataUse.class));
+    registerConverter(new EnumConverter<>(DynamicListKeyType.class));
     registerConverter(new EnumConverter<>(FormType.class));
     registerConverter(new EnumConverter<>(IndexingType.class));
     registerConverter(new EnumConverter<>(InformationRegisterPeriodicity.class));
@@ -276,6 +290,7 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(ReuseSessions.class));
     registerConverter(new EnumConverter<>(RoleRight.class));
     registerConverter(new EnumConverter<>(ScriptVariant.class));
+    registerConverter(new EnumConverter<>(TableDataType.class));
     registerConverter(new EnumConverter<>(TemplateType.class));
     registerConverter(new EnumConverter<>(TransferDirection.class));
     registerConverter(new EnumConverter<>(UseMode.class));
@@ -284,6 +299,14 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(InterfaceCompatibilityMode.class));
     registerConverter(new EnumConverter<>(DateFractions.class));
     registerConverter(new EnumConverter<>(CodeSeries.class));
+    registerConverter(new EnumConverter<>(HierarchyType.class));
+    registerConverter(new EnumConverter<>(ChoiceDataGetMode.class));
+    registerConverter(new EnumConverter<>(ChoiceHistoryOnInputMode.class));
+    registerConverter(new EnumConverter<>(SearchStringMode.class));
+    registerConverter(new EnumConverter<>(CommandRepresentation.class));
+    registerConverter(new EnumConverter<>(FillChecking.class));
+    registerConverter(new EnumConverter<>(DefaultPresentation.class));
+    registerConverter(new EnumConverter<>(RegisterWriteMode.class));
   }
 
   private void init() {
@@ -334,6 +357,7 @@ public class ExtendXStream extends XStream {
     alias("Configuration", ConfigurationTree.class);
     alias("ExternalDataProcessor", ExternalDataProcessor.class);
     alias("ExternalReport", ExternalReport.class);
+    alias("AdditionalIndexes", AdditionalIndexesWrapper.class);
   }
 
   @Nullable

@@ -112,7 +112,7 @@ class MDClassesSolutionTest {
     assertThat(cf.getDocuments()).hasSize(1);
     assertThat(cf.getEnums()).hasSize(1);
     assertThat(cf.getDataProcessors()).hasSize(1);
-    assertThat(cf.getPlainChildren().stream().map(MD::getMdoRef).sorted()).hasSize(71);
+    assertThat(cf.getPlainChildren().stream().map(MD::getMdoRef).sorted()).hasSize(65);
 
     assertThat(cf.getModulesByType()).hasSize(7)
       .containsValue(ModuleType.FormModule)
@@ -142,7 +142,7 @@ class MDClassesSolutionTest {
     assertThat(cf.getDocuments()).hasSize(1);
     assertThat(cf.getEnums()).isEmpty();
     assertThat(cf.getDataProcessors()).hasSize(1);
-    assertThat(cf.getPlainChildren().stream().map(MD::getMdoRef).sorted()).hasSize(39);
+    assertThat(cf.getPlainChildren().stream().map(MD::getMdoRef).sorted()).hasSize(35);
 
     assertThat(cf.getModulesByType()).hasSize(4)
       .containsValue(ModuleType.FormModule)

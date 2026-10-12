@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -143,5 +145,94 @@ class CatalogTest {
     Assertions.assertThat(catalog.getPlainStorageFields(), true)
       .containsAllPlain(catalog.getAttributes(),
         catalog.getTabularSections());
+
+    // --- BasedOn ---
+    assertThat(catalog.getBasedOn()).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, ssl_3_1, Catalogs.ШаблоныСообщений",
+    "false, ssl_3_1, Catalogs.ШаблоныСообщений",
+    "true, ssl_3_2, Catalogs.ШаблоныСообщений",
+    "false, ssl_3_2, Catalogs.ШаблоныСообщений"
+  })
+  void testBasedOn(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Catalog.class);
+
+    var catalog = (Catalog) mdo;
+    assertThat(catalog).isNotNull();
+
+    assertThat(catalog.getBasedOn())
+      .containsExactlyInAnyOrder(
+        MdoReference.create("Document.ЭлектронноеПисьмоИсходящее")
+      );
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "true, mdclasses_3_27, Catalogs.Справочник1",
+      "false, mdclasses_3_27, Catalogs.Справочник1"
+    }
+  )
+  void testAdditionalIndexes(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Catalog.class);
+
+    var catalog = (Catalog) mdo;
+    assertThat(catalog).isNotNull();
+
+    assertThat(catalog.getAdditionalIndexes()).hasSize(2);
+
+    var index1 = catalog.getAdditionalIndexes().get(0);
+    assertThat(index1.getName()).isEqualTo("Индекс1");
+    assertThat(index1.getUuid()).isEqualTo("00000000-0000-0000-0000-000000000000");
+    assertThat(index1.getTable()).isEqualTo(MdoReference.create("Catalog.Справочник1"));
+    assertThat(index1.isClustered()).isFalse();
+    assertThat(index1.getIndexedFields()).hasSize(2);
+    assertThat(index1.getIndexedFields()).extracting(MdoReference::getMdoRef)
+      .containsExactly("Catalog.Справочник1.StandardAttribute.Code", "Catalog.Справочник1.Attribute.Реквизит1");
+    assertThat(index1.getAdditionalFields()).hasSize(2);
+    assertThat(index1.getAdditionalFields()).extracting(MdoReference::getMdoRef)
+      .containsExactly("Catalog.Справочник1.Attribute.Реквизит4", "Catalog.Справочник1.StandardAttribute.Predefined");
+    assertThat(index1.getFields()).hasSize(4);
+    assertThat(index1.getFields()).extracting(MdoReference::getMdoRef)
+      .containsExactly(
+        "Catalog.Справочник1.StandardAttribute.Code",
+        "Catalog.Справочник1.Attribute.Реквизит1",
+        "Catalog.Справочник1.Attribute.Реквизит4",
+        "Catalog.Справочник1.StandardAttribute.Predefined"
+      );
+
+    var index2 = catalog.getAdditionalIndexes().get(1);
+    assertThat(index2.getName()).isEqualTo("Индекс2");
+    assertThat(index2.getUuid()).isEqualTo("4bf0a294-aae4-4965-b9f7-b1eaf3b4d021");
+    assertThat(index2.getTable()).isEqualTo(MdoReference.create("Catalog.Справочник1"));
+    assertThat(index2.isClustered()).isFalse();
+    assertThat(index2.getIndexedFields()).hasSize(2);
+    assertThat(index2.getIndexedFields()).extracting(MdoReference::getMdoRef)
+      .containsExactly("Catalog.Справочник1.StandardAttribute.Ref", "Catalog.Справочник1.StandardAttribute.Code");
+    assertThat(index2.getAdditionalFields()).hasSize(1);
+    assertThat(index2.getAdditionalFields()).extracting(MdoReference::getMdoRef)
+      .containsExactly("Catalog.Справочник1.StandardAttribute.DeletionMark");
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, Catalogs.Справочник1",
+    "false, mdclasses_3_27, Catalogs.Справочник1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Catalog.class);
+
+    var catalog = (Catalog) mdo;
+    assertThat(catalog).isNotNull();
+
+    assertThat(catalog.getCodeLength()).isEqualTo(9);
+    assertThat(catalog.getDescriptionLength()).isEqualTo(25);
+    assertThat(catalog.getDefaultPresentation()).isEqualTo(DefaultPresentation.AS_DESCRIPTION);
   }
 }

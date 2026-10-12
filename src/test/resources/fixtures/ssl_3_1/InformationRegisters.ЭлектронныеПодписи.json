@@ -1,5 +1,46 @@
 {
  "com.github._1c_syntax.bsl.mdo.InformationRegister": {
+  "possibleRights": [
+   "EDIT",
+   "EDIT_DATA_HISTORY_VERSION_COMMENT",
+   "READ",
+   "READ_DATA_HISTORY",
+   "READ_DATA_HISTORY_OF_MISSING_DATA",
+   "SWITCH_TO_DATA_HISTORY_VERSION",
+   "TOTALS_CONTROL",
+   "UPDATE",
+   "UPDATE_DATA_HISTORY",
+   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+   "UPDATE_DATA_HISTORY_SETTINGS",
+   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+   "VIEW",
+   "VIEW_DATA_HISTORY"
+  ],
+  "description": "Электронные подписи",
+  "writeMode": "INDEPENDENT",
+  "explanation": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+  },
+  "uuid": "b50f3157-3c3a-4553-a16a-7fcd660e2824",
+  "mdoRef": "InformationRegister.ЭлектронныеПодписи",
+  "supportVariant": "NOT_EDITABLE",
+  "informationRegisterPeriodicity": "NONPERIODICAL",
+  "auxiliaryListForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Электронные подписи"
+    }
+   ]
+  },
+  "objectBelonging": "OWN",
+  "commands": [],
+  "fullTextSearch": "DONT_USE",
   "mdoType": "INFORMATION_REGISTER",
   "defaultFormMap": [
    "AUX_LIST_FORM",
@@ -22,43 +63,15 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/auxiliaryListForm"
   },
-  "possibleRights": [
-   "EDIT",
-   "EDIT_DATA_HISTORY_VERSION_COMMENT",
-   "READ",
-   "READ_DATA_HISTORY",
-   "READ_DATA_HISTORY_OF_MISSING_DATA",
-   "SWITCH_TO_DATA_HISTORY_VERSION",
-   "TOTALS_CONTROL",
-   "UPDATE",
-   "UPDATE_DATA_HISTORY",
-   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
-   "UPDATE_DATA_HISTORY_SETTINGS",
-   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
-   "VIEW",
-   "VIEW_DATA_HISTORY"
-  ],
   "templates": [],
-  "description": "Электронные подписи",
   "resources": [
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Дата проверки подписи"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ДатаПроверкиПодписи",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]\/type"
     },
@@ -68,26 +81,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.ДатаПроверкиПодписи"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Дата проверки подписи"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ДатаПроверкиПодписи",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Комментарий"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "Комментарий",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]\/type"
     },
@@ -97,26 +111,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.Комментарий"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Комментарий"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "Комментарий",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Подпись"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "Подпись",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "types": [
       "VALUE_STORAGE"
@@ -130,26 +145,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.Подпись"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Подпись"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "Подпись",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Дата подписи"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ДатаПодписи",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]\/type"
     },
@@ -159,26 +175,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.ДатаПодписи"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Дата подписи"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ДатаПодписи",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Срок действия последней метки времени"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "СрокДействияПоследнейМеткиВремени",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]\/type"
     },
@@ -188,26 +205,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.СрокДействияПоследнейМеткиВремени"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Срок действия последней метки времени"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "СрокДействияПоследнейМеткиВремени",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Установивший подпись"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "УстановившийПодпись",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[6]\/type"
     },
@@ -217,26 +235,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.УстановившийПодпись"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Установивший подпись"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "УстановившийПодпись",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Требуется проверка"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ТребуетсяПроверка",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/type"
     },
@@ -246,26 +265,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.ТребуетсяПроверка"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Требуется проверка"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ТребуетсяПроверка",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Тип подписи"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ТипПодписи",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "types": [
       {
@@ -286,26 +306,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.ТипПодписи"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Тип подписи"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ТипПодписи",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Отпечаток"
-      }
-     ]
-    },
+    "fullTextSearch": "DONT_USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "Отпечаток",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "types": [
       "STRING"
@@ -324,26 +345,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.Отпечаток"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Отпечаток"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "Отпечаток",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Подпись верна"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "ПодписьВерна",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/type"
     },
@@ -353,26 +375,27 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.ПодписьВерна"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Подпись верна"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ПодписьВерна",
+    "objectBelonging": "OWN",
+    "comment": ""
    },
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Кому выдан сертификат"
-      }
-     ]
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "КомуВыданСертификат",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]\/type"
     },
@@ -382,17 +405,24 @@
      "type": "RESOURCE",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Resource.КомуВыданСертификат"
     },
-    "supportVariant": "NOT_EDITABLE"
+    "supportVariant": "NOT_EDITABLE",
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Кому выдан сертификат"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "КомуВыданСертификат",
+    "objectBelonging": "OWN",
+    "comment": ""
    }
   ],
-  "explanation": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-  },
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
-  "uuid": "b50f3157-3c3a-4553-a16a-7fcd660e2824",
-  "mdoRef": "InformationRegister.ЭлектронныеПодписи",
   "modules": [
    {
     "owner": {
@@ -400,27 +430,11 @@
     },
     "isProtected": false,
     "moduleType": "ManagerModule",
-    "uri": "src\/test\/resources\/ssl_3_1\/InformationRegisters\/ЭлектронныеПодписи\/ManagerModule.bsl",
     "supportVariant": "NOT_EDITABLE"
    }
   ],
-  "supportVariant": "NOT_EDITABLE",
-  "informationRegisterPeriodicity": "NONPERIODICAL",
   "auxiliaryRecordForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/auxiliaryListForm"
-  },
-  "auxiliaryListForm": {
-   "mdoRefRu": "",
-   "type": "UNKNOWN",
-   "mdoRef": ""
-  },
-  "synonym": {
-   "content": [
-    {
-     "langKey": "ru",
-     "value": "Электронные подписи"
-    }
-   ]
   },
   "name": "ЭлектронныеПодписи",
   "attributes": [
@@ -430,6 +444,7 @@
      "type": "INFORMATION_REGISTER",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -474,6 +489,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -523,6 +539,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -563,6 +580,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -603,6 +621,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -643,6 +662,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -694,6 +714,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -734,6 +755,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "indexing": "INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -778,6 +800,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -818,6 +841,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -854,6 +878,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -900,6 +925,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -944,6 +970,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -980,11 +1007,9 @@
    }
   ],
   "comment": "",
-  "objectBelonging": "OWN",
   "defaultRecordForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/auxiliaryListForm"
   },
-  "commands": [],
   "forms": [
    {
     "owner": {
@@ -1019,7 +1044,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/ssl_3_1\/InformationRegisters\/ЭлектронныеПодписи\/Forms\/ОбоснованиеДостоверностиПодписи\/Module.bsl",
       "supportVariant": "NOT_EDITABLE"
      }
     ],
@@ -1031,6 +1055,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "useInTotals": true,
@@ -1054,6 +1079,7 @@
      "type": "DIMENSION",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Dimension.ПодписанныйОбъект"
     },
+    "baseDimension": false,
     "supportVariant": "NOT_EDITABLE",
     "master": true,
     "synonym": {
@@ -1074,6 +1100,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.InformationRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "useInTotals": true,
@@ -1096,6 +1123,7 @@
      "type": "DIMENSION",
      "mdoRef": "InformationRegister.ЭлектронныеПодписи.Dimension.ПорядковыйНомер"
     },
+    "baseDimension": false,
     "supportVariant": "NOT_EDITABLE",
     "master": false,
     "synonym": {

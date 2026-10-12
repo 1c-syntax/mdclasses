@@ -1,5 +1,6 @@
 {
  "com.github._1c_syntax.bsl.mdo.Document": {
+  "choiceHistoryOnInput": "AUTO",
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -64,6 +65,7 @@
   "synonym": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
   },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
   "tabularSections": [
    {
     "owner": {
@@ -80,6 +82,7 @@
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/tabularSections\/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection\/mdoReference"
       },
+      "fullTextSearch": "USE",
       "indexing": "DONT_INDEX",
       "kind": "CUSTOM",
       "multiLine": false,
@@ -115,6 +118,7 @@
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/tabularSections\/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection\/mdoReference"
       },
+      "fullTextSearch": "USE",
       "indexing": "DONT_INDEX",
       "kind": "CUSTOM",
       "multiLine": false,
@@ -161,6 +165,7 @@
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/tabularSections\/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection\/mdoReference"
       },
+      "fullTextSearch": "DONT_USE",
       "kind": "STANDARD",
       "multiLine": false,
       "format": {
@@ -214,6 +219,7 @@
    }
   ],
   "objectBelonging": "OWN",
+  "basedOn": [],
   "commands": [
    {
     "owner": {
@@ -243,7 +249,6 @@
       },
       "isProtected": false,
       "moduleType": "CommandModule",
-      "uri": "src\/test\/resources\/mdclasses\/Documents\/Документ1\/Commands\/Команда\/CommandModule.bsl",
       "supportVariant": "NONE"
      }
     ],
@@ -272,13 +277,15 @@
       },
       "isProtected": false,
       "moduleType": "CommandModule",
-      "uri": "src\/test\/resources\/mdclasses\/Documents\/Документ1\/Commands\/Команда2\/CommandModule.bsl",
       "supportVariant": "NONE"
      }
     ],
     "supportVariant": "NONE"
    }
   ],
+  "dataLockControlMode": "MANAGED",
+  "fullTextSearch": "USE",
+  "characteristics": [],
   "mdoType": "DOCUMENT",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
@@ -318,10 +325,14 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[5]"
   },
+  "createOnInput": "USE",
   "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [],
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
+  "numberLength": 9,
   "defaultChoiceForm": {
    "mdoRefRu": "Документ.Документ1.Форма.ФормаВыбора",
    "type": "FORM",
@@ -334,7 +345,6 @@
     },
     "isProtected": false,
     "moduleType": "ManagerModule",
-    "uri": "src\/test\/resources\/mdclasses\/Documents\/Документ1\/ManagerModule.bsl",
     "supportVariant": "NONE"
    },
    {
@@ -343,7 +353,6 @@
     },
     "isProtected": false,
     "moduleType": "ObjectModule",
-    "uri": "src\/test\/resources\/mdclasses\/Documents\/Документ1\/ObjectModule.bsl",
     "supportVariant": "NONE"
    }
   ],
@@ -358,6 +367,7 @@
      "type": "DOCUMENT",
      "mdoRef": "Document.Документ1"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -402,6 +412,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -447,6 +458,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -490,6 +502,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -534,6 +547,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -579,6 +593,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -619,6 +634,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -655,6 +671,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -703,6 +720,7 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/auxiliaryChoiceForm"
   },
   "comment": "",
+  "searchStringModeOnInputByString": "BEGIN",
   "forms": [
    {
     "owner": {
@@ -735,7 +753,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/mdclasses\/Documents\/Документ1\/Forms\/ФормаДокумента\/Module.bsl",
       "supportVariant": "NONE"
      }
     ],
@@ -772,7 +789,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/mdclasses\/Documents\/Документ1\/Forms\/ФормаВыбора\/Module.bsl",
       "supportVariant": "NONE"
      }
     ],
@@ -809,11 +825,15 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/mdclasses\/Documents\/Документ1\/Forms\/ФормаСписка\/Module.bsl",
       "supportVariant": "NONE"
      }
     ],
     "supportVariant": "NONE"
+   }
+  ],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Document\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/mdoReference"
    }
   ]
  }

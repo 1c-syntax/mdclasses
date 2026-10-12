@@ -1,77 +1,15 @@
 {
  "com.github._1c_syntax.bsl.mdo.Catalog": {
   "codeSeries": "WHOLE_CATALOG",
-  "possibleRights": [
-   "DELETE",
-   "EDIT",
-   "EDIT_DATA_HISTORY_VERSION_COMMENT",
-   "INPUT_BY_STRING",
-   "INSERT",
-   "INTERACTIVE_CLEAR_DELETION_MARK",
-   "INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA",
-   "INTERACTIVE_DELETE",
-   "INTERACTIVE_DELETE_MARKED",
-   "INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA",
-   "INTERACTIVE_DELETE_PREDEFINED_DATA",
-   "INTERACTIVE_INSERT",
-   "INTERACTIVE_SET_DELETION_MARK",
-   "INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA",
-   "READ",
-   "READ_DATA_HISTORY",
-   "READ_DATA_HISTORY_OF_MISSING_DATA",
-   "SWITCH_TO_DATA_HISTORY_VERSION",
-   "UPDATE",
-   "UPDATE_DATA_HISTORY",
-   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
-   "UPDATE_DATA_HISTORY_SETTINGS",
-   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
-   "VIEW",
-   "VIEW_DATA_HISTORY"
-  ],
-  "auxiliaryFolderChoiceForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "defaultFolderChoiceForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "description": "Справочник1",
+  "choiceHistoryOnInput": "AUTO",
+  "hierarchyType": "HIERARCHY_FOLDERS_AND_ITEMS",
   "owners": [],
-  "predefinedValues": [
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
-    },
-    "code": "000000001",
-    "folder": false,
-    "name": "ПредопределенныйЭлемент",
-    "description": "Предопределенный элемент",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "childItems": [],
-    "uuid": "79adb5f1-7224-4404-98a7-d7ed155f6232",
-    "mdoReference": {
-     "mdoRefRu": "Справочник.Справочник1.Предопределенный.ПредопределенныйЭлемент",
-     "type": "PREDEFINED_VALUE",
-     "mdoRef": "Catalog.Справочник1.Predefined.ПредопределенныйЭлемент"
-    },
-    "supportVariant": "NONE"
-   }
-  ],
   "explanation": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
   },
   "uuid": "eeef463d-d5e7-42f2-ae53-10279661f59d",
   "mdoRef": "Catalog.Справочник1",
-  "supportVariant": "NONE",
-  "auxiliaryListForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "synonym": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
-  },
+  "hierarchical": false,
   "checkUnique": true,
   "tabularSections": [
    {
@@ -89,6 +27,7 @@
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/tabularSections\/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection\/mdoReference"
       },
+      "fullTextSearch": "USE",
       "indexing": "DONT_INDEX",
       "kind": "CUSTOM",
       "multiLine": false,
@@ -124,6 +63,7 @@
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/tabularSections\/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection\/mdoReference"
       },
+      "fullTextSearch": "USE",
       "indexing": "DONT_INDEX",
       "kind": "CUSTOM",
       "multiLine": false,
@@ -159,6 +99,7 @@
       "owner": {
        "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/tabularSections\/com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection\/mdoReference"
       },
+      "fullTextSearch": "DONT_USE",
       "kind": "STANDARD",
       "multiLine": false,
       "format": {
@@ -236,19 +177,153 @@
       },
       "isProtected": false,
       "moduleType": "CommandModule",
-      "uri": "src\/test\/resources\/mdclasses\/Catalogs\/Справочник1\/Commands\/Команда1\/CommandModule.bsl",
       "supportVariant": "NONE"
      }
     ],
     "supportVariant": "NONE"
    }
   ],
-  "mdoType": "CATALOG",
+  "dataLockControlMode": "MANAGED",
+  "levelCount": 2,
+  "fullTextSearch": "USE",
   "auxiliaryChoiceForm": {
    "mdoRefRu": "",
    "type": "UNKNOWN",
    "mdoRef": ""
   },
+  "defaultListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[9]"
+  },
+  "createOnInput": "USE",
+  "templates": [
+   {
+    "templateType": "SPREADSHEET_DOCUMENT",
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Макет"
+      }
+     ]
+    },
+    "name": "Макет",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "42def71b-52cc-4e34-8a08-82f0dfcd47bf",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Справочник1.Макет.Макет",
+     "type": "TEMPLATE",
+     "mdoRef": "Catalog.Справочник1.Template.Макет"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [],
+  "defaultChoiceForm": {
+   "mdoRefRu": "Справочник.Справочник1.Форма.ФормаВыбора",
+   "type": "FORM",
+   "mdoRef": "Catalog.Справочник1.Form.ФормаВыбора"
+  },
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "supportVariant": "NONE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": true,
+    "moduleType": "ObjectModule",
+    "supportVariant": "NONE"
+   }
+  ],
+  "defaultFolderForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "name": "Справочник1",
+  "auxiliaryFolderForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "possibleRights": [
+   "DELETE",
+   "EDIT",
+   "EDIT_DATA_HISTORY_VERSION_COMMENT",
+   "INPUT_BY_STRING",
+   "INSERT",
+   "INTERACTIVE_CLEAR_DELETION_MARK",
+   "INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA",
+   "INTERACTIVE_DELETE",
+   "INTERACTIVE_DELETE_MARKED",
+   "INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA",
+   "INTERACTIVE_DELETE_PREDEFINED_DATA",
+   "INTERACTIVE_INSERT",
+   "INTERACTIVE_SET_DELETION_MARK",
+   "INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA",
+   "READ",
+   "READ_DATA_HISTORY",
+   "READ_DATA_HISTORY_OF_MISSING_DATA",
+   "SWITCH_TO_DATA_HISTORY_VERSION",
+   "UPDATE",
+   "UPDATE_DATA_HISTORY",
+   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+   "UPDATE_DATA_HISTORY_SETTINGS",
+   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+   "VIEW",
+   "VIEW_DATA_HISTORY"
+  ],
+  "auxiliaryFolderChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "defaultFolderChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "description": "Справочник1",
+  "predefinedValues": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
+    },
+    "code": "000000001",
+    "folder": false,
+    "name": "ПредопределенныйЭлемент",
+    "description": "Предопределенный элемент",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "childItems": [],
+    "uuid": "79adb5f1-7224-4404-98a7-d7ed155f6232",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Справочник1.Предопределенный.ПредопределенныйЭлемент",
+     "type": "PREDEFINED_VALUE",
+     "mdoRef": "Catalog.Справочник1.Predefined.ПредопределенныйЭлемент"
+    },
+    "supportVariant": "NONE"
+   }
+  ],
+  "supportVariant": "NONE",
+  "auxiliaryListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "synonym": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
+  },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
+  "basedOn": [],
+  "descriptionLength": 25,
+  "characteristics": [],
+  "mdoType": "CATALOG",
+  "codeLength": 9,
   "defaultFormMap": [
    "AUX_CHOICE_FORM",
    {
@@ -295,73 +370,14 @@
     "mdoRef": "Catalog.Справочник1.Form.ФормаЭлемента"
    }
   ],
-  "defaultListForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[9]"
-  },
-  "templates": [
-   {
-    "templateType": "SPREADSHEET_DOCUMENT",
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Макет"
-      }
-     ]
-    },
-    "data": {
-     "@class": "com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData"
-    },
-    "name": "Макет",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "uuid": "42def71b-52cc-4e34-8a08-82f0dfcd47bf",
-    "mdoReference": {
-     "mdoRefRu": "Справочник.Справочник1.Макет.Макет",
-     "type": "TEMPLATE",
-     "mdoRef": "Catalog.Справочник1.Template.Макет"
-    },
-    "supportVariant": "NONE"
-   }
-  ],
+  "defaultPresentation": "AS_DESCRIPTION",
+  "limitLevelCount": false,
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
-  "defaultChoiceForm": {
-   "mdoRefRu": "Справочник.Справочник1.Форма.ФормаВыбора",
-   "type": "FORM",
-   "mdoRef": "Catalog.Справочник1.Form.ФормаВыбора"
-  },
-  "modules": [
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "isProtected": false,
-    "moduleType": "ManagerModule",
-    "uri": "src\/test\/resources\/mdclasses\/Catalogs\/Справочник1\/ManagerModule.bsl",
-    "supportVariant": "NONE"
-   },
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "isProtected": true,
-    "moduleType": "ObjectModule",
-    "uri": "src\/test\/resources\/mdclasses\/Catalogs\/Справочник1\/ObjectModule.bsl",
-    "supportVariant": "NONE"
-   }
-  ],
   "defaultObjectForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[10]"
   },
-  "defaultFolderForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "name": "Справочник1",
   "attributes": [
    {
     "owner": {
@@ -369,6 +385,7 @@
      "type": "CATALOG",
      "mdoRef": "Catalog.Справочник1"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -414,6 +431,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -453,6 +471,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -497,6 +516,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -535,6 +555,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -580,6 +601,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -625,6 +647,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -670,6 +693,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -706,6 +730,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -742,14 +767,15 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
     },
     "fullName": {
-     "nameRu": "Родитель",
-     "nameEn": "Parent"
+     "nameRu": "Ссылка",
+     "nameEn": "Ref"
     },
     "editFormat": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
@@ -770,42 +796,6 @@
     },
     "uuid": "eeef463d-d5e7-42f2-ae53-10279661f59d",
     "mdoReference": {
-     "mdoRefRu": "Справочник.Справочник1.СтандартныйРеквизит.Родитель",
-     "type": "STANDARD_ATTRIBUTE",
-     "mdoRef": "Catalog.Справочник1.StandardAttribute.Parent"
-    },
-    "supportVariant": "NONE",
-    "fillFromFillingValue": false,
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
-    },
-    "passwordMode": false,
-    "comment": "",
-    "markNegatives": false,
-    "extendedEdit": false,
-    "mask": ""
-   },
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "kind": "STANDARD",
-    "multiLine": false,
-    "format": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
-    },
-    "fullName": {
-     "nameRu": "Ссылка",
-     "nameEn": "Ref"
-    },
-    "editFormat": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[7]\/type"
-    },
-    "uuid": "eeef463d-d5e7-42f2-ae53-10279661f59d",
-    "mdoReference": {
      "mdoRefRu": "Справочник.Справочник1.СтандартныйРеквизит.Ссылка",
      "type": "STANDARD_ATTRIBUTE",
      "mdoRef": "Catalog.Справочник1.StandardAttribute.Ref"
@@ -820,51 +810,14 @@
     "markNegatives": false,
     "extendedEdit": false,
     "mask": ""
-   },
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "kind": "STANDARD",
-    "multiLine": false,
-    "format": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
-    },
-    "fullName": {
-     "nameRu": "ЭтоГруппа",
-     "nameEn": "IsFolder"
-    },
-    "editFormat": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
-    },
-    "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]\/type"
-    },
-    "uuid": "eeef463d-d5e7-42f2-ae53-10279661f59d",
-    "mdoReference": {
-     "mdoRefRu": "Справочник.Справочник1.СтандартныйРеквизит.ЭтоГруппа",
-     "type": "STANDARD_ATTRIBUTE",
-     "mdoRef": "Catalog.Справочник1.StandardAttribute.IsFolder"
-    },
-    "supportVariant": "NONE",
-    "fillFromFillingValue": false,
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/synonym"
-    },
-    "passwordMode": false,
-    "comment": "",
-    "markNegatives": false,
-    "extendedEdit": false,
-    "mask": ""
    }
   ],
-  "auxiliaryFolderForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
   "auxiliaryObjectForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },
   "comment": "",
+  "searchStringModeOnInputByString": "BEGIN",
+  "foldersOnTop": true,
   "forms": [
    {
     "owner": {
@@ -897,7 +850,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/mdclasses\/Catalogs\/Справочник1\/Forms\/ФормаЭлемента\/Module.bsl",
       "supportVariant": "NONE"
      }
     ],
@@ -934,7 +886,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/mdclasses\/Catalogs\/Справочник1\/Forms\/ФормаСписка\/Module.bsl",
       "supportVariant": "NONE"
      }
     ],
@@ -971,11 +922,18 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/mdclasses\/Catalogs\/Справочник1\/Forms\/ФормаВыбора\/Module.bsl",
       "supportVariant": "NONE"
      }
     ],
     "supportVariant": "NONE"
+   }
+  ],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]\/mdoReference"
    }
   ]
  }

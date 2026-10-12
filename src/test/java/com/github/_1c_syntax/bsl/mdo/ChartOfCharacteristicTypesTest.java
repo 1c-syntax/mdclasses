@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -82,5 +83,23 @@ class ChartOfCharacteristicTypesTest {
       .isEqualTo(MdoReference.create(
         "ChartOfCharacteristicTypes.ОбъектыАдресацииЗадач.Predefined.ВсеОбъектыАдресации"));
     assertThat(chartOfCharacteristicTypes.getChildren()).contains(predefinedValue);
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, ChartOfCharacteristicTypes.ПланВидовХарактеристик1",
+    "false, mdclasses_3_27, ChartOfCharacteristicTypes.ПланВидовХарактеристик1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(ChartOfCharacteristicTypes.class);
+
+    var chartOfCharacteristicTypes = (ChartOfCharacteristicTypes) mdo;
+    assertThat(chartOfCharacteristicTypes).isNotNull();
+
+    assertThat(chartOfCharacteristicTypes.getCodeLength()).isEqualTo(9);
+    assertThat(chartOfCharacteristicTypes.getDescriptionLength()).isEqualTo(25);
+    assertThat(chartOfCharacteristicTypes.getDefaultPresentation())
+      .isEqualTo(DefaultPresentation.AS_DESCRIPTION);
   }
 }

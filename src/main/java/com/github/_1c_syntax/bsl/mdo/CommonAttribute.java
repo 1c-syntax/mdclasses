@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.support.CommonAttributeSeparatedDataUse;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
@@ -46,7 +47,7 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonAttribute implements MDObject, AccessRightsOwner, ValueTypeOwner {
+public class CommonAttribute implements MDObject, AccessRightsOwner, ValueTypeOwner, FullTextSearchOwner {
 
   // todo соединить с атрибутом
 
@@ -88,6 +89,12 @@ public class CommonAttribute implements MDObject, AccessRightsOwner, ValueTypeOw
   UseMode autoUse = UseMode.USE;
 
   /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
+
+  /**
    * Режим пароля. Только для общих реквизитов с типом с типом `Строка`
    */
   boolean passwordMode;
@@ -111,10 +118,12 @@ public class CommonAttribute implements MDObject, AccessRightsOwner, ValueTypeOw
   MdoReference dataSeparationValue = MdoReference.EMPTY;
 
   /**
-   * Использование разделения данных
+   * Использование разделяемых данных.
+   * Определяет режим разделения данных: независимо или независимо и совместно.
+   * Значение по умолчанию: {@link CommonAttributeSeparatedDataUse#UNKNOWN}.
    */
   @Default
-  MdoReference dataSeparationUse = MdoReference.EMPTY;
+  CommonAttributeSeparatedDataUse dataSeparationUse = CommonAttributeSeparatedDataUse.UNKNOWN;
 
   /**
    * Условное разделение

@@ -23,6 +23,7 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -45,6 +46,10 @@ class AccountingRegisterTest {
 
     var accountingRegister = (AccountingRegister) mdo;
     assertThat(accountingRegister).isNotNull();
+
+    // --- AccountingRegister ---
+    assertThat(accountingRegister.getChartOfAccounts())
+      .isEqualTo(MdoReference.create("ChartOfAccounts.ПланСчетов1"));
 
     // --- ModuleOwner ---
     assertThat(accountingRegister.getModuleTypes()).isEmpty();

@@ -22,7 +22,6 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
-import com.github._1c_syntax.bsl.mdo.storage.PredefinedData;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -37,7 +36,7 @@ public class PredefinedDataConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var builder = PredefinedData.builder();
+    var builder = PredefinedDataWrapper.builder();
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       if (ITEM_NODE.equals(reader.getNodeName())) {
@@ -50,6 +49,6 @@ public class PredefinedDataConverter implements ReadConverter {
 
   @Override
   public boolean canConvert(Class type) {
-    return PredefinedData.class.isAssignableFrom(type);
+    return PredefinedDataWrapper.class.isAssignableFrom(type);
   }
 }

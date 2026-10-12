@@ -26,8 +26,10 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -49,7 +51,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class AccumulationRegister implements Register, AccessRightsOwner {
+public class AccumulationRegister implements Register {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
@@ -94,6 +96,13 @@ public class AccumulationRegister implements Register, AccessRightsOwner {
 
   @Singular
   List<ObjectTemplate> templates;
+
+  /**
+   * Дополнительные индексы
+   */
+  @Singular("addAdditionalIndex")
+  List<AdditionalIndex> additionalIndexes;
+
   @Getter(lazy = true)
   List<MD> children = LazyLoader.computeChildren(this);
 
@@ -124,6 +133,12 @@ public class AccumulationRegister implements Register, AccessRightsOwner {
    */
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
 
   /**
    * Возвращает перечень возможных прав доступа

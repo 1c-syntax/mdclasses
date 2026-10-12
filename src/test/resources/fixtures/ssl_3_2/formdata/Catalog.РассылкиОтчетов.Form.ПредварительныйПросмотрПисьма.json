@@ -1,15 +1,169 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
+    "elements": [
+     {
+      "name": "СтраницыТекстПисьмаРасширеннаяПодсказка",
+      "comment": "",
+      "id": 8,
+      "type": "EXTENDED_TOOLTIP",
+      "title": {
+       "content": []
+      }
+     },
+     {
+      "elements": [
+       {
+        "name": "СтраницаТекстПисьмаHTMLРасширеннаяПодсказка",
+        "comment": "",
+        "id": 10,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip\/title"
+        }
+       },
+       {
+        "elements": [
+         {
+          "elements": [],
+          "name": "HTMLТекстКонтекстноеМеню",
+          "comment": "",
+          "id": 2,
+          "type": "CONTEXT_MENU",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip\/title"
+          }
+         },
+         {
+          "name": "HTMLТекстРасширеннаяПодсказка",
+          "comment": "",
+          "id": 3,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip\/title"
+          }
+         }
+        ],
+        "name": "HTMLТекст",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 1,
+        "type": "HTML_DOCUMENT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormSimpleAttribute\/title"
+        },
+        "dataPath": "Текст"
+       }
+      ],
+      "name": "СтраницаТекстПисьмаHTML",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 9,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Страница текст письма HTML"
+        }
+       ]
+      }
+     },
+     {
+      "elements": [
+       {
+        "name": "СтраницаТекстПисьмаОбычныйТекстРасширеннаяПодсказка",
+        "comment": "",
+        "id": 12,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip\/title"
+        }
+       },
+       {
+        "elements": [
+         {
+          "elements": [],
+          "name": "ОбычныйТекстКонтекстноеМеню",
+          "comment": "",
+          "id": 5,
+          "type": "CONTEXT_MENU",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip\/title"
+          }
+         },
+         {
+          "name": "ОбычныйТекстРасширеннаяПодсказка",
+          "comment": "",
+          "id": 6,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip\/title"
+          }
+         }
+        ],
+        "name": "ОбычныйТекст",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 4,
+        "type": "TEXT_DOCUMENT_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormSimpleAttribute\/title"
+        },
+        "dataPath": "Текст"
+       }
+      ],
+      "name": "СтраницаТекстПисьмаОбычныйТекст",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 11,
+      "type": "PAGE",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Страница текст письма обычный текст"
+        }
+       ]
+      }
+     }
+    ],
+    "name": "СтраницыТекстПисьма",
+    "comment": "",
+    "eventHandlers": [],
+    "id": 7,
+    "type": "PAGES",
+    "title": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Страницы текст письма"
+      }
+     ]
+    }
+   },
+   {
+    "elements": [],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "eventHandlers": [],
+    "id": -1,
+    "type": "COMMAND_BAR",
+    "title": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip\/title"
+    }
    }
   ],
   "attributes": [
    {
+    "columns": [],
     "name": "Текст",
+    "useAlwaysFields": [],
+    "fillCheck": "DONT_CHECK",
+    "comment": "",
     "id": 1,
+    "savedData": false,
     "title": {
      "content": [
       {
@@ -29,82 +183,62 @@
        "allowedLength": 0
       }
      ]
-    }
+    },
+    "mainAttribute": false
+   }
+  ],
+  "conditionalAppearanceFields": [],
+  "eventHandlers": [
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
    }
   ],
   "title": {
-   "content": []
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormGroup\/elements\/com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip\/title"
   },
-  "items": [
+  "parameters": [
    {
-    "name": "СтраницыТекстПисьма",
-    "id": 7,
-    "type": "PAGES",
-    "title": {
-     "content": [
+    "name": "АдресКартинокДляHTML",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormSimpleAttribute\/type"
+    }
+   },
+   {
+    "name": "НаименованиеРассылки",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormSimpleAttribute\/type"
+    }
+   },
+   {
+    "name": "Текст",
+    "keyParameter": false,
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormSimpleAttribute\/type"
+    }
+   },
+   {
+    "name": "ТипТекста",
+    "keyParameter": false,
+    "type": {
+     "types": [
       {
-       "langKey": "ru",
-       "value": "Страницы текст письма"
+       "kind": "ENUM",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ПеречислениеСсылка.ТипыТекстовЭлектронныхПисем",
+        "nameEn": "EnumRef.ТипыТекстовЭлектронныхПисем"
+       }
       }
-     ]
-    },
-    "items": [
-     {
-      "name": "СтраницаТекстПисьмаОбычныйТекст",
-      "id": 11,
-      "type": "PAGE",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Страница текст письма обычный текст"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "ОбычныйТекст",
-        "id": 4,
-        "type": "TEXT_DOCUMENT_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-        },
-        "items": [],
-        "dataPath": "Текст"
-       }
-      ],
-      "dataPath": ""
-     },
-     {
-      "name": "СтраницаТекстПисьмаHTML",
-      "id": 9,
-      "type": "PAGE",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Страница текст письма HTML"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "HTMLТекст",
-        "id": 1,
-        "type": "HTML_DOCUMENT_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-        },
-        "items": [],
-        "dataPath": "Текст"
-       }
-      ],
-      "dataPath": ""
-     }
-    ],
-    "dataPath": ""
+     ],
+     "composite": false,
+     "qualifiers": []
+    }
    }
   ],
+  "commands": [],
   "empty": false
  }
 }

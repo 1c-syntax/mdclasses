@@ -1,38 +1,347 @@
 {
  "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData": {
-  "handlers": [
+  "elements": [
    {
-    "name": "ПриСозданииНаСервере",
-    "event": "OnCreateAtServer"
-   }
-  ],
-  "attributes": [
-   {
-    "name": "Список",
-    "id": 1,
+    "elements": [
+     {
+      "commandName": "Form.StandardCommand.Create",
+      "elements": [
+       {
+        "name": "ФормаСоздатьРасширеннаяПодсказка",
+        "comment": "",
+        "id": 20,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        }
+       }
+      ],
+      "name": "ФормаСоздать",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 19,
+      "type": "COMMAND_BAR_BUTTON",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+      }
+     }
+    ],
+    "name": "ФормаКоманднаяПанель",
+    "comment": "",
+    "eventHandlers": [],
+    "id": -1,
+    "type": "COMMAND_BAR",
     "title": {
-     "content": []
-    },
-    "type": {
-     "types": [
-      "DYNAMIC_LIST"
-     ],
-     "composite": false,
-     "qualifiers": []
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
     }
-   }
-  ],
-  "title": {
-   "content": [
-    {
-     "langKey": "ru",
-     "value": "Мои заметки"
-    }
-   ]
-  },
-  "items": [
+   },
    {
+    "rowPictureDataPath": "Список.ИндексКартинки",
+    "elements": [
+     {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокSearchControlContextMenu",
+        "comment": "",
+        "id": 45,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокSearchControlExtendedTooltip",
+        "comment": "",
+        "id": 46,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        }
+       }
+      ],
+      "name": "СписокSearchControl",
+      "comment": "",
+      "id": 44,
+      "type": "SEARCH_CONTROL_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+      }
+     },
+     {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокSearchStringContextMenu",
+        "comment": "",
+        "id": 39,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокSearchStringExtendedTooltip",
+        "comment": "",
+        "id": 40,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        }
+       }
+      ],
+      "name": "СписокSearchString",
+      "comment": "",
+      "id": 38,
+      "type": "SEARCH_STRING_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+      }
+     },
+     {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СписокViewStatusContextMenu",
+        "comment": "",
+        "id": 42,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        }
+       },
+       {
+        "name": "СписокViewStatusExtendedTooltip",
+        "comment": "",
+        "id": 43,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        }
+       }
+      ],
+      "name": "СписокViewStatus",
+      "comment": "",
+      "id": 41,
+      "type": "VIEW_STATUS_ADDITION",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+      }
+     },
+     {
+      "elements": [],
+      "name": "СписокКонтекстноеМеню",
+      "comment": "",
+      "id": 2,
+      "type": "CONTEXT_MENU",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+      }
+     },
+     {
+      "name": "СписокРасширеннаяПодсказка",
+      "comment": "",
+      "id": 11,
+      "type": "EXTENDED_TOOLTIP",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+      }
+     },
+     {
+      "elements": [
+       {
+        "elements": [],
+        "name": "СсылкаКонтекстноеМеню",
+        "comment": "",
+        "id": 36,
+        "type": "CONTEXT_MENU",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        }
+       },
+       {
+        "name": "СсылкаРасширеннаяПодсказка",
+        "comment": "",
+        "id": 37,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        }
+       }
+      ],
+      "name": "Ссылка",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 35,
+      "type": "LABEL_FIELD",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+      },
+      "dataPath": "Список.Ref"
+     },
+     {
+      "elements": [
+       {
+        "name": "СодержаниеРасширеннаяПодсказка",
+        "comment": "",
+        "id": 12,
+        "type": "EXTENDED_TOOLTIP",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        }
+       },
+       {
+        "elements": [
+         {
+          "elements": [],
+          "name": "ПредставлениеЗаметкиКонтекстноеМеню",
+          "comment": "",
+          "id": 5,
+          "type": "CONTEXT_MENU",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+          }
+         },
+         {
+          "name": "ПредставлениеЗаметкиРасширеннаяПодсказка",
+          "comment": "",
+          "id": 13,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+          }
+         }
+        ],
+        "name": "ПредставлениеЗаметки",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 4,
+        "type": "LABEL_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        },
+        "dataPath": "Список.Description"
+       },
+       {
+        "elements": [
+         {
+          "elements": [],
+          "name": "ПредставлениеПредметаКонтекстноеМеню",
+          "comment": "",
+          "id": 10,
+          "type": "CONTEXT_MENU",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+          }
+         },
+         {
+          "name": "ПредставлениеПредметаРасширеннаяПодсказка",
+          "comment": "",
+          "id": 14,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+          }
+         }
+        ],
+        "name": "ПредставлениеПредмета",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 9,
+        "type": "LABEL_FIELD",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        },
+        "dataPath": "Список.ПредставлениеПредмета"
+       }
+      ],
+      "name": "Содержание",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 8,
+      "type": "COLUMN_GROUP",
+      "title": {
+       "content": [
+        {
+         "langKey": "ru",
+         "value": "Содержание"
+        }
+       ]
+      }
+     },
+     {
+      "elements": [
+       {
+        "commandName": "CommonCommand.Напомнить",
+        "elements": [
+         {
+          "name": "ФормаОбщаяКомандаНапомнитьРасширеннаяПодсказка",
+          "comment": "",
+          "id": 16,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+          }
+         }
+        ],
+        "name": "ФормаОбщаяКомандаНапомнить",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 15,
+        "type": "COMMAND_BAR_BUTTON",
+        "title": {
+         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+        }
+       },
+       {
+        "elements": [
+         {
+          "name": "ПодменюОрганайзерРасширеннаяПодсказка",
+          "comment": "",
+          "id": 51,
+          "type": "EXTENDED_TOOLTIP",
+          "title": {
+           "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+          }
+         }
+        ],
+        "name": "ПодменюОрганайзер",
+        "comment": "",
+        "eventHandlers": [],
+        "id": 50,
+        "type": "POPUP",
+        "title": {
+         "content": [
+          {
+           "langKey": "ru",
+           "value": "Органайзер"
+          }
+         ]
+        }
+       }
+      ],
+      "name": "СписокКоманднаяПанель",
+      "comment": "",
+      "eventHandlers": [],
+      "id": 3,
+      "type": "COMMAND_BAR",
+      "title": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute\/title"
+      }
+     }
+    ],
     "name": "Список",
+    "comment": "",
+    "eventHandlers": [
+     {
+      "handler": "СписокПриАктивизацииСтроки",
+      "event": "OnActivateRow"
+     },
+     {
+      "handler": "СписокПриНаведении",
+      "event": "OnHover"
+     }
+    ],
     "id": 1,
     "type": "TABLE",
     "title": {
@@ -43,57 +352,59 @@
       }
      ]
     },
-    "items": [
-     {
-      "name": "Содержание",
-      "id": 8,
-      "type": "COLUMN_GROUP",
-      "title": {
-       "content": [
-        {
-         "langKey": "ru",
-         "value": "Содержание"
-        }
-       ]
-      },
-      "items": [
-       {
-        "name": "ПредставлениеЗаметки",
-        "id": 4,
-        "type": "LABEL_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-        },
-        "items": [],
-        "dataPath": "Список.Description"
-       },
-       {
-        "name": "ПредставлениеПредмета",
-        "id": 9,
-        "type": "LABEL_FIELD",
-        "title": {
-         "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-        },
-        "items": [],
-        "dataPath": "Список.ПредставлениеПредмета"
-       }
-      ],
-      "dataPath": ""
-     },
-     {
-      "name": "Ссылка",
-      "id": 35,
-      "type": "LABEL_FIELD",
-      "title": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.storage.ManagedFormData\/attributes\/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute\/title"
-      },
-      "items": [],
-      "dataPath": "Список.Ref"
-     }
-    ],
     "dataPath": "Список"
    }
   ],
+  "attributes": [
+   {
+    "columns": [],
+    "useAlwaysFields": [
+     "Список.Ref"
+    ],
+    "fillCheck": "DONT_CHECK",
+    "title": {
+     "content": []
+    },
+    "type": {
+     "types": [
+      "DYNAMIC_LIST"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "mainAttribute": true,
+    "mainTable": "Catalog.Заметки",
+    "keyFields": [],
+    "settingsFields": [
+     "ДатаИзменения"
+    ],
+    "name": "Список",
+    "queryText": "ВЫБРАТЬ\n\tСправочникЗаметки.Ссылка,\n\tСправочникЗаметки.ПометкаУдаления,\n\tСправочникЗаметки.Предопределенный,\n\tСправочникЗаметки.Наименование,\n\tСправочникЗаметки.Автор,\n\tСправочникЗаметки.Содержание,\n\tСправочникЗаметки.ТекстСодержания,\n\tСправочникЗаметки.ДляРабочегоСтола,\n\tСправочникЗаметки.Пометка,\n\tВЫБОР\n\t\tКОГДА СправочникЗаметки.ПометкаУдаления\n\t\t\tТОГДА 0\n\t\tКОГДА СправочникЗаметки.ЭтоГруппа\n\t\t\tТОГДА -1\n\t\tКОГДА СправочникЗаметки.Пометка = ЗНАЧЕНИЕ(Перечисление.ЦветаЗаметок.ПустаяСсылка)\n\t\t\tТОГДА 4\n\t\tИНАЧЕ ЕСТЬNULL(ЦветаЗаметок.Порядок, 0) + 2\n\tКОНЕЦ КАК ИндексКартинки,\n\tСправочникЗаметки.ПредставлениеПредмета,\n\tСправочникЗаметки.ДатаИзменения\nИЗ\n\tСправочник.Заметки КАК СправочникЗаметки\n\t\tЛЕВОЕ СОЕДИНЕНИЕ Перечисление.ЦветаЗаметок КАК ЦветаЗаметок\n\t\tПО СправочникЗаметки.Пометка.Порядок = ЦветаЗаметок.Порядок\nГДЕ\n\tСправочникЗаметки.ПометкаУдаления = ЛОЖЬ\n\tИ СправочникЗаметки.Автор = &Пользователь\n\tИ СправочникЗаметки.ДляРабочегоСтола = ИСТИНА",
+    "comment": "",
+    "id": 1,
+    "savedData": false,
+    "fields": [],
+    "keyType": "AUTO",
+    "customQuery": true
+   }
+  ],
+  "conditionalAppearanceFields": [],
+  "eventHandlers": [
+   {
+    "handler": "ПриСозданииНаСервере",
+    "event": "OnCreateAtServer"
+   }
+  ],
+  "title": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Мои заметки"
+    }
+   ]
+  },
+  "parameters": [],
+  "commands": [],
   "empty": false
  }
 }

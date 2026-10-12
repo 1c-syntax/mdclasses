@@ -1,5 +1,39 @@
 {
  "com.github._1c_syntax.bsl.mdo.AccountingRegister": {
+  "possibleRights": [
+   "EDIT",
+   "READ",
+   "TOTALS_CONTROL",
+   "UPDATE",
+   "VIEW"
+  ],
+  "description": "Регистр бухгалтерии",
+  "explanation": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+  },
+  "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+  "mdoRef": "AccountingRegister.РегистрБухгалтерии1",
+  "supportVariant": "NONE",
+  "auxiliaryListForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "synonym": {
+   "content": [
+    {
+     "langKey": "en",
+     "value": "Accounting register"
+    },
+    {
+     "langKey": "ru",
+     "value": "Регистр бухгалтерии"
+    }
+   ]
+  },
+  "objectBelonging": "OWN",
+  "commands": [],
+  "fullTextSearch": "DONT_USE",
   "mdoType": "ACCOUNTING_REGISTER",
   "defaultFormMap": [
    "AUX_LIST_FORM",
@@ -14,29 +48,21 @@
   "defaultListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/auxiliaryListForm"
   },
-  "possibleRights": [
-   "EDIT",
-   "READ",
-   "TOTALS_CONTROL",
-   "UPDATE",
-   "VIEW"
-  ],
+  "correspondence": false,
+  "chartOfAccounts": {
+   "mdoRefRu": "ПланСчетов.ПланСчетов1",
+   "type": "CHART_OF_ACCOUNTS",
+   "mdoRef": "ChartOfAccounts.ПланСчетов1"
+  },
   "templates": [],
-  "description": "Регистр бухгалтерии",
   "resources": [
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
-    "synonym": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
-    },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
-    "passwordMode": false,
-    "name": "Ресурс1",
-    "objectBelonging": "OWN",
-    "comment": "",
     "type": {
      "types": [
       "NUMBER"
@@ -56,36 +82,20 @@
      "type": "RESOURCE",
      "mdoRef": "AccountingRegister.РегистрБухгалтерии1.Resource.Ресурс1"
     },
-    "supportVariant": "NONE"
+    "supportVariant": "NONE",
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "name": "Ресурс1",
+    "objectBelonging": "OWN",
+    "comment": ""
    }
   ],
-  "explanation": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
-  },
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
   },
-  "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
-  "mdoRef": "AccountingRegister.РегистрБухгалтерии1",
   "modules": [],
-  "supportVariant": "NONE",
-  "auxiliaryListForm": {
-   "mdoRefRu": "",
-   "type": "UNKNOWN",
-   "mdoRef": ""
-  },
-  "synonym": {
-   "content": [
-    {
-     "langKey": "en",
-     "value": "Accounting register"
-    },
-    {
-     "langKey": "ru",
-     "value": "Регистр бухгалтерии"
-    }
-   ]
-  },
   "name": "РегистрБухгалтерии1",
   "attributes": [
    {
@@ -94,6 +104,7 @@
      "type": "ACCOUNTING_REGISTER",
      "mdoRef": "AccountingRegister.РегистрБухгалтерии1"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -134,6 +145,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -172,6 +184,155 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "ВидСубконто",
+     "nameEn": "ExtDimensionType"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/type"
+    },
+    "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+    "mdoReference": {
+     "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.СтандартныйРеквизит.ВидСубконто",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccountingRegister.РегистрБухгалтерии1.StandardAttribute.ExtDimensionType"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "ВидСубконто1",
+     "nameEn": "ExtDimensionType1"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/type"
+    },
+    "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+    "mdoReference": {
+     "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.СтандартныйРеквизит.ВидСубконто1",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccountingRegister.РегистрБухгалтерии1.StandardAttribute.ExtDimensionType1"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "ВидСубконто2",
+     "nameEn": "ExtDimensionType2"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/type"
+    },
+    "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+    "mdoReference": {
+     "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.СтандартныйРеквизит.ВидСубконто2",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccountingRegister.РегистрБухгалтерии1.StandardAttribute.ExtDimensionType2"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "ВидСубконто3",
+     "nameEn": "ExtDimensionType3"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/type"
+    },
+    "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+    "mdoReference": {
+     "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.СтандартныйРеквизит.ВидСубконто3",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccountingRegister.РегистрБухгалтерии1.StandardAttribute.ExtDimensionType3"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -218,6 +379,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -262,6 +424,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -298,6 +461,118 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Субконто1",
+     "nameEn": "ExtDimension1"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/type"
+    },
+    "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+    "mdoReference": {
+     "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.СтандартныйРеквизит.Субконто1",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccountingRegister.РегистрБухгалтерии1.StandardAttribute.ExtDimension1"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Субконто2",
+     "nameEn": "ExtDimension2"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/type"
+    },
+    "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+    "mdoReference": {
+     "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.СтандартныйРеквизит.Субконто2",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccountingRegister.РегистрБухгалтерии1.StandardAttribute.ExtDimension2"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "Субконто3",
+     "nameEn": "ExtDimension3"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[2]\/type"
+    },
+    "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+    "mdoReference": {
+     "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.СтандартныйРеквизит.Субконто3",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccountingRegister.РегистрБухгалтерии1.StandardAttribute.ExtDimension3"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -345,6 +620,44 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "fullName": {
+     "nameRu": "ТолькоОбороты",
+     "nameEn": "TurnoversOnly"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/type"
+    },
+    "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
+    "mdoReference": {
+     "mdoRefRu": "РегистрБухгалтерии.РегистрБухгалтерии1.СтандартныйРеквизит.ТолькоОбороты",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "AccountingRegister.РегистрБухгалтерии1.StandardAttribute.TurnoversOnly"
+    },
+    "supportVariant": "NONE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -358,7 +671,7 @@
      "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/synonym"
     },
     "type": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[3]\/type"
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[7]\/type"
     },
     "uuid": "e5930f2f-15d9-48a1-ac69-379ad990b02a",
     "mdoReference": {
@@ -379,14 +692,13 @@
    }
   ],
   "comment": "",
-  "objectBelonging": "OWN",
-  "commands": [],
   "forms": [],
   "dimensions": [
    {
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.AccountingRegister\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "INDEX",
     "kind": "CUSTOM",
     "useInTotals": true,
@@ -408,6 +720,7 @@
      "type": "DIMENSION",
      "mdoRef": "AccountingRegister.РегистрБухгалтерии1.Dimension.Измерение1"
     },
+    "baseDimension": false,
     "supportVariant": "NONE",
     "master": false,
     "synonym": {

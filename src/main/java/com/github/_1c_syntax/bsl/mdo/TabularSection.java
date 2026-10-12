@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Интерфейс табличных частей объектов (включая стандартные ТЧ)
  */
-public interface TabularSection extends MDChild, AttributeOwner {
+public interface TabularSection extends MDChild, AttributeOwner, IndexOwner {
   /**
    * Список реквизитов табличной части
    */

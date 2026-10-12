@@ -1,6 +1,105 @@
 {
  "com.github._1c_syntax.bsl.mdo.Catalog": {
   "codeSeries": "WHOLE_CATALOG",
+  "choiceHistoryOnInput": "AUTO",
+  "hierarchyType": "HIERARCHY_FOLDERS_AND_ITEMS",
+  "owners": [],
+  "explanation": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+  },
+  "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
+  "mdoRef": "Catalog.Заметки",
+  "hierarchical": true,
+  "checkUnique": false,
+  "tabularSections": [],
+  "objectBelonging": "OWN",
+  "commands": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Все заметки"
+      }
+     ]
+    },
+    "name": "ВсеЗаметки",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "fa0e0792-bffb-47ce-866f-9e8dbdab17a4",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Команда.ВсеЗаметки",
+     "type": "COMMAND",
+     "mdoRef": "Catalog.Заметки.Command.ВсеЗаметки"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "dataLockControlMode": "MANAGED",
+  "levelCount": 2,
+  "fullTextSearch": "USE",
+  "auxiliaryChoiceForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "defaultListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "createOnInput": "USE",
+  "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]\/mdoReference"
+   }
+  ],
+  "defaultChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ObjectModule",
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "defaultFolderForm": {
+   "mdoRefRu": "Справочник.Заметки.Форма.ФормаГруппы",
+   "type": "FORM",
+   "mdoRef": "Catalog.Заметки.Form.ФормаГруппы"
+  },
+  "name": "Заметки",
+  "auxiliaryFolderForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
   "possibleRights": [
    "DELETE",
    "EDIT",
@@ -35,13 +134,7 @@
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },
   "description": "Заметки",
-  "owners": [],
   "predefinedValues": [],
-  "explanation": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
-  },
-  "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
-  "mdoRef": "Catalog.Заметки",
   "supportVariant": "NOT_EDITABLE",
   "auxiliaryListForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
@@ -49,51 +142,12 @@
   "synonym": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/synonym"
   },
-  "checkUnique": false,
-  "tabularSections": [],
-  "objectBelonging": "OWN",
-  "commands": [
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "synonym": {
-     "content": [
-      {
-       "langKey": "ru",
-       "value": "Все заметки"
-      }
-     ]
-    },
-    "name": "ВсеЗаметки",
-    "objectBelonging": "OWN",
-    "comment": "",
-    "uuid": "fa0e0792-bffb-47ce-866f-9e8dbdab17a4",
-    "mdoReference": {
-     "mdoRefRu": "Справочник.Заметки.Команда.ВсеЗаметки",
-     "type": "COMMAND",
-     "mdoRef": "Catalog.Заметки.Command.ВсеЗаметки"
-    },
-    "modules": [
-     {
-      "owner": {
-       "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand\/mdoReference"
-      },
-      "isProtected": false,
-      "moduleType": "CommandModule",
-      "uri": "src\/test\/resources\/ssl_3_1\/Catalogs\/Заметки\/Commands\/ВсеЗаметки\/CommandModule.bsl",
-      "supportVariant": "NOT_EDITABLE"
-     }
-    ],
-    "supportVariant": "NOT_EDITABLE"
-   }
-  ],
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
+  "basedOn": [],
+  "descriptionLength": 100,
+  "characteristics": [],
   "mdoType": "CATALOG",
-  "auxiliaryChoiceForm": {
-   "mdoRefRu": "",
-   "type": "UNKNOWN",
-   "mdoRef": ""
-  },
+  "codeLength": 0,
   "defaultFormMap": [
    "AUX_CHOICE_FORM",
    {
@@ -138,45 +192,14 @@
     "mdoRef": "Catalog.Заметки.Form.ФормаЭлемента"
    }
   ],
-  "defaultListForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "templates": [],
+  "defaultPresentation": "AS_DESCRIPTION",
+  "limitLevelCount": false,
   "mdoReference": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
   },
-  "defaultChoiceForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
-  "modules": [
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "isProtected": false,
-    "moduleType": "ManagerModule",
-    "uri": "src\/test\/resources\/ssl_3_1\/Catalogs\/Заметки\/ManagerModule.bsl",
-    "supportVariant": "NOT_EDITABLE"
-   },
-   {
-    "owner": {
-     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
-    },
-    "isProtected": false,
-    "moduleType": "ObjectModule",
-    "uri": "src\/test\/resources\/ssl_3_1\/Catalogs\/Заметки\/ObjectModule.bsl",
-    "supportVariant": "NOT_EDITABLE"
-   }
-  ],
   "defaultObjectForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[10]"
   },
-  "defaultFolderForm": {
-   "mdoRefRu": "Справочник.Заметки.Форма.ФормаГруппы",
-   "type": "FORM",
-   "mdoRef": "Catalog.Заметки.Form.ФормаГруппы"
-  },
-  "name": "Заметки",
   "attributes": [
    {
     "owner": {
@@ -184,6 +207,7 @@
      "type": "CATALOG",
      "mdoRef": "Catalog.Заметки"
     },
+    "fullTextSearch": "USE",
     "indexing": "INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -235,6 +259,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -286,6 +311,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -334,6 +360,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -378,6 +405,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -422,6 +450,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -473,6 +502,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -517,6 +547,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "indexing": "DONT_INDEX",
     "kind": "CUSTOM",
     "multiLine": false,
@@ -561,6 +592,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -599,6 +631,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -635,6 +668,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -671,6 +705,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -712,6 +747,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -748,6 +784,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -784,6 +821,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -836,6 +874,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -872,6 +911,7 @@
     "owner": {
      "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
+    "fullTextSearch": "DONT_USE",
     "kind": "STANDARD",
     "multiLine": false,
     "format": {
@@ -905,13 +945,12 @@
     "mask": ""
    }
   ],
-  "auxiliaryFolderForm": {
-   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
-  },
   "auxiliaryObjectForm": {
    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },
   "comment": "",
+  "searchStringModeOnInputByString": "BEGIN",
+  "foldersOnTop": true,
   "forms": [
    {
     "owner": {
@@ -946,7 +985,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/ssl_3_1\/Catalogs\/Заметки\/Forms\/ЗаметкиПоПредмету\/Module.bsl",
       "supportVariant": "NOT_EDITABLE"
      }
     ],
@@ -985,7 +1023,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/ssl_3_1\/Catalogs\/Заметки\/Forms\/МоиЗаметки\/Module.bsl",
       "supportVariant": "NOT_EDITABLE"
      }
     ],
@@ -1019,7 +1056,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/ssl_3_1\/Catalogs\/Заметки\/Forms\/ВсеЗаметки\/Module.bsl",
       "supportVariant": "NOT_EDITABLE"
      }
     ],
@@ -1056,7 +1092,6 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/ssl_3_1\/Catalogs\/Заметки\/Forms\/ФормаЭлемента\/Module.bsl",
       "supportVariant": "NOT_EDITABLE"
      }
     ],
@@ -1093,11 +1128,15 @@
       },
       "isProtected": false,
       "moduleType": "FormModule",
-      "uri": "src\/test\/resources\/ssl_3_1\/Catalogs\/Заметки\/Forms\/ФормаГруппы\/Module.bsl",
       "supportVariant": "NOT_EDITABLE"
      }
     ],
     "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]\/mdoReference"
    }
   ]
  }

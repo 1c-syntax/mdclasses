@@ -26,10 +26,13 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
 import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
+import com.github._1c_syntax.bsl.mdo.support.RegisterWriteMode;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
@@ -50,7 +53,7 @@ import java.util.Map;
 @Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class InformationRegister implements Register, AccessRightsOwner {
+public class InformationRegister implements Register {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
@@ -96,6 +99,12 @@ public class InformationRegister implements Register, AccessRightsOwner {
   @Singular
   List<ObjectTemplate> templates;
 
+  /**
+   * Дополнительные индексы
+   */
+  @Singular("addAdditionalIndex")
+  List<AdditionalIndex> additionalIndexes;
+
   @Getter(lazy = true)
   List<MD> children = LazyLoader.computeChildren(this);
 
@@ -108,6 +117,14 @@ public class InformationRegister implements Register, AccessRightsOwner {
    */
   @Default
   InformationRegisterPeriodicity informationRegisterPeriodicity = InformationRegisterPeriodicity.NONPERIODICAL;
+
+  /**
+   * Режим записи регистра сведений.
+   * Определяет, может ли регистр писаться независимо или только в составе документа-регистратора.
+   * Значение по умолчанию: {@link RegisterWriteMode#INDEPENDENT}.
+   */
+  @Default
+  RegisterWriteMode writeMode = RegisterWriteMode.INDEPENDENT;
 
   /**
    * Ссылка на форму списка по умолчанию
@@ -144,6 +161,12 @@ public class InformationRegister implements Register, AccessRightsOwner {
    */
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
+  /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
 
   /**
    * Возвращает перечень возможных прав доступа

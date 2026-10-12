@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.test_utils;
 import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
 import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
+import com.github._1c_syntax.bsl.mdo.AdditionalIndexOwner;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Form;
@@ -33,7 +34,8 @@ import com.github._1c_syntax.bsl.mdo.ModuleOwner;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
-import com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem;
+import com.github._1c_syntax.bsl.mdo.storage.RoleData;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementOwner;
 import com.github._1c_syntax.bsl.reader.MDOReader;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.Qualifier;
@@ -279,8 +281,10 @@ public class Fixtures {
             xstream.omitField(clazz, "modulesByObject");
             xstream.omitField(clazz, "commonModulesByName");
             xstream.omitField(clazz, "childrenByMdoRef");
+            xstream.omitField(clazz, "indexesByMdoRef");
             xstream.omitField(clazz, "configurationSource");
             xstream.omitField(clazz, "configurationExtensionCompatibilityMode");
+            xstream.omitField(clazz, "defaultFormMap");
           }
 
           if (ExternalSource.class.isAssignableFrom(clazz)) {
@@ -298,6 +302,10 @@ public class Fixtures {
             xstream.omitField(clazz, "plainStorageFields");
           }
 
+          if (AdditionalIndexOwner.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "additionalIndexes");
+          }
+
           if (Form.class.isAssignableFrom(clazz)) {
             xstream.omitField(clazz, "data");
           }
@@ -311,9 +319,13 @@ public class Fixtures {
             xstream.omitField(clazz, "plainDataSets");
           }
 
-          if (ManagedFormData.class.isAssignableFrom(clazz)
-            || SimpleFormItem.class.isAssignableFrom(clazz)) {
-            xstream.omitField(clazz, "plainItems");
+          if (FormElementOwner.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "plainElements");
+          }
+
+          if (ManagedFormData.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "plainAttributes");
+            xstream.omitField(clazz, "plainEventHandlers");
           }
 
           if (Module.class.isAssignableFrom(clazz)) {
@@ -322,6 +334,14 @@ public class Fixtures {
 
           if (Qualifier.class.isAssignableFrom(clazz)) {
             xstream.omitField(clazz, "description");
+          }
+
+          if (RoleData.RestrictionTemplate.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "condition");
+          }
+
+          if (RoleData.Right.class.isAssignableFrom(clazz)) {
+            xstream.omitField(clazz, "restrictionCondition");
           }
 
         } catch (ClassNotFoundException e) {

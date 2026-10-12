@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -75,5 +76,40 @@ class ChartOfAccountsTest {
 
     // --- PredefinedDataOwner ---
     assertThat(chartOfAccounts.getPredefinedValues()).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, ChartsOfAccounts.ПланСчетов1",
+    "false, mdclasses_3_27, ChartsOfAccounts.ПланСчетов1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(ChartOfAccounts.class);
+
+    var chartOfAccounts = (ChartOfAccounts) mdo;
+    assertThat(chartOfAccounts).isNotNull();
+
+    assertThat(chartOfAccounts.getCodeLength()).isEqualTo(9);
+    assertThat(chartOfAccounts.getDescriptionLength()).isEqualTo(30);
+    assertThat(chartOfAccounts.getOrderLength()).isZero();
+    assertThat(chartOfAccounts.getDefaultPresentation()).isEqualTo(DefaultPresentation.AS_CODE);
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses, ChartsOfAccounts.ПланСчетов1",
+    "false, mdclasses, ChartsOfAccounts.ПланСчетов1"
+  })
+  void shouldReadMaxExtDimensionCount(ArgumentsAccessor argumentsAccessor) {
+    // given
+    var mdo = Fixtures.get(argumentsAccessor);
+
+    // when
+    var chartOfAccounts = (ChartOfAccounts) mdo;
+
+    // then
+    assertThat(chartOfAccounts).isNotNull();
+    assertThat(chartOfAccounts.getMaxExtDimensionCount()).isEqualTo(3);
   }
 }

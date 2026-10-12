@@ -19,40 +19,25 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with MDClasses.
  */
-package com.github._1c_syntax.bsl.reader.edt.converter;
+package com.github._1c_syntax.bsl.reader.designer.converter;
 
-import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
-import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import org.jspecify.annotations.Nullable;
 
 /**
- * Конвертор данных управляемой формы в формате ЕДТ
+ * Конвертор обработчика события формы в формате конфигуратора
  */
-@EDTConverter
-public class FormItemConverter implements ReadConverter {
-
+@DesignerConverter
+public class FormEventHandlerConverter implements ReadConverter {
   @Override
-  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipFormElementItems()) {
-      return null;
-    }
-    var readerContext = new FormElementReaderContext(reader.getNodeName(), reader);
-    var attributeType = reader.getAttribute("type");
-    Unmarshaller.unmarshal(reader, context, readerContext);
-    if (readerContext.getElementType() == null) {
-      readerContext.setValue("type", FormElementType.valueByName(attributeType.replace("form:", "")));
-    }
-    return readerContext.build();
+    return FormEventHandler.create(reader.getAttribute("name"), reader.getValue());
   }
 
   @Override
   public boolean canConvert(Class type) {
-    return FormItem.class.isAssignableFrom(type);
+    return type == FormEventHandler.class;
   }
 }

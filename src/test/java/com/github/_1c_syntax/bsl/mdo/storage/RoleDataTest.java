@@ -56,10 +56,54 @@ class RoleDataTest {
 
   @Test
   void testRight() {
-    var right = new RoleData.Right(RoleRight.READ, true);
+    var right = new RoleData.Right(RoleRight.READ, true, "");
 
     assertThat(right).isNotNull();
     assertThat(right.name()).isEqualTo(RoleRight.READ);
     assertThat(right.value()).isTrue();
+    assertThat(right.restrictionCondition()).isEmpty();
+  }
+
+  @Test
+  void testRightWithRestriction() {
+    var right = new RoleData.Right(RoleRight.READ, true, "ГДЕ ИСТИНА");
+
+    assertThat(right).isNotNull();
+    assertThat(right.name()).isEqualTo(RoleRight.READ);
+    assertThat(right.value()).isTrue();
+    assertThat(right.restrictionCondition()).isEqualTo("ГДЕ ИСТИНА");
+  }
+
+  @Test
+  void testRestrictionTemplate() {
+    var template = new RoleData.RestrictionTemplate("ДляОбъекта(ПолеОбъекта)", "ГДЕ ИСТИНА");
+
+    assertThat(template).isNotNull();
+    assertThat(template.name()).isEqualTo("ДляОбъекта(ПолеОбъекта)");
+    assertThat(template.condition()).isEqualTo("ГДЕ ИСТИНА");
+  }
+
+  @Test
+  void testRestrictionTemplateEmpty() {
+    var template = new RoleData.RestrictionTemplate("", "");
+
+    assertThat(template).isNotNull();
+    assertThat(template.name()).isEmpty();
+    assertThat(template.condition()).isEmpty();
+  }
+
+  @Test
+  void testBuilderWithRestrictionTemplates() {
+    var template1 = new RoleData.RestrictionTemplate("ДляОбъекта(ПолеОбъекта)", "ГДЕ ИСТИНА");
+    var template2 = new RoleData.RestrictionTemplate("ДляРегистра(Регистр, Поле1)", "ГДЕ ЛОЖЬ");
+    var roleData = RoleData.builder()
+      .restrictionTemplate(template1)
+      .restrictionTemplate(template2)
+      .build();
+
+    assertThat(roleData).isNotNull();
+    assertThat(roleData.restrictionTemplates()).hasSize(2);
+    assertThat(roleData.restrictionTemplates().get(0).name()).isEqualTo("ДляОбъекта(ПолеОбъекта)");
+    assertThat(roleData.restrictionTemplates().get(1).name()).isEqualTo("ДляРегистра(Регистр, Поле1)");
   }
 }

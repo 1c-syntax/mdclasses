@@ -24,10 +24,10 @@ package com.github._1c_syntax.bsl.mdo;
 import java.util.List;
 
 /**
- * Базовый интерфейс для всех ссылочных типов (Справочники, Документы, ПВХ и т.д.)
+ * Базовый интерфейс для всех ссылочных типов (Справочники, Документы, ПВХ, Перечисления и т.д.)
  */
-public interface ReferenceObject extends MDObject, ModuleOwner, CommandOwner, AttributeOwner, TabularSectionOwner,
-  FormOwner, TemplateOwner {
+public interface ReferenceObject extends MDObject, ModuleOwner, CommandOwner, AttributeOwner, FormOwner,
+  TemplateOwner, CharacteristicOwner {
 
   /**
    * Список реквизитов объекта
