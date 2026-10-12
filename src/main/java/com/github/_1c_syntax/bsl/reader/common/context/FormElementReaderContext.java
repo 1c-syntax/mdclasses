@@ -35,6 +35,7 @@ import com.github._1c_syntax.bsl.mdo.storage.form.FormParameter;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormTable;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormUnknown;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
+import com.github._1c_syntax.utils.StringInterner;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
@@ -53,6 +54,7 @@ public class FormElementReaderContext extends AbstractReaderContext {
   private static final Class<?> DEFAULT_CLASS_FORM_ELEMENT = FormUnknown.class;
   private static final Map<String, Class<?>> CLASSES = fillClassesMap();
   private static final Map<FormElementType, Class<?>> ELEMENT_CLASSES = fillElementClasses();
+  private static final StringInterner STRING_INTERNER = new StringInterner();
 
   /**
    * Имя узла XML (не перетирается именем читаемого объекта в отличие от {@link #getName()})
@@ -115,7 +117,7 @@ public class FormElementReaderContext extends AbstractReaderContext {
    */
   @Override
   public void setValue(String methodName, @Nullable Object value) {
-    super.setValue(methodName, value instanceof String text ? text.intern() : value);
+    super.setValue(methodName, value instanceof String text ? STRING_INTERNER.intern(text) : value);
   }
 
   @Override
