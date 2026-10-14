@@ -7,9 +7,9 @@ plugins {
     jacoco
     id("cloud.rio.license") version "0.18.0"
     id("me.qoomon.git-versioning") version "6.4.4"
-    id("io.freefair.lombok") version "9.5.0"
-    id("io.freefair.javadoc-links") version "9.5.0"
-    id("io.freefair.javadoc-utf-8") version "9.5.0"
+    id("io.freefair.lombok") version "9.8.0"
+    id("io.freefair.javadoc-links") version "9.8.0"
+    id("io.freefair.javadoc-utf-8") version "9.8.0"
     id("com.github.ben-manes.versions") version "0.61.0"
     id("ru.vyarus.pom") version "3.0.0"
     id("org.jreleaser") version "1.26.0"
