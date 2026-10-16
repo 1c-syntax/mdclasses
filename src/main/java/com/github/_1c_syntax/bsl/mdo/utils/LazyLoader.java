@@ -60,6 +60,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Набор методов для ленивой загрузки данных в MD/MDC
@@ -304,14 +305,22 @@ public class LazyLoader {
    * @return Немодифицируемый список дочерних объектов
    */
   public List<FormElement> computePlainFormElements(FormElementOwner element) {
-    List<FormElement> items = addAll(Collections.emptyList(), element.getElements());
-    items = addAll(items, items.stream()
+    // Список запоминается у каждого элемента формы, поэтому без лишних объектов: у элемента без
+    // дочерних — общий пустой, без вложенных — сам список дочерних, иначе — один список точного размера.
+    var elements = element.getElements();
+    if (elements.isEmpty()) {
+      return Collections.emptyList();
+    }
+    var nested = elements.stream()
       .filter(FormElementOwner.class::isInstance)
       .map(FormElementOwner.class::cast)
       .map(FormElementOwner::getPlainElements)
-      .flatMap(Collection::stream)
-      .toList());
-    return Collections.unmodifiableList(items);
+      .filter(plain -> !plain.isEmpty())
+      .toList();
+    if (nested.isEmpty()) {
+      return Collections.unmodifiableList(elements);
+    }
+    return Stream.concat(elements.stream(), nested.stream().flatMap(Collection::stream)).toList();
   }
 
   /**
