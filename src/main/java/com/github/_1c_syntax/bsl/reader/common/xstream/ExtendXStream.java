@@ -66,6 +66,7 @@ import com.github._1c_syntax.bsl.reader.common.converter.CommonConverter;
 import com.github._1c_syntax.bsl.reader.common.converter.EnumConverter;
 import com.github._1c_syntax.bsl.types.DateFractions;
 import com.github._1c_syntax.bsl.types.ScriptVariant;
+import com.github._1c_syntax.utils.StringInterner;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
@@ -112,6 +113,12 @@ import java.util.function.Function;
 @Slf4j
 @Getter
 public class ExtendXStream extends XStream {
+
+  /**
+   * Строки элементов форм одного чтения: одинаковые имена, заголовки и пути данных у тысяч
+   * элементов хранятся одним экземпляром, а сам интернер живёт столько же, сколько чтение.
+   */
+  private final StringInterner formStrings = new StringInterner();
 
   public ExtendXStream(MDReader reader, ClassLoaderReference classLoaderReference, Mapper mapper) {
     super(new PureJavaReflectionProvider(), new ExtendStaxDriver(reader), classLoaderReference, mapper);
