@@ -42,6 +42,7 @@ import java.util.List;
 public class DataCompositionSchemaConverter implements ReadConverter {
 
   private static final String DATASET_NODE_NAME = "dataSet";
+  private static final String SETTINGS_VARIANT_NODE_NAME = "settingsVariant";
 
   @SneakyThrows
   @Override
@@ -51,17 +52,20 @@ public class DataCompositionSchemaConverter implements ReadConverter {
     }
 
     List<DataCompositionSchema.DataSet> dataSets = new ArrayList<>();
+    List<DataCompositionSchema.SettingsVariant> settingsVariants = new ArrayList<>();
 
     // линейно читаем файл
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       if (DATASET_NODE_NAME.equals(reader.getNodeName())) {
         dataSets.add(ExtendXStream.readValue(context, DataCompositionSchema.DataSet.class));
+      } else if (SETTINGS_VARIANT_NODE_NAME.equals(reader.getNodeName())) {
+        settingsVariants.add(ExtendXStream.readValue(context, DataCompositionSchema.SettingsVariant.class));
       }
       reader.moveUp();
     }
 
-    return new DataCompositionSchema(dataSets, ((ExtendReaderWrapper) reader).getPath().toUri());
+    return new DataCompositionSchema(dataSets, settingsVariants, ((ExtendReaderWrapper) reader).getPath().toUri());
   }
 
   @Override

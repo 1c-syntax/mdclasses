@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdo.storage;
 
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Singular;
@@ -44,6 +45,11 @@ public class DataCompositionSchema implements TemplateData {
   List<DataSet> dataSets;
 
   /**
+   * Варианты отчета
+   */
+  List<SettingsVariant> settingsVariants;
+
+  /**
    * Плоский список наборов данных
    */
   @Getter(lazy = true)
@@ -56,7 +62,12 @@ public class DataCompositionSchema implements TemplateData {
   URI dataPath;
 
   public DataCompositionSchema(List<DataSet> dataSetsTree, URI path) {
+    this(dataSetsTree, List.of(), path);
+  }
+
+  public DataCompositionSchema(List<DataSet> dataSetsTree, List<SettingsVariant> settingsVariants, URI path) {
     dataSets = dataSetsTree;
+    this.settingsVariants = settingsVariants;
     dataPath = path;
   }
 
@@ -101,5 +112,12 @@ public class DataCompositionSchema implements TemplateData {
    * @param name     Имя поля
    */
   public record DataSetField(String dataPath, String name) {
+  }
+
+  /**
+   * @param name         Имя варианта отчета
+   * @param presentation Представление варианта отчета
+   */
+  public record SettingsVariant(String name, MultiLanguageString presentation) {
   }
 }
