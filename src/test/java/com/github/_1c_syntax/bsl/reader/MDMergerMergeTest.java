@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
 import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.api.Test;
@@ -109,6 +110,7 @@ class MDMergerMergeTest {
     // Расширение содержит 2 справочника: Справочник1 (adopted) и Справочник2 (новый)
     assertThat(merged.getCatalogs()).hasSize(2);
     assertThat(merged.getCatalogs().getFirst().getAttributes()).isNotEmpty();
+    assertThat(merged.getUsePurposes()).containsExactly(UsePurposes.PLATFORM_APPLICATION);
   }
 
   @ParameterizedTest

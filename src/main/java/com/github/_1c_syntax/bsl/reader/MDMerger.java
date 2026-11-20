@@ -91,6 +91,7 @@ public class MDMerger {
         .interfaceCompatibilityMode(extension.getInterfaceCompatibilityMode())
         .compatibilityMode(extension.getCompatibilityMode())
         .defaultRunMode(extension.getDefaultRunMode())
+        .usePurposes(extension.getUsePurposes())
         .defaultConstantsForm(extension.getDefaultConstantsForm())
         .defaultReportForm(extension.getDefaultReportForm())
         .defaultReportVariantForm(extension.getDefaultReportVariantForm())
