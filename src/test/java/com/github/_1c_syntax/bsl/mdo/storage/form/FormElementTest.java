@@ -180,6 +180,23 @@ class FormElementTest {
   }
 
   @ParameterizedTest
+  @CsvSource({
+    "true, ssl_3_1, CommonForms.ФормаОтчета",
+    "false, ssl_3_1, CommonForms.ФормаОтчета"
+  })
+  void shouldReadExtendedTooltipEventHandlers(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(CommonForm.class);
+
+    var plainElements = ((CommonForm) mdo).getData().getPlainElements();
+    var tooltip = findElement(plainElements, "ПоказательРасширеннаяПодсказка");
+    assertThat(tooltip).isInstanceOf(FormExtendedTooltip.class);
+    assertThat(((FormEventHandlerOwner) tooltip).getEventHandlers())
+      .containsExactly(FormEventHandler.create(
+        "URLProcessing", "ПоказательРасширеннаяПодсказкаОбработкаНавигационнойСсылки"));
+  }
+
+  @ParameterizedTest
   @MethodSource("formFileProvider")
   void shouldReadFormElementCounts(boolean formatEDT, String pack, String parentRef, String formRef,
                                    int total, Map<String, Long> expectedClasses, Map<String, Long> expectedTypes) {
