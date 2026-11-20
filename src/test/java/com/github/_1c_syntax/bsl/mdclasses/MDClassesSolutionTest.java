@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.MD;
+import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
@@ -152,5 +153,7 @@ class MDClassesSolutionTest {
       .hasSize(4)
       .containsValue(cf.findChild(MdoReference.create("Catalog.Расш1_Справочник3.Form.ФормаЭлемента")).get())
     ;
+
+    assertThat(solution.getUsePurposes()).containsExactly(UsePurposes.PLATFORM_APPLICATION);
   }
 }
