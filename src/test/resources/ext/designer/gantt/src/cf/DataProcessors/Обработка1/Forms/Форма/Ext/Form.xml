@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.17">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<ChildItems>
+		<InputField name="Поле" id="1">
+			<DataPath>Поле</DataPath>
+			<ContextMenu name="ПолеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="ПолеРасширеннаяПодсказка" id="3"/>
+			<Events>
+				<Event name="OnChange">ПолеПриИзменении</Event>
+			</Events>
+		</InputField>
+		<GanttChartField name="Диаграмма" id="4">
+			<DataPath>Диаграмма</DataPath>
+			<Table name="ДиаграммаТаблица" id="7">
+				<DataPath>Диаграмма</DataPath>
+				<ContextMenu name="ДиаграммаТаблицаКонтекстноеМеню" id="8"/>
+				<AutoCommandBar name="ДиаграммаТаблицаКоманднаяПанель" id="9"/>
+				<ExtendedTooltip name="ДиаграммаТаблицаРасширеннаяПодсказка" id="10"/>
+				<SearchStringAddition name="Addition" id="0">
+					<Enabled>false</Enabled>
+					<AdditionSource>
+						<Item>ДиаграммаТаблица</Item>
+						<Type>SearchStringRepresentation</Type>
+					</AdditionSource>
+					<ContextMenu name="FormContextMenu" id="0"/>
+					<ExtendedTooltip name="FormExtendedTooltip" id="0"/>
+				</SearchStringAddition>
+				<ViewStatusAddition name="Addition" id="0">
+					<Enabled>false</Enabled>
+					<AdditionSource>
+						<Item>ДиаграммаТаблица</Item>
+						<Type>ViewStatusRepresentation</Type>
+					</AdditionSource>
+					<ContextMenu name="FormContextMenu" id="0"/>
+					<ExtendedTooltip name="FormExtendedTooltip" id="0"/>
+				</ViewStatusAddition>
+				<SearchControlAddition name="Addition" id="0">
+					<Enabled>false</Enabled>
+					<AdditionSource>
+						<Item>ДиаграммаТаблица</Item>
+						<Type>SearchControl</Type>
+					</AdditionSource>
+					<ContextMenu name="FormContextMenu" id="0"/>
+					<ExtendedTooltip name="FormExtendedTooltip" id="0"/>
+				</SearchControlAddition>
+				<Events>
+					<Event name="OnActivateRow">ДиаграммаТаблицаПриАктивизацииСтроки</Event>
+				</Events>
+				<ChildItems>
+					<InputField name="ДиаграммаТаблицаТекст" id="11">
+						<DataPath>Диаграмма.Text</DataPath>
+						<ContextMenu name="ДиаграммаТаблицаТекстКонтекстноеМеню" id="12"/>
+						<ExtendedTooltip name="ДиаграммаТаблицаТекстРасширеннаяПодсказка" id="13"/>
+						<Events>
+							<Event name="OnChange">ДиаграммаТаблицаТекстПриИзменении</Event>
+						</Events>
+					</InputField>
+				</ChildItems>
+			</Table>
+			<ContextMenu name="ДиаграммаКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ДиаграммаРасширеннаяПодсказка" id="6"/>
+		</GanttChartField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.Обработка1</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="Поле" id="2">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Диаграмма" id="3">
+			<Type>
+				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.2/data/chart">d5p1:GanttChart</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

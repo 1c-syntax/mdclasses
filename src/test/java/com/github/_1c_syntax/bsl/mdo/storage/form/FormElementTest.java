@@ -26,6 +26,7 @@ import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.CommonForm;
 import com.github._1c_syntax.bsl.mdo.Form;
+import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -177,6 +178,47 @@ class FormElementTest {
     assertThat(tree.getEventHandlers()).hasSize(1);
     assertThat(tree.getEventHandlers().getFirst().event()).isEqualTo("Selection");
     assertThat(tree.getEventHandlers().getFirst().handler()).isEqualTo("ДеревоРазделовВыбор");
+  }
+
+  @ParameterizedTest
+  @CsvSource({"true", "false"})
+  void shouldReadTableInsideGanttChartField(boolean formatEDT) {
+    var formData = getGanttFormData(formatEDT);
+    assertGanttTable(formData);
+  }
+
+  private static FormData getGanttFormData(boolean formatEDT) {
+    var mdo = Fixtures.get("gantt", "DataProcessors.Обработка1", formatEDT);
+    assertThat(mdo).isInstanceOf(ChildrenOwner.class);
+
+    var formOpt = ((ChildrenOwner) mdo).findChild("DataProcessor.Обработка1.Form.Форма");
+    assertThat(formOpt).isPresent();
+
+    var formData = ((Form) formOpt.get()).getData();
+    assertThat(formData).isNotNull();
+    return formData;
+  }
+
+  private static void assertGanttTable(FormData formData) {
+    var gantt = (FormField) findElement(formData.getElements(), "Диаграмма");
+    assertThat(gantt).isNotNull();
+    assertThat(gantt.getType()).isEqualTo(FormElementType.GANTT_CHART_FIELD);
+
+    var table = (FormTable) findElement(gantt.getElements(), "ДиаграммаТаблица");
+    assertThat(table).isNotNull();
+    assertThat(table.getType()).isEqualTo(FormElementType.TABLE);
+
+    var column = (FormField) findElement(table.getElements(), "ДиаграммаТаблицаТекст");
+    assertThat(column).isNotNull();
+    assertThat(column.getType()).isEqualTo(FormElementType.INPUT_FIELD);
+    assertThat(column.getDataPath()).isEqualTo("Диаграмма.Text");
+
+    assertThat(((FormEventHandlerOwner) table).getEventHandlers())
+      .containsExactly(FormEventHandler.create(
+        "OnActivateRow", "ДиаграммаТаблицаПриАктивизацииСтроки"));
+    assertThat(((FormEventHandlerOwner) column).getEventHandlers())
+      .containsExactly(FormEventHandler.create(
+        "OnChange", "ДиаграммаТаблицаТекстПриИзменении"));
   }
 
   @ParameterizedTest

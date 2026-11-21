@@ -49,7 +49,9 @@ public class FormElementConverter implements ReadConverter {
 
     var attributeType = reader.getAttribute("type");
     if (attributeType == null) {
-      attributeType = nodeName;
+      // Таблица диаграммы Ганта в EDT лежит в узле autoTable без xsi:type,
+      // но по структуре является обычной таблицей формы
+      attributeType = "autoTable".equals(nodeName) ? FormElementType.TABLE.name() : nodeName;
     }
 
     var elementType = FormElementType.valueByName(attributeType.replace("form:", ""));
