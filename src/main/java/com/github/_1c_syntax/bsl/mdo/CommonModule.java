@@ -30,12 +30,13 @@ import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.ToString;
 import lombok.Value;
 
 import java.net.URI;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Value
 @Builder(toBuilder = true)
@@ -73,8 +74,15 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
 
   boolean isProtected;
 
-  @Getter(lazy = true)
-  List<Module> modules = List.of(this);
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  public List<Module> getModules() {
+    if (modules.isEmpty() || modules.size() == 1 && Objects.equals(modules.getFirst().getUri(), uri)) {
+      return List.of(this);
+    }
+    return modules;
+  }
 
   /*
    * Свое

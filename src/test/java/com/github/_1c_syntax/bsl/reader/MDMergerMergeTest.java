@@ -25,9 +25,13 @@ import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
 import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.MD;
+import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
@@ -230,5 +234,73 @@ class MDMergerMergeTest {
 
     Assertions.assertThat(Fixtures.asJson(desMerged), true)
       .isEqual(Fixtures.asJson(edtMerged));
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "false, mdclasses, mdclasses_ext",
+      "true, mdclasses, mdclasses_ext"
+    }
+  )
+  void testMergePreservesAdoptedCommonModuleUri(ArgumentsAccessor argumentsAccessor) {
+    var isEDT = argumentsAccessor.getBoolean(0);
+    var basePack = argumentsAccessor.getString(1);
+    var extPack = argumentsAccessor.getString(2);
+
+    var settings = MDCReadSettings.DEFAULT;
+    var base = (Configuration) MDClasses.createConfigurations(basePath(isEDT, basePack), settings).stream()
+      .filter(Configuration.class::isInstance)
+      .findFirst().orElseThrow();
+    var ext = (ConfigurationExtension) MDClasses.createConfigurations(basePath(isEDT, extPack), settings).stream()
+      .filter(ConfigurationExtension.class::isInstance)
+      .findFirst().orElseThrow();
+
+    var extUri = ext.findCommonModule("ПростойОбщийМодуль").orElseThrow().getUri();
+    var baseUri = base.findCommonModule("ПростойОбщийМодуль").orElseThrow().getUri();
+
+    var merged = MDMerger.merge(base, ext);
+
+    assertThat(merged.findChild(extUri))
+      .get()
+      .extracting(MD::getMdoReference)
+      .isEqualTo(MdoReference.create("CommonModule.ПростойОбщийМодуль"));
+    assertThat(merged.getModuleTypeByURI(extUri)).isEqualTo(ModuleType.CommonModule);
+
+    assertThat(merged.findCommonModule("ПростойОбщийМодуль").orElseThrow().getModules())
+      .extracting(Module::getUri)
+      .containsExactlyInAnyOrder(baseUri, extUri);
+  }
+
+  @ParameterizedTest
+  @CsvSource(
+    {
+      "false, mdclasses, mdclasses_ext",
+      "true, mdclasses, mdclasses_ext"
+    }
+  )
+  void testMergeDoesNotAddPhantomCommonModuleUri(ArgumentsAccessor argumentsAccessor) {
+    var isEDT = argumentsAccessor.getBoolean(0);
+    var basePack = argumentsAccessor.getString(1);
+    var extPack = argumentsAccessor.getString(2);
+
+    var settings = MDCReadSettings.DEFAULT;
+    var base = (Configuration) MDClasses.createConfigurations(basePath(isEDT, basePack), settings).stream()
+      .filter(Configuration.class::isInstance)
+      .findFirst().orElseThrow();
+    var ext = (ConfigurationExtension) MDClasses.createConfigurations(basePath(isEDT, extPack), settings).stream()
+      .filter(ConfigurationExtension.class::isInstance)
+      .findFirst().orElseThrow();
+
+    var moduleName = "ОбщийМодульВызовСервера";
+    var extUri = ext.findCommonModule(moduleName).orElseThrow().getUri();
+    var baseUri = base.findCommonModule(moduleName).orElseThrow().getUri();
+
+    var merged = MDMerger.merge(base, ext);
+
+    assertThat(merged.findCommonModule(moduleName).orElseThrow().getModules())
+      .extracting(Module::getUri)
+      .containsExactly(baseUri)
+      .doesNotContain(extUri);
   }
 }
