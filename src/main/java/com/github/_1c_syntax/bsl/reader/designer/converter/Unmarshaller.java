@@ -90,6 +90,7 @@ public class Unmarshaller {
     "AutoCommandBar", "elements",
     "ContextMenu", "elements",
     "ExtendedTooltip", "elements",
+    "Table", "elements",
     "SearchControlAddition", "elements",
     "ViewStatusAddition", "elements",
     "SearchStringAddition", "elements",

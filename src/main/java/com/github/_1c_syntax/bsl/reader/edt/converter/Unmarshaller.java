@@ -33,6 +33,7 @@ import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormGroup;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormTable;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.FormAttributeWrapper;
@@ -79,6 +80,7 @@ public class Unmarshaller {
     Map.entry("items", new ClassField(FormElement.class, "elements")),
     Map.entry("contextMenu", new ClassField(FormContextMenu.class, "elements")),
     Map.entry("extendedTooltip", new ClassField(FormExtendedTooltip.class, "elements")),
+    Map.entry("autoTable", new ClassField(FormTable.class, "elements")),
     Map.entry("autoCommandBar", new ClassField(FormGroup.class, "elements")),
     Map.entry("searchControlAddition", new ClassField(FormAddition.class, "elements")),
     Map.entry("viewStatusAddition", new ClassField(FormAddition.class, "elements")),
