@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import org.jspecify.annotations.Nullable;
 
 import java.net.URI;
 
@@ -39,7 +40,7 @@ public interface Module {
   /**
    * Ссылка на файл bsl модуля
    */
-  URI getUri();
+  @Nullable URI getUri();
 
   /**
    * Вариант поддержки родительской конфигурации

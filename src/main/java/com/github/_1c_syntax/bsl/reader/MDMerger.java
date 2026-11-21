@@ -31,6 +31,7 @@ import com.github._1c_syntax.bsl.mdo.ChartOfAccounts;
 import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.Command;
 import com.github._1c_syntax.bsl.mdo.CommandOwner;
+import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.Enum;
 import com.github._1c_syntax.bsl.mdo.ExternalDataSource;
 import com.github._1c_syntax.bsl.mdo.Form;
@@ -53,12 +54,13 @@ import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceFunction;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
-import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.experimental.UtilityClass;
 import org.jspecify.annotations.Nullable;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -78,6 +80,7 @@ public class MDMerger {
    *
    * @param cf        Основная конфигурация
    * @param extension Добавляемое расширение
+   *
    * @return Объединенная конфигурация
    */
   public static Configuration merge(Configuration cf, ConfigurationExtension extension) {
@@ -108,8 +111,10 @@ public class MDMerger {
         .auxiliaryDefaultDynamicListSettingsForm(extension.getAuxiliaryDefaultDynamicListSettingsForm())
         .auxiliaryDefaultDataHistoryChangeHistoryForm(extension.getAuxiliaryDefaultDataHistoryChangeHistoryForm())
         .auxiliaryDefaultDataHistoryVersionDataForm(extension.getAuxiliaryDefaultDataHistoryVersionDataForm())
-        .auxiliaryDefaultDataHistoryVersionDifferencesForm(extension.getAuxiliaryDefaultDataHistoryVersionDifferencesForm())
-        .auxiliaryDefaultCollaborationSystemUsersChoiceForm(extension.getAuxiliaryDefaultCollaborationSystemUsersChoiceForm());
+        .auxiliaryDefaultDataHistoryVersionDifferencesForm(
+          extension.getAuxiliaryDefaultDataHistoryVersionDifferencesForm())
+        .auxiliaryDefaultCollaborationSystemUsersChoiceForm(
+          extension.getAuxiliaryDefaultCollaborationSystemUsersChoiceForm());
     }
 
     List<MD> newChildren = new ArrayList<>();
@@ -182,11 +187,12 @@ public class MDMerger {
   }
 
   /**
-   * Последовательное слияние базовой конфигурации со списком расширений.
-   * Каждое следующее расширение применяется к результату предыдущего.
+   * Последовательное слияние базовой конфигурации со списком расширений. Каждое следующее расширение применяется к
+   * результату предыдущего.
    *
    * @param base       Базовая конфигурация
    * @param extensions Список расширений (в порядке применения)
+   *
    * @return MergeResult с конфигурацией и происхождениями
    */
   public static MergeResult mergeAll(Configuration base, List<ConfigurationExtension> extensions) {
@@ -208,6 +214,7 @@ public class MDMerger {
    *
    * @param source     Исходный список модулей
    * @param additional Список модулей копируемого объекта
+   *
    * @return Объединенный список
    */
   private static List<Module> mergeModules(List<Module> source, List<Module> additional) {
@@ -243,11 +250,9 @@ public class MDMerger {
   }
 
   /**
-   * Выполняет объединение коллекций дочерних объектов.
-   * Объединение работает следующим образом
-   * - получается список объектов, несовпадающих по именам - это новые, все добавляются в итоговый список
-   * - получается список объектов, по которым имена совпадают. Для них создаются копии (рекурсивно). Копии включаются
-   * в итоговый список
+   * Выполняет объединение коллекций дочерних объектов. Объединение работает следующим образом - получается список
+   * объектов, несовпадающих по именам - это новые, все добавляются в итоговый список - получается список объектов, по
+   * которым имена совпадают. Для них создаются копии (рекурсивно). Копии включаются в итоговый список
    *
    * @param <T>         Тип дочерних объектов
    * @param <K>         Тип объединяемых объектов
@@ -255,6 +260,7 @@ public class MDMerger {
    * @param copy        Объединяемый расширение
    * @param getList     Метод получения списка дочерних
    * @param newChildren Накопительный список всех дочерних
+   *
    * @return Итоговый список дочерних
    */
   private static <T extends MD, K> List<T> mergeMD(K source,
@@ -307,7 +313,10 @@ public class MDMerger {
   private static <T extends MD> T copyModuleOwner(T srcMD, T modMD) {
     if (srcMD instanceof ModuleOwner moduleOwner) {
       var source = moduleOwner.getModules();
-      var merge = mergeModules(source, ((ModuleOwner) modMD).getModules());
+      var additional = ((ModuleOwner) modMD).getModules().stream()
+        .filter(MDMerger::hasModuleFile)
+        .toList();
+      var merge = mergeModules(source, additional);
       if (source != merge) { // список модулей изменился, создадим копию
         var builder = TransformationUtils.toBuilder(srcMD);
         if (builder == null) { // такого не бывает, но проверка нужна для спокойствия jwm
@@ -320,6 +329,25 @@ public class MDMerger {
       }
     }
     return srcMD;
+  }
+
+  /**
+   * Отбрасывает self-заглушки CommonModule, для которых файл Module.bsl отсутствует. Такие заглушки создаются
+   * конвертером с uri несуществующего файла и не должны попадать в индексы слитой конфигурации.
+   */
+  private static boolean hasModuleFile(Module module) {
+    if (!(module instanceof CommonModule)) {
+      return true;
+    }
+    var uri = module.getUri();
+    if (uri == null) {
+      return false;
+    }
+    try {
+      return Files.isRegularFile(Path.of(uri));
+    } catch (RuntimeException e) {
+      return false;
+    }
   }
 
   @SuppressWarnings("unchecked")
@@ -346,8 +374,7 @@ public class MDMerger {
   }
 
   /**
-   * Проверяет, является ли дочерний объект «специальным» (обрабатывается отдельно,
-   * а не через общий список children).
+   * Проверяет, является ли дочерний объект «специальным» (обрабатывается отдельно, а не через общий список children).
    */
   private static boolean isSpecialChild(MD child) {
     return child instanceof Form
@@ -358,7 +385,6 @@ public class MDMerger {
       || child instanceof PredefinedValue
       || child instanceof EnumValue
       || child instanceof Recalculation
-      || child instanceof TaskAddressingAttribute
       || child instanceof ExternalDataSourceTable
       || child instanceof ExternalDataSourceCube
       || child instanceof ExternalDataSourceFunction
@@ -367,8 +393,8 @@ public class MDMerger {
 
   @Nullable
   private static <T extends MD> Object copyChildrenByType(T srcMD, T modMD,
-                                                           @Nullable Object builder,
-                                                           ArrayList<MD> newChildren) {
+                                                          @Nullable Object builder,
+                                                          ArrayList<MD> newChildren) {
     if (srcMD instanceof FormOwner formOwner) {
       builder = copyFormOwner(formOwner, (FormOwner) modMD, builder, newChildren);
     }
@@ -476,14 +502,14 @@ public class MDMerger {
 
   @Nullable
   private static Object copyCommandOwner(CommandOwner srcMD,
-                                          CommandOwner modMD,
-                                          @Nullable Object builder,
-                                          ArrayList<MD> newChildren) {
+                                         CommandOwner modMD,
+                                         @Nullable Object builder,
+                                         ArrayList<MD> newChildren) {
     return copyChildrenList(srcMD, modMD, builder, CommandOwner::getCommands, "Commands", newChildren);
   }
 
   private static void initProvenance(CF cf, MdoReference ownerRef,
-                                      Map<MdoReference, ObjectProvenance> provenance) {
+                                     Map<MdoReference, ObjectProvenance> provenance) {
     cf.getChildrenByMdoRef().forEach((MdoReference ref, MD md) -> {
       var existing = provenance.get(ref);
       if (existing != null) {
@@ -507,6 +533,7 @@ public class MDMerger {
   /**
    * Результат слияния: конфигурация и происхождения объектов.
    */
-  public record MergeResult(Configuration configuration, Map<MdoReference, ObjectProvenance> provenance) {}
+  public record MergeResult(Configuration configuration, Map<MdoReference, ObjectProvenance> provenance) {
+  }
 
 }
