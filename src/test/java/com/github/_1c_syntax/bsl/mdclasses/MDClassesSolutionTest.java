@@ -21,7 +21,9 @@
  */
 package com.github._1c_syntax.bsl.mdclasses;
 
+import com.github._1c_syntax.bsl.mdo.Form;
 import com.github._1c_syntax.bsl.mdo.MD;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
@@ -123,6 +125,17 @@ class MDClassesSolutionTest {
       .hasSize(7)
       .containsValue(cf.findChild(MdoReference.create("Catalog.Расш1_Справочник3.Form.ФормаЭлемента")).get())
     ;
+
+    var adoptedForm = (Form) cf.findChild(MdoReference.create("Catalog.Справочник2.Form.ФормаЭлемента")).orElseThrow();
+    assertThat(adoptedForm.getData().getEventHandlers())
+      .contains(
+        FormEventHandler.create("OnWriteAtServer", "ПриЗаписиНаСервере"),
+        FormEventHandler.create("BeforeClose", "Расш2_ПередЗакрытиемПосле")
+      );
+    assertThat(adoptedForm.getData().getPlainEventHandlers().get("Form.OnWriteAtServer").handler())
+      .isEqualTo("ПриЗаписиНаСервере");
+    assertThat(adoptedForm.getData().getPlainEventHandlers().get("Form.BeforeClose").handler())
+      .isEqualTo("Расш2_ПередЗакрытиемПосле");
   }
 
   @Test
@@ -153,6 +166,12 @@ class MDClassesSolutionTest {
       .hasSize(4)
       .containsValue(cf.findChild(MdoReference.create("Catalog.Расш1_Справочник3.Form.ФормаЭлемента")).get())
     ;
+
+    var adoptedForm = (Form) cf.findChild(MdoReference.create("Catalog.Справочник2.Form.ФормаЭлемента")).orElseThrow();
+    assertThat(adoptedForm.getData().getEventHandlers())
+      .contains(FormEventHandler.create("BeforeClose", "Расш2_ПередЗакрытиемПосле"));
+    assertThat(adoptedForm.getData().getPlainEventHandlers().get("Form.BeforeClose").handler())
+      .isEqualTo("Расш2_ПередЗакрытиемПосле");
 
     assertThat(solution.getUsePurposes()).containsExactly(UsePurposes.PLATFORM_APPLICATION);
   }

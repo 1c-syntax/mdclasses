@@ -38,7 +38,7 @@ import java.util.List;
  * Маппинг типов: {@link FormElementType#UNKNOWN}
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = "name")
 public class FormUnknown implements FormElement, FormElementOwner, FormDataPathOwner, FormEventHandlerOwner {
 

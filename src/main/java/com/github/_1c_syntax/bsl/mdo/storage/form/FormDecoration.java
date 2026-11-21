@@ -38,7 +38,7 @@ import java.util.List;
  * Маппинг типов: {@link FormElementType#LABEL_DECORATION}, {@link FormElementType#PICTURE_DECORATION}
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = "name")
 public class FormDecoration implements FormElement, FormElementOwner, FormEventHandlerOwner {
 

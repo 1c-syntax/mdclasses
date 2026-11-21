@@ -36,7 +36,7 @@ import java.util.List;
  * Маппинг типов: {@link FormElementType#EXTENDED_TOOLTIP}
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = "name")
 public class FormExtendedTooltip implements FormElement, FormEventHandlerOwner {
 

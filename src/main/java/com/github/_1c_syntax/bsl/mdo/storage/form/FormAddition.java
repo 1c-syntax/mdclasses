@@ -39,7 +39,7 @@ import java.util.List;
  * {@link FormElementType#SEARCH_CONTROL_ADDITION}, {@link FormElementType#VIEW_STATUS_ADDITION}
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = "name")
 public class FormAddition implements FormElement, FormElementOwner {
 

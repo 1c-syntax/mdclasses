@@ -40,7 +40,7 @@ import java.util.List;
  * {@link FormElementType#COLUMN_GROUP}, {@link FormElementType#COMMAND_BAR}, {@link FormElementType#POPUP}
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = "name")
 public class FormGroup implements FormElement, FormElementOwner, FormEventHandlerOwner {
 

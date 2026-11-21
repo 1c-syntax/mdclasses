@@ -48,7 +48,7 @@ import java.util.List;
  * {@link FormElementType#DENDROGRAM_FIELD}
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = "name")
 public class FormField implements FormElement, FormElementOwner, FormDataPathOwner, FormEventHandlerOwner {
 
