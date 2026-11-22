@@ -69,16 +69,19 @@ class ChildFixtureComparisonTest {
     return DynamicTest.dynamicTest(displayName, () -> {
       var fixtureContent = Files.readString(fixRef.fixturePath, StandardCharsets.UTF_8);
 
-      var parentObj = Fixtures.get(pack, parentMdoRef, formatEDT);
-      assertThat(parentObj).isNotNull();
-
-      var childOpt = ((ChildrenOwner) parentObj).findChild(childMdoRef);
-      assertThat(childOpt).isPresent();
-
-      var child = childOpt.get();
-      var actualJson = Fixtures.asJson(child);
+      var actualJson = serializeChild(pack, parentMdoRef, childMdoRef, formatEDT);
       Assertions.assertThat(actualJson, true).isEqual(fixtureContent);
     });
+  }
+
+  static String serializeChild(String pack, String parentMdoRef, String childMdoRef, boolean formatEDT) {
+    var parentObj = Fixtures.get(pack, parentMdoRef, formatEDT);
+    assertThat(parentObj).isNotNull();
+
+    var childOpt = ((ChildrenOwner) parentObj).findChild(childMdoRef);
+    assertThat(childOpt).isPresent();
+
+    return Fixtures.asJson(childOpt.get());
   }
 
   private static List<ChildFixtureReference> discoverChildFixtureRefs() {
