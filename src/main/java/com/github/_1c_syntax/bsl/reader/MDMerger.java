@@ -403,18 +403,38 @@ public class MDMerger {
       return baseHandlers;
     }
     if (baseHandlers.isEmpty()) {
-      return List.copyOf(extHandlers);
+      return dedupHandlersByEvent(extHandlers);
     }
 
     List<FormEventHandler> result = new ArrayList<>(baseHandlers);
     var changed = false;
     for (var handler : extHandlers) {
-      if (!result.contains(handler)) {
-        result.add(handler);
-        changed = true;
+      if (containsHandlerEvent(result, handler.event()) || result.contains(handler)) {
+        continue;
       }
+      result.add(handler);
+      changed = true;
     }
     return changed ? Collections.unmodifiableList(result) : baseHandlers;
+  }
+
+  private static List<FormEventHandler> dedupHandlersByEvent(List<FormEventHandler> handlers) {
+    List<FormEventHandler> result = new ArrayList<>();
+    for (var handler : handlers) {
+      if (!containsHandlerEvent(result, handler.event())) {
+        result.add(handler);
+      }
+    }
+    return Collections.unmodifiableList(result);
+  }
+
+  private static boolean containsHandlerEvent(List<FormEventHandler> handlers, String event) {
+    for (var handler : handlers) {
+      if (handler.event().equalsIgnoreCase(event)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   private static List<FormElement> mergeFormElements(List<FormElement> baseElements, ManagedFormData extData) {

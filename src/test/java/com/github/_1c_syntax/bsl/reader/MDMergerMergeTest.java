@@ -518,6 +518,22 @@ class MDMergerMergeTest {
   }
 
   @Test
+  void mergeFormDataDoesNotAddSecondHandlerForSameEvent() {
+    var baseData = ManagedFormData.builder()
+      .addEventHandlers(FormEventHandler.create("OnOpen", "ПриОткрытииБаза"))
+      .build();
+    var extData = ManagedFormData.builder()
+      .addEventHandlers(FormEventHandler.create("OnOpen", "ПриОткрытииРасш"))
+      .build();
+
+    var merged = (ManagedFormData) merge(baseData, extData);
+    assertThat(merged.getEventHandlers())
+      .containsExactly(FormEventHandler.create("OnOpen", "ПриОткрытииБаза"));
+    assertThat(merged.getPlainEventHandlers().get("Form.OnOpen").handler())
+      .isEqualTo("ПриОткрытииБаза");
+  }
+
+  @Test
   void mergeFormDataHandlesUnknownElementTypeAndNoExtMatch() {
     var unknown = FormUnknown.builder()
       .name("Неизвестный")
