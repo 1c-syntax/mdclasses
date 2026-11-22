@@ -25,8 +25,14 @@ import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
 import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
+import com.github._1c_syntax.bsl.mdo.CommonForm;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
+import com.github._1c_syntax.bsl.mdo.storage.FormData;
+import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormField;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
@@ -302,5 +308,72 @@ class MDMergerMergeTest {
       .extracting(Module::getUri)
       .containsExactly(baseUri)
       .doesNotContain(extUri);
+  }
+
+  @Test
+  void mergeFormDataKeepsBaseWhenExtensionEmpty() {
+    var baseData = ManagedFormData.builder()
+      .addEventHandlers(FormEventHandler.create("OnOpen", "ПриОткрытии"))
+      .addElements(FormField.builder().name("Поле").build())
+      .build();
+    var extData = EmptyFormData.EMPTY;
+
+    var merged = merge(baseData, extData);
+    assertThat(merged).isSameAs(baseData);
+  }
+
+  @Test
+  void mergeFormDataUsesExtensionWhenBaseEmpty() {
+    var baseData = EmptyFormData.EMPTY;
+    var extData = ManagedFormData.builder()
+      .addEventHandlers(FormEventHandler.create("OnOpen", "ПриОткрытии"))
+      .build();
+
+    var merged = merge(baseData, extData);
+    assertThat(merged).isSameAs(extData);
+  }
+
+  @Test
+  void mergeFormDataMergesFormAndElementHandlers() {
+    var baseData = ManagedFormData.builder()
+      .addEventHandlers(FormEventHandler.create("OnOpen", "ПриОткрытии"))
+      .addElements(FormField.builder()
+        .name("Наименование")
+        .addEventHandlers(FormEventHandler.create("OnChange", "ПриИзменении"))
+        .build())
+      .build();
+    var extData = ManagedFormData.builder()
+      .addEventHandlers(FormEventHandler.create("BeforeClose", "ПередЗакрытием"))
+      .addElements(FormField.builder()
+        .name("наименование")
+        .addEventHandlers(FormEventHandler.create("StartChoice", "НачалоВыбора"))
+        .build())
+      .build();
+
+    var merged = merge(baseData, extData);
+    assertThat(merged.getEventHandlers())
+      .contains(
+        FormEventHandler.create("OnOpen", "ПриОткрытии"),
+        FormEventHandler.create("BeforeClose", "ПередЗакрытием"));
+    assertThat(merged.getPlainEventHandlers())
+      .containsKeys("Наименование.OnChange", "Наименование.StartChoice", "Form.OnOpen", "Form.BeforeClose");
+  }
+
+
+  private static FormData merge(FormData baseData,
+                                FormData extData) {
+    var base = CommonForm.builder()
+      .name("Форма")
+      .uuid("00000000-0000-0000-0000-000000000001")
+      .mdoReference(MdoReference.create("CommonForm.Форма"))
+      .data(baseData)
+      .build();
+    var ext = CommonForm.builder()
+      .name("Форма")
+      .uuid("00000000-0000-0000-0000-000000000001")
+      .mdoReference(MdoReference.create("CommonForm.Форма"))
+      .data(extData)
+      .build();
+    return MDMerger.mergeForm(base, ext).getData();
   }
 }
