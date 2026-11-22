@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,8 +22,11 @@
 package com.github._1c_syntax.bsl.reader.edt.converter;
 
 import com.github._1c_syntax.bsl.mdo.MDChild;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
@@ -42,7 +45,10 @@ public class MDChildConverter extends AbstractReadConverter {
   @Override
   public boolean canConvert(Class type) {
     return !ExternalDataSourceTable.class.isAssignableFrom(type)
+      && !ExternalDataSourceCube.class.isAssignableFrom(type)
+      && !ExternalDataSourceCubeDimensionTable.class.isAssignableFrom(type)
       && !ObjectTemplate.class.isAssignableFrom(type)
+      && !PredefinedValue.class.isAssignableFrom(type)
       && MDChild.class.isAssignableFrom(type);
   }
 }

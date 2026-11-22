@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,28 +24,43 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+import com.github._1c_syntax.bsl.mdo.storage.Characteristic;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
+import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.utils.Lazy;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRightsOwner {
+public class ChartOfCharacteristicTypes
+  implements MutableReferenceObject, ValueTypeOwner, PredefinedDataOwner {
 
   /*
    * ReferenceObject
@@ -59,6 +74,10 @@ public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRights
   MdoReference mdoReference = MdoReference.EMPTY;
   @Default
   ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+
+  @Singular("addBasedOn")
+  List<MdoReference> basedOn;
+
   @Default
   String comment = "";
   @Default
@@ -68,7 +87,8 @@ public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRights
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   @Singular
   List<ObjectCommand> commands;
@@ -79,8 +99,10 @@ public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRights
   @Singular
   List<TabularSection> tabularSections;
 
-  Lazy<List<MD>> storageFields = new Lazy<>(this::computeStorageFields);
-  Lazy<List<MD>> plainStorageFields = new Lazy<>(this::computePlainStorageFields);
+  @Getter(lazy = true)
+  List<MD> storageFields = LazyLoader.computeStorageFields(this);
+  @Getter(lazy = true)
+  List<MD> plainStorageFields = LazyLoader.computePlainStorageFields(this);
 
   @Singular
   List<ObjectForm> forms;
@@ -88,12 +110,100 @@ public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRights
   @Singular
   List<ObjectTemplate> templates;
 
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
-  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
+  @Getter(lazy = true)
+  List<MD> plainChildren = LazyLoader.computePlainChildren(this);
+
+  /*
+   * ValueTypeOwner
+   */
+
+  @Default
+  @Getter(AccessLevel.NONE)
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
 
   /*
    * Свое
    */
+
+  /**
+   * Ссылка на форму объекта по умолчанию
+   */
+  @Default
+  MdoReference defaultObjectForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму списка по умолчанию
+   */
+  @Default
+  MdoReference defaultListForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму выбора по умолчанию
+   */
+  @Default
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму группы по умолчанию
+   */
+  @Default
+  MdoReference defaultFolderForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму выбора группы по умолчанию
+   */
+  @Default
+  MdoReference defaultFolderChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму объекта
+   */
+  @Default
+  MdoReference auxiliaryObjectForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму списка
+   */
+  @Default
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму выбора
+   */
+  @Default
+  MdoReference auxiliaryChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму группы
+   */
+  @Default
+  MdoReference auxiliaryFolderForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму выбора группы
+   */
+  @Default
+  MdoReference auxiliaryFolderChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
+  /**
+   * Предопределенные значения
+   */
+  @Singular
+  List<PredefinedValue> predefinedValues;
+
+  /**
+   * Дополнительные индексы
+   */
+  @Singular("addAdditionalIndex")
+  List<AdditionalIndex> additionalIndexes;
 
   /**
    * Пояснение
@@ -101,31 +211,123 @@ public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRights
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
+  /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
 
-  @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
-  }
+  /**
+   * Определяет, является ли план видов характеристик иерархическим.
+   */
+  @Default
+  boolean hierarchical = false;
 
-  @Override
-  public List<MD> getPlainChildren() {
-    return plainChildren.getOrCompute();
-  }
+  /**
+   * Группы сверху.
+   * Определяет расположение групп в списке.
+   */
+  @Default
+  boolean foldersOnTop = false;
 
-  @Override
-  public List<MD> getStorageFields() {
-    return storageFields.getOrCompute();
-  }
+  /**
+   * Проверять уникальность кода плана видов характеристик.
+   * Определяет, нужно ли проверять уникальность кода плана видов характеристик.
+   * Если значение равно true, то код плана видов характеристик должен быть уникальным в пределах области,
+   * определяемой свойством {@link #codeSeries}. Если false, проверка уникальности не выполняется.
+   */
+  @Default
+  boolean checkUnique = false;
 
-  @Override
-  public List<MD> getPlainStorageFields() {
-    return plainStorageFields.getOrCompute();
-  }
+  /**
+   * Серия кодов плана видов характеристик.
+   * Определяет область действия уникальности кода плана видов характеристик.
+   * Значение по умолчанию: {@link CodeSeries#WHOLE_CATALOG}.
+   * Для формата EDT: если поле отсутствует, автоматически устанавливается значение WHOLE_CATALOG.
+   */
+  @Default
+  CodeSeries codeSeries = CodeSeries.WHOLE_CATALOG;
 
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
+  /**
+   * Длина кода плана видов характеристик.
+   * Если равна 0, то у плана видов характеристик нет кода.
+   */
+  @Default
+  int codeLength = 0;
+
+  /**
+   * Длина наименования плана видов характеристик.
+   * Если равна 0, то у плана видов характеристик нет наименования.
+   */
+  @Default
+  int descriptionLength = 0;
+
+  /**
+   * Основное представление плана видов характеристик.
+   * Значение по умолчанию: {@link DefaultPresentation#AS_CODE}.
+   */
+  @Default
+  DefaultPresentation defaultPresentation = DefaultPresentation.AS_CODE;
+
+  /**
+   * Ввод по строке - список реквизитов для ввода по строке
+   */
+  @Singular("addInputByString")
+  List<MdoReference> inputByString;
+
+  /**
+   * Режим полнотекстового поиска при вводе по строке
+   */
+  @Default
+  UseMode fullTextSearchOnInputByString = UseMode.USE;
+
+  /**
+   * Режим поиска при вводе по строке
+   */
+  @Default
+  SearchStringMode searchStringModeOnInputByString = SearchStringMode.BEGIN;
+
+  /**
+   * Режим получения данных выбора при вводе по строке
+   */
+  @Default
+  ChoiceDataGetMode choiceDataGetModeOnInputByString = ChoiceDataGetMode.DIRECTLY;
+
+  /**
+   * Создание при вводе
+   */
+  @Default
+  UseMode createOnInput = UseMode.USE;
+
+  /**
+   * Режим истории выбора при вводе по строке
+   */
+  @Default
+  ChoiceHistoryOnInputMode choiceHistoryOnInput = ChoiceHistoryOnInputMode.AUTO;
+
+  /**
+   * Поля блокировки данных - список реквизитов для блокировки данных
+   */
+  @Singular("addDataLockFields")
+  List<MdoReference> dataLockFields;
+
+  /**
+   * Режим управления блокировкой данных
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Характеристики объекта
+   */
+  @Singular("addCharacteristics")
+  List<Characteristic> characteristics;
+
+  /**
+   * Расширенные значения характеристик
+   */
+  @Default
+  MdoReference characteristicExtValues = MdoReference.EMPTY;
 
   /**
    * Возвращает перечень возможных прав доступа
@@ -134,23 +336,23 @@ public class ChartOfCharacteristicTypes implements ReferenceObject, AccessRights
     return Catalog.possibleRights();
   }
 
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
+  @Override
+  public ValueTypeDescription getValueType() {
+    return type;
   }
 
-  private List<MD> computePlainChildren() {
-    return LazyLoader.computePlainChildren(this);
-  }
-
-  private List<MD> computeStorageFields() {
-    return LazyLoader.computeStorageFields(this);
-  }
-
-  private List<MD> computePlainStorageFields() {
-    return LazyLoader.computePlainStorageFields(this);
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.OBJECT_FORM, getDefaultObjectForm()),
+      Map.entry(DefaultFormKind.LIST_FORM, getDefaultListForm()),
+      Map.entry(DefaultFormKind.CHOICE_FORM, getDefaultChoiceForm()),
+      Map.entry(DefaultFormKind.FOLDER_FORM, getDefaultFolderForm()),
+      Map.entry(DefaultFormKind.FOLDER_CHOICE_FORM, getDefaultFolderChoiceForm()),
+      Map.entry(DefaultFormKind.AUX_OBJECT_FORM, getAuxiliaryObjectForm()),
+      Map.entry(DefaultFormKind.AUX_LIST_FORM, getAuxiliaryListForm()),
+      Map.entry(DefaultFormKind.AUX_CHOICE_FORM, getAuxiliaryChoiceForm()),
+      Map.entry(DefaultFormKind.AUX_FOLDER_FORM, getAuxiliaryFolderForm()),
+      Map.entry(DefaultFormKind.AUX_FOLDER_CHOICE_FORM, getAuxiliaryFolderChoiceForm())
+    );
   }
 }

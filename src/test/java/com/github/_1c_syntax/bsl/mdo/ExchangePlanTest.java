@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,98 +22,100 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ExchangePlanTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, ExchangePlans.ПланОбмена1, _edt",
-      "false, mdclasses, ExchangePlans.ПланОбмена1"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, ExchangePlans.ПланОбмена1",
+    "false, mdclasses, ExchangePlans.ПланОбмена1",
+    "true, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы",
+    "false, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы",
+    "true, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы",
+    "false, ssl_3_2, ExchangePlans.ОбновлениеИнформационнойБазы"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(ExchangePlan.class);
 
     var exchangePlan = (ExchangePlan) mdo;
-    var mdo1 = MdoReference.create("Catalog.Справочник1");
-    var mdo2 = MdoReference.create("Document.Документ1");
-    var mdo3 = MdoReference.create("Catalog.Документ1");
-    assertThat(exchangePlan.contains(mdo1)).isTrue();
-    assertThat(exchangePlan.contains(mdo2)).isTrue();
-    assertThat(exchangePlan.contains(mdo3)).isFalse();
+    assertThat(exchangePlan).isNotNull();
 
-    assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.ALLOW);
-    assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
-    assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
+    var attributes = exchangePlan.getAttributes();
+    var tabularSections = exchangePlan.getTabularSections();
+    var forms = exchangePlan.getForms();
+    var templates = exchangePlan.getTemplates();
+    var commands = exchangePlan.getCommands();
+    var predefinedValues = exchangePlan.getPredefinedValues();
+
+    // --- ModuleOwner ---
+    Assertions.assertThat(exchangePlan.getAllModules(), true)
+      .containsAll(exchangePlan.getModules(), forms, commands);
+
+    // --- PredefinedDataOwner ---
+    assertThat(predefinedValues).hasSize(0);
+
+    // --- ReferenceObject logic ---
+    if (exchangePlan.getName().equals("ПланОбмена1")) {
+      var mdo1 = MdoReference.create("Catalog.Справочник1");
+      var mdo2 = MdoReference.create("Document.Документ1");
+      var mdo3 = MdoReference.create("Catalog.Документ1");
+
+      assertThat(exchangePlan.contains(mdo1)).isTrue();
+      assertThat(exchangePlan.contains(mdo2)).isTrue();
+      assertThat(exchangePlan.contains(mdo3)).isFalse();
+
+      assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.ALLOW);
+      assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
+      assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
+    } else {
+      var mdo1 = MdoReference.create("InformationRegister.СостоянияРассылокОтчетов");
+      var mdo2 = MdoReference.create("Catalog.Справочник1");
+
+      assertThat(exchangePlan.contains(mdo1)).isTrue();
+      assertThat(exchangePlan.contains(mdo2)).isFalse();
+
+      assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.DENY);
+      assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
+    }
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(exchangePlan.getAllAttributes(), false)
+      .containsAll(attributes);
+    Assertions.assertThat(exchangePlan.getStorageFields(), false)
+      .containsAll(attributes);
+    Assertions.assertThat(exchangePlan.getPlainStorageFields(), true)
+      .containsAllPlain(attributes, tabularSections);
+
+    // --- Children ---
+    Assertions.assertThat(exchangePlan.getChildren(), true)
+      .containsAll(attributes, tabularSections, forms, templates, commands);
+    Assertions.assertThat(exchangePlan.getPlainChildren(), true)
+      .containsAllPlain(attributes, tabularSections, forms, templates, commands);
   }
 
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы, _edt",
-      "false, ssl_3_1, ExchangePlans.ОбновлениеИнформационнойБазы"
-    }
-  )
-  void testSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+  @CsvSource({
+    "true, mdclasses_3_27, ExchangePlans.ПланОбмена1",
+    "false, mdclasses_3_27, ExchangePlans.ПланОбмена1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
     assertThat(mdo).isInstanceOf(ExchangePlan.class);
 
     var exchangePlan = (ExchangePlan) mdo;
-    var mdo1 = MdoReference.create("InformationRegister.СостоянияРассылокОтчетов");
-    var mdo2 = MdoReference.create("Catalog.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы");
-    var mdo3 = MdoReference.create("Catalog.Справочник1");
-    assertThat(exchangePlan.contains(mdo1)).isTrue();
-    assertThat(exchangePlan.contains(mdo2)).isTrue();
-    assertThat(exchangePlan.contains(mdo3)).isFalse();
+    assertThat(exchangePlan).isNotNull();
 
-    assertThat(exchangePlan.autoRecord(mdo1)).isEqualTo(AutoRecordType.DENY);
-    assertThat(exchangePlan.autoRecord(mdo2)).isEqualTo(AutoRecordType.DENY);
-    assertThat(exchangePlan.autoRecord(mdo3)).isEqualTo(AutoRecordType.DENY);
+    assertThat(exchangePlan.getCodeLength()).isEqualTo(9);
+    assertThat(exchangePlan.getDescriptionLength()).isEqualTo(25);
+    assertThat(exchangePlan.getDefaultPresentation()).isEqualTo(DefaultPresentation.AS_CODE);
   }
-//
-//    @Override
-//    @Test
-//    void testEDT() {
-//      var mdo = getMDObjectEDT("ExchangePlans.ПланОбмена1");
-//      checkBaseField(mdo, ExchangePlan.class, "ПланОбмена1",
-//        "242cb07d-3d2b-4689-b590-d3ed23ac9d10");
-//      checkForms(mdo);
-//      checkTemplates(mdo);
-//      checkCommands(mdo);
-//      assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
-//      checkModules(((AbstractMDObjectBSL) mdo).getModules(), 1, "ExchangePlans/ПланОбмена1",
-//        ModuleType.ObjectModule);
-//      var exchangePlan = (ExchangePlan) mdo;
-////    assertThat(exchangePlan.isDistributedInfoBase()).isFalse();
-////    assertThat(exchangePlan.isIncludeConfigurationExtensions()).isFalse();
-////    assertThat(exchangePlan.getContent()).hasSize(2);
-//    }
-//
-//    @Override
-//    @Test
-//    void testDesigner() {
-//      var mdo = getMDObjectDesigner("ExchangePlans.ПланОбмена1");
-//      checkBaseField(mdo, ExchangePlan.class, "ПланОбмена1",
-//        "242cb07d-3d2b-4689-b590-d3ed23ac9d10");
-//      checkForms(mdo);
-//      checkTemplates(mdo);
-//      checkCommands(mdo);
-//      assertThat(((AbstractMDObjectComplex) mdo).getAttributes()).isEmpty();
-//      assertThat(((AbstractMDObjectBSL) mdo).getModules()).isEmpty();
-//      var exchangePlan = (ExchangePlan) mdo;
-////    assertThat(exchangePlan.isDistributedInfoBase()).isTrue();
-////    assertThat(exchangePlan.isIncludeConfigurationExtensions()).isTrue();
-////    assertThat(exchangePlan.getContent()).hasSize(2);
-//    }
-//
-//  }
-
 }

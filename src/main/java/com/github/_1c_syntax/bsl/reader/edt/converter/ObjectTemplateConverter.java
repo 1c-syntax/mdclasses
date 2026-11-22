@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -58,6 +58,6 @@ public class ObjectTemplateConverter extends AbstractReadConverter {
   }
 
   private static Path dataPath(Path path, String name) {
-    return Path.of(path.getParent().toString(), MDOType.TEMPLATE.getGroupName(), name, "Template.dcs");
+    return Path.of(path.getParent().toString(), MDOType.TEMPLATE.groupName(), name, "Template.dcs");
   }
 }

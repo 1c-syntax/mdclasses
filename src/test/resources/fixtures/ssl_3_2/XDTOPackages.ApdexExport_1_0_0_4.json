@@ -1,0 +1,224 @@
+{
+ "com.github._1c_syntax.bsl.mdo.XDTOPackage": {
+  "mdoType": "XDTO_PACKAGE",
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Apdex export 1 0 0 4"
+    }
+   ]
+  },
+  "data": {
+   "imports": [],
+   "targetNamespace": "www.v8.1c.ru\/ssl\/performace-assessment\/apdexExport\/1.0.0.4",
+   "valueTypes": [],
+   "objectTypes": [
+    {
+     "name": "KeyOperation",
+     "properties": [
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "comment",
+       "lowerBound": 0,
+       "type": "xs:string",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "long",
+       "lowerBound": 0,
+       "type": "xs:boolean",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "",
+       "upperBound": -1,
+       "name": "measurement",
+       "lowerBound": 0,
+       "type": "d3p1:Measurement",
+       "typeDef": [],
+       "nillable": true
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "name",
+       "lowerBound": 0,
+       "type": "xs:string",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "nameFull",
+       "lowerBound": 0,
+       "type": "xs:string",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "priority",
+       "lowerBound": 0,
+       "type": "xs:integer",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "targetValue",
+       "lowerBound": 0,
+       "type": "xs:float",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "uid",
+       "lowerBound": 0,
+       "type": "xs:string",
+       "typeDef": [],
+       "nillable": false
+      }
+     ],
+     "base": ""
+    },
+    {
+     "name": "Measurement",
+     "properties": [
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "runningError",
+       "lowerBound": 0,
+       "type": "xs:boolean",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "sessionNumber",
+       "lowerBound": 0,
+       "type": "xs:integer",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "tSaveUTC",
+       "lowerBound": 0,
+       "type": "xs:dateTime",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "tUtc",
+       "lowerBound": 0,
+       "type": "xs:float",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "userName",
+       "lowerBound": 0,
+       "type": "xs:string",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "value",
+       "lowerBound": 0,
+       "type": "xs:double",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "weight",
+       "lowerBound": 0,
+       "type": "xs:double",
+       "typeDef": [],
+       "nillable": false
+      }
+     ],
+     "base": ""
+    },
+    {
+     "name": "Performance",
+     "properties": [
+      {
+       "form": "",
+       "upperBound": -1,
+       "name": "keyOperation",
+       "lowerBound": 0,
+       "type": "d3p1:KeyOperation",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "period",
+       "lowerBound": 0,
+       "type": "xs:dateTime",
+       "typeDef": [],
+       "nillable": false
+      },
+      {
+       "form": "Attribute",
+       "upperBound": 0,
+       "name": "version",
+       "lowerBound": 0,
+       "type": "xs:string",
+       "typeDef": [],
+       "nillable": false
+      }
+     ],
+     "base": ""
+    }
+   ],
+   "properties": [
+    {
+     "form": "",
+     "upperBound": 0,
+     "name": "performance",
+     "lowerBound": 0,
+     "type": "d2p1:Performance",
+     "typeDef": [],
+     "nillable": false
+    }
+   ]
+  },
+  "name": "ApdexExport_1_0_0_4",
+  "namespace": "www.v8.1c.ru\/ssl\/performace-assessment\/apdexExport\/1.0.0.4",
+  "description": "Apdex export 1 0 0 4",
+  "comment": "",
+  "objectBelonging": "OWN",
+  "mdoReference": {
+   "mdoRefRu": "ПакетXDTO.ApdexExport_1_0_0_4",
+   "type": "XDTO_PACKAGE",
+   "mdoRef": "XDTOPackage.ApdexExport_1_0_0_4"
+  },
+  "uuid": "5c45e96f-e245-4d16-9c47-836505582aef",
+  "mdoRef": "XDTOPackage.ApdexExport_1_0_0_4",
+  "supportVariant": "NOT_EDITABLE"
+ }
+}

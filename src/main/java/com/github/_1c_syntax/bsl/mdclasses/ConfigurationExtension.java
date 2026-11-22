@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -57,6 +57,7 @@ import com.github._1c_syntax.bsl.mdo.Interface;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.PaletteColor;
 import com.github._1c_syntax.bsl.mdo.Report;
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.ScheduledJob;
@@ -69,13 +70,14 @@ import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.WSReference;
 import com.github._1c_syntax.bsl.mdo.WebService;
+import com.github._1c_syntax.bsl.mdo.WebSocketClient;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndex;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
-import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
@@ -83,10 +85,12 @@ import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.utils.Lazy;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ScriptVariant;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -100,7 +104,7 @@ import java.util.Map;
  * Класс расширения конфигурации 1с
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class ConfigurationExtension implements CF {
@@ -131,6 +135,8 @@ public class ConfigurationExtension implements CF {
   @Default
   ScriptVariant scriptVariant = ScriptVariant.ENGLISH;
   @Default
+  InterfaceCompatibilityMode interfaceCompatibilityMode = InterfaceCompatibilityMode.TAXI;
+  @Default
   CompatibilityMode compatibilityMode = new CompatibilityMode();
   @Default
   CompatibilityMode configurationExtensionCompatibilityMode = new CompatibilityMode();
@@ -138,7 +144,8 @@ public class ConfigurationExtension implements CF {
   ApplicationRunMode defaultRunMode = ApplicationRunMode.AUTO;
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
   @Default
   String vendor = "";
   @Default
@@ -191,6 +198,8 @@ public class ConfigurationExtension implements CF {
   @Singular
   List<WebService> webServices;
   @Singular
+  List<WebSocketClient> webSocketClients;
+  @Singular
   List<HTTPService> httpServices;
   @Singular
   List<WSReference> wsReferences;
@@ -198,6 +207,8 @@ public class ConfigurationExtension implements CF {
   List<IntegrationService> integrationServices;
   @Singular
   List<StyleItem> styleItems;
+  @Singular
+  List<PaletteColor> paletteColors;
   @Singular
   List<Style> styles;
   @Singular
@@ -243,13 +254,21 @@ public class ConfigurationExtension implements CF {
 
   @Singular
   List<MD> children;
-  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+  @Getter(lazy = true)
+  List<MD> plainChildren = LazyLoader.computePlainChildren(this);
 
-  Lazy<Map<URI, ModuleType>> modulesByType = new Lazy<>(this::computeModulesByType);
-  Lazy<Map<URI, MD>> modulesByObject = new Lazy<>(this::computeModulesByObject);
-  Lazy<Map<URI, Module>> modulesByURI = new Lazy<>(this::computeModulesByURI);
-  Lazy<Map<String, CommonModule>> commonModulesByName = new Lazy<>(this::computeCommonModulesByName);
-  Lazy<Map<MdoReference, MD>> childrenByMdoRef = new Lazy<>(this::computeChildrenByMdoRef);
+  @Getter(lazy = true)
+  Map<URI, ModuleType> modulesByType = LazyLoader.computeModulesByType(this);
+  @Getter(lazy = true)
+  Map<URI, Module> modulesByURI = LazyLoader.computeModulesByURI(this);
+  @Getter(lazy = true)
+  Map<URI, MD> modulesByObject = LazyLoader.computeModulesByObject(this);
+  @Getter(lazy = true)
+  Map<String, CommonModule> commonModulesByName = LazyLoader.computeCommonModulesByName(this);
+  @Getter(lazy = true)
+  Map<MdoReference, List<PlatformIndex>> indexesByMdoRef = LazyLoader.computeIndexes(this);
+  @Getter(lazy = true)
+  Map<MdoReference, MD> childrenByMdoRef = LazyLoader.computeChildrenByMdoRef(this);
 
   /*
    * Свое
@@ -267,74 +286,119 @@ public class ConfigurationExtension implements CF {
   @Default
   String namePrefix = "";
 
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
+  /**
+   * Ссылка на основную форму констант
+   */
+  @Default
+  MdoReference defaultConstantsForm = MdoReference.EMPTY;
 
-  @Override
-  public List<MD> getPlainChildren() {
-    return plainChildren.getOrCompute();
-  }
+  /**
+   * Ссылка на основную форму отчёта
+   */
+  @Default
+  MdoReference defaultReportForm = MdoReference.EMPTY;
 
-  @Override
-  public Map<URI, ModuleType> getModulesByType() {
-    return modulesByType.getOrCompute();
-  }
+  /**
+   * Ссылка на основную форму варианта отчёта
+   */
+  @Default
+  MdoReference defaultReportVariantForm = MdoReference.EMPTY;
 
-  @Override
-  public Map<URI, MD> getModulesByObject() {
-    return modulesByObject.getOrCompute();
-  }
+  /**
+   * Ссылка на основную форму настроек отчёта
+   */
+  @Default
+  MdoReference defaultReportSettingsForm = MdoReference.EMPTY;
 
-  @Override
-  public Map<URI, Module> getModulesByURI() {
-    return modulesByURI.getOrCompute();
-  }
+  /**
+   * Ссылка на основную форму настроек динамического списка
+   */
+  @Default
+  MdoReference defaultDynamicListSettingsForm = MdoReference.EMPTY;
 
-  @Override
-  public Map<String, CommonModule> getCommonModulesByName() {
-    return commonModulesByName.getOrCompute();
-  }
+  /**
+   * Ссылка на основную форму поиска
+   */
+  @Default
+  MdoReference defaultSearchForm = MdoReference.EMPTY;
 
-  @Override
-  public Map<MdoReference, MD> getChildrenByMdoRef() {
-    return childrenByMdoRef.getOrCompute();
-  }
+  /**
+   * Ссылка на основную форму истории изменений истории данных
+   */
+  @Default
+  MdoReference defaultDataHistoryChangeHistoryForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму данных версии истории данных
+   */
+  @Default
+  MdoReference defaultDataHistoryVersionDataForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму различий версий истории данных
+   */
+  @Default
+  MdoReference defaultDataHistoryVersionDifferencesForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на основную форму выбора пользователей системы взаимодействия
+   */
+  @Default
+  MdoReference defaultCollaborationSystemUsersChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму отчёта
+   */
+  @Default
+  MdoReference auxiliaryDefaultReportForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму варианта отчёта
+   */
+  @Default
+  MdoReference auxiliaryDefaultReportVariantForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму настроек отчёта
+   */
+  @Default
+  MdoReference auxiliaryDefaultReportSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму настроек динамического списка
+   */
+  @Default
+  MdoReference auxiliaryDefaultDynamicListSettingsForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму истории изменений истории данных
+   */
+  @Default
+  MdoReference auxiliaryDefaultDataHistoryChangeHistoryForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму данных версии истории данных
+   */
+  @Default
+  MdoReference auxiliaryDefaultDataHistoryVersionDataForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму различий версий истории данных
+   */
+  @Default
+  MdoReference auxiliaryDefaultDataHistoryVersionDifferencesForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму выбора пользователей системы взаимодействия
+   */
+  @Default
+  MdoReference auxiliaryDefaultCollaborationSystemUsersChoiceForm = MdoReference.EMPTY;
 
   /**
    * Возвращает перечень возможных прав доступа
    */
   public static List<RoleRight> possibleRights() {
     return Configuration.possibleRights();
-  }
-
-  private List<MD> computePlainChildren() {
-    return LazyLoader.computePlainChildren(this);
-  }
-
-  private Map<URI, ModuleType> computeModulesByType() {
-    return LazyLoader.computeModulesByType(this);
-  }
-
-  private Map<URI, MD> computeModulesByObject() {
-    return LazyLoader.computeModulesByObject(this);
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
-  }
-
-  private Map<URI, Module> computeModulesByURI() {
-    return LazyLoader.computeModulesByURI(this);
-  }
-
-  private Map<String, CommonModule> computeCommonModulesByName() {
-    return LazyLoader.computeCommonModulesByName(this);
-  }
-
-  private Map<MdoReference, MD> computeChildrenByMdoRef() {
-    return LazyLoader.computeChildrenByMdoRef(this);
   }
 
 }

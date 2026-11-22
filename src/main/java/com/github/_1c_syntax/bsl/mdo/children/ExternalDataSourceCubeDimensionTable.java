@@ -1,0 +1,205 @@
+/*
+ * This file is a part of MDClasses.
+ *
+ * Copyright (c) 2019 - 2026
+ * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
+ *
+ * SPDX-License-Identifier: LGPL-3.0-or-later
+ *
+ * MDClasses is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 3.0 of the License, or (at your option) any later version.
+ *
+ * MDClasses is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with MDClasses.
+ */
+package com.github._1c_syntax.bsl.mdo.children;
+
+import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
+import com.github._1c_syntax.bsl.mdo.Attribute;
+import com.github._1c_syntax.bsl.mdo.AttributeOwner;
+import com.github._1c_syntax.bsl.mdo.CommandOwner;
+import com.github._1c_syntax.bsl.mdo.FormOwner;
+import com.github._1c_syntax.bsl.mdo.MD;
+import com.github._1c_syntax.bsl.mdo.MDChild;
+import com.github._1c_syntax.bsl.mdo.Module;
+import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.mdo.TemplateOwner;
+import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
+import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
+import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
+import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import lombok.Builder;
+import lombok.Builder.Default;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Singular;
+import lombok.ToString;
+import lombok.Value;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+
+@Value
+@Builder(toBuilder = true)
+@ToString(of = {"name", "uuid"})
+@EqualsAndHashCode(of = {"name", "uuid"})
+public class ExternalDataSourceCubeDimensionTable implements MDChild, ModuleOwner, CommandOwner, AttributeOwner, FormOwner,
+  TemplateOwner, AccessRightsOwner {
+
+  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
+
+  /*
+   * Для MDChild
+   */
+
+  @Default
+  String uuid = "";
+  @Default
+  String name = "";
+  @Default
+  MdoReference mdoReference = MdoReference.EMPTY;
+  @Default
+  ObjectBelonging objectBelonging = ObjectBelonging.OWN;
+  @Default
+  String comment = "";
+  @Default
+  MultiLanguageString synonym = MultiLanguageString.EMPTY;
+  @Default
+  SupportVariant supportVariant = SupportVariant.NONE;
+  @Default
+  MdoReference owner = MdoReference.EMPTY;
+
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
+
+  /*
+   * ModuleOwner
+   */
+
+  @Default
+  List<Module> modules = Collections.emptyList();
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
+
+  /*
+   * CommandOwner
+   */
+
+  @Singular
+  List<ObjectCommand> commands;
+
+  /*
+   * AttributeOwner
+   */
+
+  /**
+   * Поля
+   */
+  @Singular
+  List<ExternalDataSourceTableField> fields;
+
+  /*
+   * FormOwner
+   */
+
+  @Singular
+  List<ObjectForm> forms;
+
+  /*
+   * TemplateOwner
+   */
+
+  @Singular
+  List<ObjectTemplate> templates;
+
+  /*
+   * Свое
+   */
+
+  /**
+   * Ссылка на форму объекта по умолчанию
+   */
+  @Default
+  MdoReference defaultObjectForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму списка по умолчанию
+   */
+  @Default
+  MdoReference defaultListForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму выбора по умолчанию
+   */
+  @Default
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
+  /**
+   * Режим управления блокировкой
+   */
+  @Default
+  DataLockControlMode dataLockControlMode = DataLockControlMode.AUTOMATIC;
+
+  /**
+   * Иерархическая ли таблица: у записи иерархической таблицы есть родитель
+   */
+  boolean hierarchical;
+
+  @Override
+  public List<Attribute> getAllAttributes() {
+    return Collections.unmodifiableList(fields);
+  }
+
+  /**
+   * Возвращает перечень возможных прав доступа
+   */
+  public static List<RoleRight> possibleRights() {
+    return POSSIBLE_RIGHTS;
+  }
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.EXTERNAL_DATA_SOURCE_CUBE_DIMENSION_TABLE;
+  }
+
+  private static List<RoleRight> computePossibleRights() {
+    return List.of(
+      RoleRight.INSERT,
+      RoleRight.READ,
+      RoleRight.UPDATE,
+      RoleRight.DELETE,
+      RoleRight.VIEW,
+      RoleRight.EDIT,
+      RoleRight.INPUT_BY_STRING,
+      RoleRight.INTERACTIVE_DELETE,
+      RoleRight.INTERACTIVE_INSERT
+    );
+  }
+
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.OBJECT_FORM, getDefaultObjectForm()),
+      Map.entry(DefaultFormKind.LIST_FORM, getDefaultListForm()),
+      Map.entry(DefaultFormKind.CHOICE_FORM, getDefaultChoiceForm())
+    );
+  }
+}

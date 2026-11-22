@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -26,11 +26,12 @@ import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.MDChild;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
@@ -109,6 +110,11 @@ public class WebServiceOperation implements MDChild, ChildrenOwner, AccessRights
   @Override
   public List<MD> getChildren() {
     return Collections.unmodifiableList(parameters);
+  }
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.WS_OPERATION;
   }
 
   /**

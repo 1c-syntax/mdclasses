@@ -1,28 +1,53 @@
-{"com.github._1c_syntax.bsl.mdo.EventSubscription": {
-  "comment": "",
-  "event": "BeforeDelete",
+{
+ "com.github._1c_syntax.bsl.mdo.EventSubscription": {
   "handler": {
-    "methodPath": "CommonModule.ВариантыОтчетов.ПередУдалениемИдентификатораОбъектаМетаданных",
-    "moduleName": "ВариантыОтчетов",
-    "methodName": "ПередУдалениемИдентификатораОбъектаМетаданных"
+   "methodPath": "CommonModule.ВариантыОтчетов.ПередУдалениемИдентификатораОбъектаМетаданных",
+   "moduleName": "ВариантыОтчетов",
+   "methodName": "ПередУдалениемИдентификатораОбъектаМетаданных"
   },
+  "mdoType": "EVENT_SUBSCRIPTION",
+  "description": "Варианты отчетов перед удалением идентификатора объекта метаданных",
   "mdoReference": {
-    "type": "EVENT_SUBSCRIPTION",
-    "mdoRef": "EventSubscription.ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных",
-    "mdoRefRu": "ПодпискаНаСобытие.ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных"
+   "mdoRefRu": "ПодпискаНаСобытие.ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных",
+   "type": "EVENT_SUBSCRIPTION",
+   "mdoRef": "EventSubscription.ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных"
   },
-  "name": "ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных",
-  "objectBelonging": "OWN",
+  "uuid": "a64b15fa-fc34-43fe-a366-d27c0f1c3df2",
+  "mdoRef": "EventSubscription.ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных",
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
-    "content": [
-      [
-        {
-          "langKey": "ru",
-          "value": "Варианты отчетов перед удалением идентификатора объекта метаданных"
-        }
-      ]
-    ]
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Варианты отчетов перед удалением идентификатора объекта метаданных"
+    }
+   ]
   },
-  "uuid": "a64b15fa-fc34-43fe-a366-d27c0f1c3df2"
-}}
+  "valueType": {
+   "types": [
+    {
+     "kind": "CATALOG",
+     "variant": "METADATA",
+     "fullName": {
+      "nameRu": "СправочникОбъект.ИдентификаторыОбъектовМетаданных",
+      "nameEn": "CatalogObject.ИдентификаторыОбъектовМетаданных"
+     }
+    },
+    {
+     "kind": "CATALOG",
+     "variant": "METADATA",
+     "fullName": {
+      "nameRu": "СправочникОбъект.ИдентификаторыОбъектовРасширений",
+      "nameEn": "CatalogObject.ИдентификаторыОбъектовРасширений"
+     }
+    }
+   ],
+   "composite": true,
+   "qualifiers": []
+  },
+  "name": "ВариантыОтчетовПередУдалениемИдентификатораОбъектаМетаданных",
+  "comment": "",
+  "objectBelonging": "OWN",
+  "event": "BeforeDelete"
+ }
+}

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,18 +21,16 @@
  */
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
+import com.github._1c_syntax.bsl.reader.common.converter.DesignerRootWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
-import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * Конвертор для объектов в формате конфигуратора, минуя класс враппер
  */
-@Slf4j
 @DesignerConverter
 public class MetaDataObjectConverter implements ReadConverter {
 
@@ -43,15 +41,9 @@ public class MetaDataObjectConverter implements ReadConverter {
     var nodeName = reader.getNodeName();
     Class<?> realClass = ExtendXStream.getRealClass(reader, nodeName);
     if (realClass == null) {
-      LOGGER.error("Unexpected type `{}`, path: `{}`", nodeName, ExtendXStream.getCurrentPath(reader));
       throw new IllegalStateException("Unexpected type: " + nodeName);
     }
-    try {
-      return ExtendXStream.readValue(context, realClass);
-    } catch (ConversionException e) {
-      LOGGER.error("Can't convert: `{}`", ExtendXStream.getCurrentPath(reader));
-      throw e;
-    }
+    return ExtendXStream.readValue(context, realClass);
   }
 
   @Override

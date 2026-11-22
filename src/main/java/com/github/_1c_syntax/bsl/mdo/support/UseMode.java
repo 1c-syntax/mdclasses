@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,26 +21,43 @@
  */
 package com.github._1c_syntax.bsl.mdo.support;
 
-import lombok.AllArgsConstructor;
+import com.github._1c_syntax.bsl.types.EnumWithName;
+import com.github._1c_syntax.bsl.types.MultiName;
 import lombok.Getter;
+import lombok.ToString;
 import lombok.experimental.Accessors;
+
+import java.util.Locale;
+import java.util.Map;
 
 /**
  * Возможные варианты "использования"
  */
-@AllArgsConstructor
-@Getter
-public enum UseMode implements EnumWithValue {
-  DONT_USE("DontUse"),
-  USE("Use"),
-  USE_WITH_WARNINGS("UseWithWarnings"),
-  UNKNOWN("unknown") {
-    @Override
-    public boolean isUnknown() {
-      return true;
-    }
-  };
+@ToString(of = "fullName")
+public enum UseMode implements EnumWithName {
+  AUTO("Auto", "Авто"),
+  DONT_USE("DontUse", "НеИспользовать"),
+  USE("Use", "Использовать"),
+  USE_WITH_WARNINGS("UseWithWarnings", "ИспользоватьСПредупреждениями"),
+  UNKNOWN("unknown", "неизвестный");
 
+  private static final Map<String, UseMode> KEYS = EnumWithName.computeKeys(values());
+
+  @Getter
   @Accessors(fluent = true)
-  private final String value;
+  private final MultiName fullName;
+
+  UseMode(String nameEn, String nameRu) {
+    this.fullName = MultiName.create(nameEn, nameRu);
+  }
+
+  /**
+   * Ищет элемент перечисления по именам (рус, анг)
+   *
+   * @param string Имя искомого элемента
+   * @return Найденное значение, если не найден - то UNKNOWN
+   */
+  public static UseMode valueByName(String string) {
+    return KEYS.getOrDefault(string.toLowerCase(Locale.ROOT), UNKNOWN);
+  }
 }

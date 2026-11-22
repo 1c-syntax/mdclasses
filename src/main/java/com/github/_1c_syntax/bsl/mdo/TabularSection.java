@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -27,7 +27,7 @@ import java.util.List;
 /**
  * Интерфейс табличных частей объектов (включая стандартные ТЧ)
  */
-public interface TabularSection extends MDChild, AttributeOwner {
+public interface TabularSection extends MDChild, AttributeOwner, IndexOwner {
   /**
    * Список реквизитов табличной части
    */

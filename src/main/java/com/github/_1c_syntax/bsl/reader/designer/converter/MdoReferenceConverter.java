@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -25,6 +25,7 @@ import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Используется для преобразования строковых представлений ссылки на объект
@@ -37,8 +38,10 @@ public class MdoReferenceConverter implements ReadConverter {
   private static final String USE_NODE_NAME = "Use";
   private static final String PICTURE_NODE_NAME = "Picture";
   private static final String REF_NODE_NAME = "Ref";
+  private static final String LEADING_REGISTER_DATA_NODE_NAME = "LeadingRegisterData";
 
   @Override
+  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var value = "";
     if (reader.hasMoreChildren()) {
@@ -64,7 +67,7 @@ public class MdoReferenceConverter implements ReadConverter {
 
     switch (nodeName) {
       case ITEM_NODE_NAME -> value = readValue(reader, METADATA_NODE_NAME, value);
-      case USE_NODE_NAME -> {
+      case USE_NODE_NAME, LEADING_REGISTER_DATA_NODE_NAME -> {
         reader.moveDown();
         value = reader.getValue();
         reader.moveUp();

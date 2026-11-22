@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:WebService xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="d99cef24-7add-4483-97c7-a4eb78a2e7ab">
+  <name>WebСервис1</name>
+  <synonym>
+    <key>ru</key>
+    <value>WebСервис1</value>
+  </synonym>
+  <namespace>aaaaaa</namespace>
+  <descriptorFileName>ws1.1cws</descriptorFileName>
+  <reuseSessions>AutoUse</reuseSessions>
+  <sessionMaxAge>20</sessionMaxAge>
+  <operations uuid="9beed970-ed44-471b-b433-3fe4dbd4f167">
+    <name>Операция1</name>
+    <xdtoReturningValueType>
+      <name>string</name>
+      <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+    </xdtoReturningValueType>
+    <nillable>true</nillable>
+    <procedureName>Операция1</procedureName>
+    <dataLockControlMode>Managed</dataLockControlMode>
+    <parameters uuid="5c96f9d4-2222-4bb9-86d7-f2d2b7f1a83e">
+      <name>Параметр1</name>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+    </parameters>
+    <parameters uuid="ed735e85-0f42-48a0-a4b3-96e46b2b5b23">
+      <name>Параметр2</name>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+      <transferDirection>InOut</transferDirection>
+    </parameters>
+    <parameters uuid="0195263a-4e07-4d3b-8b77-9f0161105799">
+      <name>Параметр3</name>
+      <xdtoValueType>
+        <name>string</name>
+        <nsUri>http://www.w3.org/2001/XMLSchema</nsUri>
+      </xdtoValueType>
+      <transferDirection>Out</transferDirection>
+    </parameters>
+  </operations>
+</mdclass:WebService>

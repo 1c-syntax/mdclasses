@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -44,7 +44,7 @@ class RightTest {
 
       var classes = scanResult.getClassesImplementing(AccessRightsOwner.class);
 
-      assertThat(classes).hasSize(43);
+      assertThat(classes).hasSize(51);
 
       var list = classes.stream()
         .filter(ci -> !ci.isInterface())

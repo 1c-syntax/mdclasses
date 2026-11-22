@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="b44b9b53-0b78-4cc2-ae35-b6e9c92b3675">
+<mdclass:Catalog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="b44b9b53-0b78-4cc2-ae35-b6e9c92b3675" extendedConfigurationObject="eeef463d-d5e7-42f2-ae53-10279661f59d">
   <producedTypes>
     <objectType typeId="3fb1605d-a627-4750-abe4-f94e0263010d" valueTypeId="6f6ee708-843c-4859-af2e-a74e989a333b"/>
     <refType typeId="836f5576-e5d0-41a2-99d4-112df22fcdc6" valueTypeId="e222f918-10e2-4296-ac56-cccad1ed8575"/>
@@ -9,130 +9,144 @@
   </producedTypes>
   <name>Справочник1</name>
   <objectBelonging>Adopted</objectBelonging>
-  <extension xsi:type="mdclassExtension:CatalogExtension"/>
-  <useStandardCommands>true</useStandardCommands>
-  <fullTextSearchOnInputByString>DontUse</fullTextSearchOnInputByString>
-  <createOnInput>Use</createOnInput>
-  <fullTextSearch>Use</fullTextSearch>
-  <levelCount>2</levelCount>
-  <foldersOnTop>true</foldersOnTop>
-  <codeLength>9</codeLength>
-  <descriptionLength>25</descriptionLength>
-  <codeType>String</codeType>
-  <codeAllowedLength>Variable</codeAllowedLength>
-  <checkUnique>true</checkUnique>
-  <autonumbering>true</autonumbering>
-  <defaultPresentation>AsDescription</defaultPresentation>
-  <editType>InDialog</editType>
-  <choiceMode>BothWays</choiceMode>
-  <attributes uuid="3d9083e0-ec15-4758-8a00-4e6391dbab33">
+  <extension xsi:type="mdclassExtension:CatalogExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <attributes uuid="3d9083e0-ec15-4758-8a00-4e6391dbab33" extendedConfigurationObject="f4b6bb58-962f-4811-809c-84514f07f16d">
     <name>Реквизит1</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <type>Checked</type>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>String</type>
+        </types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </typeExtension>
     </extension>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>10</length>
-      </stringQualifiers>
-    </type>
-    <fullTextSearch>Use</fullTextSearch>
+    <type/>
   </attributes>
-  <attributes uuid="7e7cb901-559b-41ad-8de3-059a02b0ea05">
+  <attributes uuid="7e7cb901-559b-41ad-8de3-059a02b0ea05" extendedConfigurationObject="dff5b5d8-762d-4490-a336-dcc8d93c17d5">
     <name>Реквизит2</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <type>Checked</type>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>Number</type>
+        </types>
+        <numberQualifiers>
+          <precision>10</precision>
+        </numberQualifiers>
+      </typeExtension>
     </extension>
-    <type>
-      <types>Number</types>
-      <numberQualifiers>
-        <precision>10</precision>
-      </numberQualifiers>
-    </type>
-    <fullTextSearch>Use</fullTextSearch>
+    <type/>
   </attributes>
-  <attributes uuid="a20ec92d-fdcf-43e8-88af-d45ac395c01d">
+  <attributes uuid="a20ec92d-fdcf-43e8-88af-d45ac395c01d" extendedConfigurationObject="ecd3c57a-75c8-474c-9c48-ac4c3831ab15">
     <name>Реквизит3</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <type>Checked</type>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>Boolean</type>
+        </types>
+      </typeExtension>
     </extension>
-    <type>
-      <types>Boolean</types>
-    </type>
-    <fullTextSearch>Use</fullTextSearch>
+    <type/>
   </attributes>
-  <tabularSections uuid="5f4e85ad-972e-4c09-8126-f3de0affe027">
+  <tabularSections uuid="5f4e85ad-972e-4c09-8126-f3de0affe027" extendedConfigurationObject="451202c5-b1af-4bce-a705-0b5570071588">
     <producedTypes>
       <objectType typeId="4c7e4fa3-e07c-485c-8c61-f56a7a8e8d26" valueTypeId="c3195658-7138-4808-83b2-d2fc7e55b3cf"/>
       <rowType typeId="cb79569d-4a03-406e-8fdf-ae90d1df5271" valueTypeId="04ef5820-a7d6-4e93-9a3b-f2ff335a565c"/>
     </producedTypes>
     <name>ТабличнаяЧасть1</name>
     <objectBelonging>Adopted</objectBelonging>
-    <extension xsi:type="mdclassExtension:MdObjectExtension"/>
-    <attributes uuid="6571a031-b4c9-4518-b0d1-b253d0e5c626">
+    <extension xsi:type="mdclassExtension:MdObjectExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
+    </extension>
+    <attributes uuid="6571a031-b4c9-4518-b0d1-b253d0e5c626" extendedConfigurationObject="5e4add7a-846d-4242-a919-97dabde8d54b">
       <name>Реквизит1</name>
       <objectBelonging>Adopted</objectBelonging>
       <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <extendedConfigurationObject>Checked</extendedConfigurationObject>
         <type>Checked</type>
+        <typeExtension>
+          <types>
+            <state>Checked</state>
+            <type>String</type>
+          </types>
+          <stringQualifiers>
+            <length>10</length>
+          </stringQualifiers>
+        </typeExtension>
       </extension>
-      <type>
-        <types>String</types>
-        <stringQualifiers>
-          <length>10</length>
-        </stringQualifiers>
-      </type>
-      <fullTextSearch>Use</fullTextSearch>
+      <type/>
     </attributes>
-    <attributes uuid="4f4113d5-7431-4afa-8dd6-0fe51426c5c5">
+    <attributes uuid="4f4113d5-7431-4afa-8dd6-0fe51426c5c5" extendedConfigurationObject="7580cfcb-eadd-4bfe-8199-ce1c14867e10">
       <name>Реквизит2</name>
       <objectBelonging>Adopted</objectBelonging>
       <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+        <extendedConfigurationObject>Checked</extendedConfigurationObject>
         <type>Checked</type>
+        <typeExtension>
+          <types>
+            <state>Checked</state>
+            <type>Number</type>
+          </types>
+          <numberQualifiers>
+            <precision>10</precision>
+          </numberQualifiers>
+        </typeExtension>
       </extension>
-      <type>
-        <types>Number</types>
-        <numberQualifiers>
-          <precision>10</precision>
-        </numberQualifiers>
-      </type>
-      <fullTextSearch>Use</fullTextSearch>
+      <type/>
     </attributes>
   </tabularSections>
-  <forms uuid="827a4af4-bc7a-4948-9dd6-ba5fcdf3ca85">
+  <forms uuid="827a4af4-bc7a-4948-9dd6-ba5fcdf3ca85" extendedConfigurationObject="175b035e-ee35-4fdf-a8b4-c30ce49dee61">
     <name>ФормаЭлемента</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicFormExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <form>Extended</form>
     </extension>
   </forms>
-  <forms uuid="6b035fb9-608d-4cc2-b9e4-648a1d1b1e95">
+  <forms uuid="6b035fb9-608d-4cc2-b9e4-648a1d1b1e95" extendedConfigurationObject="1feb8a5b-989e-440d-afe3-9472183c335c">
     <name>ФормаСписка</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicFormExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <form>Extended</form>
     </extension>
   </forms>
-  <forms uuid="f36b0fdc-63c9-4180-ae37-4d01cb602d21">
+  <forms uuid="f36b0fdc-63c9-4180-ae37-4d01cb602d21" extendedConfigurationObject="3b3346ea-1b32-4a2c-b3a6-1a9651659f0c">
     <name>ФормаВыбора</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicFormExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <form>Extended</form>
     </extension>
   </forms>
-  <templates uuid="07f5c341-1b4b-4295-8a99-0afce57668f7">
+  <templates uuid="07f5c341-1b4b-4295-8a99-0afce57668f7" extendedConfigurationObject="42def71b-52cc-4e34-8a08-82f0dfcd47bf">
     <name>Макет</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicTemplateExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <template>Extended</template>
     </extension>
   </templates>
-  <commands uuid="4b04a514-734b-492d-8ac1-2e536db41264">
+  <commands uuid="4b04a514-734b-492d-8ac1-2e536db41264" extendedConfigurationObject="342ec3c7-82d4-42bb-a5ff-8a756f110744">
     <name>Команда1</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicCommandExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <group>Checked</group>
     </extension>
     <group>CommandGroup.ГруппаКоманд1</group>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mdclass:CalculationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="c4f65eca-351f-44ce-b81c-b082a1292e65">
+<mdclass:CalculationRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" xmlns:mdclassExtension="http://g5.1c.ru/v8/dt/metadata/mdclass/extension" uuid="c4f65eca-351f-44ce-b81c-b082a1292e65" extendedConfigurationObject="90587c7d-b950-4476-ac14-426e4a83d9c4">
   <producedTypes>
     <selectionType typeId="11e7f3c9-d408-4b12-9ce9-a1c0ba1372e6" valueTypeId="388e964d-67f7-47a2-862a-b4b4add8bc9c"/>
     <listType typeId="c6a36592-c210-4c8d-9866-47e3176ef9c1" valueTypeId="c0d6a391-94bf-4ad1-882d-d8ba363ba26b"/>
@@ -11,35 +11,43 @@
   </producedTypes>
   <name>РегистрРасчета1</name>
   <objectBelonging>Adopted</objectBelonging>
-  <extension xsi:type="mdclassExtension:CalculationRegisterExtension"/>
-  <useStandardCommands>true</useStandardCommands>
-  <periodicity>Month</periodicity>
-  <resources uuid="a54fa770-de18-4602-91cd-a7a993a87cd1">
+  <extension xsi:type="mdclassExtension:CalculationRegisterExtension">
+    <extendedConfigurationObject>Checked</extendedConfigurationObject>
+  </extension>
+  <resources uuid="a54fa770-de18-4602-91cd-a7a993a87cd1" extendedConfigurationObject="86f41061-e298-4da5-8d28-489a349d55fc">
     <name>Ресурс1</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <type>Checked</type>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>Number</type>
+        </types>
+        <numberQualifiers>
+          <precision>10</precision>
+        </numberQualifiers>
+      </typeExtension>
     </extension>
-    <type>
-      <types>Number</types>
-      <numberQualifiers>
-        <precision>10</precision>
-      </numberQualifiers>
-    </type>
-    <fullTextSearch>Use</fullTextSearch>
+    <type/>
   </resources>
-  <dimensions uuid="f8728e56-7b95-428a-b92e-a857b9cd2938">
+  <dimensions uuid="f8728e56-7b95-428a-b92e-a857b9cd2938" extendedConfigurationObject="f3e7cca5-4902-4ad5-96c7-db8336f52c6e">
     <name>Измерение1</name>
     <objectBelonging>Adopted</objectBelonging>
     <extension xsi:type="mdclassExtension:BasicFeatureExtension">
+      <extendedConfigurationObject>Checked</extendedConfigurationObject>
       <type>Checked</type>
+      <typeExtension>
+        <types>
+          <state>Checked</state>
+          <type>String</type>
+        </types>
+        <stringQualifiers>
+          <length>10</length>
+        </stringQualifiers>
+      </typeExtension>
     </extension>
-    <type>
-      <types>String</types>
-      <stringQualifiers>
-        <length>10</length>
-      </stringQualifiers>
-    </type>
-    <fullTextSearch>Use</fullTextSearch>
+    <type/>
   </dimensions>
 </mdclass:CalculationRegister>

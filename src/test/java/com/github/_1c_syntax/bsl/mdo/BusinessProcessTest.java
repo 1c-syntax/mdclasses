@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,7 +21,10 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.ModuleType;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -32,46 +35,65 @@ class BusinessProcessTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, mdclasses, BusinessProcesses.БизнесПроцесс1, _edt",
-      "false, mdclasses, BusinessProcesses.БизнесПроцесс1"
+      "true, ssl_3_1, BusinessProcesses.Задание",
+      "false, ssl_3_1, BusinessProcesses.Задание",
+      "true, ssl_3_2, BusinessProcesses.Задание",
+      "false, ssl_3_2, BusinessProcesses.Задание"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(BusinessProcess.class);
 
     var businessProcess = (BusinessProcess) mdo;
+    assertThat(businessProcess).isNotNull();
 
-    assertThat(businessProcess.getSynonym().isEmpty()).isTrue();
-    assertThat(businessProcess.getSynonym().get("ru")).isEmpty();
-    assertThat(businessProcess.getSynonym().get("en")).isEmpty();
-    assertThat(businessProcess.getSynonym().getAny()).isEmpty();
+    // --- ModuleOwner ---
+    var moduleTypes = businessProcess.getModuleTypes();
+    assertThat(moduleTypes.keySet()).containsExactlyInAnyOrder(ModuleType.ManagerModule, ModuleType.ObjectModule);
+    for (var entry : moduleTypes.entrySet()) {
+      for (var uri : entry.getValue()) {
+        assertThat(businessProcess.getModuleByUri(uri)).isPresent();
+      }
+    }
+    Assertions.assertThat(businessProcess.getAllModules(), false)
+      .containsAll(businessProcess.getModules(), businessProcess.getForms());
 
-    assertThat(businessProcess.getDescription()).isEqualTo("БизнесПроцесс1");
-    assertThat(businessProcess.getDescription("ru")).isEqualTo("БизнесПроцесс1");
-    assertThat(businessProcess.getDescription("en")).isEqualTo("БизнесПроцесс1");
+    // --- ChildrenOwner ---
+    Assertions.assertThat(businessProcess.getChildren(), false)
+      .containsAll(businessProcess.getAttributes(), businessProcess.getForms());
+    Assertions.assertThat(businessProcess.getPlainChildren(), true)
+      .containsAllPlain(businessProcess.getAttributes(), businessProcess.getForms());
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(businessProcess.getAllAttributes(), false)
+      .containsAll(businessProcess.getAttributes());
+    Assertions.assertThat(businessProcess.getStorageFields(), false)
+      .containsAll(businessProcess.getAttributes());
+    Assertions.assertThat(businessProcess.getPlainStorageFields(), false)
+      .containsAllPlain(businessProcess.getAttributes());
+
+    // --- BasedOn ---
+    assertThat(businessProcess.getBasedOn())
+      .containsExactlyInAnyOrder(
+        MdoReference.create("Catalog.Файлы"),
+        MdoReference.create("Catalog.Пользователи"),
+        MdoReference.create("Task.ЗадачаИсполнителя")
+      );
   }
 
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, BusinessProcesses.Задание, _edt",
-      "false, ssl_3_1, BusinessProcesses.Задание"
-    }
-  )
-  void testSSL_3_1(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+  @CsvSource({
+    "true, mdclasses_3_27, BusinessProcesses.БизнесПроцесс1",
+    "false, mdclasses_3_27, BusinessProcesses.БизнесПроцесс1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(BusinessProcess.class);
 
     var businessProcess = (BusinessProcess) mdo;
+    assertThat(businessProcess).isNotNull();
 
-    assertThat(businessProcess.getSynonym().isEmpty()).isFalse();
-    assertThat(businessProcess.getSynonym().get("ru")).isEqualTo("Задание");
-    assertThat(businessProcess.getSynonym().get("en")).isEmpty();
-    assertThat(businessProcess.getSynonym().getAny()).isEqualTo("Задание");
-
-    assertThat(businessProcess.getDescription()).isEqualTo("Задание");
-    assertThat(businessProcess.getDescription("ru")).isEqualTo("Задание");
-    assertThat(businessProcess.getDescription("en")).isEqualTo("Задание");
-    assertThat(businessProcess.getDescription("")).isEqualTo("Задание");
-    assertThat(businessProcess.getDescription("пыщь")).isEqualTo("Задание");
+    assertThat(businessProcess.getNumberLength()).isEqualTo(9);
   }
 }

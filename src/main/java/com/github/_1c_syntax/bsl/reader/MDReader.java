@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,19 +22,23 @@
 package com.github._1c_syntax.bsl.reader;
 
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
+import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.NonNull;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.nio.file.Path;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Интерфейс для ридеров исходников
@@ -46,7 +50,6 @@ public interface MDReader {
    *
    * @return Тип исходных файлов
    */
-  @NonNull
   ConfigurationSource getConfigurationSource();
 
   /**
@@ -54,15 +57,20 @@ public interface MDReader {
    *
    * @return Путь
    */
-  @NonNull
   Path getRootPath();
+
+  /**
+   * Возвращает установленные настройки чтения
+   *
+   * @return Настройки чтения
+   */
+  MDCReadSettings getReadSettings();
 
   /**
    * Выполняет чтение конфигурации
    *
    * @return Прочитанная конфигурация
    */
-  @NonNull
   MDClass readConfiguration();
 
   /**
@@ -70,7 +78,6 @@ public interface MDReader {
    *
    * @return Прочитанный контейнер
    */
-  @NonNull
   ExternalSource readExternalSource();
 
   /**
@@ -111,6 +118,13 @@ public interface MDReader {
   ExtendXStream getXstream();
 
   /**
+   * Возвращает путь к файлу состава автономной конфигурации
+   *
+   * @return Путь к файлу состава
+   */
+  Path standaloneContentPath();
+
+  /**
    * Читает данные формы
    *
    * @param currentPath Путь к объекту
@@ -122,13 +136,40 @@ public interface MDReader {
   FormData readFormData(Path currentPath, String name, MDOType mdoType);
 
   /**
+   * Читает предопределенные данные объекта.
+   * <p>
+   * Для формата Конфигуратора предопределенные данные хранятся в отдельном файле
+   * {@code Ext/Predefined.xml}. Для формата EDT они встроены в основной файл объекта и читаются
+   * штатным образом, поэтому реализация по умолчанию возвращает пустой список.
+   *
+   * @param currentPath Путь к файлу объекта
+   * @param name        Имя объекта
+   * @param mdoType     Тип объекта
+   * @return Список предопределенных значений верхнего уровня
+   */
+  default List<PredefinedValue> readPredefinedData(Path currentPath, String name, MDOType mdoType) {
+    return Collections.emptyList();
+  }
+
+  /**
+   * Читает данные дополнительных индексов объекта.
+   *
+   * @param currentPath Путь к файлу объекта
+   * @param name        Имя объекта
+   * @param mdoType     Тип объекта
+   * @return Контейнер дополнительных индексов
+   */
+  default AdditionalIndexesWrapper readAdditionalIndexes(Path currentPath, String name, MDOType mdoType) {
+    return AdditionalIndexesWrapper.EMPTY;
+  }
+
+  /**
    * Рассчитывает каталог, в которм должны располагаться модули объекта
    *
    * @param mdoPath Путь к описанию объекта
    * @param mdoType Тип объекта
    * @return Путь к каталогу с модулями
    */
-  @NonNull
   Path moduleFolder(Path mdoPath, MDOType mdoType);
 
   /**
@@ -139,7 +180,6 @@ public interface MDReader {
    * @param moduleType Тип модуля
    * @return Путь к файлу модуля
    */
-  @NonNull
   Path modulePath(Path folder, String name, ModuleType moduleType);
 
   /**
@@ -148,7 +188,6 @@ public interface MDReader {
    * @param mdoPath Путь к файлу объекта
    * @return Путь к каталогу типа
    */
-  @NonNull
   Path mdoTypeFolderPath(Path mdoPath);
 
   /**
@@ -156,16 +195,7 @@ public interface MDReader {
    *
    * @return Имя поля
    */
-  @NonNull
   String subsystemsNodeName();
-
-  /**
-   * Возвращает строку-фильтр для различия расширения и конфигурации
-   *
-   * @return Строка-фильтр
-   */
-  @NonNull
-  String configurationExtensionFilter();
 
   /**
    * Выполняет чтение объекта из файла

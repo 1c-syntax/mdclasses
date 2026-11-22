@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:ExternalDataSource xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="306d863e-bc23-4d25-b1cf-eefbb4a5b64a">
+  <producedTypes>
+    <managerType typeId="641b572a-d6d6-4565-acef-bd6bcf308742" valueTypeId="8d8bed6c-9a36-4332-863a-ac9ca82b6528"/>
+    <tablesManagerType typeId="45e4d270-2805-40f6-835f-18d0ba809703" valueTypeId="81978f1a-60e7-412e-bb81-9401552a7846"/>
+    <cubesManagerType typeId="33d25ace-b261-4d2c-ac63-923b6d040b87" valueTypeId="a880e27a-11b9-4228-b049-41f4ba34c57c"/>
+  </producedTypes>
+  <name>ВнешнийИсточникДанных1</name>
+  <tables>ExternalDataSource.ВнешнийИсточникДанных1.Table.Таблица1</tables>
+  <cubes>ExternalDataSource.ВнешнийИсточникДанных1.Cube.Куб1</cubes>
+  <functions uuid="8e535b6f-e5cc-409f-9498-0e1fb49ebecc">
+    <name>Функция1</name>
+    <returnValue>true</returnValue>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <expressionInDataSource>selecet top 1 from table1</expressionInDataSource>
+  </functions>
+</mdclass:ExternalDataSource>

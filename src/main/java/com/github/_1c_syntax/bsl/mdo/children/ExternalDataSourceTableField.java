@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -25,14 +25,19 @@ import com.github._1c_syntax.bsl.mdo.AccessRightsOwner;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
 import lombok.Value;
 
@@ -71,11 +76,26 @@ public class ExternalDataSourceTableField implements Attribute, AccessRightsOwne
   AttributeKind kind = AttributeKind.CUSTOM;
   @Default
   IndexingType indexing = IndexingType.DONT_INDEX;
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
+  @Default
+  @Getter(AccessLevel.NONE)
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
 
   /**
    * Возвращает перечень возможных прав доступа
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
+  }
+
+  @Override
+  public ValueTypeDescription getValueType() {
+    return type;
+  }
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.EXTERNAL_DATA_SOURCE_TABLE_FIELD;
   }
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,16 +21,16 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.utils.Lazy;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -66,7 +66,8 @@ public class Subsystem implements MDObject, ChildrenOwner, AccessRightsOwner {
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
-  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+  @Getter(lazy = true)
+  List<MD> plainChildren = LazyLoader.computePlainChildren(this);
 
   /*
    * Свое
@@ -97,6 +98,12 @@ public class Subsystem implements MDObject, ChildrenOwner, AccessRightsOwner {
   @Singular("subsystem")
   List<Subsystem> subsystems;
 
+  /**
+   * Пояснение
+   */
+  @Default
+  MultiLanguageString explanation = MultiLanguageString.EMPTY;
+
   /*
    * Для ChildrenOwner
    */
@@ -109,12 +116,6 @@ public class Subsystem implements MDObject, ChildrenOwner, AccessRightsOwner {
   /*
    * свое
    */
-
-  /**
-   * Пояснение
-   */
-  @Default
-  MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
   /**
    * Возвращает список подсистем, в которые входит указанная ссылка на объект
@@ -138,19 +139,10 @@ public class Subsystem implements MDObject, ChildrenOwner, AccessRightsOwner {
     return includedSubsystems;
   }
 
-  @Override
-  public List<MD> getPlainChildren() {
-    return plainChildren.getOrCompute();
-  }
-
   /**
    * Возвращает перечень возможных прав доступа
    */
   public static List<RoleRight> possibleRights() {
     return POSSIBLE_RIGHTS;
-  }
-
-  private List<MD> computePlainChildren() {
-    return LazyLoader.computePlainChildren(this);
   }
 }

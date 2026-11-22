@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,17 +21,19 @@
  */
 package com.github._1c_syntax.bsl.reader.common.context;
 
+import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.StandaloneConfigurationContent;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
+import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
 import lombok.Setter;
-import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -43,7 +45,6 @@ import java.util.stream.Collectors;
  * Служебный класс для хранения контекста при "сборке" объекта при чтении из файла
  */
 @EqualsAndHashCode(callSuper = true)
-@Slf4j
 public class MDCReaderContext extends AbstractReaderContext {
 
   private static final String UUID_FIELD_NAME = "uuid";
@@ -51,12 +52,14 @@ public class MDCReaderContext extends AbstractReaderContext {
   private static final String SUPPORT_VALIANT_FIELD_NAME = "SupportVariant";
   private static final String CHILD_FILED_NAME = "child";
   private static final String COMPATIBILITY_MODE_FILED_NAME = "compatibilityMode";
+  private static final String COMPATIBILITY_EXTENSION_MODE_FILED_NAME = "configurationExtensionCompatibilityMode";
   private static final String CONFIGURATION_SOURCE_MODE_FILED_NAME = "configurationSource";
 
   /**
    * Режим совместимости
    */
   @Setter
+  @Nullable
   private CompatibilityMode compatibilityMode;
 
   /**
@@ -70,15 +73,20 @@ public class MDCReaderContext extends AbstractReaderContext {
    */
   private final List<String> childrenNames;
 
-  public MDCReaderContext(@NonNull Class<?> clazz, @NonNull HierarchicalStreamReader reader) {
+  public MDCReaderContext(Class<?> clazz, HierarchicalStreamReader reader) {
     super(reader);
 
     realClass = clazz;
     builder = TransformationUtils.builder(realClass);
 
     var uuid = reader.getAttribute(UUID_FIELD_NAME);
-    supportVariant = ParseSupportData.getSupportVariantByMDO(uuid, currentPath);
+    if (uuid != null && !mdReader.getReadSettings().skipSupport()) {
+      supportVariant = ParseSupportData.get(uuid, currentPath);
+    } else {
+      supportVariant = SupportVariant.NONE;
+    }
     mdoType = MDOType.CONFIGURATION;
+    configurationExtensionCompatibilityMode = new CompatibilityMode();
 
     super.setValue(UUID_FIELD_NAME, uuid);
     super.setValue(SUPPORT_VALIANT_FIELD_NAME, supportVariant);
@@ -87,7 +95,7 @@ public class MDCReaderContext extends AbstractReaderContext {
   }
 
   @Override
-  public void setValue(String methodName, Object value) {
+  public void setValue(String methodName, @Nullable Object value) {
     if (value instanceof String string && MDOType.fromValue(methodName).isPresent()) {
       childrenNames.add(string);
     } else {
@@ -102,13 +110,31 @@ public class MDCReaderContext extends AbstractReaderContext {
 
     if (compatibilityMode == null) {
       setValue(COMPATIBILITY_MODE_FILED_NAME, configurationExtensionCompatibilityMode);
+    } else if (configurationExtensionCompatibilityMode.getVersion() == 99) {
+      setValue(COMPATIBILITY_EXTENSION_MODE_FILED_NAME, compatibilityMode);
     }
     setValue(CONFIGURATION_SOURCE_MODE_FILED_NAME, mdReader.getConfigurationSource());
+
+    if (realClass == Configuration.class) {
+      setValue("standaloneContent", readStandaloneContent());
+    }
 
     setValueModules();
     setValueChildren();
 
     return super.build();
+  }
+
+  private StandaloneConfigurationContent readStandaloneContent() {
+    var path = mdReader.standaloneContentPath();
+    if (!path.toFile().exists()) {
+      return StandaloneConfigurationContent.EMPTY;
+    }
+    var value = mdReader.read(path);
+    if (value instanceof StandaloneConfigurationContent content) {
+      return content;
+    }
+    return StandaloneConfigurationContent.builder().build();
   }
 
   private void setValueChildren() {
@@ -121,7 +147,7 @@ public class MDCReaderContext extends AbstractReaderContext {
     childrenNames.forEach((String name) -> {
       var child = children.get(name);
       if (child != null) {
-        var fieldName = child.getMdoType().getName();
+        var fieldName = child.getMdoType().nameEn();
         setValue(fieldName, child);
         setValue(CHILD_FILED_NAME, child);
       }

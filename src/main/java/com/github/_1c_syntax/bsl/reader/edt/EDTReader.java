@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.edt;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.Language;
 import com.github._1c_syntax.bsl.mdo.children.AccountingFlag;
@@ -31,6 +32,9 @@ import com.github._1c_syntax.bsl.mdo.children.Dimension;
 import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
 import com.github._1c_syntax.bsl.mdo.children.EnumValue;
 import com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceFunction;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.children.HTTPServiceMethod;
@@ -43,14 +47,21 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
+import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute;
 import com.github._1c_syntax.bsl.reader.MDReader;
+import com.github._1c_syntax.bsl.reader.common.DataCompositionFields;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
+import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
+import com.github._1c_syntax.bsl.reader.common.converter.DesignerRootWrapper;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendStaxDriver;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.edt.converter.EDTConverter;
 import com.github._1c_syntax.bsl.reader.edt.converter.Unmarshaller;
@@ -64,23 +75,43 @@ import com.thoughtworks.xstream.core.ClassLoaderReference;
 import com.thoughtworks.xstream.core.util.CompositeClassLoader;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
 public class EDTReader implements MDReader {
 
   /**
+   * Имя корневого файла конфигурации
+   */
+  public static final String CONFIGURATION_MDO_FILE_NAME = "Configuration.mdo";
+
+  /**
    * Путь к файлу описания конфигурации
    */
-  public static final String CONFIGURATION_MDO_PATH = Paths.get("src", "Configuration", "Configuration.mdo")
+  public static final String CONFIGURATION_MDO_PATH = Paths.get("src", "Configuration", CONFIGURATION_MDO_FILE_NAME)
     .toString();
+
+  /**
+   * Файл условного оформления формы
+   */
+  private static final String CONDITIONAL_APPEARANCE_FILE = "ConditionalAppearance.dcssca";
+
+  /**
+   * Каталог дополнительных сведений реквизита формы
+   */
+  private static final String EXT_INFO_FOLDER = "ExtInfo";
+
+  /**
+   * Файл настроек динамического списка
+   */
+  private static final String LIST_SETTINGS_FILE = "ListSettings.dcss";
 
   @Getter
   private final ExtendXStream xstream;
@@ -88,31 +119,57 @@ public class EDTReader implements MDReader {
   @Getter
   private final Path rootPath;
 
-  public EDTReader(Path path, boolean skipSupport) {
-    xstream = createXMLMapper();
-    rootPath = path;
-    if (!skipSupport) {
-      ParseSupportData.readSimple(parentConfigurationsPath());
+  @Getter
+  private final MDCReadSettings readSettings;
+
+  public EDTReader(Path path, MDCReadSettings readSettings) {
+    this.xstream = createXMLMapper();
+    var normalizedPath = path.toAbsolutePath();
+    var file = normalizedPath.toFile();
+    if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
+      this.rootPath = computeRootPath(normalizedPath);
+    } else {
+      this.rootPath = path;
+    }
+    this.readSettings = readSettings;
+
+    if (!readSettings.skipSupport()) {
+      var supportConfigPath = supportConfigPath();
+      if (supportConfigPath.toFile().exists()) {
+        ParseSupportData.read(supportConfigPath);
+      }
     }
   }
 
+  private static Path computeRootPath(Path normalizedPath) {
+    var configurationDir = normalizedPath.getParent();
+    if (configurationDir == null) {
+      throw new IllegalArgumentException(
+        "Не удалось определить каталог Configuration для файла " + normalizedPath);
+    }
+    var srcDir = configurationDir.getParent();
+    var projectRoot = srcDir != null ? srcDir.getParent() : null;
+    if (srcDir == null || projectRoot == null) {
+      throw new IllegalArgumentException(
+        "Не удалось определить корень проекта EDT для файла " + normalizedPath);
+    }
+    return projectRoot;
+  }
+
   @Override
-  @NonNull
   public ConfigurationSource getConfigurationSource() {
     return ConfigurationSource.EDT;
   }
 
   @Override
-  @NonNull
   public MDClass readConfiguration() {
     var mdc = Optional.ofNullable((MDClass) read(
-      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
+      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.nameEn())
     ));
     return mdc.orElse(Configuration.EMPTY);
   }
 
   @Override
-  @NonNull
   public ExternalSource readExternalSource() {
     var value = read(rootPath);
     if (value instanceof ExternalSource externalSource) {
@@ -131,11 +188,18 @@ public class EDTReader implements MDReader {
 
     if (type.isPresent()) {
       Path path;
+      var typeValue = type.get();
       if (rootPath.equals(folder)) {
-        path = mdoPath(folder, type.get(), name);
+        path = mdoPath(folder, typeValue, name);
       } else {
         path = mdoPath(folder, name);
       }
+
+      if (!path.toFile().exists()
+        && (MDOType.INTERFACE.equals(typeValue) || MDOType.STYLE.equals(typeValue))) {
+        path = unknownMdoPath(folder, typeValue, name);
+      }
+
       return read(path);
     }
     return null;
@@ -149,53 +213,114 @@ public class EDTReader implements MDReader {
     if (mdoType == MDOType.COMMON_FORM) {
       formDataPath = Path.of(basePath, "Form.form");
     } else {
-      formDataPath = Path.of(basePath, MDOType.FORM.getGroupName(), name, "Form.form");
+      formDataPath = Path.of(basePath, MDOType.FORM.groupName(), name, "Form.form");
     }
 
     if (!formDataPath.toFile().exists()) {
       return EmptyFormData.EMPTY;
     }
-    return (FormData) read(formDataPath);
+    var formData = (FormData) read(formDataPath);
+    if (formData instanceof ManagedFormData managedFormData) {
+      return withCompositionSettings(managedFormData, formDataPath.getParent());
+    }
+    return formData;
+  }
+
+  /**
+   * Дочитывает настройки компоновки, которые EDT держит отдельными файлами:
+   * условное оформление формы лежит рядом с ней, а настройки динамического
+   * списка — в каталоге его реквизита
+   */
+  private ManagedFormData withCompositionSettings(ManagedFormData formData, Path formFolder) {
+    var appearanceFields = compositionFields(formFolder.resolve(CONDITIONAL_APPEARANCE_FILE));
+    var attributes = formData.getAttributes().stream()
+      .map(attribute -> withSettingsFields(attribute, formFolder))
+      .toList();
+    if (appearanceFields.isEmpty() && attributes.equals(formData.getAttributes())) {
+      return formData;
+    }
+    return formData.toBuilder()
+      .clearAttributes()
+      .attributes(attributes)
+      .clearConditionalAppearanceFields()
+      .conditionalAppearanceFields(appearanceFields)
+      .build();
+  }
+
+  private FormAttribute withSettingsFields(FormAttribute attribute, Path formFolder) {
+    if (!(attribute instanceof FormDynamicListAttribute dynamicList)) {
+      return attribute;
+    }
+    var settingsPath = formFolder.resolve(
+      Path.of(MDOType.ATTRIBUTE.groupName(), dynamicList.getName(), EXT_INFO_FOLDER, LIST_SETTINGS_FILE));
+    var fields = compositionFields(settingsPath);
+    if (fields.isEmpty()) {
+      return attribute;
+    }
+    return dynamicList.toBuilder()
+      .clearSettingsFields()
+      .settingsFields(fields)
+      .build();
+  }
+
+  /**
+   * Поля, названные в настройках компоновки из отдельного файла
+   *
+   * @param path путь к файлу настроек
+   * @return поля; пусто, если файла нет
+   */
+  private List<String> compositionFields(Path path) {
+    if (!path.toFile().exists()) {
+      return List.of();
+    }
+    var reader = new ExtendStaxDriver(this).createReader(path.toFile());
+    try {
+      return DataCompositionFields.collect(reader);
+    } finally {
+      reader.close();
+    }
   }
 
   @Override
-  @NonNull
+  public AdditionalIndexesWrapper readAdditionalIndexes(Path currentPath, String name, MDOType mdoType) {
+    var additionalIndexesPath = Paths.get(currentPath.getParent().toString(), "AdditionalIndexes.aindex");
+    if (additionalIndexesPath.toFile().exists()) {
+      var value = read(additionalIndexesPath);
+      if (value instanceof AdditionalIndexesWrapper data) {
+        return data;
+      }
+    }
+    return AdditionalIndexesWrapper.EMPTY;
+  }
+
+  @Override
   public Path moduleFolder(Path mdoPath, MDOType mdoType) {
     if (mdoType == MDOType.EXTERNAL_DATA_SOURCE_TABLE) {
       return mdoPath.getParent().getParent();
     } else if (!MDOType.valuesWithoutChildren().contains(mdoType)) {
-      return Paths.get(mdoPath.getParent().toString(), mdoType.getGroupName());
+      return Paths.get(mdoPath.getParent().toString(), mdoType.groupName());
     } else {
       return mdoTypeFolderPath(mdoPath);
     }
   }
 
   @Override
-  @NonNull
   public Path modulePath(Path folder, String name, ModuleType moduleType) {
     if (ModuleType.byMDOType(MDOType.CONFIGURATION).contains(moduleType)) {
-      return Paths.get(folder.toString(), MDOType.CONFIGURATION.getName(), moduleType.getFileName());
+      return Paths.get(folder.toString(), MDOType.CONFIGURATION.nameEn(), moduleType.getFileName());
     }
     return Paths.get(folder.toString(), name, moduleType.getFileName());
   }
 
   @Override
-  @NonNull
   public Path mdoTypeFolderPath(Path mdoPath) {
     return Paths.get(FilenameUtils.getFullPathNoEndSeparator(
       FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString())));
   }
 
   @Override
-  @NonNull
   public String subsystemsNodeName() {
     return "subsystems";
-  }
-
-  @Override
-  @NonNull
-  public String configurationExtensionFilter() {
-    return "(<objectBelonging>)";
   }
 
   @Override
@@ -221,6 +346,7 @@ public class EDTReader implements MDReader {
   }
 
   private static void registerClasses(XStream xStream) {
+    xStream.alias("MetaDataObject", DesignerRootWrapper.class); // для чтения неконвертируемых типов
     xStream.alias("accountingFlags", AccountingFlag.class);
     xStream.alias("addressingAttributes", TaskAddressingAttribute.class);
     xStream.alias("attributes", ObjectAttribute.class);
@@ -244,18 +370,38 @@ public class EDTReader implements MDReader {
     xStream.alias("templates", ObjectTemplate.class);
     xStream.alias("urlTemplates", HTTPServiceURLTemplate.class);
     xStream.alias("Form", ManagedFormData.class);
+    xStream.alias("standardAttributes", StandardAttribute.class);
+    xStream.alias("cubes", ExternalDataSourceCube.class);
+    xStream.alias("Cube", ExternalDataSourceCube.class);
+    xStream.alias("functions", ExternalDataSourceFunction.class);
+    xStream.alias("dimensionTables", ExternalDataSourceCubeDimensionTable.class);
+    xStream.alias("DimensionTable", ExternalDataSourceCubeDimensionTable.class);
+    xStream.alias("fields", ExternalDataSourceTableField.class);
   }
 
-  private Path parentConfigurationsPath() {
-    return Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.getName(),
-      "ParentConfigurations.bin");
+  private Path supportConfigPath() {
+    var configurationDir = Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.nameEn());
+    var distr = Paths.get(configurationDir.toString(), "Configuration.distr");
+    if (distr.toFile().exists()) {
+      return distr;
+    }
+    return Paths.get(configurationDir.toString(), "ParentConfigurations.bin");
+  }
+
+  @Override
+  public Path standaloneContentPath() {
+    return Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.nameEn(), "MobileApplicationContent.scc");
   }
 
   private static Path mdoPath(Path rootPath, MDOType type, String name) {
-    return mdoPath(Paths.get(rootPath.toString(), "src", type.getGroupName()), name);
+    return mdoPath(Paths.get(rootPath.toString(), "src", type.groupName()), name);
   }
 
   private static Path mdoPath(Path folder, String name) {
     return Paths.get(folder.toString(), name, name + ".mdo");
+  }
+
+  private static Path unknownMdoPath(Path rootPath, MDOType type, String name) {
+    return Paths.get(rootPath.toString(), "unknown", type.groupName(), name + ".xml");
   }
 }

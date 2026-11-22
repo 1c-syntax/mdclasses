@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,7 +22,9 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
+import org.jspecify.annotations.Nullable;
 
 import java.net.URI;
 
@@ -38,7 +40,7 @@ public interface Module {
   /**
    * Ссылка на файл bsl модуля
    */
-  URI getUri();
+  @Nullable URI getUri();
 
   /**
    * Вариант поддержки родительской конфигурации
@@ -49,4 +51,9 @@ public interface Module {
    * Признак "защищенности" модуля, т.е. наличия пароля и отсутствие исходного кода
    */
   boolean isProtected();
+
+  /**
+   * Ссылка на владельца модуля
+   */
+  MdoReference getOwner();
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -31,6 +31,7 @@ import com.github._1c_syntax.utils.CaseInsensitivePattern;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import org.apache.commons.io.FilenameUtils;
+import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -44,11 +45,13 @@ import static java.util.Objects.requireNonNull;
 @CommonConverter
 public class SubsystemConverter implements ReadConverter {
 
-  private static final String START_MDOREF_NAME = MDOType.SUBSYSTEM.getName() + ".";
+  private static final String START_MDOREF_NAME = MDOType.SUBSYSTEM.nameEn() + ".";
   private static final int COUNT_PARTS = 2;
-  private static final Pattern NAME_SPLITTER_PATTERN = CaseInsensitivePattern.compile("[\\\\/]" + MDOType.SUBSYSTEM.getGroupName() + "[\\\\/]");
+  private static final Pattern NAME_SPLITTER_PATTERN = CaseInsensitivePattern.compile("[\\\\/]"
+    + MDOType.SUBSYSTEM.groupName() + "[\\\\/]");
 
   @Override
+  @Nullable
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var name = reader.getNodeName();
     var currentPath = ExtendXStream.getCurrentPath(reader);
@@ -83,7 +86,7 @@ public class SubsystemConverter implements ReadConverter {
     return Paths.get(
       mdReader.mdoTypeFolderPath(currentPath).toString(),
       FilenameUtils.getBaseName(currentPath.toString()),
-      MDOType.SUBSYSTEM.getGroupName()
+      MDOType.SUBSYSTEM.groupName()
     );
   }
 }

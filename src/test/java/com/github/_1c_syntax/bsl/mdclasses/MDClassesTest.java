@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -28,11 +28,12 @@ import java.nio.file.Paths;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MDClassesTest {
+
   @Test
   void createConfigurations() {
     var srcPath = Paths.get("src/test/resources/ext");
     var mdcs = MDClasses.createConfigurations(srcPath);
-    assertThat(mdcs).hasSize(10);
+    assertThat(mdcs).hasSize(18);
 
     // каталоги с обработками не читаются
     srcPath = Paths.get("src/test/resources/ext/edt/external");
@@ -50,12 +51,16 @@ class MDClassesTest {
     srcPath = Paths.get("src/test/resources/ext/edt/ssl_3_1");
     mdcs = MDClasses.createExternalSources(srcPath);
     assertThat(mdcs).isEmpty();
+
+    srcPath = Paths.get("src/test/resources/ext/edt/ssl_3_2");
+    mdcs = MDClasses.createExternalSources(srcPath);
+    assertThat(mdcs).isEmpty();
   }
 
   @Test
   void create() {
     var srcPath = Paths.get("src/test/resources/ext");
     var mdcs = MDClasses.create(srcPath);
-    assertThat(mdcs).hasSize(14);
+    assertThat(mdcs).hasSize(22);
   }
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,11 +22,11 @@
 package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.github._1c_syntax.utils.StringInterner;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.NonNull;
 
 /**
  * Используется для преобразования содержимого пакета XDTO
@@ -56,6 +56,10 @@ public class XdtoPackageDataConverter implements ReadConverter {
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipXdtoPackage()) {
+      return XdtoPackageData.EMPTY;
+    }
 
     var builder = XdtoPackageData.builder();
     builder.targetNamespace(reader.getAttribute(TARGET_NAMESPACE_ATTRIBUTE_NAME));
@@ -160,7 +164,7 @@ public class XdtoPackageDataConverter implements ReadConverter {
     return XdtoPackageData.class.isAssignableFrom(type);
   }
 
-  private static @NonNull String getAttribute(HierarchicalStreamReader reader, String name) {
+  private static String getAttribute(HierarchicalStreamReader reader, String name) {
     var value = reader.getAttribute(name);
     if (value == null) {
       value = "";

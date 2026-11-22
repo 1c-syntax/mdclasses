@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.MDObject;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
@@ -35,9 +36,8 @@ import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import lombok.NonNull;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.nio.file.Path;
 
 /**
@@ -46,27 +46,28 @@ import java.nio.file.Path;
 public class FakeReader implements MDReader {
 
   @Override
-  @NonNull
   public ConfigurationSource getConfigurationSource() {
     return ConfigurationSource.EMPTY;
   }
 
   @Override
-  @NonNull
   public MDClass readConfiguration() {
     return Configuration.EMPTY;
   }
 
   @Override
-  @NonNull
   public ExternalSource readExternalSource() {
     return ExternalReport.EMPTY;
   }
 
   @Override
-  @NonNull
   public Path getRootPath() {
     return Path.of("fake-path");
+  }
+
+  @Override
+  public MDCReadSettings getReadSettings() {
+    return MDCReadSettings.DEFAULT;
   }
 
   @Override
@@ -82,44 +83,37 @@ public class FakeReader implements MDReader {
   }
 
   @Override
-  @Nullable
   public ExtendXStream getXstream() {
-    return null;
+    throw new IllegalCallerException("It's fake reader");
   }
 
   @Override
-  @NonNull
+  public Path standaloneContentPath() {
+    return Path.of("fake-path");
+  }
+
+  @Override
   public FormData readFormData(Path currentPath, String name, MDOType mdoType) {
     return EmptyFormData.EMPTY;
   }
 
   @Override
-  @NonNull
   public Path moduleFolder(Path mdoPath, MDOType mdoType) {
     return getRootPath();
   }
 
   @Override
-  @NonNull
   public Path modulePath(Path folder, String name, ModuleType moduleType) {
     return getRootPath();
   }
 
   @Override
-  @NonNull
   public Path mdoTypeFolderPath(Path mdoPath) {
     return getRootPath();
   }
 
   @Override
-  @NonNull
   public String subsystemsNodeName() {
-    return "";
-  }
-
-  @Override
-  @NonNull
-  public String configurationExtensionFilter() {
     return "";
   }
 

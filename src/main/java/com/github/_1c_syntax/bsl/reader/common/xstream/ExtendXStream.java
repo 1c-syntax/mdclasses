@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,6 +24,8 @@ package com.github._1c_syntax.bsl.reader.common.xstream;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
 import com.github._1c_syntax.bsl.mdclasses.ExternalDataProcessor;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
+import com.github._1c_syntax.bsl.mdclasses.StandaloneConfigurationContent;
+import com.github._1c_syntax.bsl.mdclasses.StandaloneServerPriority;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
@@ -31,24 +33,42 @@ import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.AutoRecordType;
+import com.github._1c_syntax.bsl.mdo.support.CalculationRegisterPeriodicity;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
+import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
+import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
+import com.github._1c_syntax.bsl.mdo.support.CommandRepresentation;
+import com.github._1c_syntax.bsl.mdo.support.CommonAttributeSeparatedDataUse;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
+import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
+import com.github._1c_syntax.bsl.mdo.support.DynamicListKeyType;
+import com.github._1c_syntax.bsl.mdo.support.FillChecking;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
+import com.github._1c_syntax.bsl.mdo.support.HierarchyType;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
+import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
+import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
 import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RegisterWriteMode;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.mdo.support.ReuseSessions;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
-import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
+import com.github._1c_syntax.bsl.mdo.support.SearchStringMode;
+import com.github._1c_syntax.bsl.mdo.support.TableDataType;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.TransferDirection;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.reader.MDReader;
+import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
 import com.github._1c_syntax.bsl.reader.common.converter.CommonConverter;
 import com.github._1c_syntax.bsl.reader.common.converter.EnumConverter;
+import com.github._1c_syntax.bsl.types.DateFractions;
+import com.github._1c_syntax.bsl.types.ScriptVariant;
+import com.github._1c_syntax.utils.StringInterner;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.ConversionException;
 import com.thoughtworks.xstream.converters.Converter;
@@ -67,6 +87,7 @@ import com.thoughtworks.xstream.converters.reflection.PureJavaReflectionProvider
 import com.thoughtworks.xstream.converters.reflection.ReflectionConverter;
 import com.thoughtworks.xstream.core.ClassLoaderReference;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import com.thoughtworks.xstream.io.StreamException;
 import com.thoughtworks.xstream.io.xml.QNameMap;
 import com.thoughtworks.xstream.mapper.CachingMapper;
 import com.thoughtworks.xstream.mapper.CannotResolveClassException;
@@ -81,12 +102,11 @@ import io.github.classgraph.ClassInfo;
 import io.github.classgraph.HasName;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
 import java.nio.file.Path;
-import java.util.Objects;
 import java.util.function.Function;
 
 /**
@@ -95,6 +115,12 @@ import java.util.function.Function;
 @Slf4j
 @Getter
 public class ExtendXStream extends XStream {
+
+  /**
+   * Строки элементов форм одного чтения: одинаковые имена, заголовки и пути данных у тысяч
+   * элементов хранятся одним экземпляром, а сам интернер живёт столько же, сколько чтение.
+   */
+  private final StringInterner formStrings = new StringInterner();
 
   public ExtendXStream(MDReader reader, ClassLoaderReference classLoaderReference, Mapper mapper) {
     super(new PureJavaReflectionProvider(), new ExtendStaxDriver(reader), classLoaderReference, mapper);
@@ -110,19 +136,23 @@ public class ExtendXStream extends XStream {
    * Читает объект из файла
    *
    * @param file Читаемый файл. Если нечитаемые или ошибочный, то будет ошибка
-   * @return Прочитанный объект
+   * @return Прочитанный объект из файла. Если файла нет, либо он битый, то вернется null
    */
   @Override
+  @Nullable
   public Object fromXML(File file) {
     Object result = null;
     if (file.exists()) {
       try {
         result = super.fromXML(file);
       } catch (ConversionException e) {
-        LOGGER.error("Can't read file '{}' - it's broken \n: ", file, e);
-        throw e;
+        LOGGER.warn("Can't read file '{}' - it's broken (skipped) \n", file, e);
       } catch (CannotResolveClassException e) {
-        LOGGER.debug("Can't read file '{}' - unknown class \n: ", file, e);
+        LOGGER.debug("Can't read file '{}' - unknown class (skipped) \n", file, e);
+      } catch (StreamException e) {
+        LOGGER.warn("Can't read file '{}' - it's broken (skipped)", file, e);
+      } catch (Exception e) {
+        LOGGER.warn("Can't read file '{}' - unexpected error (skipped): {}", file, e.getMessage(), e);
       }
     }
     return result;
@@ -132,8 +162,9 @@ public class ExtendXStream extends XStream {
    * Возвращает класс реализации объекта по имени поля / строковому краткому имени
    *
    * @param className Имя искомого класса
-   * @return Найденный класс
+   * @return Найденный класс. Если не найден, то null
    */
+  @Nullable
   public Class<?> getRealClass(String className) {
     return getMapper().realClass(className);
   }
@@ -145,6 +176,7 @@ public class ExtendXStream extends XStream {
    * @param className Имя искомого класса
    * @return Найденный класс
    */
+  @Nullable
   public static Class<?> getRealClass(HierarchicalStreamReader reader, String className) {
     return getCurrentMDReader(reader).getXstream().getRealClass(className);
   }
@@ -154,8 +186,9 @@ public class ExtendXStream extends XStream {
    *
    * @param reader      Ридер файла
    * @param contentPath Путь к файлу
-   * @return Найденный класс
+   * @return Прочитанное значение
    */
+  @Nullable
   public static Object read(HierarchicalStreamReader reader, Path contentPath) {
     return getCurrentMDReader(reader).read(contentPath);
   }
@@ -166,8 +199,9 @@ public class ExtendXStream extends XStream {
    * @param reader      Ридер файла
    * @param contentPath Путь к файлу
    * @param fullName    Имя читаемого объекта
-   * @return Найденный класс
+   * @return Прочитанное значение
    */
+  @Nullable
   public static Object read(HierarchicalStreamReader reader, Path contentPath, String fullName) {
     return getCurrentMDReader(reader).read(contentPath, fullName);
   }
@@ -221,7 +255,6 @@ public class ExtendXStream extends XStream {
       var classes = scanResult.getClassesWithAnnotation(annotation.getName());
       classes.stream()
         .map(getObjectsFromInfoClass())
-        .filter(Objects::nonNull)
         .forEach(xStream::registerMDCConverter);
     }
   }
@@ -251,22 +284,39 @@ public class ExtendXStream extends XStream {
 
     registerConverter(new EnumConverter<>(ApplicationRunMode.class));
     registerConverter(new EnumConverter<>(AutoRecordType.class));
+    registerConverter(new EnumConverter<>(CalculationRegisterPeriodicity.class));
     registerConverter(new EnumConverter<>(ConfigurationExtensionPurpose.class));
     registerConverter(new EnumConverter<>(DataLockControlMode.class));
     registerConverter(new EnumConverter<>(DataSeparation.class));
+    registerConverter(new EnumConverter<>(CommonAttributeSeparatedDataUse.class));
+    registerConverter(new EnumConverter<>(DynamicListKeyType.class));
     registerConverter(new EnumConverter<>(FormType.class));
     registerConverter(new EnumConverter<>(IndexingType.class));
+    registerConverter(new EnumConverter<>(InformationRegisterPeriodicity.class));
     registerConverter(new EnumConverter<>(MessageDirection.class));
     registerConverter(new EnumConverter<>(ObjectBelonging.class));
     registerConverter(new EnumConverter<>(ReturnValueReuse.class));
     registerConverter(new EnumConverter<>(ReuseSessions.class));
     registerConverter(new EnumConverter<>(RoleRight.class));
     registerConverter(new EnumConverter<>(ScriptVariant.class));
+    registerConverter(new EnumConverter<>(TableDataType.class));
     registerConverter(new EnumConverter<>(TemplateType.class));
     registerConverter(new EnumConverter<>(TransferDirection.class));
     registerConverter(new EnumConverter<>(UseMode.class));
     registerConverter(new EnumConverter<>(UsePurposes.class));
     registerConverter(new EnumConverter<>(FormElementType.class));
+    registerConverter(new EnumConverter<>(InterfaceCompatibilityMode.class));
+    registerConverter(new EnumConverter<>(DateFractions.class));
+    registerConverter(new EnumConverter<>(CodeSeries.class));
+    registerConverter(new EnumConverter<>(HierarchyType.class));
+    registerConverter(new EnumConverter<>(ChoiceDataGetMode.class));
+    registerConverter(new EnumConverter<>(ChoiceHistoryOnInputMode.class));
+    registerConverter(new EnumConverter<>(SearchStringMode.class));
+    registerConverter(new EnumConverter<>(CommandRepresentation.class));
+    registerConverter(new EnumConverter<>(FillChecking.class));
+    registerConverter(new EnumConverter<>(DefaultPresentation.class));
+    registerConverter(new EnumConverter<>(RegisterWriteMode.class));
+    registerConverter(new EnumConverter<>(StandaloneServerPriority.class));
   }
 
   private void init() {
@@ -317,6 +367,8 @@ public class ExtendXStream extends XStream {
     alias("Configuration", ConfigurationTree.class);
     alias("ExternalDataProcessor", ExternalDataProcessor.class);
     alias("ExternalReport", ExternalReport.class);
+    alias("AdditionalIndexes", AdditionalIndexesWrapper.class);
+    alias("StandaloneContent", StandaloneConfigurationContent.class);
   }
 
   @Nullable

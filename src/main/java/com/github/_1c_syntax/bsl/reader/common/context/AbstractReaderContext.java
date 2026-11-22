@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -34,13 +34,17 @@ import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
+import org.jspecify.annotations.Nullable;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Сохраняемый контекст при чтении файла
@@ -76,6 +80,7 @@ public abstract class AbstractReaderContext {
   /**
    * Режим поддержки
    */
+  @Getter
   protected SupportVariant supportVariant;
 
   /**
@@ -87,6 +92,7 @@ public abstract class AbstractReaderContext {
   /**
    * Ссылка на текущий объект
    */
+  @Getter
   protected MdoReference mdoReference = MdoReference.EMPTY;
 
   /**
@@ -101,6 +107,7 @@ public abstract class AbstractReaderContext {
    */
   @Setter
   @Getter
+  @Nullable
   private String lastName;
 
   /**
@@ -108,11 +115,37 @@ public abstract class AbstractReaderContext {
    */
   @Setter
   @Getter
+  @Nullable
   private Object lastValue;
 
-  protected AbstractReaderContext(@NonNull HierarchicalStreamReader reader) {
+  /**
+   * Всякие прочитанные атрибуты
+   */
+  @Getter
+  private final Map<String, Object> cache;
+
+  protected AbstractReaderContext(HierarchicalStreamReader reader) {
     currentPath = ExtendXStream.getCurrentPath(reader);
     mdReader = ExtendXStream.getCurrentMDReader(reader);
+
+    cache = new ConcurrentHashMap<>();
+    mdoType = MDOType.UNKNOWN;
+    supportVariant = SupportVariant.NONE;
+    realClass = String.class; // заглушка
+    builder = ""; // заглушка
+    name = ""; // заглушка
+  }
+
+  protected AbstractReaderContext(Path currentPath, MDReader mdReader) {
+    this.currentPath = currentPath;
+    this.mdReader = mdReader;
+
+    cache = new ConcurrentHashMap<>();
+    mdoType = MDOType.UNKNOWN;
+    supportVariant = SupportVariant.NONE;
+    realClass = String.class; // заглушка
+    builder = ""; // заглушка
+    name = ""; // заглушка
   }
 
   /**
@@ -121,17 +154,41 @@ public abstract class AbstractReaderContext {
    * @param methodName Имя поля\метода
    * @param value      устанавливаемое значение
    */
-  public void setValue(String methodName, Object value) {
-    TransformationUtils.setValue(builder, methodName, value);
+  public void setValue(String methodName, @Nullable Object value) {
+    if (value != null) {
+      TransformationUtils.setValue(builder, methodName, value);
+      var key = methodName.toLowerCase(Locale.ROOT);
+      cache.compute(key, (String k, Object existing) -> {
+        if(existing != null && !(existing instanceof List<?>) && !existing.equals(value)) {
+          existing = List.of(existing);
+        }
+
+        if (existing instanceof List<?> existingList) {
+          @SuppressWarnings("unchecked")
+          var list = new ArrayList<>((List<Object>) existingList);
+          if (value instanceof List<?> valueList) {
+            list.addAll(valueList);
+          } else {
+            list.add(value);
+          }
+          return list;
+        } else {
+          if (value instanceof List<?>) { // список при добавлении сделаем синхронизируемым
+            return Collections.synchronizedList(new ArrayList<>((List<?>) value));
+          }
+          return value;
+        }
+      });
+    }
   }
 
   /**
    * Получение класса типа поля
    *
    * @param fieldName Имя поля\метода
-   * @return Определенный класс
+   * @return Определенный класс, если не найден, тогда null
    */
-  public Class<?> fieldType(String fieldName) {
+  public @Nullable Class<?> fieldType(String fieldName) {
     return (Class<?>) TransformationUtils.fieldType(builder, fieldName);
   }
 
@@ -139,7 +196,20 @@ public abstract class AbstractReaderContext {
    * Сборка контекста в объект
    */
   public Object build() {
-    return TransformationUtils.build(builder, currentPath);
+    var result = TransformationUtils.build(builder, currentPath);
+    assert result != null;
+    return result;
+  }
+
+  @SuppressWarnings("unchecked")
+  public <T> T getFromCache(String key, T defaultValue) {
+    return (T) cache.getOrDefault(key.toLowerCase(Locale.ROOT), defaultValue);
+  }
+
+  @SuppressWarnings("unchecked")
+  @Nullable
+  public <T> T getFromCache(String key) {
+    return (T) cache.get(key.toLowerCase(Locale.ROOT));
   }
 
   protected void setValueModules() {
@@ -175,6 +245,7 @@ public abstract class AbstractReaderContext {
         }
       }
     );
+    modules.sort(Comparator.comparing(Module::toString));
     return modules;
   }
 }

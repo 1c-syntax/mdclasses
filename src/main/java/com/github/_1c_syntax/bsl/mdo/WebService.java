@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,16 +22,16 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ReuseSessions;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.utils.Lazy;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -40,7 +40,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class WebService implements MDObject, ChildrenOwner, ModuleOwner {
@@ -64,7 +64,8 @@ public class WebService implements MDObject, ChildrenOwner, ModuleOwner {
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
-  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+  @Getter(lazy = true)
+  List<MD> plainChildren = LazyLoader.computePlainChildren(this);
 
   /*
    * ModuleOwner
@@ -110,14 +111,5 @@ public class WebService implements MDObject, ChildrenOwner, ModuleOwner {
   @Override
   public List<MD> getChildren() {
     return Collections.unmodifiableList(operations);
-  }
-
-  @Override
-  public List<MD> getPlainChildren() {
-    return plainChildren.getOrCompute();
-  }
-
-  private List<MD> computePlainChildren() {
-    return LazyLoader.computePlainChildren(this);
   }
 }

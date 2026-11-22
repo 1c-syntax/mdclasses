@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:AccountingRegister xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:core="http://g5.1c.ru/v8/dt/mcore" xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="66765e32-4a71-48e3-b58d-f664df059323">
+  <producedTypes>
+    <selectionType typeId="ec2628bc-af8b-4b55-9a49-e541049d5419" valueTypeId="dbc61cbd-e734-4b69-8df0-173aa24bbd9b"/>
+    <listType typeId="fdf434c2-8141-40ef-b191-14406e593f53" valueTypeId="6c4b3c50-44c3-4c6d-8dae-cac43344d69b"/>
+    <managerType typeId="17c0a8e7-2eec-4214-9010-f68eac6e5164" valueTypeId="3aec40e1-2598-4451-8dc9-bbb1d80449bc"/>
+    <recordSetType typeId="5a13694d-5ddc-4522-be88-507f8de557af" valueTypeId="3813f009-7229-4fd2-bb3a-879d1616affc"/>
+    <recordKeyType typeId="b28f167e-f330-4877-a309-e9ccd74c87d7" valueTypeId="b4dcf660-c4d1-4d35-bd9f-90acf2ed5d32"/>
+    <recordType typeId="8d92efb2-d732-4abe-8933-f23e562b1fba" valueTypeId="30d7ec6c-e389-4a54-9935-fc7c13ffe3fc"/>
+    <extDimensionsType typeId="cd959e81-85e2-44df-9e74-eb34b5072466" valueTypeId="a37ee5fd-797f-434f-9880-2d3d45835be8"/>
+  </producedTypes>
+  <name>РегистрБухгалтерии1</name>
+  <useStandardCommands>true</useStandardCommands>
+  <chartOfAccounts>ChartOfAccounts.ПланСчетов1</chartOfAccounts>
+  <periodAdjustmentLength>1</periodAdjustmentLength>
+  <dataLockControlMode>Managed</dataLockControlMode>
+  <enableTotalsSplitting>true</enableTotalsSplitting>
+  <dimensions uuid="d17819fa-07ca-419a-8402-b09a3ab8fb3f">
+    <name>Измерение1</name>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <balance>true</balance>
+  </dimensions>
+  <resources uuid="4aa18d3a-2564-448e-b55b-e5c405c830fd">
+    <name>Ресурс1</name>
+    <type>
+      <types>Number</types>
+      <numberQualifiers>
+        <precision>10</precision>
+      </numberQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+    <balance>true</balance>
+  </resources>
+  <attributes uuid="29ec3707-2a3b-4934-b19e-464a2352ba93">
+    <name>Реквизит1</name>
+    <type>
+      <types>String</types>
+      <stringQualifiers>
+        <length>10</length>
+      </stringQualifiers>
+    </type>
+    <minValue xsi:type="core:UndefinedValue"/>
+    <maxValue xsi:type="core:UndefinedValue"/>
+    <fullTextSearch>Use</fullTextSearch>
+  </attributes>
+</mdclass:AccountingRegister>

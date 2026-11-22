@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -23,7 +23,7 @@ package com.github._1c_syntax.bsl.mdclasses;
 
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.support.SupportVariant;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -34,15 +34,16 @@ class ExternalDataProcessorTest {
   @ParameterizedTest
   @CsvSource(
     {
-      "true, ТестоваяВнешняяОбработка, false, _edt",
-      "false, ТестоваяВнешняяОбработка, false"
+      "true, external, ТестоваяВнешняяОбработка",
+      "false, external, ТестоваяВнешняяОбработка"
     }
   )
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdc = MDTestUtils.readExternalSourceWithSimpleTest(argumentsAccessor);
+    var mdc = Fixtures.get(argumentsAccessor);
     assertThat(mdc).isInstanceOf(ExternalDataProcessor.class);
 
     var epf = (ExternalDataProcessor) mdc;
+    assertThat(epf).isNotNull();
 
     assertThat(epf.getModules())
       .hasSize(1)
@@ -59,7 +60,7 @@ class ExternalDataProcessorTest {
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(epf.getPlainChildren())
-      .hasSize(6)
+      .hasSize(7)
       .allMatch(md -> md.getSupportVariant().equals(SupportVariant.NONE));
 
     assertThat(epf.getForms()).hasSize(2);

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,31 +24,33 @@ package com.github._1c_syntax.bsl.mdo;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.utils.Lazy;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class DataProcessor implements MDObject, ModuleOwner, CommandOwner, AttributeOwner, TabularSectionOwner,
   FormOwner, TemplateOwner, AccessRightsOwner {
 
-  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.USE);
+  private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.EDIT, RoleRight.USE, RoleRight.VIEW);
 
   /*
    * MDObject
@@ -69,8 +71,10 @@ public class DataProcessor implements MDObject, ModuleOwner, CommandOwner, Attri
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
-  Lazy<List<MD>> plainChildren = new Lazy<>(this::computePlainChildren);
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
+  @Getter(lazy = true)
+  List<MD> plainChildren = LazyLoader.computePlainChildren(this);
 
   /*
    * ModuleOwner
@@ -78,7 +82,8 @@ public class DataProcessor implements MDObject, ModuleOwner, CommandOwner, Attri
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   /*
    * CommandOwner
@@ -101,8 +106,10 @@ public class DataProcessor implements MDObject, ModuleOwner, CommandOwner, Attri
   @Singular
   List<TabularSection> tabularSections;
 
-  Lazy<List<MD>> storageFields = new Lazy<>(this::computeStorageFields);
-  Lazy<List<MD>> plainStorageFields = new Lazy<>(this::computePlainStorageFields);
+  @Getter(lazy = true)
+  List<MD> storageFields = LazyLoader.computeStorageFields(this);
+  @Getter(lazy = true)
+  List<MD> plainStorageFields = LazyLoader.computePlainStorageFields(this);
 
   /*
    * FormOwner
@@ -123,6 +130,24 @@ public class DataProcessor implements MDObject, ModuleOwner, CommandOwner, Attri
    */
 
   /**
+   * Ссылка на форму по умолчанию
+   */
+  @Default
+  MdoReference defaultForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму
+   */
+  @Default
+  MdoReference auxiliaryForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
+  /**
    * Пояснение
    */
   @Default
@@ -133,31 +158,6 @@ public class DataProcessor implements MDObject, ModuleOwner, CommandOwner, Attri
     return getAttributes();
   }
 
-  @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
-  }
-
-  @Override
-  public List<MD> getPlainChildren() {
-    return plainChildren.getOrCompute();
-  }
-
-  @Override
-  public List<MD> getStorageFields() {
-    return storageFields.getOrCompute();
-  }
-
-  @Override
-  public List<MD> getPlainStorageFields() {
-    return plainStorageFields.getOrCompute();
-  }
-
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
-
   /**
    * Возвращает перечень возможных прав доступа
    */
@@ -165,23 +165,10 @@ public class DataProcessor implements MDObject, ModuleOwner, CommandOwner, Attri
     return POSSIBLE_RIGHTS;
   }
 
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
-  }
-
-  private List<MD> computePlainChildren() {
-    return LazyLoader.computePlainChildren(this);
-  }
-
-  private List<MD> computeStorageFields() {
-    return LazyLoader.computeStorageFields(this);
-  }
-
-  private List<MD> computePlainStorageFields() {
-    return LazyLoader.computePlainStorageFields(this);
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.DEFAULT_FORM, getDefaultForm()),
+      Map.entry(DefaultFormKind.AUX_FORM, getAuxiliaryForm())
+    );
   }
 }

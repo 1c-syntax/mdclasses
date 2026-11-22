@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Предопределенный</dataPath>
+			<field>Предопределенный</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Реквизит1</dataPath>
+			<field>Реквизит1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Забалансовый</dataPath>
+			<field>Забалансовый</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Вид</dataPath>
+			<field>Вид</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ИмяПредопределенныхДанных</dataPath>
+			<field>ИмяПредопределенныхДанных</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Код</dataPath>
+			<field>Код</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Родитель</dataPath>
+			<field>Родитель</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Наименование</dataPath>
+			<field>Наименование</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПометкаУдаления</dataPath>
+			<field>ПометкаУдаления</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПризнакУчета1</dataPath>
+			<field>ПризнакУчета1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВерсияДанных</dataPath>
+			<field>ВерсияДанных</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ПланСчетов1.Ссылка КАК Ссылка,
+	ПланСчетов1.ВерсияДанных КАК ВерсияДанных,
+	ПланСчетов1.ПометкаУдаления КАК ПометкаУдаления,
+	ПланСчетов1.Родитель КАК Родитель,
+	ПланСчетов1.Код КАК Код,
+	ПланСчетов1.Наименование КАК Наименование,
+	ПланСчетов1.Вид КАК Вид,
+	ПланСчетов1.Забалансовый КАК Забалансовый,
+	ПланСчетов1.Реквизит1 КАК Реквизит1,
+	ПланСчетов1.ПризнакУчета1 КАК ПризнакУчета1,
+	ПланСчетов1.Предопределенный КАК Предопределенный,
+	ПланСчетов1.ИмяПредопределенныхДанных КАК ИмяПредопределенныхДанных
+ИЗ
+	ПланСчетов.ПланСчетов1 КАК ПланСчетов1</query>
+	</dataSet>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows"/>
+	</settingsVariant>
+</DataCompositionSchema>

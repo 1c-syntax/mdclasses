@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -27,30 +27,35 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+import com.github._1c_syntax.bsl.mdo.support.CalculationRegisterPeriodicity;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.utils.Lazy;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CalculationRegister implements Register, AccessRightsOwner {
+public class CalculationRegister implements Register {
 
-  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRighs();
+  private static final List<RoleRight> POSSIBLE_RIGHTS = computePossibleRights();
 
   /*
    * Register
@@ -73,7 +78,8 @@ public class CalculationRegister implements Register, AccessRightsOwner {
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   @Singular
   List<ObjectCommand> commands;
@@ -84,7 +90,8 @@ public class CalculationRegister implements Register, AccessRightsOwner {
   List<Resource> resources;
   @Singular
   List<Dimension> dimensions;
-  Lazy<List<Attribute>> allAttributes = new Lazy<>(this::computeAllAttributes);
+  @Getter(lazy = true)
+  List<Attribute> allAttributes = LazyLoader.computeAllAttributes(this);
 
   @Singular
   List<ObjectForm> forms;
@@ -92,11 +99,55 @@ public class CalculationRegister implements Register, AccessRightsOwner {
   @Singular
   List<ObjectTemplate> templates;
 
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
+  /**
+   * Дополнительные индексы
+   */
+  @Singular("addAdditionalIndex")
+  List<AdditionalIndex> additionalIndexes;
+
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
 
   /*
    * Свое
    */
+
+  /**
+   * План видов расчета, к которому относится регистр
+   */
+  @Default
+  MdoReference chartOfCalculationTypes = MdoReference.EMPTY;
+
+  /**
+   * Периодичность регистра расчета
+   */
+  @Default
+  CalculationRegisterPeriodicity periodicity = CalculationRegisterPeriodicity.MONTH;
+
+  /**
+   * Признак период действия.
+   * Определяет, используется ли в регистре расчета период действия.
+   */
+  @Default
+  boolean actionPeriod = false;
+
+  /**
+   * Ссылка на форму списка по умолчанию
+   */
+  @Default
+  MdoReference defaultListForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму списка
+   */
+  @Default
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
 
   @Singular
   List<Recalculation> recalculations;
@@ -107,20 +158,11 @@ public class CalculationRegister implements Register, AccessRightsOwner {
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
-  @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
-  }
-
-  @Override
-  public List<Attribute> getAllAttributes() {
-    return allAttributes.getOrCompute();
-  }
-
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
+  /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
 
   /**
    * Возвращает перечень возможных прав доступа
@@ -129,24 +171,19 @@ public class CalculationRegister implements Register, AccessRightsOwner {
     return POSSIBLE_RIGHTS;
   }
 
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
-  }
-
-  private List<Attribute> computeAllAttributes() {
-    return LazyLoader.computeAllAttributes(this);
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
-  }
-
-  private static List<RoleRight> computePossibleRighs() {
+  private static List<RoleRight> computePossibleRights() {
     return List.of(
       RoleRight.READ,
       RoleRight.UPDATE,
       RoleRight.VIEW,
       RoleRight.EDIT
+    );
+  }
+
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.LIST_FORM, getDefaultListForm()),
+      Map.entry(DefaultFormKind.AUX_LIST_FORM, getAuxiliaryListForm())
     );
   }
 }

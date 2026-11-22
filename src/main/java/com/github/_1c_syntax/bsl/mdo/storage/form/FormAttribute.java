@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,33 +21,56 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
-import lombok.Builder;
-import lombok.Builder.Default;
-import lombok.Value;
+import com.github._1c_syntax.bsl.mdo.ValueTypeOwner;
+import com.github._1c_syntax.bsl.mdo.support.FillChecking;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
+
+import java.util.List;
 
 /**
- * Хранит описание атрибута формы
+ * Атрибут формы (реквизит, таблица, динамический список или дополнительные колонки)
  */
-@Value
-@Builder
-public class FormAttribute {
+public interface FormAttribute extends FormItem, ValueTypeOwner {
 
   /**
    * Идентификатор
    */
-  @Default
-  int id = -1;
+  int getId();
 
   /**
-   * Имя
+   * Заголовок
    */
-  @Default
-  String name = "";
+  MultiLanguageString getTitle();
 
   /**
-   * Синоним
+   * Признак основного реквизита
    */
-  @Default
-  MultiLanguageString title = MultiLanguageString.EMPTY;
+  boolean isMainAttribute();
+
+  /**
+   * Признак сохранения с формой
+   */
+  boolean isSavedData();
+
+  /**
+   * Проверка заполнения
+   */
+  FillChecking getFillCheck();
+
+  /**
+   * Комментарий
+   */
+  String getComment();
+
+  /**
+   * Колонки (включая дополнительные колонки табличной части)
+   */
+  List<FormAttribute> getColumns();
+
+  /**
+   * Пути к данным полей реквизита, помеченных «использовать всегда»
+   * ({@code Список.Ссылка}). Форма читает такое поле независимо от того,
+   * показывает ли его хоть один элемент
+   */
+  List<String> getUseAlwaysFields();
 }

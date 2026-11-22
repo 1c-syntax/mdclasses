@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,13 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
-import com.github._1c_syntax.utils.Lazy;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
@@ -35,10 +34,12 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.net.URI;
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class CommonModule implements MDObject, Module, ModuleOwner {
@@ -73,7 +74,15 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
 
   boolean isProtected;
 
-  Lazy<List<Module>> modules = new Lazy<>(this::computeModules);
+  @Default
+  List<Module> modules = Collections.emptyList();
+
+  public List<Module> getModules() {
+    if (modules.isEmpty() || modules.size() == 1 && Objects.equals(modules.getFirst().getUri(), uri)) {
+      return List.of(this);
+    }
+    return modules;
+  }
 
   /*
    * Свое
@@ -120,16 +129,8 @@ public class CommonModule implements MDObject, Module, ModuleOwner {
   @Default
   ReturnValueReuse returnValuesReuse = ReturnValueReuse.DONT_USE;
 
-  /*
-   * ModuleOwner
-   */
-
   @Override
-  public List<Module> getModules() {
-    return modules.getOrCompute();
-  }
-
-  private List<Module> computeModules() {
-    return List.of(this);
+  public MdoReference getOwner() {
+    return mdoReference; // сам модуль является владельцем
   }
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -25,29 +25,32 @@ import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.utils.Lazy;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, AttributeOwner, FormOwner, TemplateOwner,
-  AccessRightsOwner {
+  AccessRightsOwner, AdditionalIndexOwner {
 
   private static final List<RoleRight> POSSIBLE_RIGHTS = List.of(RoleRight.READ, RoleRight.VIEW);
 
@@ -70,7 +73,8 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
 
   /*
    * ModuleOwner
@@ -78,7 +82,8 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   /*
    * CommandOwner
@@ -93,6 +98,12 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
 
   @Singular
   List<DocumentJournalColumn> columns;
+
+  /**
+   * Дополнительные индексы
+   */
+  @Singular("addAdditionalIndex")
+  List<AdditionalIndex> additionalIndexes;
 
   /*
    * FormOwner
@@ -113,6 +124,24 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
    */
 
   /**
+   * Ссылка на форму по умолчанию
+   */
+  @Default
+  MdoReference defaultForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму
+   */
+  @Default
+  MdoReference auxiliaryForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
+  /**
    * Ссылки на документы
    */
   @Singular("addRegisteredDocuments")
@@ -129,16 +158,6 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
     return Collections.unmodifiableList(columns);
   }
 
-  @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
-  }
-
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
-
   /**
    * Возвращает перечень возможных прав доступа
    */
@@ -146,12 +165,10 @@ public class DocumentJournal implements MDObject, ModuleOwner, CommandOwner, Att
     return POSSIBLE_RIGHTS;
   }
 
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.DEFAULT_FORM, getDefaultForm()),
+      Map.entry(DefaultFormKind.AUX_FORM, getAuxiliaryForm())
+    );
   }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
-  }
-
 }

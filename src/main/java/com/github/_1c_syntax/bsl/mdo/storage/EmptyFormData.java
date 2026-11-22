@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,14 +21,6 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage;
 
-import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormHandler;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
-
-import java.util.Collections;
-import java.util.List;
-
 /**
  * Реализация содержимого пустой формы
  */
@@ -40,30 +32,5 @@ public final class EmptyFormData implements FormData {
   public static final EmptyFormData EMPTY = new EmptyFormData();
 
   private EmptyFormData() {
-  }
-
-  @Override
-  public MultiLanguageString getTitle() {
-    return MultiLanguageString.EMPTY;
-  }
-
-  @Override
-  public List<FormHandler> getHandlers() {
-    return Collections.emptyList();
-  }
-
-  @Override
-  public List<FormItem> getItems() {
-    return Collections.emptyList();
-  }
-
-  @Override
-  public List<FormItem> getPlainItems() {
-    return Collections.emptyList();
-  }
-
-  @Override
-  public List<FormAttribute> getAttributes() {
-    return Collections.emptyList();
   }
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -25,27 +25,30 @@ import com.github._1c_syntax.bsl.mdo.children.EnumValue;
 import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.mdo.storage.Characteristic;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.utils.Lazy;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, TemplateOwner {
+public class Enum implements ReferenceObject, IndexOwner {
 
   /*
    * MDObject
@@ -66,7 +69,8 @@ public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, Tem
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
 
   /*
    * ModuleOwner
@@ -74,7 +78,8 @@ public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, Tem
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   /*
    * CommandOwner
@@ -98,6 +103,13 @@ public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, Tem
   List<ObjectTemplate> templates;
 
   /*
+   * AttributeOwner
+   */
+
+  @Singular
+  List<Attribute> attributes;
+
+  /*
    * Свое
    */
 
@@ -108,27 +120,58 @@ public class Enum implements MDObject, ModuleOwner, CommandOwner, FormOwner, Tem
   List<EnumValue> enumValues;
 
   /**
+   * Характеристики объекта
+   */
+  @Singular("addCharacteristics")
+  List<Characteristic> characteristics;
+
+  /**
    * Пояснение
    */
   @Default
   MultiLanguageString explanation = MultiLanguageString.EMPTY;
 
+  /**
+   * Ссылка на форму списка по умолчанию
+   */
+  @Default
+  MdoReference defaultListForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на форму выбора по умолчанию
+   */
+  @Default
+  MdoReference defaultChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму списка
+   */
+  @Default
+  MdoReference auxiliaryListForm = MdoReference.EMPTY;
+
+  /**
+   * Ссылка на дополнительную форму выбора
+   */
+  @Default
+  MdoReference auxiliaryChoiceForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
   @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
+  public List<Attribute> getAllAttributes() {
+    return getAttributes();
   }
 
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.LIST_FORM, getDefaultListForm()),
+      Map.entry(DefaultFormKind.CHOICE_FORM, getDefaultChoiceForm()),
+      Map.entry(DefaultFormKind.AUX_LIST_FORM, getAuxiliaryListForm()),
+      Map.entry(DefaultFormKind.AUX_CHOICE_FORM, getAuxiliaryChoiceForm())
+    );
   }
-
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
-
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
-  }
-
 }

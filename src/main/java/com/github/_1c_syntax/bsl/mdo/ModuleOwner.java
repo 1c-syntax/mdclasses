@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -65,7 +65,12 @@ public interface ModuleOwner extends MD {
   /**
    * Возвращает соответствие типов модулей их путям к файлам
    */
-  default Map<ModuleType, URI> getModuleTypes() {
-    return getModules().stream().collect(Collectors.toMap(Module::getModuleType, Module::getUri));
+  default Map<ModuleType, List<URI>> getModuleTypes() {
+    return getModules().stream().collect(
+      Collectors.groupingBy(
+        Module::getModuleType,
+        Collectors.mapping(Module::getUri, Collectors.toList())
+      )
+    );
   }
 }

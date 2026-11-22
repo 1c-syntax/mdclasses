@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -34,7 +34,7 @@ import lombok.Value;
 import java.net.URI;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"uri"})
 @EqualsAndHashCode(of = {"uri"})
 public class ObjectModule implements Module {

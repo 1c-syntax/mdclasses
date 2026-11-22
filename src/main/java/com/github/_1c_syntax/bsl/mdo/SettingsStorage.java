@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -23,24 +23,26 @@ package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
+import com.github._1c_syntax.bsl.mdo.support.DefaultFormKind;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
-import com.github._1c_syntax.utils.Lazy;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
 public class SettingsStorage implements MDObject, ModuleOwner, FormOwner, TemplateOwner {
@@ -64,7 +66,8 @@ public class SettingsStorage implements MDObject, ModuleOwner, FormOwner, Templa
   @Default
   SupportVariant supportVariant = SupportVariant.NONE;
 
-  Lazy<List<MD>> children = new Lazy<>(this::computeChildren);
+  @Getter(lazy = true)
+  List<MD> children = LazyLoader.computeChildren(this);
 
   /*
    * ModuleOwner
@@ -72,7 +75,8 @@ public class SettingsStorage implements MDObject, ModuleOwner, FormOwner, Templa
 
   @Default
   List<Module> modules = Collections.emptyList();
-  Lazy<List<Module>> allModules = new Lazy<>(this::computeAllModules);
+  @Getter(lazy = true)
+  List<Module> allModules = LazyLoader.computeAllModules(this);
 
   /*
    * FormOwner
@@ -88,22 +92,46 @@ public class SettingsStorage implements MDObject, ModuleOwner, FormOwner, Templa
   @Singular
   List<ObjectTemplate> templates;
 
-  @Override
-  public List<MD> getChildren() {
-    return children.getOrCompute();
-  }
+  /*
+   * Свое
+   */
 
-  @Override
-  public List<Module> getAllModules() {
-    return allModules.getOrCompute();
-  }
+  /**
+   * Ссылка на форму сохранения по умолчанию
+   */
+  @Default
+  MdoReference defaultSaveForm = MdoReference.EMPTY;
 
-  private List<MD> computeChildren() {
-    return LazyLoader.computeChildren(this);
-  }
+  /**
+   * Ссылка на форму загрузки по умолчанию
+   */
+  @Default
+  MdoReference defaultLoadForm = MdoReference.EMPTY;
 
-  private List<Module> computeAllModules() {
-    return LazyLoader.computeAllModules(this);
-  }
+  /**
+   * Ссылка на дополнительную форму сохранения
+   */
+  @Default
+  MdoReference auxiliarySaveForm = MdoReference.EMPTY;
 
+  /**
+   * Ссылка на дополнительную форму загрузки
+   */
+  @Default
+  MdoReference auxiliaryLoadForm = MdoReference.EMPTY;
+
+  /**
+   * Возможные формы по умолчанию
+   */
+  @Getter(lazy = true)
+  Map<DefaultFormKind, MdoReference> defaultFormMap = createDefaultFormMap();
+
+  private Map<DefaultFormKind, MdoReference> createDefaultFormMap() {
+    return Map.ofEntries(
+      Map.entry(DefaultFormKind.SAVE_FORM, getDefaultSaveForm()),
+      Map.entry(DefaultFormKind.LOAD_FORM, getDefaultLoadForm()),
+      Map.entry(DefaultFormKind.AUX_SAVE_FORM, getAuxiliarySaveForm()),
+      Map.entry(DefaultFormKind.AUX_LOAD_FORM, getAuxiliaryLoadForm())
+    );
+  }
 }

@@ -1,1518 +1,1143 @@
-{"com.github._1c_syntax.bsl.mdo.Catalog": {
-  "attributes": [
-    [
-      {
-        "uuid": "07ccfe87-e1ab-4da7-92cb-a612e0972b0b",
-        "name": "Автор",
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Catalog.Заметки.Attribute.Автор",
-          "mdoRefRu": "Справочник.Заметки.Реквизит.Автор"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            [
-              {
-                "langKey": "ru",
-                "value": "Автор"
-              }
-            ]
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "type": "CATALOG",
-          "mdoRef": "Catalog.Заметки",
-          "mdoRefRu": "Справочник.Заметки"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "INDEX",
-        "format": {
-          "content": []
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "08c2f92c-eb05-49e7-bfc9-4a89607b9864",
-        "name": "Предмет",
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Catalog.Заметки.Attribute.Предмет",
-          "mdoRefRu": "Справочник.Заметки.Реквизит.Предмет"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            [
-              {
-                "langKey": "ru",
-                "value": "Предмет"
-              }
-            ]
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "INDEX",
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": true
-      },
-      {
-        "uuid": "6d751379-89a7-49b5-93e5-578329c63d9c",
-        "name": "Содержание",
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Catalog.Заметки.Attribute.Содержание",
-          "mdoRefRu": "Справочник.Заметки.Реквизит.Содержание"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            [
-              {
-                "langKey": "ru",
-                "value": "Содержание"
-              }
-            ]
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "c3f156ef-947e-4ebb-883f-4f099a116063",
-        "name": "ТекстСодержания",
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Catalog.Заметки.Attribute.ТекстСодержания",
-          "mdoRefRu": "Справочник.Заметки.Реквизит.ТекстСодержания"
-        },
-        "objectBelonging": "OWN",
-        "comment": "Реквизит для полнотекстового поиска",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/synonym"
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "5e3ab0a3-c0a6-4f41-85d3-2eede4abb555",
-        "name": "ДляРабочегоСтола",
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Catalog.Заметки.Attribute.ДляРабочегоСтола",
-          "mdoRefRu": "Справочник.Заметки.Реквизит.ДляРабочегоСтола"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            [
-              {
-                "langKey": "ru",
-                "value": "Для рабочего стола"
-              }
-            ]
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "INDEX",
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "a065ffc3-f50b-4a78-9b84-bfc4e5515a4b",
-        "name": "Пометка",
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Catalog.Заметки.Attribute.Пометка",
-          "mdoRefRu": "Справочник.Заметки.Реквизит.Пометка"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            [
-              {
-                "langKey": "ru",
-                "value": "Пометка"
-              }
-            ]
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": true
-      },
-      {
-        "uuid": "4cba5a06-1484-4dd1-8e35-2d702c7d96d0",
-        "name": "ДатаИзменения",
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Catalog.Заметки.Attribute.ДатаИзменения",
-          "mdoRefRu": "Справочник.Заметки.Реквизит.ДатаИзменения"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            [
-              {
-                "langKey": "ru",
-                "value": "Дата изменения"
-              }
-            ]
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      },
-      {
-        "uuid": "e98e9e56-2995-430c-bd3b-f1070aec15a5",
-        "name": "ПредставлениеПредмета",
-        "mdoReference": {
-          "type": "ATTRIBUTE",
-          "mdoRef": "Catalog.Заметки.Attribute.ПредставлениеПредмета",
-          "mdoRefRu": "Справочник.Заметки.Реквизит.ПредставлениеПредмета"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/synonym"
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "passwordMode": false,
-        "kind": "CUSTOM",
-        "indexing": "DONT_INDEX",
-        "format": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "editFormat": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-        },
-        "markNegatives": false,
-        "mask": "",
-        "multiLine": false,
-        "extendedEdit": false,
-        "fillFromFillingValue": false
-      }
-    ],
-    []
-  ],
-  "commands": [
-    {
-      "uuid": "fa0e0792-bffb-47ce-866f-9e8dbdab17a4",
-      "name": "ВсеЗаметки",
-      "mdoReference": {
-        "type": "COMMAND",
-        "mdoRef": "Catalog.Заметки.Command.ВсеЗаметки",
-        "mdoRefRu": "Справочник.Заметки.Команда.ВсеЗаметки"
-      },
-      "objectBelonging": "OWN",
-      "comment": "",
-      "synonym": {
-        "content": [
-          [
-            {
-              "langKey": "ru",
-              "value": "Все заметки"
-            }
-          ]
-        ]
-      },
-      "supportVariant": "NOT_EDITABLE",
-      "modules": [
-        {
-          "moduleType": "CommandModule",
-          "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Заметки/Commands/ВсеЗаметки/Ext/CommandModule.bsl",
-          "owner": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/mdoReference"
-          },
-          "supportVariant": "NOT_EDITABLE",
-          "isProtected": false
-        }
-      ],
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      }
-    }
-  ],
-  "comment": "",
+{
+ "com.github._1c_syntax.bsl.mdo.Catalog": {
+  "codeSeries": "WHOLE_CATALOG",
+  "choiceHistoryOnInput": "AUTO",
+  "hierarchyType": "HIERARCHY_FOLDERS_AND_ITEMS",
+  "owners": [],
   "explanation": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
   },
-  "forms": [
-    [
+  "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
+  "mdoRef": "Catalog.Заметки",
+  "hierarchical": true,
+  "checkUnique": false,
+  "tabularSections": [],
+  "objectBelonging": "OWN",
+  "commands": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
       {
-        "uuid": "d35c51b0-4cb7-4f9c-8aac-6a25a1b49adf",
-        "name": "ФормаЭлемента",
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Catalog.Заметки.Form.ФормаЭлемента",
-          "mdoRefRu": "Справочник.Заметки.Форма.ФормаЭлемента"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            [
-              {
-                "langKey": "ru",
-                "value": "Форма элемента"
-              }
-            ]
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "modules": [
-          {
-            "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Заметки/Forms/ФормаЭлемента/Ext/Form/Module.bsl",
-            "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/mdoReference"
-            },
-            "supportVariant": "NOT_EDITABLE",
-            "isProtected": false
-          }
-        ],
-        "formType": "MANAGED",
-        "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-          },
-          "handlers": [
-            [
-              {
-                "event": "AfterWrite",
-                "name": "ПослеЗаписи"
-              },
-              {
-                "event": "AfterWriteAtServer",
-                "name": "ПослеЗаписиНаСервере"
-              },
-              {
-                "event": "OnReadAtServer",
-                "name": "ПриЧтенииНаСервере"
-              },
-              {
-                "event": "OnCreateAtServer",
-                "name": "ПриСозданииНаСервере"
-              },
-              {
-                "event": "BeforeWriteAtServer",
-                "name": "ПередЗаписьюНаСервере"
-              }
-            ],
-            []
-          ],
-          "items": [
-            [
-              {
-                "type": "USUAL_GROUP",
-                "id": 14,
-                "name": "СодержаниеЗаметки",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Содержание заметки"
-                      }
-                    ]
-                  ]
-                },
-                "dataPath": {
-                  "segments": "",
-                  "isEmpty": true
-                },
-                "items": [
-                  {
-                    "type": "USUAL_GROUP",
-                    "id": 102,
-                    "name": "ГруппаПредмет",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/synonym"
-                    },
-                    "dataPath": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                    },
-                    "items": [
-                      [
-                        {
-                          "type": "LABEL_DECORATION",
-                          "id": 65,
-                          "name": "НадписьПредмет",
-                          "title": {
-                            "content": [
-                              [
-                                {
-                                  "langKey": "ru",
-                                  "value": "Предмет:"
-                                }
-                              ]
-                            ]
-                          },
-                          "dataPath": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                          },
-                          "items": []
-                        },
-                        {
-                          "type": "LABEL_DECORATION",
-                          "id": 63,
-                          "name": "Предмет",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/synonym"
-                          },
-                          "dataPath": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                          },
-                          "items": []
-                        }
-                      ],
-                      []
-                    ]
-                  }
-                ]
-              },
-              {
-                "type": "FORMATTED_DOCUMENT_FIELD",
-                "id": 9,
-                "name": "Содержание",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/synonym"
-                },
-                "dataPath": {
-                  "segments": "ФорматированныйТекст",
-                  "isEmpty": false
-                },
-                "items": []
-              },
-              {
-                "type": "USUAL_GROUP",
-                "id": 90,
-                "name": "ПараметрыОтображения",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Параметры отображения"
-                      }
-                    ]
-                  ]
-                },
-                "dataPath": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                },
-                "items": [
-                  [
-                    {
-                      "type": "CHECK_BOX_FIELD",
-                      "id": 80,
-                      "name": "ОтображатьНаРабочемСтоле",
-                      "title": {
-                        "content": [
-                          [
-                            {
-                              "langKey": "ru",
-                              "value": "Отображать на рабочем столе"
-                            }
-                          ]
-                        ]
-                      },
-                      "dataPath": {
-                        "segments": "Объект.ДляРабочегоСтола",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    },
-                    {
-                      "type": "INPUT_FIELD",
-                      "id": 82,
-                      "name": "Пометка",
-                      "title": {
-                        "content": [
-                          [
-                            {
-                              "langKey": "ru",
-                              "value": "Цвет"
-                            }
-                          ]
-                        ]
-                      },
-                      "dataPath": {
-                        "segments": "Объект.Пометка",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    },
-                    {
-                      "type": "INPUT_FIELD",
-                      "id": 105,
-                      "name": "ГруппаЗаметок",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                      },
-                      "dataPath": {
-                        "segments": "Объект.Parent",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    }
-                  ],
-                  []
-                ]
-              },
-              {
-                "type": "USUAL_GROUP",
-                "id": 91,
-                "name": "ИнформацияОбАвторе",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Информация об авторе"
-                      }
-                    ]
-                  ]
-                },
-                "dataPath": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                },
-                "items": [
-                  [
-                    {
-                      "type": "LABEL_DECORATION",
-                      "id": 92,
-                      "name": "НадписьАвтор",
-                      "title": {
-                        "content": [
-                          [
-                            {
-                              "langKey": "ru",
-                              "value": "Автор:"
-                            }
-                          ]
-                        ]
-                      },
-                      "dataPath": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                      },
-                      "items": []
-                    },
-                    {
-                      "type": "LABEL_DECORATION",
-                      "id": 94,
-                      "name": "Автор",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/synonym"
-                      },
-                      "dataPath": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                      },
-                      "items": []
-                    }
-                  ],
-                  []
-                ]
-              },
-              {
-                "type": "LABEL_DECORATION",
-                "id": 103,
-                "name": "ДатаЗаметки",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Записана: 25 ноября 2011 г."
-                      }
-                    ]
-                  ]
-                },
-                "dataPath": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                },
-                "items": []
-              }
-            ],
-            []
-          ],
-          "attributes": [
-            [
-              {
-                "id": 1,
-                "name": "Объект",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                }
-              },
-              {
-                "id": 4,
-                "name": "ФорматированныйТекст",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Форматированный текст"
-                      }
-                    ]
-                  ]
-                }
-              }
-            ],
-            []
-          ]
-        },
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "usePurposes": [
-          [
-            "PLATFORM_APPLICATION",
-            "MOBILE_PLATFORM_APPLICATION"
-          ],
-          []
-        ]
-      },
-      {
-        "uuid": "8a7546f4-bfc9-4732-bf60-43a41e2c8753",
-        "name": "ВсеЗаметки",
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Catalog.Заметки.Form.ВсеЗаметки",
-          "mdoRefRu": "Справочник.Заметки.Форма.ВсеЗаметки"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/synonym"
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "modules": [
-          {
-            "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Заметки/Forms/ВсеЗаметки/Ext/Form/Module.bsl",
-            "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/mdoReference"
-            },
-            "supportVariant": "NOT_EDITABLE",
-            "isProtected": false
-          }
-        ],
-        "formType": "MANAGED",
-        "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/commands/com.github._1c_syntax.bsl.mdo.children.ObjectCommand/synonym"
-          },
-          "handlers": [
-            [
-              {
-                "event": "OnOpen",
-                "name": "ПриОткрытии"
-              },
-              {
-                "event": "OnLoadDataFromSettingsAtServer",
-                "name": "ПриЗагрузкеДанныхИзНастроекНаСервере"
-              },
-              {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[4]"
-              }
-            ],
-            []
-          ],
-          "items": [
-            [
-              {
-                "type": "USUAL_GROUP",
-                "id": 30,
-                "name": "Фильтры",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Фильтры"
-                      }
-                    ]
-                  ]
-                },
-                "dataPath": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                },
-                "items": [
-                  [
-                    {
-                      "type": "INPUT_FIELD",
-                      "id": 28,
-                      "name": "ФильтрПоЦвету",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
-                      },
-                      "dataPath": {
-                        "segments": "ВыбранныйЦвет",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    },
-                    {
-                      "type": "INPUT_FIELD",
-                      "id": 26,
-                      "name": "ФильтрПоПредмету",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]/synonym"
-                      },
-                      "dataPath": {
-                        "segments": "ВыбранныйПредмет",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    },
-                    {
-                      "type": "CHECK_BOX_FIELD",
-                      "id": 31,
-                      "name": "ПоказыватьУдаленные",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                      },
-                      "dataPath": {
-                        "segments": "ПоказыватьУдаленные",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    }
-                  ],
-                  []
-                ]
-              },
-              {
-                "type": "USUAL_GROUP",
-                "id": 43,
-                "name": "ГруппаПользовательскихНастроек",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Группа пользовательских настроек"
-                      }
-                    ]
-                  ]
-                },
-                "dataPath": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                },
-                "items": []
-              },
-              {
-                "type": "COMMAND_BAR",
-                "id": 33,
-                "name": "КоманднаяПанель",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Командная панель"
-                      }
-                    ]
-                  ]
-                },
-                "dataPath": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                },
-                "items": []
-              },
-              {
-                "type": "TABLE",
-                "id": 1,
-                "name": "Список",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Список"
-                      }
-                    ]
-                  ]
-                },
-                "dataPath": {
-                  "segments": "Список",
-                  "isEmpty": false
-                },
-                "items": [
-                  [
-                    {
-                      "type": "LABEL_FIELD",
-                      "id": 20,
-                      "name": "Тема",
-                      "title": {
-                        "content": [
-                          [
-                            {
-                              "langKey": "ru",
-                              "value": "Тема"
-                            }
-                          ]
-                        ]
-                      },
-                      "dataPath": {
-                        "segments": "Список.Description",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    },
-                    {
-                      "type": "LABEL_FIELD",
-                      "id": 22,
-                      "name": "Предмет",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                      },
-                      "dataPath": {
-                        "segments": "Список.ПредставлениеПредмета",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    },
-                    {
-                      "type": "LABEL_FIELD",
-                      "id": 24,
-                      "name": "ДатаИзменения",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                      },
-                      "dataPath": {
-                        "segments": "Список.ДатаИзменения",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    },
-                    {
-                      "type": "LABEL_FIELD",
-                      "id": 54,
-                      "name": "Ссылка",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                      },
-                      "dataPath": {
-                        "segments": "Список.Ref",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    }
-                  ],
-                  []
-                ]
-              }
-            ],
-            []
-          ],
-          "attributes": [
-            [
-              {
-                "id": 1,
-                "name": "Список",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                }
-              },
-              {
-                "id": 2,
-                "name": "ВыбранныйПредмет",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Выбранный предмет"
-                      }
-                    ]
-                  ]
-                }
-              },
-              {
-                "id": 3,
-                "name": "ВыбранныйЦвет",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Выбранный цвет"
-                      }
-                    ]
-                  ]
-                }
-              },
-              {
-                "id": 4,
-                "name": "ПоказыватьУдаленные",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Показывать удаленные"
-                      }
-                    ]
-                  ]
-                }
-              }
-            ],
-            []
-          ]
-        },
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "usePurposes": [
-          [
-            "PLATFORM_APPLICATION",
-            "MOBILE_PLATFORM_APPLICATION"
-          ],
-          []
-        ]
-      },
-      {
-        "uuid": "16244165-d5a4-4012-8bb5-7f5fee1111af",
-        "name": "ЗаметкиПоПредмету",
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Catalog.Заметки.Form.ЗаметкиПоПредмету",
-          "mdoRefRu": "Справочник.Заметки.Форма.ЗаметкиПоПредмету"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            [
-              {
-                "langKey": "ru",
-                "value": "Заметки"
-              }
-            ]
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "modules": [
-          {
-            "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Заметки/Forms/ЗаметкиПоПредмету/Ext/Form/Module.bsl",
-            "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/mdoReference"
-            },
-            "supportVariant": "NOT_EDITABLE",
-            "isProtected": false
-          }
-        ],
-        "formType": "MANAGED",
-        "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "title": {
-            "content": [
-              [
-                {
-                  "langKey": "ru",
-                  "value": "Мои заметки"
-                }
-              ]
-            ]
-          },
-          "handlers": [
-            [
-              {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
-              },
-              {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[4]"
-              }
-            ],
-            []
-          ],
-          "items": [
-            [
-              {
-                "type": "USUAL_GROUP",
-                "id": 43,
-                "name": "ГруппаПользовательскихНастроек",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[2]/title"
-                },
-                "dataPath": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                },
-                "items": []
-              },
-              {
-                "type": "COMMAND_BAR",
-                "id": 41,
-                "name": "КоманднаяПанель",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[3]/title"
-                },
-                "dataPath": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                },
-                "items": []
-              },
-              {
-                "type": "TABLE",
-                "id": 1,
-                "name": "Список",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
-                },
-                "dataPath": {
-                  "segments": "Список",
-                  "isEmpty": false
-                },
-                "items": [
-                  [
-                    {
-                      "type": "LABEL_FIELD",
-                      "id": 45,
-                      "name": "Наименование",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                      },
-                      "dataPath": {
-                        "segments": "Список.Description",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    },
-                    {
-                      "type": "LABEL_FIELD",
-                      "id": 25,
-                      "name": "Автор",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                      },
-                      "dataPath": {
-                        "segments": "Список.Автор",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    },
-                    {
-                      "type": "LABEL_FIELD",
-                      "id": 57,
-                      "name": "Ссылка",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                      },
-                      "dataPath": {
-                        "segments": "Список.Ref",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    }
-                  ],
-                  []
-                ]
-              },
-              {
-                "type": "USUAL_GROUP",
-                "id": 30,
-                "name": "Фильтры",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/title"
-                },
-                "dataPath": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                },
-                "items": [
-                  [
-                    {
-                      "type": "CHECK_BOX_FIELD",
-                      "id": 23,
-                      "name": "ПоказыватьЗаметкиДругихПользователей",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                      },
-                      "dataPath": {
-                        "segments": "ПоказыватьЗаметкиДругихПользователей",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    },
-                    {
-                      "type": "CHECK_BOX_FIELD",
-                      "id": 28,
-                      "name": "ПоказыватьУдаленные",
-                      "title": {
-                        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                      },
-                      "dataPath": {
-                        "segments": "ПоказыватьУдаленные",
-                        "isEmpty": false
-                      },
-                      "items": []
-                    }
-                  ],
-                  []
-                ]
-              }
-            ],
-            []
-          ],
-          "attributes": [
-            [
-              {
-                "id": 1,
-                "name": "Список",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                }
-              },
-              {
-                "id": 2,
-                "name": "Предмет",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                }
-              },
-              {
-                "id": 3,
-                "name": "ПоказыватьЗаметкиДругихПользователей",
-                "title": {
-                  "content": [
-                    [
-                      {
-                        "langKey": "ru",
-                        "value": "Показывать заметки других пользователей"
-                      }
-                    ]
-                  ]
-                }
-              },
-              {
-                "id": 4,
-                "name": "ПоказыватьУдаленные",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/attributes/c/com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute[4]/title"
-                }
-              }
-            ],
-            []
-          ]
-        },
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "usePurposes": [
-          [
-            "PLATFORM_APPLICATION",
-            "MOBILE_PLATFORM_APPLICATION"
-          ],
-          []
-        ]
-      },
-      {
-        "uuid": "290b72ad-004f-46ab-be5e-47557543b965",
-        "name": "МоиЗаметки",
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Catalog.Заметки.Form.МоиЗаметки",
-          "mdoRefRu": "Справочник.Заметки.Форма.МоиЗаметки"
-        },
-        "objectBelonging": "OWN",
-        "comment": "Для рабочего стола",
-        "synonym": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/title"
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "modules": [
-          {
-            "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Заметки/Forms/МоиЗаметки/Ext/Form/Module.bsl",
-            "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[4]/mdoReference"
-            },
-            "supportVariant": "NOT_EDITABLE",
-            "isProtected": false
-          }
-        ],
-        "formType": "MANAGED",
-        "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/data/title"
-          },
-          "handlers": [
-            {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[4]"
-            }
-          ],
-          "items": [
-            {
-              "type": "TABLE",
-              "id": 1,
-              "name": "Список",
-              "title": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem[4]/title"
-              },
-              "dataPath": {
-                "segments": "Список",
-                "isEmpty": false
-              },
-              "items": [
-                [
-                  {
-                    "type": "COLUMN_GROUP",
-                    "id": 8,
-                    "name": "Содержание",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[3]/synonym"
-                    },
-                    "dataPath": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                    },
-                    "items": [
-                      [
-                        {
-                          "type": "LABEL_FIELD",
-                          "id": 4,
-                          "name": "ПредставлениеЗаметки",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                          },
-                          "dataPath": {
-                            "segments": "Список.Description",
-                            "isEmpty": false
-                          },
-                          "items": []
-                        },
-                        {
-                          "type": "LABEL_FIELD",
-                          "id": 9,
-                          "name": "ПредставлениеПредмета",
-                          "title": {
-                            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                          },
-                          "dataPath": {
-                            "segments": "Список.ПредставлениеПредмета",
-                            "isEmpty": false
-                          },
-                          "items": []
-                        }
-                      ],
-                      []
-                    ]
-                  },
-                  {
-                    "type": "LABEL_FIELD",
-                    "id": 35,
-                    "name": "Ссылка",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                    },
-                    "dataPath": {
-                      "segments": "Список.Ref",
-                      "isEmpty": false
-                    },
-                    "items": []
-                  }
-                ],
-                []
-              ]
-            }
-          ],
-          "attributes": [
-            {
-              "id": 1,
-              "name": "Список",
-              "title": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-              }
-            }
-          ]
-        },
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "usePurposes": [
-          [
-            "PLATFORM_APPLICATION",
-            "MOBILE_PLATFORM_APPLICATION"
-          ],
-          []
-        ]
-      },
-      {
-        "uuid": "e1b2ccf9-5a8f-4008-86f3-d2c7cf5581d1",
-        "name": "ФормаГруппы",
-        "mdoReference": {
-          "type": "FORM",
-          "mdoRef": "Catalog.Заметки.Form.ФормаГруппы",
-          "mdoRefRu": "Справочник.Заметки.Форма.ФормаГруппы"
-        },
-        "objectBelonging": "OWN",
-        "comment": "",
-        "synonym": {
-          "content": [
-            [
-              {
-                "langKey": "ru",
-                "value": "Форма группы"
-              }
-            ]
-          ]
-        },
-        "supportVariant": "NOT_EDITABLE",
-        "modules": [
-          {
-            "moduleType": "FormModule",
-            "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Заметки/Forms/ФормаГруппы/Ext/Form/Module.bsl",
-            "owner": {
-              "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[5]/mdoReference"
-            },
-            "supportVariant": "NOT_EDITABLE",
-            "isProtected": false
-          }
-        ],
-        "formType": "MANAGED",
-        "data": {
-          "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-          "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-          },
-          "handlers": [
-            [
-              {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[2]"
-              },
-              {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[3]"
-              },
-              {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/handlers/c/com.github._1c_syntax.bsl.mdo.storage.form.FormHandler[4]"
-              }
-            ],
-            []
-          ],
-          "items": [
-            [
-              {
-                "type": "INPUT_FIELD",
-                "id": 1,
-                "name": "Код",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                },
-                "dataPath": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm/data/items/c/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-                },
-                "items": []
-              },
-              {
-                "type": "INPUT_FIELD",
-                "id": 3,
-                "name": "Наименование",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                },
-                "dataPath": {
-                  "segments": "Объект.Description",
-                  "isEmpty": false
-                },
-                "items": []
-              },
-              {
-                "type": "INPUT_FIELD",
-                "id": 5,
-                "name": "Родитель",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                },
-                "dataPath": {
-                  "segments": "Объект.Parent",
-                  "isEmpty": false
-                },
-                "items": []
-              },
-              {
-                "type": "INPUT_FIELD",
-                "id": 7,
-                "name": "Автор",
-                "title": {
-                  "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-                },
-                "dataPath": {
-                  "segments": "Объект.Автор",
-                  "isEmpty": false
-                },
-                "items": []
-              }
-            ],
-            []
-          ],
-          "attributes": [
-            {
-              "id": 1,
-              "name": "Объект",
-              "title": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/format"
-              }
-            }
-          ]
-        },
-        "owner": {
-          "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-        },
-        "usePurposes": [
-          [
-            "PLATFORM_APPLICATION",
-            "MOBILE_PLATFORM_APPLICATION"
-          ],
-          []
-        ]
+       "langKey": "ru",
+       "value": "Все заметки"
       }
+     ]
+    },
+    "name": "ВсеЗаметки",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "fa0e0792-bffb-47ce-866f-9e8dbdab17a4",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Команда.ВсеЗаметки",
+     "type": "COMMAND",
+     "mdoRef": "Catalog.Заметки.Command.ВсеЗаметки"
+    },
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "CommandModule",
+      "supportVariant": "NOT_EDITABLE"
+     }
     ],
-    []
+    "supportVariant": "NOT_EDITABLE"
+   }
   ],
-  "mdoReference": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
+  "dataLockControlMode": "MANAGED",
+  "levelCount": 2,
+  "fullTextSearch": "USE",
+  "auxiliaryChoiceForm": {
+   "mdoRefRu": "",
+   "type": "UNKNOWN",
+   "mdoRef": ""
+  },
+  "defaultListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "createOnInput": "USE",
+  "templates": [],
+  "fullTextSearchOnInputByString": "DONT_USE",
+  "dataLockFields": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/mdoReference"
+   },
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]\/mdoReference"
+   }
+  ],
+  "defaultChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
   },
   "modules": [
-    {
-      "moduleType": "ObjectModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Заметки/Ext/ObjectModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NOT_EDITABLE",
-      "isProtected": false
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
     },
-    {
-      "moduleType": "ManagerModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/Catalogs/Заметки/Ext/ManagerModule.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/attributes/c/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute/owner"
-      },
-      "supportVariant": "NOT_EDITABLE",
-      "isProtected": false
-    }
+    "isProtected": false,
+    "moduleType": "ManagerModule",
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "isProtected": false,
+    "moduleType": "ObjectModule",
+    "supportVariant": "NOT_EDITABLE"
+   }
   ],
-  "name": "Заметки",
-  "objectBelonging": "OWN",
-  "supportVariant": "NOT_EDITABLE",
-  "synonym": {
-    "@reference": "/com.github._1c_syntax.bsl.mdo.Catalog/forms/c/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]/synonym"
+  "defaultFolderForm": {
+   "mdoRefRu": "Справочник.Заметки.Форма.ФормаГруппы",
+   "type": "FORM",
+   "mdoRef": "Catalog.Заметки.Form.ФормаГруппы"
   },
-  "tabularSections": [],
-  "templates": [],
-  "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f"
-}}
+  "name": "Заметки",
+  "auxiliaryFolderForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "possibleRights": [
+   "DELETE",
+   "EDIT",
+   "EDIT_DATA_HISTORY_VERSION_COMMENT",
+   "INPUT_BY_STRING",
+   "INSERT",
+   "INTERACTIVE_CLEAR_DELETION_MARK",
+   "INTERACTIVE_CLEAR_DELETION_MARK_PREDEFINED_DATA",
+   "INTERACTIVE_DELETE",
+   "INTERACTIVE_DELETE_MARKED",
+   "INTERACTIVE_DELETE_MARKED_PREDEFINED_DATA",
+   "INTERACTIVE_DELETE_PREDEFINED_DATA",
+   "INTERACTIVE_INSERT",
+   "INTERACTIVE_SET_DELETION_MARK",
+   "INTERACTIVE_SET_DELETION_MARK_PREDEFINED_DATA",
+   "READ",
+   "READ_DATA_HISTORY",
+   "READ_DATA_HISTORY_OF_MISSING_DATA",
+   "SWITCH_TO_DATA_HISTORY_VERSION",
+   "UPDATE",
+   "UPDATE_DATA_HISTORY",
+   "UPDATE_DATA_HISTORY_OF_MISSING_DATA",
+   "UPDATE_DATA_HISTORY_SETTINGS",
+   "UPDATE_DATA_HISTORY_VERSION_COMMENT",
+   "VIEW",
+   "VIEW_DATA_HISTORY"
+  ],
+  "auxiliaryFolderChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "defaultFolderChoiceForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "description": "Заметки",
+  "predefinedValues": [],
+  "supportVariant": "NOT_EDITABLE",
+  "auxiliaryListForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "synonym": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/synonym"
+  },
+  "choiceDataGetModeOnInputByString": "DIRECTLY",
+  "basedOn": [],
+  "descriptionLength": 100,
+  "characteristics": [],
+  "mdoType": "CATALOG",
+  "codeLength": 0,
+  "defaultFormMap": [
+   "AUX_CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+   },
+   "AUX_FOLDER_CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+   },
+   "AUX_FOLDER_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+   },
+   "AUX_LIST_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+   },
+   "AUX_OBJECT_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+   },
+   "CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+   },
+   "FOLDER_CHOICE_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+   },
+   "FOLDER_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFolderForm"
+   },
+   "LIST_FORM",
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+   },
+   "OBJECT_FORM",
+   {
+    "mdoRefRu": "Справочник.Заметки.Форма.ФормаЭлемента",
+    "type": "FORM",
+    "mdoRef": "Catalog.Заметки.Form.ФормаЭлемента"
+   }
+  ],
+  "defaultPresentation": "AS_DESCRIPTION",
+  "limitLevelCount": false,
+  "mdoReference": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+  },
+  "defaultObjectForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[10]"
+  },
+  "attributes": [
+   {
+    "owner": {
+     "mdoRefRu": "Справочник.Заметки",
+     "type": "CATALOG",
+     "mdoRef": "Catalog.Заметки"
+    },
+    "fullTextSearch": "USE",
+    "indexing": "INDEX",
+    "kind": "CUSTOM",
+    "multiLine": false,
+    "format": {
+     "content": []
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.Пользователи",
+        "nameEn": "CatalogRef.Пользователи"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "07ccfe87-e1ab-4da7-92cb-a612e0972b0b",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Реквизит.Автор",
+     "type": "ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.Attribute.Автор"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Автор"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "Автор",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "USE",
+    "indexing": "INDEX",
+    "kind": "CUSTOM",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "DEFINED_TYPE",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ОпределяемыйТип.ПредметЗаметок",
+        "nameEn": "DefinedType.ПредметЗаметок"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "08c2f92c-eb05-49e7-bfc9-4a89607b9864",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Реквизит.Предмет",
+     "type": "ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.Attribute.Предмет"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Предмет"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "Предмет",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "USE",
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [
+      "DATE"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "dateFractions": 2
+      }
+     ]
+    },
+    "uuid": "4cba5a06-1484-4dd1-8e35-2d702c7d96d0",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Реквизит.ДатаИзменения",
+     "type": "ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.Attribute.ДатаИзменения"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Дата изменения"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ДатаИзменения",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "USE",
+    "indexing": "INDEX",
+    "kind": "CUSTOM",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [
+      "BOOLEAN"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "5e3ab0a3-c0a6-4f41-85d3-2eede4abb555",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Реквизит.ДляРабочегоСтола",
+     "type": "ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.Attribute.ДляРабочегоСтола"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Для рабочего стола"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "ДляРабочегоСтола",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [
+      "VALUE_STORAGE"
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "6d751379-89a7-49b5-93e5-578329c63d9c",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Реквизит.Содержание",
+     "type": "ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.Attribute.Содержание"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Содержание"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "Содержание",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "USE",
+    "indexing": "INDEX_WITH_ADDITIONAL_ORDER",
+    "kind": "CUSTOM",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "ENUM",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "ПеречислениеСсылка.ЦветаЗаметок",
+        "nameEn": "EnumRef.ЦветаЗаметок"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "a065ffc3-f50b-4a78-9b84-bfc4e5515a4b",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Реквизит.Пометка",
+     "type": "ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.Attribute.Пометка"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Пометка"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "name": "Пометка",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "USE",
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 0,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "uuid": "c3f156ef-947e-4ebb-883f-4f099a116063",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Реквизит.ТекстСодержания",
+     "type": "ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.Attribute.ТекстСодержания"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[5]\/synonym"
+    },
+    "passwordMode": false,
+    "name": "ТекстСодержания",
+    "objectBelonging": "OWN",
+    "comment": "Реквизит для полнотекстового поиска",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "USE",
+    "indexing": "DONT_INDEX",
+    "kind": "CUSTOM",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [
+      "STRING"
+     ],
+     "composite": false,
+     "qualifiers": [
+      {
+       "length": 100,
+       "allowedLength": 0
+      }
+     ]
+    },
+    "uuid": "e98e9e56-2995-430c-bd3b-f1070aec15a5",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Реквизит.ПредставлениеПредмета",
+     "type": "ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.Attribute.ПредставлениеПредмета"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[2]\/synonym"
+    },
+    "passwordMode": false,
+    "name": "ПредставлениеПредмета",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "Владелец",
+     "nameEn": "Owner"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.СтандартныйРеквизит.Владелец",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.StandardAttribute.Owner"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": true,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "ИмяПредопределенныхДанных",
+     "nameEn": "PredefinedDataName"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]\/type"
+    },
+    "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.СтандартныйРеквизит.ИмяПредопределенныхДанных",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.StandardAttribute.PredefinedDataName"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "Код",
+     "nameEn": "Code"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[7]\/type"
+    },
+    "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.СтандартныйРеквизит.Код",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.StandardAttribute.Code"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "Наименование",
+     "nameEn": "Description"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[8]\/type"
+    },
+    "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.СтандартныйРеквизит.Наименование",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.StandardAttribute.Description"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Тема"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "comment": "Реквизит заполняется автоматически",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "ПометкаУдаления",
+     "nameEn": "DeletionMark"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]\/type"
+    },
+    "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.СтандартныйРеквизит.ПометкаУдаления",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.StandardAttribute.DeletionMark"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "Предопределенный",
+     "nameEn": "Predefined"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]\/type"
+    },
+    "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.СтандартныйРеквизит.Предопределенный",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.StandardAttribute.Predefined"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "Родитель",
+     "nameEn": "Parent"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "types": [
+      {
+       "kind": "CATALOG",
+       "variant": "METADATA",
+       "fullName": {
+        "nameRu": "СправочникСсылка.Заметки",
+        "nameEn": "CatalogRef.Заметки"
+       }
+      }
+     ],
+     "composite": false,
+     "qualifiers": []
+    },
+    "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.СтандартныйРеквизит.Родитель",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.StandardAttribute.Parent"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": true,
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Группа заметок"
+      }
+     ]
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "Ссылка",
+     "nameEn": "Ref"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[7]\/type"
+    },
+    "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.СтандартныйРеквизит.Ссылка",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.StandardAttribute.Ref"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "fullTextSearch": "DONT_USE",
+    "kind": "STANDARD",
+    "multiLine": false,
+    "format": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "fullName": {
+     "nameRu": "ЭтоГруппа",
+     "nameEn": "IsFolder"
+    },
+    "editFormat": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "type": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute[4]\/type"
+    },
+    "uuid": "3805ee39-a48a-499a-9ef8-9c2a5985404f",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.СтандартныйРеквизит.ЭтоГруппа",
+     "type": "STANDARD_ATTRIBUTE",
+     "mdoRef": "Catalog.Заметки.StandardAttribute.IsFolder"
+    },
+    "supportVariant": "NOT_EDITABLE",
+    "fillFromFillingValue": false,
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/format"
+    },
+    "passwordMode": false,
+    "comment": "",
+    "markNegatives": false,
+    "extendedEdit": false,
+    "mask": ""
+   }
+  ],
+  "auxiliaryObjectForm": {
+   "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/auxiliaryChoiceForm"
+  },
+  "comment": "",
+  "searchStringModeOnInputByString": "BEGIN",
+  "foldersOnTop": true,
+  "forms": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Заметки"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ЗаметкиПоПредмету",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "16244165-d5a4-4012-8bb5-7f5fee1111af",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Форма.ЗаметкиПоПредмету",
+     "type": "FORM",
+     "mdoRef": "Catalog.Заметки.Form.ЗаметкиПоПредмету"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Мои заметки"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "МоиЗаметки",
+    "objectBelonging": "OWN",
+    "comment": "Для рабочего стола",
+    "uuid": "290b72ad-004f-46ab-be5e-47557543b965",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Форма.МоиЗаметки",
+     "type": "FORM",
+     "mdoRef": "Catalog.Заметки.Form.МоиЗаметки"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[2]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/commands\/com.github._1c_syntax.bsl.mdo.children.ObjectCommand\/synonym"
+    },
+    "formType": "MANAGED",
+    "name": "ВсеЗаметки",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "8a7546f4-bfc9-4732-bf60-43a41e2c8753",
+    "mdoReference": {
+     "mdoRefRu": "Справочник.Заметки.Форма.ВсеЗаметки",
+     "type": "FORM",
+     "mdoRef": "Catalog.Заметки.Form.ВсеЗаметки"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/forms\/com.github._1c_syntax.bsl.mdo.children.ObjectForm[3]\/mdoReference"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форма элемента"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ФормаЭлемента",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "d35c51b0-4cb7-4f9c-8aac-6a25a1b49adf",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[10]"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFormMap\/com.github._1c_syntax.bsl.types.MdoReference[10]"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   },
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.ObjectAttribute\/owner"
+    },
+    "synonym": {
+     "content": [
+      {
+       "langKey": "ru",
+       "value": "Форма группы"
+      }
+     ]
+    },
+    "formType": "MANAGED",
+    "name": "ФормаГруппы",
+    "objectBelonging": "OWN",
+    "comment": "",
+    "uuid": "e1b2ccf9-5a8f-4008-86f3-d2c7cf5581d1",
+    "mdoReference": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFolderForm"
+    },
+    "usePurposes": [
+     "MOBILE_PLATFORM_APPLICATION",
+     "PLATFORM_APPLICATION"
+    ],
+    "modules": [
+     {
+      "owner": {
+       "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/defaultFolderForm"
+      },
+      "isProtected": false,
+      "moduleType": "FormModule",
+      "supportVariant": "NOT_EDITABLE"
+     }
+    ],
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
+  "inputByString": [
+   {
+    "@reference": "\/com.github._1c_syntax.bsl.mdo.Catalog\/attributes\/com.github._1c_syntax.bsl.mdo.children.StandardAttribute[4]\/mdoReference"
+   }
+  ]
+ }
+}

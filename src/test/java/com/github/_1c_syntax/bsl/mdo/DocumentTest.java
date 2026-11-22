@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,8 +21,9 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.storage.form.FormElementType;
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
+import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -31,50 +32,87 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class DocumentTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, ssl_3_1, Documents.Анкета, _edt",
-      "false, ssl_3_1, Documents.Анкета"
-    }
-  )
-  void testSSL(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+  @CsvSource({
+    "true, ssl_3_1, Documents.Анкета",
+    "false, ssl_3_1, Documents.Анкета",
+    "true, ssl_3_2, Documents.Анкета",
+    "false, ssl_3_2, Documents.Анкета",
+    "true, mdclasses, Documents.Документ1",
+    "false, mdclasses, Documents.Документ1"
+  })
+  void test(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Document.class);
+
+    var document = (Document) mdo;
+    assertThat(document).isNotNull();
+
+    var attributes = document.getAttributes();
+    var tabularSections = document.getTabularSections();
+    var forms = document.getForms();
+    var templates = document.getTemplates();
+    var commands = document.getCommands();
+    var modules = document.getModules();
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(document.getAllAttributes(), false)
+      .containsAll(attributes);
+    Assertions.assertThat(document.getStorageFields(), false)
+      .containsAll(attributes, tabularSections);
+    Assertions.assertThat(document.getPlainStorageFields(), false)
+      .containsAllPlain(attributes, tabularSections);
+
+    // --- ModuleOwner ---
+    Assertions.assertThat(document.getAllModules(), false)
+      .containsAll(modules, forms, commands);
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(document.getChildren(), true)
+      .containsAll(attributes, tabularSections, forms, templates, commands);
+    Assertions.assertThat(document.getPlainChildren(), true)
+      .containsAllPlain(attributes, tabularSections, forms, templates, commands);
+
+    // --- BasedOn ---
+    assertThat(document.getBasedOn()).isEmpty();
   }
 
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, Documents.Документ1, _edt",
-      "false, mdclasses, Documents.Документ1"
-    }
-  )
-  void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+  @CsvSource({
+    "true, ssl_3_1, Documents.Встреча",
+    "false, ssl_3_1, Documents.Встреча",
+    "true, ssl_3_2, Documents.Встреча",
+    "false, ssl_3_2, Documents.Встреча"
+  })
+  void testBasedOn(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Document.class);
 
-    var doc = (Document) mdo;
-    assertThat(doc.getModules().stream().filter(Module::isProtected)).isEmpty();
-    assertThat(doc.getAllModules().stream().filter(Module::isProtected)).isEmpty();
+    var document = (Document) mdo;
+    assertThat(document).isNotNull();
 
-    assertThat(doc.getForms().stream().filter(form -> !form.getData().isEmpty())).hasSize(3);
+    assertThat(document.getBasedOn())
+      .containsExactlyInAnyOrder(
+        MdoReference.create("Document.ТелефонныйЗвонок"),
+        MdoReference.create("Document.Встреча"),
+        MdoReference.create("Document.ЭлектронноеПисьмоВходящее"),
+        MdoReference.create("Document.ЭлектронноеПисьмоИсходящее"),
+        MdoReference.create("Document.ЗапланированноеВзаимодействие"),
+        MdoReference.create("Document.СообщениеSMS")
+      );
+  }
 
-    var formData = doc.getForms().stream().filter(form -> form.getName().equals("ФормаДокумента"))
-      .findFirst().get().getData();
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, Documents.Документ1",
+    "false, mdclasses_3_27, Documents.Документ1"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(Document.class);
 
-    assertThat(formData.getAttributes()).hasSize(1);
-    assertThat(formData.getItems())
-      .hasSize(6)
-      .anyMatch(item -> item.getName().equals("Реквизит1"))
-      .anyMatch(item -> item.getId() == 13);
+    var document = (Document) mdo;
+    assertThat(document).isNotNull();
 
-    assertThat(formData.getHandlers())
-      .hasSize(1)
-      .allMatch(formHandler -> formHandler.event().equals("NewWriteProcessing"));
-
-    assertThat(formData.getPlainItems())
-      .hasSize(9)
-      .anyMatch(item -> item.getName().equals("ТабличнаяЧасть1НомерСтроки"))
-      .anyMatch(item -> item.getId() == 35)
-      .anyMatch(item -> item.getType().equals(FormElementType.INPUT_FIELD))
-      .anyMatch(item -> item.getDataPath().segments().startsWith("~"));
+    assertThat(document.getNumberLength()).isEqualTo(9);
   }
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,10 +24,10 @@ package com.github._1c_syntax.bsl.mdo;
 import java.util.List;
 
 /**
- * Базовый интерфейс для всех ссылочных типов (Справочники, Документы, ПВХ и т.д.)
+ * Базовый интерфейс для всех ссылочных типов (Справочники, Документы, ПВХ, Перечисления и т.д.)
  */
-public interface ReferenceObject extends MDObject, ModuleOwner, CommandOwner, AttributeOwner, TabularSectionOwner,
-  FormOwner, TemplateOwner {
+public interface ReferenceObject extends MDObject, ModuleOwner, CommandOwner, AttributeOwner, FormOwner,
+  TemplateOwner, CharacteristicOwner {
 
   /**
    * Список реквизитов объекта

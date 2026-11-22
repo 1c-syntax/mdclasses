@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.reader.common.converter;
 
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
+import com.github._1c_syntax.bsl.mdo.storage.EmptyTemplateData;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendReaderWrapper;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
@@ -41,22 +42,30 @@ import java.util.List;
 public class DataCompositionSchemaConverter implements ReadConverter {
 
   private static final String DATASET_NODE_NAME = "dataSet";
+  private static final String SETTINGS_VARIANT_NODE_NAME = "settingsVariant";
 
   @SneakyThrows
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipDataCompositionSchema()) {
+      return EmptyTemplateData.getEmpty();
+    }
+
     List<DataCompositionSchema.DataSet> dataSets = new ArrayList<>();
+    List<DataCompositionSchema.SettingsVariant> settingsVariants = new ArrayList<>();
 
     // линейно читаем файл
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       if (DATASET_NODE_NAME.equals(reader.getNodeName())) {
         dataSets.add(ExtendXStream.readValue(context, DataCompositionSchema.DataSet.class));
+      } else if (SETTINGS_VARIANT_NODE_NAME.equals(reader.getNodeName())) {
+        settingsVariants.add(ExtendXStream.readValue(context, DataCompositionSchema.SettingsVariant.class));
       }
       reader.moveUp();
     }
 
-    return new DataCompositionSchema(dataSets, ((ExtendReaderWrapper) reader).getPath());
+    return new DataCompositionSchema(dataSets, settingsVariants, ((ExtendReaderWrapper) reader).getPath().toUri());
   }
 
   @Override

@@ -1,22 +1,47 @@
-{"com.github._1c_syntax.bsl.mdo.DefinedType": {
-  "comment": "",
-  "mdoReference": {
-    "type": "DEFINED_TYPE",
-    "mdoRef": "DefinedType.ВладелецФайлов",
-    "mdoRefRu": "ОпределяемыйТип.ВладелецФайлов"
+{
+ "com.github._1c_syntax.bsl.mdo.DefinedType": {
+  "mdoType": "DEFINED_TYPE",
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Владелец файлов"
+    }
+   ]
+  },
+  "valueType": {
+   "types": [
+    {
+     "kind": "BUSINESS_PROCESS",
+     "variant": "METADATA",
+     "fullName": {
+      "nameRu": "БизнесПроцессСсылка.Задание",
+      "nameEn": "BusinessProcessRef.Задание"
+     }
+    },
+    {
+     "kind": "CATALOG",
+     "variant": "METADATA",
+     "fullName": {
+      "nameRu": "СправочникСсылка.ПапкиФайлов",
+      "nameEn": "CatalogRef.ПапкиФайлов"
+     }
+    }
+   ],
+   "composite": true,
+   "qualifiers": []
   },
   "name": "ВладелецФайлов",
+  "description": "Владелец файлов",
+  "comment": "",
   "objectBelonging": "OWN",
-  "supportVariant": "NOT_EDITABLE",
-  "synonym": {
-    "content": [
-      [
-        {
-          "langKey": "ru",
-          "value": "Владелец файлов"
-        }
-      ]
-    ]
+  "mdoReference": {
+   "mdoRefRu": "ОпределяемыйТип.ВладелецФайлов",
+   "type": "DEFINED_TYPE",
+   "mdoRef": "DefinedType.ВладелецФайлов"
   },
-  "uuid": "ae698468-f42a-4400-aee6-fd849740e634"
-}}
+  "uuid": "ae698468-f42a-4400-aee6-fd849740e634",
+  "mdoRef": "DefinedType.ВладелецФайлов",
+  "supportVariant": "NOT_EDITABLE"
+ }
+}

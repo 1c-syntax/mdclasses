@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,17 +22,21 @@
 package com.github._1c_syntax.bsl.mdo;
 
 import com.github._1c_syntax.bsl.mdo.children.ObjectAttribute;
+import com.github._1c_syntax.bsl.mdo.support.CommonAttributeSeparatedDataUse;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
@@ -43,10 +47,12 @@ import java.util.List;
 @Builder
 @ToString(of = {"name", "uuid"})
 @EqualsAndHashCode(of = {"name", "uuid"})
-public class CommonAttribute implements MDObject, AccessRightsOwner {
+public class CommonAttribute implements MDObject, AccessRightsOwner, ValueTypeOwner, FullTextSearchOwner {
+
+  // todo соединить с атрибутом
 
   /*
-   * ReferenceObject
+   * MDObject
    */
 
   @Default
@@ -65,6 +71,14 @@ public class CommonAttribute implements MDObject, AccessRightsOwner {
   SupportVariant supportVariant = SupportVariant.NONE;
 
   /*
+   * ValueTypeOwner
+   */
+
+  @Default
+  @Getter(AccessLevel.NONE)
+  ValueTypeDescription type = ValueTypeDescription.EMPTY;
+
+  /*
    * Свое
    */
 
@@ -73,6 +87,12 @@ public class CommonAttribute implements MDObject, AccessRightsOwner {
    */
   @Default
   UseMode autoUse = UseMode.USE;
+
+  /**
+   * Режим полнотекстового поиска
+   */
+  @Default
+  UseMode fullTextSearch = UseMode.USE;
 
   /**
    * Режим пароля. Только для общих реквизитов с типом с типом `Строка`
@@ -98,10 +118,12 @@ public class CommonAttribute implements MDObject, AccessRightsOwner {
   MdoReference dataSeparationValue = MdoReference.EMPTY;
 
   /**
-   * Использование разделения данных
+   * Использование разделяемых данных.
+   * Определяет режим разделения данных: независимо или независимо и совместно.
+   * Значение по умолчанию: {@link CommonAttributeSeparatedDataUse#UNKNOWN}.
    */
   @Default
-  MdoReference dataSeparationUse = MdoReference.EMPTY;
+  CommonAttributeSeparatedDataUse dataSeparationUse = CommonAttributeSeparatedDataUse.UNKNOWN;
 
   /**
    * Условное разделение
@@ -133,6 +155,11 @@ public class CommonAttribute implements MDObject, AccessRightsOwner {
   @Singular("addContent")
   List<UseContent> content;
 
+  @Override
+  public ValueTypeDescription getValueType() {
+    return type;
+  }
+
   /**
    * Проверяет наличие объекта в составе общего реквизита (вне зависимости от режима использования)
    *
@@ -154,11 +181,7 @@ public class CommonAttribute implements MDObject, AccessRightsOwner {
     var value = content.stream()
       .filter(useContent -> useContent.getMetadata().equals(mdoReference))
       .findAny();
-    if (value.isPresent()) {
-      return value.get().getUse();
-    } else {
-      return UseMode.DONT_USE;
-    }
+    return value.map(UseContent::getUse).orElse(UseMode.DONT_USE);
   }
 
   /**

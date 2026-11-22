@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,46 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo.storage.form;
 
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
-
-import java.util.List;
-
 /**
- * Описание информации об элементе формы
+ * Базовый интерфейс для всех сущностей формы
  */
 public interface FormItem {
   /**
-   * Тип элемента (кнопка, группа и т.д.)
-   */
-  FormElementType getType();
-
-  /**
-   * Имя элемента формы
+   * Имя сущности
    */
   String getName();
-
-  /**
-   * Идентификатор
-   */
-  int getId();
-
-  /**
-   * Заголовок
-   */
-  MultiLanguageString getTitle();
-
-  /**
-   * Путь к реквизиту
-   */
-  FormDataPath getDataPath();
-
-  /**
-   * Список дочерних визуальных элементов (непосредственных потомков)
-   */
-  List<FormItem> getItems();
-
-  /**
-   * Список всех визуальных элементов (со всеми дочерними)
-   */
-  List<FormItem> getPlainItems();
 }

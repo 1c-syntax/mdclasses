@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,6 +24,7 @@ package com.github._1c_syntax.bsl.reader.designer;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
 import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.ExchangePlan;
 import com.github._1c_syntax.bsl.mdo.children.AccountingFlag;
@@ -31,6 +32,9 @@ import com.github._1c_syntax.bsl.mdo.children.Dimension;
 import com.github._1c_syntax.bsl.mdo.children.DocumentJournalColumn;
 import com.github._1c_syntax.bsl.mdo.children.EnumValue;
 import com.github._1c_syntax.bsl.mdo.children.ExtDimensionAccountingFlag;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCubeDimensionTable;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceFunction;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTableField;
 import com.github._1c_syntax.bsl.mdo.children.HTTPServiceMethod;
@@ -41,8 +45,10 @@ import com.github._1c_syntax.bsl.mdo.children.ObjectCommand;
 import com.github._1c_syntax.bsl.mdo.children.ObjectForm;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTabularSection;
 import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
+import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
 import com.github._1c_syntax.bsl.mdo.children.Resource;
+import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
@@ -51,9 +57,12 @@ import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
 import com.github._1c_syntax.bsl.reader.MDReader;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
+import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
+import com.github._1c_syntax.bsl.reader.common.converter.DesignerRootWrapper;
+import com.github._1c_syntax.bsl.reader.common.xstream.ConcurrentQNameMap;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.designer.converter.DesignerConverter;
-import com.github._1c_syntax.bsl.reader.designer.converter.DesignerRootWrapper;
+import com.github._1c_syntax.bsl.reader.designer.converter.PredefinedDataWrapper;
 import com.github._1c_syntax.bsl.reader.designer.converter.Unmarshaller;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
 import com.github._1c_syntax.bsl.types.ConfigurationSource;
@@ -64,16 +73,16 @@ import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.core.ClassLoaderReference;
 import com.thoughtworks.xstream.core.util.CompositeClassLoader;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
-import com.thoughtworks.xstream.io.xml.QNameMap;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
+import org.jspecify.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import javax.xml.namespace.QName;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -84,37 +93,58 @@ public class DesignerReader implements MDReader {
    */
   public static final String CONFIGURATION_MDO_PATH = "Configuration.xml";
 
+  /**
+   * Имя корневого файла конфигурации
+   */
+  public static final String CONFIGURATION_MDO_FILE_NAME = "Configuration.xml";
+
   @Getter
   private final ExtendXStream xstream;
 
   @Getter
   private final Path rootPath;
 
-  public DesignerReader(Path path, boolean skipSupport) {
-    xstream = createXMLMapper();
-    rootPath = path;
-    if (!skipSupport) {
-      ParseSupportData.readSimple(parentConfigurationsPath());
+  @Getter
+  private final MDCReadSettings readSettings;
+
+  public DesignerReader(Path path, MDCReadSettings readSettings) {
+    this.xstream = createXMLMapper();
+    var normalizedPath = path.toAbsolutePath();
+    var file = normalizedPath.toFile();
+    if (file.isFile() && CONFIGURATION_MDO_FILE_NAME.equals(file.getName())) { // передали сам файл, а не каталог
+      var parent = normalizedPath.getParent();
+      if (parent == null) {
+        throw new IllegalArgumentException(
+          "Не удалось определить каталог конфигурации для файла " + normalizedPath);
+      }
+      this.rootPath = parent;
+    } else {
+      this.rootPath = path;
+    }
+    this.readSettings = readSettings;
+
+    if (!readSettings.skipSupport()) {
+      var pcbin = parentConfigurationsPath();
+      if (pcbin.toFile().exists()) {
+        ParseSupportData.read(pcbin);
+      }
     }
   }
 
   @Override
-  @NonNull
   public ConfigurationSource getConfigurationSource() {
     return ConfigurationSource.DESIGNER;
   }
 
   @Override
-  @NonNull
   public MDClass readConfiguration() {
     var mdc = Optional.ofNullable((MDClass) read(
-      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.getName())
+      mdoPath(rootPath, MDOType.CONFIGURATION, MDOType.CONFIGURATION.nameEn())
     ));
     return mdc.orElse(Configuration.EMPTY);
   }
 
   @Override
-  @NonNull
   public ExternalSource readExternalSource() {
     var value = read(rootPath);
     if (value instanceof ExternalSource externalSource) {
@@ -154,7 +184,35 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  @NonNull
+  public List<PredefinedValue> readPredefinedData(Path currentPath, String name, MDOType mdoType) {
+    var predefinedPath = Paths.get(currentPath.getParent().toString(), name, "Ext", "Predefined.xml");
+    if (!predefinedPath.toFile().exists()) {
+      return Collections.emptyList();
+    }
+    var value = read(predefinedPath);
+    if (value instanceof PredefinedDataWrapper predefinedDataWrapper) {
+      return predefinedDataWrapper.getItems();
+    }
+    return Collections.emptyList();
+  }
+
+  @Override
+  public AdditionalIndexesWrapper readAdditionalIndexes(Path currentPath, String name, MDOType mdoType) {
+    var additionalIndexesPath = Paths.get(currentPath.getParent().toString(),
+      name,
+      "Ext",
+      "AdditionalIndexes.xml");
+
+    if (additionalIndexesPath.toFile().exists()) {
+      var value = read(additionalIndexesPath);
+      if (value instanceof AdditionalIndexesWrapper data) {
+        return data;
+      }
+    }
+    return AdditionalIndexesWrapper.EMPTY;
+  }
+
+  @Override
   public Path moduleFolder(Path mdoPath, MDOType mdoType) {
     if (mdoType == MDOType.COMMAND) {
       return childrenFolder(mdoPath, mdoType);
@@ -166,7 +224,6 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path modulePath(Path folder, String name, ModuleType moduleType) {
     var subdirectory = "Ext";
 
@@ -182,21 +239,13 @@ public class DesignerReader implements MDReader {
   }
 
   @Override
-  @NonNull
   public Path mdoTypeFolderPath(Path mdoPath) {
     return Paths.get(FilenameUtils.getFullPathNoEndSeparator(mdoPath.toString()));
   }
 
   @Override
-  @NonNull
   public String subsystemsNodeName() {
     return "Subsystem";
-  }
-
-  @Override
-  @NonNull
-  public String configurationExtensionFilter() {
-    return "(<ObjectBelonging>)";
   }
 
   @Override
@@ -207,7 +256,7 @@ public class DesignerReader implements MDReader {
   }
 
   private ExtendXStream createXMLMapper() {
-    var qNameMap = new QNameMap();
+    var qNameMap = new ConcurrentQNameMap();
     qNameMap.registerMapping(new QName("http://v8.1c.ru/8.3/xcf/logform", "Form"), ManagedFormData.class);
 
     var classLoaderReference = new ClassLoaderReference(new CompositeClassLoader());
@@ -241,20 +290,30 @@ public class DesignerReader implements MDReader {
     xStream.alias("Method", HTTPServiceMethod.class);
     xStream.alias("Operation", WebServiceOperation.class);
     xStream.alias("Parameter", WebServiceOperationParameter.class);
+    xStream.alias("PredefinedData", PredefinedDataWrapper.class);
     xStream.alias("Recalculation", Recalculation.class);
     xStream.alias("Resource", Resource.class);
     xStream.alias("Table", ExternalDataSourceTable.class);
     xStream.alias("TabularSection", ObjectTabularSection.class);
     xStream.alias("Template", ObjectTemplate.class);
     xStream.alias("URLTemplate", HTTPServiceURLTemplate.class);
+    xStream.alias("StandardAttribute", StandardAttribute.class);
+    xStream.alias("Cube", ExternalDataSourceCube.class);
+    xStream.alias("Function", ExternalDataSourceFunction.class);
+    xStream.alias("DimensionTable", ExternalDataSourceCubeDimensionTable.class);
   }
 
   private Path parentConfigurationsPath() {
     return Paths.get(rootPath.toString(), "Ext", "ParentConfigurations.bin");
   }
 
+  @Override
+  public Path standaloneContentPath() {
+    return Paths.get(rootPath.toString(), "Ext", "StandaloneConfigurationContent.bin");
+  }
+
   private static Path mdoPath(Path path, MDOType type, String name) {
-    return mdoPath(Paths.get(path.toString(), type.getGroupName()), name);
+    return mdoPath(Paths.get(path.toString(), type.groupName()), name);
   }
 
   private static Path mdoPath(Path folder, String name) {
@@ -262,6 +321,6 @@ public class DesignerReader implements MDReader {
   }
 
   private static Path childrenFolder(Path path, MDOType type) {
-    return Paths.get(path.getParent().toString(), FilenameUtils.getBaseName(path.toString()), type.getGroupName());
+    return Paths.get(path.getParent().toString(), FilenameUtils.getBaseName(path.toString()), type.groupName());
   }
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,12 +24,18 @@ package com.github._1c_syntax.bsl.mdclasses.helpers;
 import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.Configuration;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationExtension;
+import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClasses;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.nio.file.Path;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -68,13 +74,45 @@ class RightsTest {
   }
 
   @Test
+  void rightAccessCf32() {
+    var mdc = MDClasses.createConfiguration(Path.of("src/test/resources/ext/designer/ssl_3_2/src/cf"));
+    assertThat(mdc).isInstanceOf(Configuration.class);
+
+    var cf = (CF) mdc;
+    assertThat(Rights.rightAccess(cf, RoleRight.ADMINISTRATION)).isTrue();
+    assertThat(Rights.rightAccess(cf, RoleRight.THICK_CLIENT)).isTrue();
+    assertThat(Rights.rightAccess(cf, RoleRight.ALL_FUNCTIONS_MODE)).isFalse();
+    assertThat(cf.rightAccess(RoleRight.WEB_CLIENT)).isTrue();
+
+    var mdv = cf.findChild("Document.Анкета");
+    assertThat(mdv).isPresent();
+    var md = mdv.get();
+    assertThat(Rights.rightAccess(cf, RoleRight.DELETE, md)).isTrue();
+    assertThat(Rights.rightAccess(cf, RoleRight.VIEW, md)).isTrue();
+    assertThat(Rights.rightAccess(cf, RoleRight.USE, md)).isFalse();
+    assertThat(cf.rightAccess(RoleRight.POSTING, md)).isTrue();
+
+    mdv = cf.findChild("Task.ЗадачаИсполнителя.Command.Перенаправить");
+    assertThat(mdv).isPresent();
+    md = mdv.get();
+    assertThat(Rights.rightAccess(cf, RoleRight.VIEW, md)).isTrue();
+    assertThat(Rights.rightAccess(cf, RoleRight.USE, md)).isFalse();
+    assertThat(cf.rightAccess(RoleRight.START, md)).isFalse();
+
+    var mdoReference = MdoReference.create("Enum.ВариантыВажностиЗадачи.EnumValue.Обычная");
+    assertThat(Rights.rightAccess(cf, RoleRight.VIEW, mdoReference)).isFalse();
+    assertThat(Rights.rightAccess(cf, RoleRight.DELETE, mdoReference)).isFalse();
+    assertThat(cf.rightAccess(RoleRight.INTERACTIVE_DELETE, mdoReference)).isFalse();
+  }
+
+  @Test
   void rightAccessCfe() {
     var mdc = MDClasses.createConfiguration(Path.of("src/test/resources/ext/edt/mdclasses_ext/configuration"));
     assertThat(mdc).isInstanceOf(ConfigurationExtension.class);
 
     var cfe = (CF) mdc;
     assertThat(Rights.rightAccess(cfe, RoleRight.ADMINISTRATION)).isTrue();
-    assertThat(Rights.rightAccess(cfe, RoleRight.THICK_CLIENT)).isFalse();
+    assertThat(Rights.rightAccess(cfe, RoleRight.THICK_CLIENT)).isTrue();
     assertThat(Rights.rightAccess(cfe, RoleRight.DELETE)).isFalse();
 
     var mdv = cfe.findChild("AccountingRegister.РегистрБухгалтерии1");
@@ -105,7 +143,46 @@ class RightsTest {
       .anyMatch(role -> role.getName().equals("ЗапускТолстогоКлиента"));
 
     assertThat(Rights.rolesAccess(cf, RoleRight.ALL_FUNCTIONS_MODE)).isEmpty();
-    assertThat(cf.rolesAccess(RoleRight.ANALYTICS_SYSTEM_CLIENT)).hasSize(26);
+    assertThat(cf.rolesAccess(RoleRight.ANALYTICS_SYSTEM_CLIENT)).hasSize(106);
+
+    var mdv = cf.findChild("Document.Анкета");
+    assertThat(mdv).isPresent();
+    var md = mdv.get();
+    assertThat(Rights.rolesAccess(cf, RoleRight.DELETE, md)).hasSize(1);
+    assertThat(Rights.rolesAccess(cf, RoleRight.INTERACTIVE_DELETE, md)).isEmpty();
+    assertThat(Rights.rolesAccess(cf, RoleRight.VIEW, md)).hasSize(2);
+    assertThat(Rights.rolesAccess(cf, RoleRight.USE, md)).isEmpty();
+    assertThat(cf.rolesAccess(RoleRight.INTERACTIVE_DELETE_MARKED, md)).isEmpty();
+
+    mdv = cf.findChild("Task.ЗадачаИсполнителя.Command.Перенаправить");
+    assertThat(mdv).isPresent();
+    md = mdv.get();
+    assertThat(Rights.rolesAccess(cf, RoleRight.VIEW, md)).hasSize(4);
+    assertThat(Rights.rolesAccess(cf, RoleRight.USE, md)).isEmpty();
+    assertThat(cf.rolesAccess(RoleRight.DELETE, md)).isEmpty();
+
+    var mdoReference = MdoReference.create("Enum.ВариантыВажностиЗадачи.EnumValue.Обычная");
+    assertThat(Rights.rolesAccess(cf, RoleRight.VIEW, mdoReference)).isEmpty();
+    assertThat(Rights.rolesAccess(cf, RoleRight.DELETE, mdoReference)).isEmpty();
+    assertThat(cf.rolesAccess(RoleRight.INSERT, mdoReference)).isEmpty();
+  }
+
+  @Test
+  void rolesAccessCf32() {
+    var mdc = MDClasses.createConfiguration(Path.of("src/test/resources/ext/edt/ssl_3_2/configuration"));
+    assertThat(mdc).isInstanceOf(Configuration.class);
+
+    var cf = (CF) mdc;
+    assertThat(Rights.rolesAccess(cf, RoleRight.ADMINISTRATION))
+      .hasSize(2)
+      .anyMatch(role -> role.getName().equals("АдминистраторСистемы"));
+
+    assertThat(Rights.rolesAccess(cf, RoleRight.THICK_CLIENT))
+      .hasSize(2)
+      .anyMatch(role -> role.getName().equals("ЗапускТолстогоКлиента"));
+
+    assertThat(Rights.rolesAccess(cf, RoleRight.ALL_FUNCTIONS_MODE)).isEmpty();
+    assertThat(cf.rolesAccess(RoleRight.ANALYTICS_SYSTEM_CLIENT)).hasSize(106);
 
     var mdv = cf.findChild("Document.Анкета");
     assertThat(mdv).isPresent();
@@ -155,5 +232,90 @@ class RightsTest {
     assertThat(Rights.rolesAccess(cfe, RoleRight.DELETE, mdoReference)).hasSize(1);
     assertThat(Rights.rolesAccess(cfe, RoleRight.INTERACTIVE_DELETE_MARKED, mdoReference)).hasSize(1);
     assertThat(Rights.rolesAccess(cfe, RoleRight.UPDATE_DATA_HISTORY_SETTINGS, mdoReference)).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "ssl_3_1, false",
+    "ssl_3_1, true"
+  })
+  void restrictionByCondition(String pack, boolean edt) {
+    var cf = (CF) Fixtures.get(pack, edt, MDCReadSettings.DEFAULT);
+    assertThat(cf).isNotNull();
+
+    var role = cf.getRoles().stream()
+      .filter(r -> r.getName().equals("ДобавлениеИзменениеВзаимодействий"))
+      .findFirst();
+    assertThat(role).isPresent();
+
+    var roleData = role.get().getData();
+    assertThat(roleData.objectRights()).isNotEmpty();
+
+    var objectRight = roleData.objectRights().stream()
+      .filter(or -> or.name().getMdoRef().equals("Catalog.ЭлектронноеПисьмоВходящееПрисоединенныеФайлы"))
+      .findFirst();
+    assertThat(objectRight).isPresent();
+
+    var readRight = objectRight.get().rights().stream()
+      .filter(r -> r.name() == RoleRight.READ)
+      .findFirst();
+    assertThat(readRight).isPresent();
+    assertThat(readRight.get().restrictionCondition()).isNotEmpty();
+    assertThat(readRight.get().restrictionCondition()).contains("ДляОбъекта");
+
+    var viewRight = objectRight.get().rights().stream()
+      .filter(r -> r.name() == RoleRight.VIEW)
+      .findFirst();
+    assertThat(viewRight).isPresent();
+    assertThat(viewRight.get().restrictionCondition()).isEmpty();
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "ssl_3_1, false",
+    "ssl_3_1, true"
+  })
+  void restrictionTemplate(String pack, boolean edt) {
+    var cf = (CF) Fixtures.get(pack, edt, MDCReadSettings.DEFAULT);
+    assertThat(cf).isNotNull();
+
+    var role = cf.getRoles().stream()
+      .filter(r -> r.getName().equals("ДобавлениеИзменениеВзаимодействий"))
+      .findFirst();
+    assertThat(role).isPresent();
+
+    var roleData = role.get().getData();
+    assertThat(roleData.restrictionTemplates()).isNotEmpty();
+
+    var template = roleData.restrictionTemplates().stream()
+      .filter(t -> t.name().startsWith("ДляОбъекта"))
+      .findFirst();
+    assertThat(template).isPresent();
+    assertThat(template.get().condition()).contains("ГДЕ");
+
+    var forRegister = roleData.restrictionTemplates().stream()
+      .filter(t -> t.name().startsWith("ДляРегистра"))
+      .findFirst();
+    assertThat(forRegister).isPresent();
+    assertThat(forRegister.get().condition()).contains("ГДЕ");
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "ssl_3_1, false",
+    "ssl_3_1, true"
+  })
+  void sameRestrictionTemplatesOfDifferentRolesAreOneInstance(String pack, boolean edt) {
+    var cf = (CF) Fixtures.get(pack, edt, MDCReadSettings.DEFAULT);
+    assertThat(cf).isNotNull();
+
+    var templatesByContent = cf.getRoles().stream()
+      .flatMap(role -> role.getData().restrictionTemplates().stream())
+      .collect(Collectors.groupingBy(Function.identity()));
+
+    // Типовые шаблоны БСП повторяются в десятках ролей
+    assertThat(templatesByContent.values()).anyMatch(same -> same.size() > 1);
+    assertThat(templatesByContent.values())
+      .allMatch(same -> same.stream().allMatch(template -> template == same.get(0)));
   }
 }

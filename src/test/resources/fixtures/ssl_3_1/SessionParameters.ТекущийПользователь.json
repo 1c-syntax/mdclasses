@@ -1,22 +1,43 @@
-{"com.github._1c_syntax.bsl.mdo.SessionParameter": {
-  "comment": "",
-  "mdoReference": {
-    "type": "SESSION_PARAMETER",
-    "mdoRef": "SessionParameter.ТекущийПользователь",
-    "mdoRefRu": "ПараметрСеанса.ТекущийПользователь"
+{
+ "com.github._1c_syntax.bsl.mdo.SessionParameter": {
+  "mdoType": "SESSION_PARAMETER",
+  "synonym": {
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Текущий пользователь"
+    }
+   ]
+  },
+  "possibleRights": [
+   "GET",
+   "SET"
+  ],
+  "valueType": {
+   "types": [
+    {
+     "kind": "CATALOG",
+     "variant": "METADATA",
+     "fullName": {
+      "nameRu": "СправочникСсылка.Пользователи",
+      "nameEn": "CatalogRef.Пользователи"
+     }
+    }
+   ],
+   "composite": false,
+   "qualifiers": []
   },
   "name": "ТекущийПользователь",
+  "description": "Текущий пользователь",
+  "comment": "",
   "objectBelonging": "OWN",
-  "supportVariant": "NOT_EDITABLE",
-  "synonym": {
-    "content": [
-      [
-        {
-          "langKey": "ru",
-          "value": "Текущий пользователь"
-        }
-      ]
-    ]
+  "mdoReference": {
+   "mdoRefRu": "ПараметрСеанса.ТекущийПользователь",
+   "type": "SESSION_PARAMETER",
+   "mdoRef": "SessionParameter.ТекущийПользователь"
   },
-  "uuid": "1ed910db-e434-4efd-9b12-c25353a31d5a"
-}}
+  "uuid": "1ed910db-e434-4efd-9b12-c25353a31d5a",
+  "mdoRef": "SessionParameter.ТекущийПользователь",
+  "supportVariant": "NOT_EDITABLE"
+ }
+}

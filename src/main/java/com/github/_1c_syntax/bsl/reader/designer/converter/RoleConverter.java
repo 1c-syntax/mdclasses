@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,6 +22,7 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.Role;
+import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.reader.common.converter.AbstractReadConverter;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
@@ -30,24 +31,60 @@ import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * Конвертер для чтения ролей из формата конфигуратора
+ */
 @DesignerConverter
 public class RoleConverter extends AbstractReadConverter {
 
   private static final String DATA_FIELD = "data";
 
+  /**
+   * Выполняет чтение роли из XML, включая данные прав доступа из файла Rights.xml
+   *
+   * @param reader  Ридер XML потока
+   * @param context Контекст десериализации
+   * @return Прочитанный объект роли с данными прав доступа
+   */
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
     var readerContext = super.read(reader, context);
-    readerContext.setValue(DATA_FIELD,
-      ExtendXStream.read(reader, dataPath(readerContext.getCurrentPath(), readerContext.getName())));
+    RoleData data;
+    try {
+      var readResult = ExtendXStream.read(reader, dataPath(readerContext.getCurrentPath(), readerContext.getName()));
+      if (readResult instanceof RoleData roleData) {
+        data = roleData;
+      } else {
+        // файл не прочитан или прочитан некорректно
+        data = RoleData.EMPTY;
+      }
+    } catch (Exception e) {
+      // ничего не делаем, считаем файл битым
+      data = RoleData.EMPTY;
+    }
+
+    readerContext.setValue(DATA_FIELD, data);
     return readerContext.build();
   }
 
+  /**
+   * Проверяет, может ли конвертер обработать указанный тип
+   *
+   * @param type Тип класса для проверки
+   * @return true, если тип является Role или его подклассом
+   */
   @Override
   public boolean canConvert(Class type) {
     return Role.class.isAssignableFrom(type);
   }
 
+  /**
+   * Формирует путь к файлу Rights.xml для роли
+   *
+   * @param path Путь к файлу описания роли
+   * @param name Имя роли
+   * @return Путь к файлу Rights.xml
+   */
   private static Path dataPath(Path path, String name) {
     return Paths.get(path.getParent().toString(), name, "Ext", "Rights.xml");
   }

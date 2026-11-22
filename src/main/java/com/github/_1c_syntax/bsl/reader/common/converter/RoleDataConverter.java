@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -27,18 +27,26 @@ import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.common.xstream.ReadConverter;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * Используется для преобразования содержимого пакета XDTO
  */
+@Slf4j
 @CommonConverter
 public class RoleDataConverter implements ReadConverter {
 
   private static final String OBJECT_NODE_NAME = "object";
   private static final String RIGHT_NODE_NAME = "right";
+  private static final String RESTRICTION_TEMPLATE_NODE_NAME = "restrictionTemplate";
+  private static final String RESTRICTION_BY_CONDITION_NODE_NAME = "restrictionByCondition";
+  private static final String CONDITION_NODE_NAME = "condition";
 
   @Override
   public Object unmarshal(HierarchicalStreamReader reader, UnmarshallingContext context) {
+    if (ExtendXStream.getCurrentMDReader(reader).getReadSettings().skipRoleData()) {
+      return RoleData.EMPTY;
+    }
 
     var builder = RoleData.builder();
 
@@ -48,10 +56,18 @@ public class RoleDataConverter implements ReadConverter {
       if (OBJECT_NODE_NAME.equals(name)) {
         var objectRight = readObjectRight(reader, context);
         builder.objectRight(objectRight);
+      } else if (RESTRICTION_TEMPLATE_NODE_NAME.equals(name)) {
+        var restrictionTemplate = readRestrictionTemplate(reader);
+        builder.restrictionTemplate(restrictionTemplate);
       } else {
         var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-        var value = ExtendXStream.readValue(context, fieldClass);
-        TransformationUtils.setValue(builder, name, value);
+        if (fieldClass != null) {
+          var value = ExtendXStream.readValue(context, fieldClass);
+          TransformationUtils.setValue(builder, name, value);
+        } else {
+          // пропустим без падения и будем надеяться, что о ворнинге кто-то скажет
+          LOGGER.warn("Field type not found for {}", name);
+        }
       }
 
       reader.moveUp();
@@ -70,8 +86,10 @@ public class RoleDataConverter implements ReadConverter {
         builder.right(right);
       } else {
         var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-        var value = ExtendXStream.readValue(context, fieldClass);
-        TransformationUtils.setValue(builder, name, value);
+        if (fieldClass != null) {
+          var value = ExtendXStream.readValue(context, fieldClass);
+          TransformationUtils.setValue(builder, name, value);
+        }
       }
 
       reader.moveUp();
@@ -80,18 +98,58 @@ public class RoleDataConverter implements ReadConverter {
   }
 
   private static RoleData.Right readRight(HierarchicalStreamReader reader, UnmarshallingContext context) {
-    var builder = RoleData.Right.builder();
+    var builder = RoleData.Right.builder()
+      .restrictionCondition("");
 
     while (reader.hasMoreChildren()) {
       reader.moveDown();
       var name = reader.getNodeName();
-      var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
-      var value = ExtendXStream.readValue(context, fieldClass);
-      TransformationUtils.setValue(builder, name, value);
+      if (RESTRICTION_BY_CONDITION_NODE_NAME.equals(name)) {
+        builder.restrictionCondition(readCondition(reader));
+      } else {
+        var fieldClass = (Class<?>) TransformationUtils.fieldType(builder, name);
+        if (fieldClass != null) {
+          var value = ExtendXStream.readValue(context, fieldClass);
+          TransformationUtils.setValue(builder, name, value);
+        }
+      }
+
       reader.moveUp();
     }
 
     return RoleData.RIGHT_INTERNER.intern(builder.build());
+  }
+
+  private static String readCondition(HierarchicalStreamReader reader) {
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      var name = reader.getNodeName();
+      if (CONDITION_NODE_NAME.equals(name)) {
+        var value = reader.getValue();
+        reader.moveUp();
+        return value;
+      }
+      reader.moveUp();
+    }
+    return "";
+  }
+
+  private static RoleData.RestrictionTemplate readRestrictionTemplate(HierarchicalStreamReader reader) {
+    var builder = RoleData.RestrictionTemplate.builder()
+      .name("")
+      .condition("");
+
+    while (reader.hasMoreChildren()) {
+      reader.moveDown();
+      var name = reader.getNodeName();
+      if ("name".equals(name)) {
+        builder.name(reader.getValue());
+      } else if (CONDITION_NODE_NAME.equals(name)) {
+        builder.condition(reader.getValue());
+      }
+      reader.moveUp();
+    }
+    return RoleData.RESTRICTION_TEMPLATE_INTERNER.intern(builder.build());
   }
 
   @Override

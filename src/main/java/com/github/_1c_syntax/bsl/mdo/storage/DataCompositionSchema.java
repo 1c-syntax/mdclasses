@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -22,18 +22,16 @@
 package com.github._1c_syntax.bsl.mdo.storage;
 
 import com.github._1c_syntax.bsl.mdo.support.DataSetType;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
 import lombok.Builder;
-import lombok.Builder.Default;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Singular;
-import lombok.ToString;
 import lombok.Value;
 
-import java.nio.file.Path;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Реализация хранения содержимого макета-схемы компоновки данных
@@ -47,20 +45,29 @@ public class DataCompositionSchema implements TemplateData {
   List<DataSet> dataSets;
 
   /**
+   * Варианты отчета
+   */
+  List<SettingsVariant> settingsVariants;
+
+  /**
    * Плоский список наборов данных
    */
-  List<DataSet> plainDataSets;
+  @Getter(lazy = true)
+  List<DataSet> plainDataSets = computePlainDataSets();
 
   /**
    * Путь к файлу с данными макета
    */
   @Getter
-  Path dataPath;
+  URI dataPath;
 
-  public DataCompositionSchema(@NonNull List<DataSet> dataSetsTree, @NonNull Path path) {
+  public DataCompositionSchema(List<DataSet> dataSetsTree, URI path) {
+    this(dataSetsTree, List.of(), path);
+  }
+
+  public DataCompositionSchema(List<DataSet> dataSetsTree, List<SettingsVariant> settingsVariants, URI path) {
     dataSets = dataSetsTree;
-    plainDataSets = new ArrayList<>();
-    fillPlaintDataSetByList(dataSetsTree);
+    this.settingsVariants = settingsVariants;
     dataPath = path;
   }
 
@@ -69,53 +76,35 @@ public class DataCompositionSchema implements TemplateData {
     return false;
   }
 
-  private void fillPlaintDataSetByList(List<DataSet> items) {
+  private List<DataSet> computePlainDataSets() {
+    List<DataSet> result = new ArrayList<>();
+    fillPlainDataSetByList(result, Objects.requireNonNull(dataSets));
+
+    return result;
+  }
+
+  private static void fillPlainDataSetByList(List<DataSet> result, List<DataSet> items) {
     items.forEach((DataSet dataSet) -> {
-      plainDataSets.add(dataSet);
-      fillPlaintDataSetByList(dataSet.getItems());
+      result.add(dataSet);
+      fillPlainDataSetByList(result, dataSet.items());
     });
   }
 
-  @Value
-  @ToString(of = {"name"})
-  @EqualsAndHashCode(of = {"name"})
+  /**
+   * @param name        Имя набора данных
+   * @param type        Тип набора данных
+   * @param dataSource  Имя источника данных
+   * @param items       Подчиненные наборы данных
+   * @param querySource Текста запроса (опционально)
+   * @param fields      Поля набора данных
+   */
   @Builder
-  public static class DataSet {
-    /**
-     * Имя набора данных
-     */
-    @Default
-    String name = "";
-
-    /**
-     * Тип набора данных
-     */
-    @Default
-    DataSetType type = DataSetType.DATA_SET_QUERY;
-
-    /**
-     * Имя источника данных
-     */
-    @Default
-    String dataSource = "";
-
-    /**
-     * Подчиненные наборы данных
-     */
-    @Singular
-    List<DataSet> items;
-
-    /**
-     * Текста запроса (опционально)
-     */
-    @Default
-    QuerySource querySource = QuerySource.empty();
-
-    /**
-     * Поля набора данных
-     */
-    @Singular
-    List<DataSetField> fields;
+  public record DataSet(String name,
+                        DataSetType type,
+                        String dataSource,
+                        @Singular List<DataSet> items,
+                        QuerySource querySource,
+                        @Singular List<DataSetField> fields) {
   }
 
   /**
@@ -123,5 +112,12 @@ public class DataCompositionSchema implements TemplateData {
    * @param name     Имя поля
    */
   public record DataSetField(String dataPath, String name) {
+  }
+
+  /**
+   * @param name         Имя варианта отчета
+   * @param presentation Представление варианта отчета
+   */
+  public record SettingsVariant(String name, MultiLanguageString presentation) {
   }
 }

@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,12 +21,12 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
-import com.github._1c_syntax.bsl.mdo.support.ScriptVariant;
 import com.github._1c_syntax.bsl.support.SupportVariant;
 import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ScriptVariant;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
@@ -102,8 +102,8 @@ public class Language implements MDObject {
       .synonym(MultiLanguageString.create(code, name))
       .mdoReference(MdoReference.create(
         MDOType.LANGUAGE,
-        MDOType.LANGUAGE.getGroupName() + "." + name,
-        MDOType.LANGUAGE.getGroupNameRu() + "." + name))
+        MDOType.LANGUAGE.groupName() + "." + name,
+        MDOType.LANGUAGE.groupNameRu() + "." + name))
       .languageCode(code)
       .build();
   }

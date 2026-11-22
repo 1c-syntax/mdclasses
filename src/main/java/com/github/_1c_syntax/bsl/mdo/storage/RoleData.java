@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -25,77 +25,56 @@ import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.utils.GenericInterner;
 import lombok.Builder;
-import lombok.Builder.Default;
-import lombok.EqualsAndHashCode;
 import lombok.Singular;
-import lombok.ToString;
-import lombok.Value;
-import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 
 /**
  * Хранилище данных конкретной роли
+ *
+ * @param setForNewObjects                Устанавливать права для новых объектов
+ * @param setForAttributesByDefault       Устанавливать права для реквизитов и табличных частей по умолчанию
+ * @param independentRightsOfChildObjects Независимые права подчиненных объектов
+ * @param restrictionTemplates            Шаблоны ограничения доступа на уровне записей
  */
-@Value
-@ToString
-@EqualsAndHashCode
 @Builder
-@Slf4j
-public class RoleData {
+public record RoleData(boolean setForNewObjects, boolean setForAttributesByDefault,
+                       boolean independentRightsOfChildObjects, @Singular List<ObjectRight> objectRights,
+                       @Singular List<RestrictionTemplate> restrictionTemplates) {
 
   public static final RoleData EMPTY = RoleData.builder().build();
   public static final GenericInterner<Right> RIGHT_INTERNER = new GenericInterner<>();
 
   /**
-   * Устанавливать права для новых объектов
+   * Шаблоны ограничения доступа повторяются во множестве ролей слово в слово (типовые
+   * шаблоны БСП — сотни килобайт текста в каждой роли), поэтому хранятся в одном экземпляре
    */
-  boolean setForNewObjects;
+  public static final GenericInterner<RestrictionTemplate> RESTRICTION_TEMPLATE_INTERNER = new GenericInterner<>();
 
   /**
-   * Устанавливать права для реквизитов и табличных частей по умолчанию
+   * @param name   Имя субъекта права (mdoref и базовые)
+   * @param rights Набор самих прав
    */
-  boolean setForAttributesByDefault;
-
-  /**
-   * Независимые права подчиненных объектов
-   */
-  boolean independentRightsOfChildObjects;
-
-  @Singular
-  List<ObjectRight> objectRights;
-
-  @Value
-  @ToString(of = {"name"})
-  @EqualsAndHashCode(of = {"name"})
   @Builder
-  public static class ObjectRight {
-    /**
-     * Имя субъекта права (mdoref и базовые)
-     */
-    @Default
-    MdoReference name = MdoReference.EMPTY;
-
-    /**
-     * Набор самих прав
-     */
-    @Singular
-    List<Right> rights;
+  public record ObjectRight(MdoReference name, @Singular List<Right> rights) {
   }
 
-  @Value
-  @ToString(of = {"name", "value"})
-  @EqualsAndHashCode(of = {"name", "value"})
+  /**
+   * @param name                 Право
+   * @param value                Признак установленности права
+   * @param restrictionCondition Код ограничения доступа на уровне записей для данного права
+   */
   @Builder
-  public static class Right {
-    /**
-     * Право
-     */
-    RoleRight name;
+  public record Right(RoleRight name, boolean value, String restrictionCondition) {
+  }
 
-    /**
-     * Признак установленности права
-     */
-    boolean value;
+  /**
+   * Шаблон ограничения доступа на уровне записей
+   *
+   * @param name      Имя шаблона с параметрами
+   * @param condition Код тела шаблона
+   */
+  @Builder
+  public record RestrictionTemplate(String name, String condition) {
   }
 }

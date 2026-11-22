@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,22 +21,90 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.test_utils.MDTestUtils;
+import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
+import com.github._1c_syntax.bsl.mdo.support.RegisterWriteMode;
+import com.github._1c_syntax.bsl.test_utils.Fixtures;
+import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class InformationRegisterTest {
   @ParameterizedTest
-  @CsvSource(
-    {
-      "true, mdclasses, InformationRegisters.РегистрСведений1, _edt",
-      "false, mdclasses, InformationRegisters.РегистрСведений1",
-      "true, ssl_3_1, InformationRegisters.ЭлектронныеПодписи, _edt",
-      "false, ssl_3_1, InformationRegisters.ЭлектронныеПодписи"
-    }
-  )
+  @CsvSource({
+    "true, mdclasses, InformationRegisters.РегистрСведений1, NONPERIODICAL",
+    "false, mdclasses, InformationRegisters.РегистрСведений1, NONPERIODICAL",
+    "true, ssl_3_1, InformationRegisters.ЭлектронныеПодписи, NONPERIODICAL",
+    "false, ssl_3_1, InformationRegisters.ЭлектронныеПодписи, NONPERIODICAL",
+    "true, ssl_3_2, InformationRegisters.ЭлектронныеПодписи, NONPERIODICAL",
+    "false, ssl_3_2, InformationRegisters.ЭлектронныеПодписи, NONPERIODICAL",
+    "true, ssl_3_1, InformationRegisters.СклоненияПредставленийОбъектов, NONPERIODICAL",
+    "false, ssl_3_1, InformationRegisters.СклоненияПредставленийОбъектов, NONPERIODICAL",
+    "true, ssl_3_2, InformationRegisters.СклоненияПредставленийОбъектов, NONPERIODICAL",
+    "false, ssl_3_2, InformationRegisters.СклоненияПредставленийОбъектов, NONPERIODICAL",
+    "true, ssl_3_2, InformationRegisters.КурсыВалют, DAY",
+    "false, ssl_3_2, InformationRegisters.КурсыВалют, DAY"
+  })
   void test(ArgumentsAccessor argumentsAccessor) {
-    var mdo = MDTestUtils.getMDWithSimpleTest(argumentsAccessor);
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(InformationRegister.class);
+
+    var informationRegister = (InformationRegister) mdo;
+    assertThat(informationRegister).isNotNull();
+
+    // --- Периодичность ---
+    var expectedPeriodicity = InformationRegisterPeriodicity.valueOf(argumentsAccessor.getString(3));
+    assertThat(informationRegister.getInformationRegisterPeriodicity()).isEqualTo(expectedPeriodicity);
+
+    // --- ModuleOwner ---
+    Assertions.assertThat(informationRegister.getAllModules(), false)
+      .containsAll(informationRegister.getModules(),
+        informationRegister.getForms(),
+        informationRegister.getCommands());
+
+    // --- ChildrenOwner ---
+    Assertions.assertThat(informationRegister.getChildren(), false)
+      .containsAll(informationRegister.getAttributes(),
+        informationRegister.getDimensions(),
+        informationRegister.getResources(),
+        informationRegister.getForms(),
+        informationRegister.getCommands(),
+        informationRegister.getTemplates());
+    Assertions.assertThat(informationRegister.getPlainChildren(), true)
+      .containsAll(informationRegister.getChildren());
+
+    // --- AttributeOwner ---
+    Assertions.assertThat(informationRegister.getAllAttributes(), false)
+      .containsAll(informationRegister.getAttributes(),
+        informationRegister.getDimensions(),
+        informationRegister.getResources());
+    Assertions.assertThat(informationRegister.getStorageFields(), false)
+      .containsAll(informationRegister.getAttributes(),
+        informationRegister.getDimensions(),
+        informationRegister.getResources());
+    Assertions.assertThat(informationRegister.getPlainStorageFields(), false)
+      .containsAll(informationRegister.getAttributes(),
+        informationRegister.getDimensions(),
+        informationRegister.getResources());
+  }
+
+  @ParameterizedTest
+  @CsvSource({
+    "true, mdclasses_3_27, InformationRegisters.РегистрСведений1, INDEPENDENT",
+    "false, mdclasses_3_27, InformationRegisters.РегистрСведений1, INDEPENDENT",
+    "true, mdclasses_3_27, InformationRegisters.РегистрСведений2, RECORDER_SUBORDINATE",
+    "false, mdclasses_3_27, InformationRegisters.РегистрСведений2, RECORDER_SUBORDINATE"
+  })
+  void testIndexFields(ArgumentsAccessor argumentsAccessor) {
+    var mdo = Fixtures.get(argumentsAccessor);
+    assertThat(mdo).isInstanceOf(InformationRegister.class);
+
+    var informationRegister = (InformationRegister) mdo;
+    assertThat(informationRegister).isNotNull();
+
+    var expectedWriteMode = RegisterWriteMode.valueOf(argumentsAccessor.getString(3));
+    assertThat(informationRegister.getWriteMode()).isEqualTo(expectedWriteMode);
   }
 }

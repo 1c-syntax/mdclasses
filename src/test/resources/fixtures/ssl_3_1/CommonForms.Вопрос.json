@@ -1,201 +1,39 @@
-{"com.github._1c_syntax.bsl.mdo.CommonForm": {
-  "comment": "",
-  "data": {
-    "@class": "com.github._1c_syntax.bsl.mdo.storage.ManagedFormData",
-    "title": {
-      "content": []
-    },
-    "handlers": [
-      [
-        {
-          "event": "OnOpen",
-          "name": "ПриОткрытии"
-        },
-        {
-          "event": "OnCreateAtServer",
-          "name": "ПриСозданииНаСервере"
-        }
-      ],
-      []
-    ],
-    "items": [
-      {
-        "type": "USUAL_GROUP",
-        "id": 15,
-        "name": "Колонки",
-        "title": {
-          "content": [
-            [
-              {
-                "langKey": "ru",
-                "value": "Колонки"
-              }
-            ]
-          ]
-        },
-        "dataPath": {
-          "segments": "",
-          "isEmpty": true
-        },
-        "items": [
-          [
-            {
-              "type": "PICTURE_DECORATION",
-              "id": 5,
-              "name": "Предупреждение",
-              "title": {
-                "content": [
-                  [
-                    {
-                      "langKey": "ru",
-                      "value": "Предупреждение"
-                    }
-                  ]
-                ]
-              },
-              "dataPath": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-              },
-              "items": []
-            },
-            {
-              "type": "USUAL_GROUP",
-              "id": 16,
-              "name": "Строки",
-              "title": {
-                "content": [
-                  [
-                    {
-                      "langKey": "ru",
-                      "value": "Строки"
-                    }
-                  ]
-                ]
-              },
-              "dataPath": {
-                "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/items/com.github._1c_syntax.bsl.mdo.storage.form.SimpleFormItem/dataPath"
-              },
-              "items": [
-                [
-                  {
-                    "type": "INPUT_FIELD",
-                    "id": 10,
-                    "name": "МногострочныйТекстСообщения",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
-                    },
-                    "dataPath": {
-                      "segments": "ТекстСообщения",
-                      "isEmpty": false
-                    },
-                    "items": []
-                  },
-                  {
-                    "type": "CHECK_BOX_FIELD",
-                    "id": 3,
-                    "name": "БольшеНеЗадаватьЭтотВопрос",
-                    "title": {
-                      "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
-                    },
-                    "dataPath": {
-                      "segments": "БольшеНеЗадаватьЭтотВопрос",
-                      "isEmpty": false
-                    },
-                    "items": []
-                  }
-                ],
-                []
-              ]
-            }
-          ],
-          []
-        ]
-      }
-    ],
-    "attributes": [
-      [
-        {
-          "id": 1,
-          "name": "СоответствиеКнопокИВозвращаемыхЗначений",
-          "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
-          }
-        },
-        {
-          "id": 3,
-          "name": "БольшеНеЗадаватьЭтотВопрос",
-          "title": {
-            "content": [
-              [
-                {
-                  "langKey": "ru",
-                  "value": "Больше не задавать этот вопрос"
-                }
-              ]
-            ]
-          }
-        },
-        {
-          "id": 4,
-          "name": "ОжиданиеСчетчик",
-          "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
-          }
-        },
-        {
-          "id": 5,
-          "name": "ОжиданиеИмяКнопки",
-          "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
-          }
-        },
-        {
-          "id": 6,
-          "name": "ОжиданиеЗаголовокКнопки",
-          "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
-          }
-        },
-        {
-          "id": 2,
-          "name": "ТекстСообщения",
-          "title": {
-            "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/data/title"
-          }
-        }
-      ],
-      []
-    ]
-  },
+{
+ "com.github._1c_syntax.bsl.mdo.CommonForm": {
   "formType": "MANAGED",
-  "mdoReference": {
-    "type": "COMMON_FORM",
-    "mdoRef": "CommonForm.Вопрос",
-    "mdoRefRu": "ОбщаяФорма.Вопрос"
-  },
-  "modules": [
-    {
-      "moduleType": "FormModule",
-      "uri": "src/test/resources/ext/designer/ssl_3_1/src/cf/CommonForms/Вопрос/Ext/Form/Module.bsl",
-      "owner": {
-        "@reference": "/com.github._1c_syntax.bsl.mdo.CommonForm/mdoReference"
-      },
-      "supportVariant": "NOT_EDITABLE",
-      "isProtected": false
-    }
+  "mdoType": "COMMON_FORM",
+  "possibleRights": [
+   "VIEW"
   ],
-  "name": "Вопрос",
-  "objectBelonging": "OWN",
+  "description": "Вопрос",
+  "mdoReference": {
+   "mdoRefRu": "ОбщаяФорма.Вопрос",
+   "type": "COMMON_FORM",
+   "mdoRef": "CommonForm.Вопрос"
+  },
+  "uuid": "573f1753-9194-4aaf-9217-5cac70ff108f",
+  "mdoRef": "CommonForm.Вопрос",
+  "modules": [
+   {
+    "owner": {
+     "@reference": "\/com.github._1c_syntax.bsl.mdo.CommonForm\/mdoReference"
+    },
+    "isProtected": false,
+    "moduleType": "FormModule",
+    "supportVariant": "NOT_EDITABLE"
+   }
+  ],
   "supportVariant": "NOT_EDITABLE",
   "synonym": {
-    "content": [
-      [
-        {
-          "langKey": "ru",
-          "value": "Вопрос"
-        }
-      ]
-    ]
+   "content": [
+    {
+     "langKey": "ru",
+     "value": "Вопрос"
+    }
+   ]
   },
-  "uuid": "573f1753-9194-4aaf-9217-5cac70ff108f"
-}}
+  "name": "Вопрос",
+  "comment": "",
+  "objectBelonging": "OWN"
+ }
+}

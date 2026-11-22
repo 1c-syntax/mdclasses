@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,4 +24,7 @@
  * - типы
  * - контейнеры данных (для хранения сложной информации)
  */
+@NullMarked
 package com.github._1c_syntax.bsl.mdo.support;
+
+import org.jspecify.annotations.NullMarked;

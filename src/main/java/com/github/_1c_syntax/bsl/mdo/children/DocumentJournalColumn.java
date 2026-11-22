@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -24,15 +24,21 @@ package com.github._1c_syntax.bsl.mdo.children;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.support.AttributeKind;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
-import com.github._1c_syntax.bsl.mdo.support.MultiLanguageString;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
+import com.github._1c_syntax.bsl.types.MDOType;
 import com.github._1c_syntax.bsl.types.MdoReference;
+import com.github._1c_syntax.bsl.types.MultiLanguageString;
+import com.github._1c_syntax.bsl.types.ValueTypeDescription;
 import lombok.Builder;
 import lombok.Builder.Default;
 import lombok.EqualsAndHashCode;
+import lombok.Singular;
 import lombok.ToString;
 import lombok.Value;
+
+import java.util.List;
 
 @Value
 @Builder
@@ -60,9 +66,37 @@ public class DocumentJournalColumn implements Attribute {
   SupportVariant supportVariant = SupportVariant.NONE;
   @Default
   MdoReference owner = MdoReference.EMPTY;
-  boolean passwordMode;
   @Default
   AttributeKind kind = AttributeKind.CUSTOM;
   @Default
   IndexingType indexing = IndexingType.DONT_INDEX;
+  @Default
+  UseMode fullTextSearch = UseMode.DONT_USE;
+
+  /*
+   * Свое
+   */
+
+  /**
+   * Ссылки на реквизиты документов, входящих в состав колонки
+   */
+  @Singular("addReferences")
+  List<MdoReference> references;
+
+  // не бывает
+  @Override
+  public boolean isPasswordMode() {
+    return false;
+  }
+
+  // Колонки не имеют собственного типа, а наследуют из ссылок
+  @Override
+  public ValueTypeDescription getValueType() {
+    return ValueTypeDescription.EMPTY;
+  }
+
+  @Override
+  public MDOType getMdoType() {
+    return MDOType.COLUMN;
+  }
 }

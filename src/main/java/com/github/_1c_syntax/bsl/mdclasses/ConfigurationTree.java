@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -55,6 +55,7 @@ import com.github._1c_syntax.bsl.mdo.InformationRegister;
 import com.github._1c_syntax.bsl.mdo.IntegrationService;
 import com.github._1c_syntax.bsl.mdo.Interface;
 import com.github._1c_syntax.bsl.mdo.Language;
+import com.github._1c_syntax.bsl.mdo.PaletteColor;
 import com.github._1c_syntax.bsl.mdo.Report;
 import com.github._1c_syntax.bsl.mdo.Role;
 import com.github._1c_syntax.bsl.mdo.ScheduledJob;
@@ -67,6 +68,7 @@ import com.github._1c_syntax.bsl.mdo.Subsystem;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.WSReference;
 import com.github._1c_syntax.bsl.mdo.WebService;
+import com.github._1c_syntax.bsl.mdo.WebSocketClient;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
 
 import java.util.List;
@@ -401,6 +403,18 @@ public interface ConfigurationTree {
   }
 
   /**
+   * Цвет палитры
+   */
+  List<PaletteColor> getPaletteColors();
+
+  /**
+   * Поиск элемента стиля по условию
+   */
+  default Optional<PaletteColor> findPaletteColor(Predicate<? super PaletteColor> predicate) {
+    return getPaletteColors().stream().filter(predicate).findFirst();
+  }
+
+  /**
    * Стили
    */
   List<Style> getStyles();
@@ -652,5 +666,17 @@ public interface ConfigurationTree {
    */
   default Optional<ExternalDataSource> findExternalDataSource(Predicate<? super ExternalDataSource> predicate) {
     return getExternalDataSources().stream().filter(predicate).findFirst();
+  }
+
+  /**
+   * WebSocket-клиенты
+   */
+  List<WebSocketClient> getWebSocketClients();
+
+  /**
+   * Поиск WebSocket-клиента по условию
+   */
+  default Optional<WebSocketClient> findWebSocketClient(Predicate<? super WebSocketClient> predicate) {
+    return getWebSocketClients().stream().filter(predicate).findFirst();
   }
 }

@@ -1,30 +1,36 @@
-import me.qoomon.gitversioning.commons.GitRefType
-import java.util.*
+import java.util.Calendar
+import org.jreleaser.model.Active.*
 
 plugins {
     `java-library`
     `maven-publish`
     jacoco
-    signing
-    id("org.cadixdev.licenser") version "0.6.1"
-    id("me.qoomon.git-versioning") version "6.4.3"
-    id("com.gorylenko.gradle-git-properties") version "2.4.2"
-    id("io.freefair.lombok") version "8.6"
-    id("io.freefair.javadoc-links") version "8.6"
-    id("io.freefair.javadoc-utf-8") version "8.6"
-    id("io.freefair.maven-central.validate-poms") version "8.6"
+    id("cloud.rio.license") version "0.18.0"
+    id("me.qoomon.git-versioning") version "7.0.0"
+    id("io.freefair.lombok") version "9.8.3"
+    id("io.freefair.javadoc-links") version "9.8.3"
+    id("io.freefair.javadoc-utf-8") version "9.8.3"
+    id("com.github.ben-manes.versions") version "0.67.0"
     id("ru.vyarus.pom") version "3.0.0"
-    id("org.sonarqube") version "5.1.0.4882"
-    id("io.codearte.nexus-staging") version "0.30.0"
+    id("org.jreleaser") version "1.26.0"
+    id("org.sonarqube") version "7.6.0.18749"
+    id("me.champeau.jmh") version "0.7.4"
 }
 
 group = "io.github.1c-syntax"
 gitVersioning.apply {
     refs {
-        considerTagsOnBranches = true
+        describeTagFirstParent = false
         tag("v(?<tagVersion>[0-9].*)") {
             version = "\${ref.tagVersion}\${dirty}"
         }
+
+        branch("develop") {
+            version = "\${describe.tag.version.major}." +
+                    "\${describe.tag.version.minor.next}.0." +
+                    "\${describe.distance}-SNAPSHOT\${dirty}"
+        }
+
         branch(".+") {
             version = "\${ref}-\${commit.short}\${dirty}"
         }
@@ -34,63 +40,72 @@ gitVersioning.apply {
         version = "\${commit.short}\${dirty}"
     }
 }
-val isSnapshot = gitVersioning.gitVersionDetails.refType != GitRefType.TAG
 
 repositories {
     mavenLocal()
     mavenCentral()
-    maven(url = "https://jitpack.io")
-    maven(url = "https://s01.oss.sonatype.org/content/repositories/snapshots/")
+    maven("https://central.sonatype.com/repository/maven-snapshots")
 }
 
 dependencies {
 
-    implementation("org.apache.commons", "commons-collections4", "4.4")
+    implementation("org.apache.commons:commons-collections4:4.6.0")
 
-    // https://mvnrepository.com/artifact/com.thoughtworks.xstream/xstream
-    implementation("com.thoughtworks.xstream", "xstream", "1.4.20")
+    implementation("com.thoughtworks.xstream:xstream:1.4.21")
 
     // логирование
-    implementation("org.slf4j", "slf4j-api", "2.1.0-alpha1")
+    implementation("org.slf4j:slf4j-api:2.0.20")
 
     // прочее
-    implementation("commons-io", "commons-io", "2.8.0")
-    implementation("io.github.1c-syntax", "utils", "0.6.1")
-    implementation("io.github.1c-syntax", "bsl-common-library", "0.7.0")
-    implementation("io.github.1c-syntax", "supportconf", "0.14.0") {
+    implementation("commons-io:commons-io:2.22.0")
+
+    implementation("io.github.1c-syntax:bsl-common-library:0.13.0")
+    implementation("io.github.1c-syntax:utils:0.10.2")
+    implementation("io.github.1c-syntax:supportconf:0.17.2") {
         exclude("io.github.1c-syntax", "bsl-common-library")
     }
 
     // быстрый поиск классов
-    implementation("io.github.classgraph", "classgraph", "4.8.147")
+    implementation("io.github.classgraph:classgraph:4.8.197")
+
+    implementation("org.jspecify:jspecify:1.0.1")
 
     // тестирование
-    testImplementation("org.junit.jupiter", "junit-jupiter-api", "5.7.0")
-    testImplementation("org.junit.jupiter", "junit-jupiter-engine", "5.7.0")
-    testImplementation("org.junit.jupiter", "junit-jupiter-params", "5.7.0")
-    testImplementation("org.assertj", "assertj-core", "3.18.1")
-    testImplementation("com.ginsberg", "junit5-system-exit", "1.0.0")
-    testImplementation("org.skyscreamer", "jsonassert", "1.5.0")
-    testImplementation("org.objenesis", "objenesis", "3.2")
+    testImplementation(platform("org.junit:junit-bom:6.1.3"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testImplementation("org.junit.jupiter:junit-jupiter-params")
+    testImplementation("org.assertj:assertj-core:3.27.7")
+    testImplementation("com.ginsberg:junit5-system-exit:2.0.3")
+    testImplementation("org.skyscreamer:jsonassert:2.0-rc1")
+    testImplementation("org.objenesis:objenesis:3.6")
 
     // логирование
-    // https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12
-    testImplementation("org.slf4j", "slf4j-log4j12", "2.1.0-alpha1")
+    testImplementation("org.slf4j:slf4j-reload4j:2.0.20")
+
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+    // бенчмарк
+    jmh("org.openjdk.jmh:jmh-core:1.37")
+    jmhAnnotationProcessor("org.openjdk.jmh:jmh-generator-annprocess:1.37")
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
     withSourcesJar()
     withJavadocJar()
 }
 
-sourceSets {
-    main {
-        resources {
-            exclude("**/*.xsd")
-        }
-    }
+jmh {
+    warmupIterations = 3
+    iterations = 5
+    fork = 2
+    resultFormat = "JSON"
+    resultsFile = file("build/jmh-results.json")
+    profilers = listOf(
+        "com.github._1c_syntax.bsl.mdclasses.benchmark.MemoryProfiler"
+    )
 }
 
 tasks.test {
@@ -110,7 +125,7 @@ tasks.check {
 tasks.jacocoTestReport {
     reports {
         xml.required.set(true)
-        xml.outputLocation.set(File("$buildDir/reports/jacoco/test/jacoco.xml"))
+        xml.outputLocation.set(layout.buildDirectory.file("reports/jacoco/test/jacoco.xml"))
     }
 }
 
@@ -139,7 +154,10 @@ sonar {
         property("sonar.projectKey", "1c-syntax_mdclasses")
         property("sonar.projectName", "MDClasses")
         property("sonar.exclusions", "**/resources/**/*.*")
-        property("sonar.coverage.jacoco.xmlReportPaths", "$buildDir/reports/jacoco/test/jacoco.xml")
+        property(
+            "sonar.coverage.jacoco.xmlReportPaths",
+            "${layout.buildDirectory.get()}/reports/jacoco/test/jacoco.xml"
+        )
     }
 }
 
@@ -150,56 +168,27 @@ artifacts {
 }
 
 license {
-    header(rootProject.file("license/HEADER.txt"))
-    newLine(false)
+    header = rootProject.file("license/HEADER.txt")
+    skipExistingHeaders = false
+    strictCheck = true
     ext["year"] = "2019 - " + Calendar.getInstance().get(Calendar.YEAR)
     ext["name"] = "Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com>"
     ext["project"] = "MDClasses"
-    exclude("**/*.yml")
-    exclude("**/*.bin")
-    exclude("**/*.html")
-    exclude("**/*.properties")
-    exclude("**/*.xml")
-    exclude("**/*.json")
-    exclude("**/*.os")
-    exclude("**/*.bsl")
-    exclude("**/*.orig")
+    mapping("java", "SLASHSTAR_STYLE")
+    include("**/*.java")
 }
 
-signing {
-    val signingInMemoryKey: String? by project      // env.ORG_GRADLE_PROJECT_signingInMemoryKey
-    val signingInMemoryPassword: String? by project // env.ORG_GRADLE_PROJECT_signingInMemoryPassword
-    if (signingInMemoryKey != null) {
-        useInMemoryPgpKeys(signingInMemoryKey, signingInMemoryPassword)
-        sign(publishing.publications)
-    }
-}
 
 publishing {
     repositories {
         maven {
-            name = "sonatype"
-            url = if (isSnapshot)
-                uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-            else
-                uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-
-            val sonatypeUsername: String? by project
-            val sonatypePassword: String? by project
-
-            credentials {
-                username = sonatypeUsername // ORG_GRADLE_PROJECT_sonatypeUsername
-                password = sonatypePassword // ORG_GRADLE_PROJECT_sonatypePassword
-            }
+            name = "staging"
+            url = layout.buildDirectory.dir("staging-deploy").get().asFile.toURI()
         }
     }
     publications {
         create<MavenPublication>("maven") {
             from(components["java"])
-
-            if (isSnapshot && project.hasProperty("simplifyVersion")) {
-                version = findProperty("git.ref.slug") as String + "-SNAPSHOT"
-            }
 
             pom {
                 description.set("Metadata read/write library for Language 1C (BSL)")
@@ -234,19 +223,55 @@ publishing {
                     developerConnection.set("scm:git:git@github.com:1c-syntax/mdclasses.git")
                     url.set("https://github.com/1c-syntax/mdclasses")
                 }
+                // Добавлено для Maven Central validation
+                issueManagement {
+                    system.set("GitHub Issues")
+                    url.set("https://github.com/1c-syntax/mdclasses/issues")
+                }
+                // Добавлено для Maven Central validation
+                ciManagement {
+                    system.set("GitHub Actions")
+                    url.set("https://github.com/1c-syntax/mdclasses/actions")
+                }
             }
         }
     }
-}
-
-nexusStaging {
-    serverUrl = "https://s01.oss.sonatype.org/service/local/"
-    stagingProfileId = "15bd88b4d17915" // ./gradlew getStagingProfile
 }
 
 tasks.register("precommit") {
     description = "Run all precommit tasks"
     group = "Developer tools"
     dependsOn(":test")
-    dependsOn(":updateLicenses")
+    dependsOn(":licenseFormat")
+}
+
+jreleaser {
+    signing {
+        active = ALWAYS
+        pgp {
+            armored = true
+        }
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                create("release-deploy") {
+                    active = RELEASE
+                    url = "https://central.sonatype.com/api/v1/publisher"
+                    stagingRepository("build/staging-deploy")
+                }
+            }
+            nexus2 {
+                create("snapshot-deploy") {
+                    active = SNAPSHOT
+                    snapshotUrl = "https://central.sonatype.com/repository/maven-snapshots/"
+                    applyMavenCentralRules = true
+                    snapshotSupported = true
+                    closeRepository = true
+                    releaseRepository = true
+                    stagingRepository("build/staging-deploy")
+                }
+            }
+        }
+    }
 }

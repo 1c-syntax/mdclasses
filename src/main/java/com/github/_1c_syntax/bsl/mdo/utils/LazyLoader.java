@@ -1,7 +1,7 @@
 /*
  * This file is a part of MDClasses.
  *
- * Copyright (c) 2019 - 2024
+ * Copyright (c) 2019 - 2026
  * Tymko Oleg <olegtymko@yandex.ru>, Maximov Valery <maximovvalery@gmail.com> and contributors
  *
  * SPDX-License-Identifier: LGPL-3.0-or-later
@@ -21,6 +21,7 @@
  */
 package com.github._1c_syntax.bsl.mdo.utils;
 
+import com.github._1c_syntax.bsl.mdclasses.CF;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
 import com.github._1c_syntax.bsl.mdo.Attribute;
 import com.github._1c_syntax.bsl.mdo.AttributeOwner;
@@ -30,16 +31,22 @@ import com.github._1c_syntax.bsl.mdo.ChildrenOwner;
 import com.github._1c_syntax.bsl.mdo.CommandOwner;
 import com.github._1c_syntax.bsl.mdo.CommonModule;
 import com.github._1c_syntax.bsl.mdo.Enum;
+import com.github._1c_syntax.bsl.mdo.ExternalDataSource;
 import com.github._1c_syntax.bsl.mdo.FormOwner;
+import com.github._1c_syntax.bsl.mdo.IndexOwner;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.ModuleOwner;
+import com.github._1c_syntax.bsl.mdo.PredefinedDataOwner;
 import com.github._1c_syntax.bsl.mdo.Register;
 import com.github._1c_syntax.bsl.mdo.TabularSectionOwner;
 import com.github._1c_syntax.bsl.mdo.Task;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
-import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormItem;
+import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceCube;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndex;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndexCalculator;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementOwner;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import com.github._1c_syntax.bsl.types.ModuleType;
 import lombok.experimental.UtilityClass;
@@ -53,6 +60,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Набор методов для ленивой загрузки данных в MD/MDC
@@ -93,12 +101,26 @@ public class LazyLoader {
       children = addAll(children, anEnum.getEnumValues());
     }
 
+    if (mdo instanceof PredefinedDataOwner predefinedDataOwner) {
+      children = addAll(children, predefinedDataOwner.getPredefinedValues());
+    }
+
     if (mdo instanceof Task task) {
       children = addAll(children, task.getAddressingAttributes());
     }
 
     if (mdo instanceof CalculationRegister calculationRegister) {
       children = addAll(children, calculationRegister.getRecalculations());
+    }
+
+    if (mdo instanceof ExternalDataSource externalDataSource) {
+      children = addAll(children, externalDataSource.getTables());
+      children = addAll(children, externalDataSource.getCubes());
+      children = addAll(children, externalDataSource.getFunctions());
+    }
+
+    if (mdo instanceof ExternalDataSourceCube externalDataSourceCube) {
+      children = addAll(children, externalDataSourceCube.getDimensionTables());
     }
 
     return Collections.unmodifiableList(children);
@@ -176,6 +198,11 @@ public class LazyLoader {
       children = addAll(children, chartOfAccounts.getExtDimensionAccountingFlags());
     }
 
+    if (mdo instanceof ExternalDataSourceCube cube) {
+      children = addAll(children, cube.getResources());
+      children = addAll(children, cube.getDimensions());
+    }
+
     return Collections.unmodifiableList(children);
   }
 
@@ -244,6 +271,20 @@ public class LazyLoader {
       .collect(Collectors.toUnmodifiableMap(MD::getMdoReference, child -> child));
   }
 
+  /**
+   * Производит расчет соответствия ссылки объекта конфигурации к списку его платформенных индексов.
+   * Расчет выполняется только для объектов-владельцев индексов
+   *
+   * @param cf Конфигурация или расширение
+   * @return Немодифицируемое соответствие
+   */
+  public Map<MdoReference, List<PlatformIndex>> computeIndexes(CF cf) {
+    var result = new HashMap<MdoReference, List<PlatformIndex>>();
+    cf.getPlainChildren().stream()
+      .filter(IndexOwner.class::isInstance)
+      .forEach(mdo -> result.put(mdo.getMdoReference(), PlatformIndexCalculator.computeIndexes(mdo, cf)));
+    return Collections.unmodifiableMap(result);
+  }
 
   /**
    * Создает соответствие URI модуля объекта модулю.
@@ -260,31 +301,26 @@ public class LazyLoader {
   /**
    * Производит расчет списка дочерних элементов формы. Список включает все дочерних по иерархии вниз
    *
-   * @param formItem Элемент формы, у которого есть дочерние элементы
+   * @param element Элемент формы, у которого есть дочерние элементы
    * @return Немодифицируемый список дочерних объектов
    */
-  public List<FormItem> computePlainFormItems(FormItem formItem) {
-    List<FormItem> items = addAll(Collections.emptyList(), formItem.getItems());
-    items = addAll(items, items.stream()
-      .map(FormItem::getPlainItems)
-      .flatMap(Collection::stream)
-      .toList());
-    return Collections.unmodifiableList(items);
-  }
-
-  /**
-   * Производит расчет списка дочерних элементов формы. Список включает все дочерних по иерархии вниз
-   *
-   * @param formData Форма, у которой есть дочерние элементы
-   * @return Немодифицируемый список дочерних объектов
-   */
-  public List<FormItem> computePlainFormItems(ManagedFormData formData) {
-    List<FormItem> items = addAll(Collections.emptyList(), formData.getItems());
-    items = addAll(items, items.stream()
-      .map(FormItem::getPlainItems)
-      .flatMap(Collection::stream)
-      .toList());
-    return Collections.unmodifiableList(items);
+  public List<FormElement> computePlainFormElements(FormElementOwner element) {
+    // Список запоминается у каждого элемента формы, поэтому без лишних объектов: у элемента без
+    // дочерних — общий пустой, без вложенных — сам список дочерних, иначе — один список точного размера.
+    var elements = element.getElements();
+    if (elements.isEmpty()) {
+      return Collections.emptyList();
+    }
+    var nested = elements.stream()
+      .filter(FormElementOwner.class::isInstance)
+      .map(FormElementOwner.class::cast)
+      .map(FormElementOwner::getPlainElements)
+      .filter(plain -> !plain.isEmpty())
+      .toList();
+    if (nested.isEmpty()) {
+      return Collections.unmodifiableList(elements);
+    }
+    return Stream.concat(elements.stream(), nested.stream().flatMap(Collection::stream)).toList();
   }
 
   /**
@@ -304,14 +340,22 @@ public class LazyLoader {
       return Collections.unmodifiableList(source);
     } else if (source.isEmpty()) {
       return result;
-    } else if ("UnmodifiableRandomAccessList".equals(result.getClass().getSimpleName())) {
-      // todo надо придумать как красиво тип определить
+    } else if (isUnmodifiableList(result)) {
       List<T> newList = new ArrayList<>(result);
       newList.addAll(source);
       return newList;
     } else {
       result.addAll(source);
       return result;
+    }
+  }
+
+  public static <T> boolean isUnmodifiableList(List<T> list) {
+    try {
+      list.addAll(Collections.emptyList());
+      return false;
+    } catch (UnsupportedOperationException e) {
+      return true;
     }
   }
 }
