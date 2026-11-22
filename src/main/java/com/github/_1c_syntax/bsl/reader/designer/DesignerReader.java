@@ -307,6 +307,11 @@ public class DesignerReader implements MDReader {
     return Paths.get(rootPath.toString(), "Ext", "ParentConfigurations.bin");
   }
 
+  @Override
+  public Path standaloneContentPath() {
+    return Paths.get(rootPath.toString(), "Ext", "StandaloneConfigurationContent.bin");
+  }
+
   private static Path mdoPath(Path path, MDOType type, String name) {
     return mdoPath(Paths.get(path.toString(), type.groupName()), name);
   }

@@ -24,10 +24,9 @@ package com.github._1c_syntax.bsl.reader.common.xstream;
 import com.github._1c_syntax.bsl.mdclasses.ConfigurationTree;
 import com.github._1c_syntax.bsl.mdclasses.ExternalDataProcessor;
 import com.github._1c_syntax.bsl.mdclasses.ExternalReport;
+import com.github._1c_syntax.bsl.mdclasses.StandaloneConfigurationContent;
+import com.github._1c_syntax.bsl.mdclasses.StandaloneServerPriority;
 import com.github._1c_syntax.bsl.mdo.MD;
-import com.github._1c_syntax.bsl.mdo.support.FillChecking;
-import com.github._1c_syntax.bsl.mdo.support.CommandRepresentation;
-import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
 import com.github._1c_syntax.bsl.mdo.storage.DataCompositionSchema;
 import com.github._1c_syntax.bsl.mdo.storage.RoleData;
 import com.github._1c_syntax.bsl.mdo.storage.XdtoPackageData;
@@ -38,12 +37,14 @@ import com.github._1c_syntax.bsl.mdo.support.CalculationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.ChoiceDataGetMode;
 import com.github._1c_syntax.bsl.mdo.support.ChoiceHistoryOnInputMode;
 import com.github._1c_syntax.bsl.mdo.support.CodeSeries;
+import com.github._1c_syntax.bsl.mdo.support.CommandRepresentation;
+import com.github._1c_syntax.bsl.mdo.support.CommonAttributeSeparatedDataUse;
 import com.github._1c_syntax.bsl.mdo.support.ConfigurationExtensionPurpose;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
-import com.github._1c_syntax.bsl.mdo.support.CommonAttributeSeparatedDataUse;
-import com.github._1c_syntax.bsl.mdo.support.DynamicListKeyType;
 import com.github._1c_syntax.bsl.mdo.support.DataSeparation;
 import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
+import com.github._1c_syntax.bsl.mdo.support.DynamicListKeyType;
+import com.github._1c_syntax.bsl.mdo.support.FillChecking;
 import com.github._1c_syntax.bsl.mdo.support.FormType;
 import com.github._1c_syntax.bsl.mdo.support.HierarchyType;
 import com.github._1c_syntax.bsl.mdo.support.IndexingType;
@@ -51,6 +52,7 @@ import com.github._1c_syntax.bsl.mdo.support.InformationRegisterPeriodicity;
 import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
 import com.github._1c_syntax.bsl.mdo.support.MessageDirection;
 import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
+import com.github._1c_syntax.bsl.mdo.support.RegisterWriteMode;
 import com.github._1c_syntax.bsl.mdo.support.ReturnValueReuse;
 import com.github._1c_syntax.bsl.mdo.support.ReuseSessions;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
@@ -60,8 +62,8 @@ import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.mdo.support.TransferDirection;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
-import com.github._1c_syntax.bsl.mdo.support.RegisterWriteMode;
 import com.github._1c_syntax.bsl.reader.MDReader;
+import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
 import com.github._1c_syntax.bsl.reader.common.converter.CommonConverter;
 import com.github._1c_syntax.bsl.reader.common.converter.EnumConverter;
 import com.github._1c_syntax.bsl.types.DateFractions;
@@ -314,6 +316,7 @@ public class ExtendXStream extends XStream {
     registerConverter(new EnumConverter<>(FillChecking.class));
     registerConverter(new EnumConverter<>(DefaultPresentation.class));
     registerConverter(new EnumConverter<>(RegisterWriteMode.class));
+    registerConverter(new EnumConverter<>(StandaloneServerPriority.class));
   }
 
   private void init() {
@@ -365,6 +368,7 @@ public class ExtendXStream extends XStream {
     alias("ExternalDataProcessor", ExternalDataProcessor.class);
     alias("ExternalReport", ExternalReport.class);
     alias("AdditionalIndexes", AdditionalIndexesWrapper.class);
+    alias("StandaloneContent", StandaloneConfigurationContent.class);
   }
 
   @Nullable

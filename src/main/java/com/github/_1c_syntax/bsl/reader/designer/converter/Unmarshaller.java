@@ -22,10 +22,10 @@
 package com.github._1c_syntax.bsl.reader.designer.converter;
 
 import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
-import com.github._1c_syntax.bsl.reader.common.context.FormAttributeWrapper;
 import com.github._1c_syntax.bsl.mdo.support.TemplateType;
 import com.github._1c_syntax.bsl.reader.common.DataCompositionFields;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
+import com.github._1c_syntax.bsl.reader.common.context.FormAttributeWrapper;
 import com.github._1c_syntax.bsl.reader.common.context.FormElementReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.MDCReaderContext;
 import com.github._1c_syntax.bsl.reader.common.context.MDReaderContext;
@@ -74,26 +74,27 @@ public class Unmarshaller {
     "KeyField", "keyFields"
   );
 
+  private static final String ELEMENTS_FIELD = "elements";
   private static final Map<String, String> ITEM_NODE_REMAPPING
     = Map.of(
     "Commands", "commands",
     "Parameters", "parameters",
     "Attributes", "attributes",
     "Columns", "columns",
-    "ChildItems", "elements",
+    "ChildItems", ELEMENTS_FIELD,
     "Events", "eventHandlers",
     "UseAlways", "useAlwaysFields"
   );
 
   private static final Map<String, String> NODE_REMAPPING
     = Map.of(
-    "AutoCommandBar", "elements",
-    "ContextMenu", "elements",
-    "ExtendedTooltip", "elements",
-    "Table", "elements",
-    "SearchControlAddition", "elements",
-    "ViewStatusAddition", "elements",
-    "SearchStringAddition", "elements",
+    "AutoCommandBar", ELEMENTS_FIELD,
+    "ContextMenu", ELEMENTS_FIELD,
+    "ExtendedTooltip", ELEMENTS_FIELD,
+    "Table", ELEMENTS_FIELD,
+    "SearchControlAddition", ELEMENTS_FIELD,
+    "ViewStatusAddition", ELEMENTS_FIELD,
+    "SearchStringAddition", ELEMENTS_FIELD,
     "Column", "columns"
   );
 

@@ -21,7 +21,6 @@
  */
 package com.github._1c_syntax.bsl.mdo;
 
-import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
 import com.github._1c_syntax.bsl.mdo.support.DefaultPresentation;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;

@@ -21,6 +21,8 @@
  */
 package com.github._1c_syntax.bsl.reader.common.context;
 
+import com.github._1c_syntax.bsl.mdclasses.Configuration;
+import com.github._1c_syntax.bsl.mdclasses.StandaloneConfigurationContent;
 import com.github._1c_syntax.bsl.mdo.MD;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.github._1c_syntax.bsl.supconf.ParseSupportData;
@@ -113,10 +115,26 @@ public class MDCReaderContext extends AbstractReaderContext {
     }
     setValue(CONFIGURATION_SOURCE_MODE_FILED_NAME, mdReader.getConfigurationSource());
 
+    if (realClass == Configuration.class) {
+      setValue("standaloneContent", readStandaloneContent());
+    }
+
     setValueModules();
     setValueChildren();
 
     return super.build();
+  }
+
+  private StandaloneConfigurationContent readStandaloneContent() {
+    var path = mdReader.standaloneContentPath();
+    if (!path.toFile().exists()) {
+      return StandaloneConfigurationContent.EMPTY;
+    }
+    var value = mdReader.read(path);
+    if (value instanceof StandaloneConfigurationContent content) {
+      return content;
+    }
+    return StandaloneConfigurationContent.builder().build();
   }
 
   private void setValueChildren() {

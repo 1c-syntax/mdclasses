@@ -24,7 +24,6 @@ package com.github._1c_syntax.bsl.test_utils;
 import com.github._1c_syntax.bsl.mdo.CommonTemplate;
 import com.github._1c_syntax.bsl.mdo.Template;
 import com.github._1c_syntax.bsl.mdo.TemplateOwner;
-import com.github._1c_syntax.bsl.mdo.children.ObjectTemplate;
 import lombok.SneakyThrows;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
