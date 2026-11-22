@@ -88,6 +88,11 @@ public class FakeReader implements MDReader {
   }
 
   @Override
+  public Path standaloneContentPath() {
+    return Path.of("fake-path");
+  }
+
+  @Override
   public FormData readFormData(Path currentPath, String name, MDOType mdoType) {
     return EmptyFormData.EMPTY;
   }

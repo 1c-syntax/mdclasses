@@ -72,6 +72,7 @@ import com.github._1c_syntax.bsl.mdo.WSReference;
 import com.github._1c_syntax.bsl.mdo.WebService;
 import com.github._1c_syntax.bsl.mdo.WebSocketClient;
 import com.github._1c_syntax.bsl.mdo.XDTOPackage;
+import com.github._1c_syntax.bsl.mdo.storage.PlatformIndex;
 import com.github._1c_syntax.bsl.mdo.support.ApplicationRunMode;
 import com.github._1c_syntax.bsl.mdo.support.DataLockControlMode;
 import com.github._1c_syntax.bsl.mdo.support.InterfaceCompatibilityMode;
@@ -79,8 +80,6 @@ import com.github._1c_syntax.bsl.mdo.support.ObjectBelonging;
 import com.github._1c_syntax.bsl.mdo.support.RoleRight;
 import com.github._1c_syntax.bsl.mdo.support.UseMode;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
-import com.github._1c_syntax.bsl.mdo.storage.Index;
-import com.github._1c_syntax.bsl.mdo.storage.PlatformIndex;
 import com.github._1c_syntax.bsl.mdo.utils.LazyLoader;
 import com.github._1c_syntax.bsl.support.CompatibilityMode;
 import com.github._1c_syntax.bsl.support.SupportVariant;
@@ -98,7 +97,6 @@ import lombok.ToString;
 import lombok.Value;
 
 import java.net.URI;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -161,6 +159,11 @@ public class Configuration implements CF {
   String version = "";
   @Singular("addUsePurposes")
   List<UsePurposes> usePurposes;
+  /**
+   * Состав автономной конфигурации
+   */
+  @Default
+  StandaloneConfigurationContent standaloneContent = StandaloneConfigurationContent.EMPTY;
 
   @Singular
   List<Subsystem> subsystems;

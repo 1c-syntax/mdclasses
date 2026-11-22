@@ -51,17 +51,17 @@ import com.github._1c_syntax.bsl.mdo.children.StandardAttribute;
 import com.github._1c_syntax.bsl.mdo.children.TaskAddressingAttribute;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperation;
 import com.github._1c_syntax.bsl.mdo.children.WebServiceOperationParameter;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
-import com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute;
-import com.github._1c_syntax.bsl.reader.common.DataCompositionFields;
-import com.github._1c_syntax.bsl.reader.common.xstream.ExtendStaxDriver;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAttribute;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormDynamicListAttribute;
 import com.github._1c_syntax.bsl.reader.MDReader;
+import com.github._1c_syntax.bsl.reader.common.DataCompositionFields;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
 import com.github._1c_syntax.bsl.reader.common.converter.DesignerRootWrapper;
+import com.github._1c_syntax.bsl.reader.common.xstream.ExtendStaxDriver;
 import com.github._1c_syntax.bsl.reader.common.xstream.ExtendXStream;
 import com.github._1c_syntax.bsl.reader.edt.converter.EDTConverter;
 import com.github._1c_syntax.bsl.reader.edt.converter.Unmarshaller;
@@ -88,15 +88,15 @@ import java.util.Optional;
 public class EDTReader implements MDReader {
 
   /**
-   * Путь к файлу описания конфигурации
-   */
-  public static final String CONFIGURATION_MDO_PATH = Paths.get("src", "Configuration", "Configuration.mdo")
-    .toString();
-
-  /**
    * Имя корневого файла конфигурации
    */
   public static final String CONFIGURATION_MDO_FILE_NAME = "Configuration.mdo";
+
+  /**
+   * Путь к файлу описания конфигурации
+   */
+  public static final String CONFIGURATION_MDO_PATH = Paths.get("src", "Configuration", CONFIGURATION_MDO_FILE_NAME)
+    .toString();
 
   /**
    * Файл условного оформления формы
@@ -386,6 +386,11 @@ public class EDTReader implements MDReader {
       return distr;
     }
     return Paths.get(configurationDir.toString(), "ParentConfigurations.bin");
+  }
+
+  @Override
+  public Path standaloneContentPath() {
+    return Paths.get(rootPath.toString(), "src", MDOType.CONFIGURATION.nameEn(), "MobileApplicationContent.scc");
   }
 
   private static Path mdoPath(Path rootPath, MDOType type, String name) {

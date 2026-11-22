@@ -25,7 +25,6 @@ import com.github._1c_syntax.bsl.mdclasses.ExternalSource;
 import com.github._1c_syntax.bsl.mdclasses.MDCReadSettings;
 import com.github._1c_syntax.bsl.mdclasses.MDClass;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
-import com.github._1c_syntax.bsl.mdo.storage.AdditionalIndex;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.reader.common.context.AbstractReaderContext;
 import com.github._1c_syntax.bsl.reader.common.converter.AdditionalIndexesWrapper;
@@ -117,6 +116,13 @@ public interface MDReader {
    * Геттер для xstream
    */
   ExtendXStream getXstream();
+
+  /**
+   * Возвращает путь к файлу состава автономной конфигурации
+   *
+   * @return Путь к файлу состава
+   */
+  Path standaloneContentPath();
 
   /**
    * Читает данные формы
