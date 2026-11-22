@@ -256,6 +256,11 @@ public class Fixtures {
     xstream.registerConverter(new TestCollectionConverter(xstream.getMapper(), compact));
     xstream.registerConverter(new TestURIConverter());
 
+    // Ленивые поля @Getter(lazy = true) хранятся в AtomicReference. Их состояние зависит от порядка
+    // тестов: сериализация дочернего объекта инициализирует поле в объекте из общего кеша.
+    // Дочерние объекты получают значения через JavaBeanConverter, на который converter не действует.
+    xstream.registerConverter(new TestAtomicReferenceConverter(), XStream.PRIORITY_VERY_HIGH);
+
     try (var scanResult = new ClassGraph()
       .enableClassInfo()
       .enableAnnotationInfo()

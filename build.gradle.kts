@@ -59,9 +59,9 @@ dependencies {
     // прочее
     implementation("commons-io:commons-io:2.22.0")
 
-    implementation("io.github.1c-syntax:bsl-common-library:0.12.5")
-    implementation("io.github.1c-syntax:utils:0.10.1")
-    implementation("io.github.1c-syntax:supportconf:0.17.1") {
+    implementation("io.github.1c-syntax:bsl-common-library:0.13.0")
+    implementation("io.github.1c-syntax:utils:0.10.2")
+    implementation("io.github.1c-syntax:supportconf:0.17.2") {
         exclude("io.github.1c-syntax", "bsl-common-library")
     }
 
@@ -76,14 +76,14 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-params")
     testImplementation("org.assertj:assertj-core:3.27.7")
     testImplementation("com.ginsberg:junit5-system-exit:2.0.3")
-    testImplementation("org.skyscreamer:jsonassert:1.5.3")
+    testImplementation("org.skyscreamer:jsonassert:2.0-rc1")
     testImplementation("org.objenesis:objenesis:3.6")
-
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     // логирование
     testImplementation("org.slf4j:slf4j-reload4j:2.0.20")
+
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 
     // бенчмарк
     jmh("org.openjdk.jmh:jmh-core:1.37")
@@ -248,7 +248,9 @@ tasks.register("precommit") {
 jreleaser {
     signing {
         active = ALWAYS
-        armored = true
+        pgp {
+            armored = true
+        }
     }
     deploy {
         maven {
