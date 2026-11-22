@@ -31,8 +31,17 @@ import com.github._1c_syntax.bsl.mdo.Module;
 import com.github._1c_syntax.bsl.mdo.storage.EmptyFormData;
 import com.github._1c_syntax.bsl.mdo.storage.FormData;
 import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAddition;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormButton;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormContextMenu;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormDecoration;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip;
 import com.github._1c_syntax.bsl.mdo.storage.form.FormField;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormGroup;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormTable;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormUnknown;
 import com.github._1c_syntax.bsl.mdo.support.UsePurposes;
 import com.github._1c_syntax.bsl.test_utils.Fixtures;
 import com.github._1c_syntax.bsl.test_utils.assertions.Assertions;
@@ -359,6 +368,186 @@ class MDMergerMergeTest {
       .containsKeys("Наименование.OnChange", "Наименование.StartChoice", "Form.OnOpen", "Form.BeforeClose");
   }
 
+
+  @Test
+  void mergeFormDataReturnsBaseWhenNoChanges() {
+    var handler = FormEventHandler.create("OnOpen", "ПриОткрытии");
+    var baseData = ManagedFormData.builder()
+      .addEventHandlers(handler)
+      .addElements(FormField.builder().name("Поле").addEventHandlers(handler).build())
+      .build();
+    var extData = ManagedFormData.builder()
+      .addEventHandlers(handler)
+      .addElements(FormField.builder().name("Поле").addEventHandlers(handler).build())
+      .build();
+
+    assertThat(merge(baseData, extData)).isSameAs(baseData);
+  }
+
+  @Test
+  void mergeFormDataSkipsUnnamedAndUnknownElements() {
+    var baseData = ManagedFormData.builder()
+      .addElements(FormField.builder().name("").addEventHandlers(FormEventHandler.create("OnChange", "A")).build())
+      .addElements(FormUnknown.builder().name("X").build())
+      .build();
+    var extData = ManagedFormData.builder()
+      .addElements(FormField.builder().name("").addEventHandlers(FormEventHandler.create("OnChange", "B")).build())
+      .addElements(FormField.builder().name("X").addEventHandlers(FormEventHandler.create("OnChange", "B")).build())
+      .build();
+
+    var merged = (ManagedFormData) merge(baseData, extData);
+    assertThat(merged.getPlainEventHandlers()).containsKey("X.OnChange");
+  }
+
+  @Test
+  void mergeFormDataRebuildsDifferentElementKinds() {
+    var baseData = ManagedFormData.builder()
+      .addElements(FormGroup.builder().name("Группа").addElements(FormField.builder().name("Поле1").build()).build())
+      .addElements(FormTable.builder().name("Таблица")
+        .addElements(FormField.builder().name("Колонка").build()).build())
+      .addElements(FormButton.builder().name("Кнопка").build())
+      .addElements(FormDecoration.builder().name("Декорация").build())
+      .addElements(FormExtendedTooltip.builder().name("Подсказка").build())
+      .addElements(FormAddition.builder().name("Дополнение")
+        .addElements(FormField.builder().name("ВнутриДополнения").build()).build())
+      .addElements(FormContextMenu.builder().name("Меню")
+        .addElements(FormButton.builder().name("КнопкаМеню").build()).build())
+      .build();
+    var extData = ManagedFormData.builder()
+      .addElements(FormGroup.builder().name("Группа").addEventHandlers(FormEventHandler.create("OnChange", "Г")).build())
+      .addElements(FormTable.builder().name("Таблица")
+        .addEventHandlers(FormEventHandler.create("OnActivateRow", "Т")).build())
+      .addElements(FormButton.builder().name("Кнопка")
+        .addEventHandlers(FormEventHandler.create("Click", "К")).build())
+      .addElements(FormDecoration.builder().name("Декорация")
+        .addEventHandlers(FormEventHandler.create("Click", "Д")).build())
+      .addElements(FormExtendedTooltip.builder().name("Подсказка")
+        .addEventHandlers(FormEventHandler.create("OnChange", "П")).build())
+      .addElements(FormAddition.builder().name("Дополнение")
+        .addElements(FormField.builder().name("ВнутриДополнения").addEventHandlers(FormEventHandler.create("OnChange", "ВД")).build()).build())
+      .addElements(FormContextMenu.builder().name("Меню")
+        .addElements(FormButton.builder().name("КнопкаМеню")
+          .addEventHandlers(FormEventHandler.create("Click", "КМ")).build()).build())
+      .build();
+
+    var merged = (ManagedFormData) merge(baseData, extData);
+    assertThat(merged.getPlainEventHandlers()).containsKeys(
+      "Группа.OnChange", "Таблица.OnActivateRow", "Кнопка.Click", "Декорация.Click",
+      "Подсказка.OnChange", "ВнутриДополнения.OnChange", "КнопкаМеню.Click");
+  }
+
+  @Test
+  void mergeFormPreservesUnchangedForm() {
+    var base = com.github._1c_syntax.bsl.mdo.CommonForm.builder()
+      .name("Форма").uuid("00000000-0000-0000-0000-000000000001")
+      .mdoReference(MdoReference.create("CommonForm.Форма"))
+      .data(ManagedFormData.builder().addEventHandlers(FormEventHandler.create("OnOpen", "A")).build())
+      .build();
+    var ext = com.github._1c_syntax.bsl.mdo.CommonForm.builder()
+      .name("Форма").uuid("00000000-0000-0000-0000-000000000001")
+      .mdoReference(MdoReference.create("CommonForm.Форма"))
+      .data(ManagedFormData.builder().addEventHandlers(FormEventHandler.create("OnOpen", "A")).build())
+      .build();
+
+    assertThat(MDMerger.mergeForm(base, ext)).isSameAs(base);
+  }
+
+  @Test
+  void mergeFormDataReturnsBaseForNonManagedExt() {
+    FormData nonManaged = new FormData() {
+      @Override
+      public boolean isEmpty() { return false; }
+      @Override
+      public java.util.List<FormElement> getElements() { return java.util.List.of(); }
+    };
+    var base = ManagedFormData.builder().addEventHandlers(FormEventHandler.create("OnOpen", "A")).build();
+    assertThat(merge(base, nonManaged)).isSameAs(base);
+  }
+
+  @Test
+  void mergeFormDataHandlesNullAndEmptyNames() {
+    var baseData = ManagedFormData.builder()
+      .addElements(FormField.builder().name("Поле").build())
+      .build();
+    var extData = ManagedFormData.builder()
+      .addElements(FormField.builder().name("").addEventHandlers(FormEventHandler.create("OnChange", "A")).build())
+      .addElements(FormField.builder().name("Поле").addEventHandlers(FormEventHandler.create("OnChange", "B")).build())
+      .build();
+    var merged = (ManagedFormData) merge(baseData, extData);
+    assertThat(merged.getPlainEventHandlers()).containsKey("Поле.OnChange");
+  }
+
+  @Test
+  void mergeFormDataReturnsBaseWhenElementUnchanged() {
+    var baseData = ManagedFormData.builder()
+      .addElements(FormField.builder().name("Поле").addEventHandlers(FormEventHandler.create("OnChange", "A")).build())
+      .build();
+    var extData = ManagedFormData.builder()
+      .addElements(FormField.builder().name("Другое").addEventHandlers(FormEventHandler.create("OnChange", "B")).build())
+      .build();
+    assertThat(merge(baseData, extData)).isSameAs(baseData);
+  }
+
+  @Test
+  void mergeFormDataHandlesBaseNonManagedExtManaged() {
+    FormData baseNonManaged = new FormData() {
+      @Override
+      public boolean isEmpty() { return false; }
+    };
+    var ext = ManagedFormData.builder().addEventHandlers(FormEventHandler.create("OnOpen", "A")).build();
+    assertThat(merge(baseNonManaged, ext)).isSameAs(baseNonManaged);
+  }
+
+  @Test
+  void mergeFormDataSkipsElementWithoutHandlerOwner() {
+    var baseData = ManagedFormData.builder()
+      .addElements(FormAddition.builder().name("Дополнение").build())
+      .build();
+    var extData = ManagedFormData.builder()
+      .addElements(FormAddition.builder().name("Дополнение").build())
+      .build();
+    assertThat(merge(baseData, extData)).isSameAs(baseData);
+  }
+
+  @Test
+  void mergeFormDataIgnoresSameHandler() {
+    var handler = FormEventHandler.create("OnOpen", "ПриОткрытии");
+    var baseData = ManagedFormData.builder().addEventHandlers(handler).build();
+    var extData = ManagedFormData.builder().addEventHandlers(handler).build();
+    assertThat(merge(baseData, extData)).isSameAs(baseData);
+  }
+
+  @Test
+  void mergeFormDataHandlesUnknownElementTypeAndNoExtMatch() {
+    var unknown = FormUnknown.builder()
+      .name("Неизвестный")
+      .addEventHandlers(FormEventHandler.create("OnChange", "A"))
+      .build();
+    var baseData = ManagedFormData.builder().addElements(unknown).build();
+    var extData = ManagedFormData.builder()
+      .addElements(FormUnknown.builder().name("Другой").build())
+      .build();
+    assertThat(merge(baseData, extData)).isSameAs(baseData);
+  }
+
+  @Test
+  void mergeFormDataHandlesChildrenOwnerWithoutHandlerOwner() {
+    var baseData = ManagedFormData.builder()
+      .addElements(FormAddition.builder()
+        .name("Дополнение")
+        .addElements(FormField.builder().name("Внутри").addEventHandlers(FormEventHandler.create("OnChange", "A")).build())
+        .build())
+      .build();
+    var extData = ManagedFormData.builder()
+      .addElements(FormAddition.builder()
+        .name("Дополнение")
+        .addElements(FormField.builder().name("Внутри").addEventHandlers(FormEventHandler.create("StartChoice", "B")).build())
+        .build())
+      .build();
+
+    var merged = (ManagedFormData) merge(baseData, extData);
+    assertThat(merged.getPlainEventHandlers()).containsKeys("Внутри.OnChange", "Внутри.StartChoice");
+  }
 
   private static FormData merge(FormData baseData,
                                 FormData extData) {
