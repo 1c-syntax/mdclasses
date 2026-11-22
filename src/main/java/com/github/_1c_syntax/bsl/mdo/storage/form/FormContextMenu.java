@@ -38,7 +38,7 @@ import java.util.List;
  * Маппинг типов: {@link FormElementType#CONTEXT_MENU}
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = "name")
 public class FormContextMenu implements FormElement, FormElementOwner {
 

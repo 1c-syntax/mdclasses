@@ -38,7 +38,7 @@ import java.util.List;
  * Маппинг типов: {@link FormElementType#TABLE}
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = "name")
 public class FormTable implements FormElement, FormElementOwner, FormDataPathOwner, FormEventHandlerOwner {
 

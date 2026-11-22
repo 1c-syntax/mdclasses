@@ -39,7 +39,7 @@ import java.util.List;
  * {@link FormElementType#COMMAND_BAR_HYPERLINK}, {@link FormElementType#HYPERLINK}
  */
 @Value
-@Builder
+@Builder(toBuilder = true)
 @ToString(of = "name")
 public class FormButton implements FormElement, FormElementOwner, FormEventHandlerOwner {
 

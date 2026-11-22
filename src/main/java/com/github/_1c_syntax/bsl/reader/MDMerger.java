@@ -54,6 +54,21 @@ import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceFunction;
 import com.github._1c_syntax.bsl.mdo.children.ExternalDataSourceTable;
 import com.github._1c_syntax.bsl.mdo.children.PredefinedValue;
 import com.github._1c_syntax.bsl.mdo.children.Recalculation;
+import com.github._1c_syntax.bsl.mdo.storage.FormData;
+import com.github._1c_syntax.bsl.mdo.storage.ManagedFormData;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormAddition;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormButton;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormContextMenu;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormDecoration;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElement;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormElementOwner;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandler;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormEventHandlerOwner;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormExtendedTooltip;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormField;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormGroup;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormTable;
+import com.github._1c_syntax.bsl.mdo.storage.form.FormUnknown;
 import com.github._1c_syntax.bsl.reader.common.TransformationUtils;
 import com.github._1c_syntax.bsl.types.MdoReference;
 import lombok.experimental.UtilityClass;
@@ -65,6 +80,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -291,6 +307,10 @@ public class MDMerger {
       }
 
       // изменения есть, создаем копию
+      if (srcMD instanceof Form baseForm && modMD instanceof Form extForm) {
+        result.add((T) mergeForm(baseForm, extForm));
+        return;
+      }
 
       // ModuleOwner
       var md = copyModuleOwner(srcMD, modMD);
@@ -329,6 +349,228 @@ public class MDMerger {
       }
     }
     return srcMD;
+  }
+
+  static Form mergeForm(Form baseForm, Form extForm) {
+    var modules = mergeModules(baseForm.getModules(), extForm.getModules().stream()
+      .filter(MDMerger::hasModuleFile)
+      .toList());
+    var data = mergeFormData(baseForm.getData(), extForm.getData());
+    if (modules.equals(baseForm.getModules()) && data.equals(baseForm.getData())) {
+      return baseForm;
+    }
+
+    var builder = TransformationUtils.toBuilder(baseForm);
+    if (builder == null) {
+      throw new IllegalStateException("toBuilder() is not available for " + baseForm.getClass());
+    }
+    TransformationUtils.setValue(builder, "modules", modules);
+    TransformationUtils.setValue(builder, "data", data);
+    var computeResult = TransformationUtils.build(builder);
+    if (computeResult instanceof Form form) {
+      return form;
+    }
+    return baseForm;
+  }
+
+  private static FormData mergeFormData(FormData baseData, FormData extData) {
+    if (extData.isEmpty()) {
+      return baseData;
+    }
+    if (baseData.isEmpty()) {
+      return extData;
+    }
+    if (!(baseData instanceof ManagedFormData baseManaged) || !(extData instanceof ManagedFormData extManaged)) {
+      return baseData;
+    }
+
+    var eventHandlers = mergeEventHandlers(baseManaged.getEventHandlers(), extManaged.getEventHandlers());
+    var elements = mergeFormElements(baseManaged.getElements(), extManaged);
+
+    if (eventHandlers.equals(baseManaged.getEventHandlers()) && elements.equals(baseManaged.getElements())) {
+      return baseData;
+    }
+
+    return baseManaged.toBuilder()
+      .clearEventHandlers().eventHandlers(eventHandlers)
+      .clearElements().elements(elements)
+      .build();
+  }
+
+  private static List<FormEventHandler> mergeEventHandlers(List<FormEventHandler> baseHandlers,
+                                                           List<FormEventHandler> extHandlers) {
+    if (extHandlers.isEmpty()) {
+      return baseHandlers;
+    }
+    if (baseHandlers.isEmpty()) {
+      return dedupHandlersByEvent(extHandlers);
+    }
+
+    List<FormEventHandler> result = new ArrayList<>(baseHandlers);
+    var changed = false;
+    for (var handler : extHandlers) {
+      if (containsHandlerEvent(result, handler.event()) || result.contains(handler)) {
+        continue;
+      }
+      result.add(handler);
+      changed = true;
+    }
+    return changed ? Collections.unmodifiableList(result) : baseHandlers;
+  }
+
+  private static List<FormEventHandler> dedupHandlersByEvent(List<FormEventHandler> handlers) {
+    List<FormEventHandler> result = new ArrayList<>();
+    for (var handler : handlers) {
+      if (!containsHandlerEvent(result, handler.event())) {
+        result.add(handler);
+      }
+    }
+    return Collections.unmodifiableList(result);
+  }
+
+  private static boolean containsHandlerEvent(List<FormEventHandler> handlers, String event) {
+    for (var handler : handlers) {
+      if (handler.event().equalsIgnoreCase(event)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  private static List<FormElement> mergeFormElements(List<FormElement> baseElements, ManagedFormData extData) {
+    if (baseElements.isEmpty()) {
+      return baseElements;
+    }
+
+    var extByName = indexFormElementsByName(extData);
+    if (extByName.isEmpty()) {
+      return baseElements;
+    }
+
+    List<FormElement> result = new ArrayList<>(baseElements.size());
+    var changed = false;
+    for (var element : baseElements) {
+      var merged = mergeFormElement(element, extByName);
+      changed = changed || !merged.equals(element);
+      result.add(merged);
+    }
+
+    return changed ? Collections.unmodifiableList(result) : baseElements;
+  }
+
+  private static Map<String, List<FormElement>> indexFormElementsByName(ManagedFormData extData) {
+    Map<String, List<FormElement>> extByName = new HashMap<>();
+    for (var element : extData.getPlainElements()) {
+      if (element.getName() != null && !element.getName().isEmpty()) {
+        extByName.computeIfAbsent(element.getName().toLowerCase(Locale.ROOT), k -> new ArrayList<>()).add(element);
+      }
+    }
+    return extByName;
+  }
+
+  private static FormElement mergeFormElement(FormElement baseElement, Map<String, List<FormElement>> extByName) {
+    var mergedChildren = mergeFormElementChildren(baseElement, extByName);
+    if (!(mergedChildren instanceof FormEventHandlerOwner handlerOwner)) {
+      return mergedChildren;
+    }
+
+    var extElements = extByName.getOrDefault(baseElement.getName().toLowerCase(Locale.ROOT), Collections.emptyList());
+    if (extElements.isEmpty()) {
+      return mergedChildren;
+    }
+
+    var mergedHandlers = mergeEventHandlers(handlerOwner.getEventHandlers(), collectExtHandlers(extElements));
+    if (mergedHandlers.equals(handlerOwner.getEventHandlers())) {
+      return mergedChildren;
+    }
+
+    return rebuildElementWith(mergedChildren, mergedHandlers, null);
+  }
+
+  private static FormElement mergeFormElementChildren(FormElement baseElement,
+                                                      Map<String, List<FormElement>> extByName) {
+    if (!(baseElement instanceof FormElementOwner owner)) {
+      return baseElement;
+    }
+
+    var children = owner.getElements();
+    if (children.isEmpty()) {
+      return baseElement;
+    }
+
+    List<FormElement> newChildren = new ArrayList<>(children.size());
+    var childChanged = false;
+    for (var child : children) {
+      var mergedChild = mergeFormElement(child, extByName);
+      childChanged = childChanged || !mergedChild.equals(child);
+      newChildren.add(mergedChild);
+    }
+
+    if (!childChanged) {
+      return baseElement;
+    }
+    return rebuildElementWith(baseElement, null, Collections.unmodifiableList(newChildren));
+  }
+
+  private static List<FormEventHandler> collectExtHandlers(List<FormElement> extElements) {
+    List<FormEventHandler> extHandlers = new ArrayList<>();
+    for (var extElement : extElements) {
+      if (extElement instanceof FormEventHandlerOwner extHandlerOwner) {
+        extHandlers.addAll(extHandlerOwner.getEventHandlers());
+      }
+    }
+    return extHandlers;
+  }
+
+  private static FormElement rebuildElementWith(FormElement element,
+                                                @Nullable List<FormEventHandler> eventHandlers,
+                                                @Nullable List<FormElement> children) {
+    return switch (element) {
+      case FormField formField -> formField.toBuilder()
+        .clearEventHandlers().eventHandlers(eventHandlersOrDefault(eventHandlers, formField.getEventHandlers()))
+        .clearElements().elements(childrenOrDefault(children, formField.getElements()))
+        .build();
+      case FormGroup formGroup -> formGroup.toBuilder()
+        .clearEventHandlers().eventHandlers(eventHandlersOrDefault(eventHandlers, formGroup.getEventHandlers()))
+        .clearElements().elements(childrenOrDefault(children, formGroup.getElements()))
+        .build();
+      case FormTable formTable -> formTable.toBuilder()
+        .clearEventHandlers().eventHandlers(eventHandlersOrDefault(eventHandlers, formTable.getEventHandlers()))
+        .clearElements().elements(childrenOrDefault(children, formTable.getElements()))
+        .build();
+      case FormButton formButton -> formButton.toBuilder()
+        .clearEventHandlers().eventHandlers(eventHandlersOrDefault(eventHandlers, formButton.getEventHandlers()))
+        .clearElements().elements(childrenOrDefault(children, formButton.getElements()))
+        .build();
+      case FormDecoration formDecoration -> formDecoration.toBuilder()
+        .clearEventHandlers().eventHandlers(eventHandlersOrDefault(eventHandlers, formDecoration.getEventHandlers()))
+        .clearElements().elements(childrenOrDefault(children, formDecoration.getElements()))
+        .build();
+      case FormUnknown formUnknown -> formUnknown.toBuilder()
+        .clearEventHandlers().eventHandlers(eventHandlersOrDefault(eventHandlers, formUnknown.getEventHandlers()))
+        .clearElements().elements(childrenOrDefault(children, formUnknown.getElements()))
+        .build();
+      case FormExtendedTooltip tooltip -> tooltip.toBuilder()
+        .clearEventHandlers().eventHandlers(eventHandlersOrDefault(eventHandlers, tooltip.getEventHandlers()))
+        .build();
+      case FormAddition addition -> addition.toBuilder()
+        .clearElements().elements(childrenOrDefault(children, addition.getElements()))
+        .build();
+      case FormContextMenu contextMenu -> contextMenu.toBuilder()
+        .clearElements().elements(childrenOrDefault(children, contextMenu.getElements()))
+        .build();
+      default -> element;
+    };
+  }
+
+  private static List<FormEventHandler> eventHandlersOrDefault(@Nullable List<FormEventHandler> eventHandlers,
+                                                               List<FormEventHandler> defaults) {
+    return eventHandlers == null ? defaults : eventHandlers;
+  }
+
+  private static List<FormElement> childrenOrDefault(@Nullable List<FormElement> children,
+                                                     List<FormElement> defaults) {
+    return children == null ? defaults : children;
   }
 
   /**
